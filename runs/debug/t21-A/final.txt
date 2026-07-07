@@ -1,0 +1,5 @@
+The change is in place. Here is a summary of what was done:
+
+**What changed:** Added a new "Checking your budgets" section to `README.md` between the existing spending commands section and the "How amounts are stored" section. It documents the `budget --month YYYY-MM` command, explains that it shows category spending against configured budget limits, and notes that categories without a configured limit are still listed but without a target.
+
+**No open questions** — the request was self-contained and the placement (after list/export, before implementation notes) fits the existing document flow.

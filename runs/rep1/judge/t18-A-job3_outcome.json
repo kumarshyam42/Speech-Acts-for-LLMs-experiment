@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Now I have a clear picture. The `format_report` currently shows only category name and USD total. I'll enhance it to show item count, percentage of total, and (when a month is provided) remaining budget with warn/over state. The budget imports are already in place.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

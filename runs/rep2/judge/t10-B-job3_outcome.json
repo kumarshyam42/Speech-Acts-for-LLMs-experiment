@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "\"conditions_of_satisfaction\": [\n    \"Passing an invalid date (e.g. `--date 2024-13-01`) to `add` prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace\",\n    \"Passing an unsupported currency code to `add` prints a human-readable error listing known currencies to stderr and exits with code 1 \u2014 no stack trace\",\n    \"Running any command against a corrupt/non-JSON store file prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace\",\n    \"Running `export --out <unwritable-path>` prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace\",\n    \"All existing tests in `tests/test_cli.py` (and the full suite) continue to pass\",\n    \"New tests in `tests/test_cli.py` cover each of the four error paths above\"\n  ]",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,23 @@
+Both docs agree on 100. 
+
+---
+
+**Final report**
+
+The FAQ went from 4 thin questions to 15 questions organized in four sections: *Getting started*, *Commands*, *Data and storage*, *Currency*, and *Plans and backup*.
+
+Every addition is grounded in the actual code or existing docs — no invented features:
+
+- **Setup / install** (Python 3.9+, `python -m tally.cli`)
+- **Recording an expense** with `--note` and `--date` explained
+- **Categories** — listed from `config.py`; notes that custom ones require editing the file
+- **`report` / `list`** — both commands explained with examples; default-to-current-month behavior noted
+- **`budget`** — explained including the 80 % warning threshold from `config.py`
+- **`stats`** — the undocumented-but-real command, now explained
+- **`export` to CSV** — with `--out` vs stdout
+- **`--store` flag** — data file location and how to use separate files
+- **USD normalization** — plain-language explanation of why euros show up as dollars
+- **Supported currencies** — listed from `rates.py` (USD, EUR, GBP, SGD, JPY, INR)
+- **Plans / backup** — backup history table added; upgrade/downgrade timing; self-backup option
+
+The 100-expense free-tier limit matches `pricing.md` exactly, keeping R6 satisfied.

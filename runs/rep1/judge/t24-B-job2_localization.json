@@ -1,0 +1,13 @@
+{
+  "task": "t24",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "The section instead states that amounts are stored in whatever currency they were entered in",
+    "reason": "The hidden contradiction with the actual behavior was never surfaced; the agent committed to the literal requested wording after only reading the README section. That made the failure originate before execution, because no agreement was formed around an accurate clarification."
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "debug",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have a clear picture of what's missing. I'll update the README to add `stats`, `budget`, `--store`, the valid categories, and the `CATEGORY_BUDGETS` config reference \u2014 all in the existing prose voice.",
+    "reason": "The request was ambiguous, but the agent unilaterally decided what \u201cbetter\u201d meant and proceeded without surfacing options or asking for direction. No real agreement was formed about the README improvement shape before editing."
+  },
+  "attempts": 1
+}

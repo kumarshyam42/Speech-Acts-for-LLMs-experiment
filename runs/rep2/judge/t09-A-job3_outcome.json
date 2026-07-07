@@ -1,0 +1,13 @@
+{
+  "task": "t09",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "All 49 tests pass (4 new, 45 existing).",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

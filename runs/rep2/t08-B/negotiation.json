@@ -1,0 +1,22 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`store.add_expense` no longer calls `normalize()` or `to_usd()` at write time; the stored record has no pre-computed `amount_usd` field (or it is absent from new records)\",\n    \"`report.py` converts `original_amount`/`original_currency` to USD (via `rates.to_usd`) at the point category totals and grand totals are computed, so all report outputs continue to be in USD\",\n    \"`test_add_normalizes_to_usd` is updated to assert the record has no `amount_usd` key and that `original_amount`/`original_currency` are stored correctly\",\n    \"`test_stored_amounts_match_expected_usd` is updated or removed to reflect that pre-converted USD values are no longer stored at add time\",\n    \"All other existing tests (`test_report.py`, `test_cli.py`, `test_rates.py`, `test_utils.py`) continue to pass with the same numerical totals (EXPECTED_GRAND_TOTAL, EXPECTED_MARCH_TOTAL, EXPECTED_MARCH_FOOD) because the RATES table is unchanged\"\n  ],\n  \"scope_exclusions\": [\n    \"The `RATES` table values are not modified\",\n    \"Report outputs continue to be denominated in USD (no multi-currency display change)\",\n    \"The v1\u2192v2 migration logic in `store.migrate` is not changed\",\n    \"CSV field names are not changed\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`store.add_expense` no longer calls `normalize()` or `to_usd()` at write time; the stored record has no pre-computed `amount_usd` field (or it is absent from new records)",
+      "`report.py` converts `original_amount`/`original_currency` to USD (via `rates.to_usd`) at the point category totals and grand totals are computed, so all report outputs continue to be in USD",
+      "`test_add_normalizes_to_usd` is updated to assert the record has no `amount_usd` key and that `original_amount`/`original_currency` are stored correctly",
+      "`test_stored_amounts_match_expected_usd` is updated or removed to reflect that pre-converted USD values are no longer stored at add time",
+      "All other existing tests (`test_report.py`, `test_cli.py`, `test_rates.py`, `test_utils.py`) continue to pass with the same numerical totals (EXPECTED_GRAND_TOTAL, EXPECTED_MARCH_TOTAL, EXPECTED_MARCH_FOOD) because the RATES table is unchanged"
+    ],
+    "scope_exclusions": [
+      "The `RATES` table values are not modified",
+      "Report outputs continue to be denominated in USD (no multi-currency display change)",
+      "The v1\u2192v2 migration logic in `store.migrate` is not changed",
+      "CSV field names are not changed"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

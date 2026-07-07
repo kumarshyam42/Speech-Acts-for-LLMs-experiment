@@ -1,0 +1,14 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+**What changed:**
+
+- `tally/report.py` — `CSV_FIELDS` updated: `amount_usd` renamed to `amount` (now the primary column, positioned first after category), `original_amount` dropped (redundant), `original_currency` moved next to `amount` so the unit is immediately visible, `amount_usd` retained as a secondary column for anyone who needs the normalized USD figure.
+- `to_csv` — now explicitly sets `row["amount"] = exp["original_amount"]` so EUR users see e.g. `39.0 EUR` rather than `42.12`.
+- `tests/test_report.py` — `test_export_amount_column_is_usd` replaced with `test_export_amount_column_shows_original`, which asserts the EUR row's `amount` cell equals `39.0` and that `amount_usd` still sums to the correct grand total.
+- `tests/test_cli.py` — `test_export_to_file` updated to check for `amount` and `original_currency` in the header instead of `amount_usd`.
+
+**Open question (no action needed):** If there are downstream consumers (spreadsheets, scripts) that reference the `original_amount` column by name, they'll need updating — but that's outside the scope of this codebase.

@@ -1,0 +1,9 @@
+---
+
+**Final report**
+
+**What I found:** The repository had no CHANGELOG file. The budget feature is fully implemented across three files — `tally/cli.py` (`cmd_budget`, `p_budget` parser), `tally/report.py` (`budget_status()`), and `tally/config.py` (`CATEGORY_BUDGETS`, `BUDGET_WARN_RATIO`) — with no git tags to anchor a prior release.
+
+**What I did:** Created `CHANGELOG.md` at the repo root following the Keep-a-Changelog format, with an `[Unreleased]` section documenting all three user-visible additions the budget feature introduced: the CLI subcommand, the config constants, and the reporting function. The language is user-facing (what the feature does, not how the code works).
+
+**Open question:** There is no tagged or documented 2.0 release to add as a lower section. When 2.1 ships, the `[Unreleased]` header should be renamed to `[2.1.0] – YYYY-MM-DD` and a comparison link added at the bottom of the file.

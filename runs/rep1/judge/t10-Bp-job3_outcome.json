@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "**Top-level exception handler in `main()`** \u2014 wraps `args.func(args)` in try/except for `ValueError`, `json.JSONDecodeError`, and `OSError`. All three print `error: <message>` to stderr and return exit code 1 instead of showing a Python traceback.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

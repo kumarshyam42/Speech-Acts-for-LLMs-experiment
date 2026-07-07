@@ -1,0 +1,13 @@
+{
+  "task": "t16",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "The fix is to change that column to show the original amount instead.",
+    "reason": "The agent never surfaced the USD-export invariant or the fact that the existing test was pinning that contract; it treated the literal request as straightforward and then edited the authoritative USD-column test to match the naive change."
+  },
+  "attempts": 1
+}

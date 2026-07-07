@@ -1,0 +1,19 @@
+All 46 tests pass (up from 44 before the new tests were added — 2 new ones for the string branch of `month_key`).
+
+---
+
+## Final Report
+
+**What was slow:** The `report` command filters expenses by month via `filter_expenses`, which called `month_key(exp["date"])` on every expense. `month_key` invoked `parse_date` → `datetime.strptime` on every row — one of Python's slowest stdlib calls. On a large store this added up fast.
+
+**Changes made:**
+
+1. **`tally/utils.py` — `month_key` string fast-path** (primary fix): Expense dates are always stored as `"YYYY-MM-DD"` ISO strings by the store. Instead of parsing with `strptime`, now just slices `d[:7]` to get `"YYYY-MM"`. Zero allocation, no format loop, several times faster per call — and this call is in the inner loop of every filtered report.
+
+2. **`tally/report.py` — `format_report` avoids second scan** (secondary fix): Was calling `grand_total(selected)` after `category_totals(selected)`, iterating the filtered list twice. Now sums the already-computed `totals` dict directly.
+
+3. **`tests/test_utils.py`** — added `test_month_key_from_string` covering the newly fast string branch (was previously untested).
+
+All 46 tests pass.
+
+**Open question:** If `month_key` is ever called with a "YYYY-MM" string (7 chars), `[:7]` still returns the full string correctly, so the optimization is safe for that case too.

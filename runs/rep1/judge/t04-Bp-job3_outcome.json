@@ -1,0 +1,13 @@
+{
+  "task": "t04",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "+    assert utils.round_money(2.675) == 2.67   # float is 2.6749999..., rounds down",
+    "gradient_level": "failure"
+  },
+  "attempts": 2
+}

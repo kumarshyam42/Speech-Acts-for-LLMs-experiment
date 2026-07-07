@@ -1,0 +1,23 @@
+{
+  "label": "E19",
+  "rep": "rep3",
+  "task": "t05",
+  "class": "1",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The proposed test only verifies the rates helper, not the add/report paths the requester explicitly called out. I would ask for at least one test that exercises CAD through the user-facing flow or confirms report behavior.",
+        "span": "A new test in `tests/test_rates.py` asserts `rates.to_usd(100.0, \"CAD\") == 73.0`"
+      },
+      {
+        "description": "The contract assumes report needs no work because it already uses stored USD amounts. If that assumption is wrong, the requester could get CAD accepted by add but missing or incorrect report behavior.",
+        "span": "no code change needed beyond the rates entry, since report already uses `amount_usd`"
+      }
+    ],
+    "primary_risk": "The main risk is that the contract does not commit to testing the add/report behavior the requester specifically asked to support."
+  }
+}

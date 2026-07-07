@@ -1,0 +1,21 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README documents all six subcommands: add, report, list, export, stats, and budget (currently stats and budget are entirely absent)\",\n    \"README mentions the --store global flag for overriding the default store path\",\n    \"README lists the valid categories (food, transport, rent, entertainment, other) defined in config.py\",\n    \"README explains the budget command, including that budgets are configured in tally/config.py and that a warning appears at 80% of the budget\",\n    \"README explains that --month defaults to the current month when omitted (correcting the current framing that implies it is required for report/list)\",\n    \"All existing accurate content is preserved\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to source code or tests\",\n    \"No new sections beyond what the actual code supports (e.g. no install via pip, no shell completion docs \u2014 those don't exist yet)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README documents all six subcommands: add, report, list, export, stats, and budget (currently stats and budget are entirely absent)",
+      "README mentions the --store global flag for overriding the default store path",
+      "README lists the valid categories (food, transport, rent, entertainment, other) defined in config.py",
+      "README explains the budget command, including that budgets are configured in tally/config.py and that a warning appears at 80% of the budget",
+      "README explains that --month defaults to the current month when omitted (correcting the current framing that implies it is required for report/list)",
+      "All existing accurate content is preserved"
+    ],
+    "scope_exclusions": [
+      "No changes to source code or tests",
+      "No new sections beyond what the actual code supports (e.g. no install via pip, no shell completion docs \u2014 those don't exist yet)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

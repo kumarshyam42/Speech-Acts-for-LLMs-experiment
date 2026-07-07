@@ -1,0 +1,30 @@
+The edit is done. Here is the completion report.
+
+---
+
+**Completion report**
+
+Added a two-line "Supported currencies" section between "How amounts are stored" and "A note on scope" in `README.md`. No other content was touched.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "README.md contains a new 'Supported currencies' section",
+      "status": "met",
+      "evidence": "Section heading '## Supported currencies' inserted at line 69 of README.md"
+    },
+    {
+      "cos": "The section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR",
+      "status": "met",
+      "evidence": "Line 71 reads: 'USD, EUR, GBP, SGD, JPY, INR' — all six codes present"
+    },
+    {
+      "cos": "No other content in README.md is modified",
+      "status": "met",
+      "evidence": "Only a single Edit call was made; it inserted three lines (heading, currency list, blank separator) between two existing sections without altering any other text"
+    }
+  ],
+  "assessment": "All three conditions of satisfaction are met. The change is minimal and surgical: two new lines added (section heading + currency list), no source code or test files touched, no exchange-rate or conversion detail added."
+}
+```

@@ -1,0 +1,13 @@
+{
+  "task": "t05",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "All 47 tests pass. Here's what was done:\n\n**Changes made:**\n\n1. **`tally/rates.py`** \u2014 Added `\"CAD\": 0.73` to the `RATES` dict. The dict is now alphabetically sorted (matches the existing `supported_currencies()` contract). No changes needed anywhere else \u2014 `add` already passes `--currency` through `rates.to_usd`, and `report` works in USD internally.\n\n2. **`tests/test_rates.py`** \u2014 Added `test_to_usd_cad` pinning the exact conversion: 100 CAD \u2192 73.00 USD at the 0.73 rate.\n\n3. **`tests/test_cli.py`** \u2014 Added `test_add_and_report_cad`, an end-to-end test that adds a 100 CAD expense and verifies the `add` output shows `73.00 USD` and the `report` output includes `73.00` under `food`.",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

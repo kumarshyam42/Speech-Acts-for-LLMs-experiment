@@ -1,0 +1,43 @@
+All 46 tests pass including the new `test_add_rejects_unknown_category`.
+
+---
+
+## Completion Report
+
+**Changes made:**
+
+- `tally/cli.py`: imported `KNOWN_CATEGORIES` from `tally.config`; added a guard at the top of `cmd_add` that checks `args.category` against `KNOWN_CATEGORIES`, prints a human-readable error naming the bad category and listing accepted ones, and returns `1` — before any store I/O occurs.
+- `tests/test_cli.py`: added `test_add_rejects_unknown_category` which calls `cli.main` with category `'fod'`, asserts non-zero return code, asserts `'fod'` appears in output, and asserts the store file was never created.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "cmd_add in cli.py validates args.category against KNOWN_CATEGORIES from config.py before writing to the store",
+      "status": "met",
+      "evidence": "Validation block added at the top of cmd_add (before _load or store_mod calls), importing KNOWN_CATEGORIES from tally.config"
+    },
+    {
+      "cos": "When an unknown category is supplied (e.g. 'fod'), cmd_add prints a clear error message naming the invalid category and listing the accepted ones, then returns a non-zero exit code",
+      "status": "met",
+      "evidence": "Error message format: \"error: unknown category 'fod'. Accepted: food, transport, rent, entertainment, other\"; function returns 1"
+    },
+    {
+      "cos": "The store file is NOT written when an invalid category is given",
+      "status": "met",
+      "evidence": "Validation fires before _load(args) and any store writes; test asserts os.path.exists(store) is False after the rejected call; confirmed by test passing"
+    },
+    {
+      "cos": "A new test in test_cli.py verifies that cli.main([..., 'add', '10', 'fod', ...]) returns a non-zero exit code and emits an error message containing the invalid category name",
+      "status": "met",
+      "evidence": "test_add_rejects_unknown_category passes: rc != 0 and 'fod' in stdout"
+    },
+    {
+      "cos": "All pre-existing tests continue to pass",
+      "status": "met",
+      "evidence": "pytest reports 46 passed, 0 failed across all test files"
+    }
+  ],
+  "assessment": "All five conditions of satisfaction are met. The implementation is minimal: a 7-line guard at the top of cmd_add, one import line change, and one new test. No other modules were touched. No argparse choices= were used — error handling stays in cmd_add as specified."
+}
+```

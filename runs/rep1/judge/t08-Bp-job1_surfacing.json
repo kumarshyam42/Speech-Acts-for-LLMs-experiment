@@ -1,0 +1,13 @@
+{
+  "task": "t08",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**`cli.py` line 42** uses `record[\"amount_usd\"]` to print the add confirmation \u2014 needs to compute USD for display without storing it.",
+    "span_locator": "event 22, assistant"
+  },
+  "attempts": 1
+}

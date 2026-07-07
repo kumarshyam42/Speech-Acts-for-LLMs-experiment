@@ -1,0 +1,1 @@
+Done. Added a "Supported currencies" section to `README.md` between the "Looking at your spending" and "How amounts are stored" sections. It lists all six currencies (USD, EUR, GBP, SGD, JPY, INR) in a simple table and notes that USD is the default when no `--currency` flag is provided.

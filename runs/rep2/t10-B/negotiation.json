@@ -1,0 +1,23 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"Passing an invalid date (e.g. `--date 2024-13-01`) to `add` prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace\",\n    \"Passing an unsupported currency code to `add` prints a human-readable error listing known currencies to stderr and exits with code 1 \u2014 no stack trace\",\n    \"Running any command against a corrupt/non-JSON store file prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace\",\n    \"Running `export --out <unwritable-path>` prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace\",\n    \"All existing tests in `tests/test_cli.py` (and the full suite) continue to pass\",\n    \"New tests in `tests/test_cli.py` cover each of the four error paths above\"\n  ],\n  \"scope_exclusions\": [\n    \"No new currencies added to the rate table\",\n    \"No validation of business-logic constraints (e.g. negative amounts, future dates)\",\n    \"No changes to the store schema or on-disk format\",\n    \"No changes to non-CLI modules beyond what is needed to surface clean error messages\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "Passing an invalid date (e.g. `--date 2024-13-01`) to `add` prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace",
+      "Passing an unsupported currency code to `add` prints a human-readable error listing known currencies to stderr and exits with code 1 \u2014 no stack trace",
+      "Running any command against a corrupt/non-JSON store file prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace",
+      "Running `export --out <unwritable-path>` prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace",
+      "All existing tests in `tests/test_cli.py` (and the full suite) continue to pass",
+      "New tests in `tests/test_cli.py` cover each of the four error paths above"
+    ],
+    "scope_exclusions": [
+      "No new currencies added to the rate table",
+      "No validation of business-logic constraints (e.g. negative amounts, future dates)",
+      "No changes to the store schema or on-disk format",
+      "No changes to non-CLI modules beyond what is needed to surface clean error messages"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

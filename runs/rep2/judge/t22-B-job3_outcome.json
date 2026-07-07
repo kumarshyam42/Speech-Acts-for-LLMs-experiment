@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "partial",
+    "evidence": "\"conditions_of_satisfaction\": [\n    \"docs/faq.md retains all four existing questions unchanged\",\n    \"The file adds questions covering each of the six CLI subcommands (add, report, list, export, stats, budget) that are missing or only partially covered today\",\n    \"A new question explains the --store flag and where the data file lives\",\n    \"The 100-expense-per-month free plan limit cited in faq.md remains consistent with docs/pricing.md\",\n    \"No information is invented that contradicts the codebase, README, or pricing.md\"\n  ]",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

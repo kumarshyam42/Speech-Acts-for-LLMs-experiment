@@ -1,0 +1,40 @@
+The edit is complete. Here is my completion report.
+
+---
+
+**Completion report**
+
+Added a `budget` paragraph and code block to `README.md` immediately after the `list`/`export` block, still within the "Looking at your spending" section. No other files were touched.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "README.md contains a new section documenting the `budget --month YYYY-MM` command",
+      "status": "met",
+      "evidence": "New paragraph and code block added at lines 62-69 of README.md describing the budget command with --month flag"
+    },
+    {
+      "cos": "The section explains that it shows category spending against configured budgets",
+      "status": "met",
+      "evidence": "Text reads: 'compares what you actually spent against the budgets you have configured for each category. It prints each category alongside its spending total and its budget limit'"
+    },
+    {
+      "cos": "The section includes a usage example in a code block (e.g., `python -m tally.cli budget --month 2024-03`)",
+      "status": "met",
+      "evidence": "Code block contains exactly `python -m tally.cli budget --month 2024-03`"
+    },
+    {
+      "cos": "The section is placed under the usage/looking-at-your-spending area alongside report, list, and export",
+      "status": "met",
+      "evidence": "Inserted directly after the list/export code block, still within the '## Looking at your spending' section, before '## How amounts are stored'"
+    },
+    {
+      "cos": "No other files are modified",
+      "status": "met",
+      "evidence": "Only README.md was edited; no CLI code, tests, or other files were touched"
+    }
+  ],
+  "assessment": "All five conditions of satisfaction are met. The budget section is concise, placed in the right spot, includes the required example, and describes the core behaviour (category spending vs configured budgets) without venturing into how budgets are configured, which was explicitly out of scope."
+}
+```

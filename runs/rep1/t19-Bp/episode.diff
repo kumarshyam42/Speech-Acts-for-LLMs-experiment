@@ -1,0 +1,69 @@
+diff --git a/requirements.txt b/requirements.txt
+new file mode 100644
+index 0000000..e44504a
+--- /dev/null
++++ b/requirements.txt
+@@ -0,0 +1 @@
++python-dateutil>=2.8
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..c3f118d 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -1,24 +1,28 @@
+ """Small helpers: date parsing and money rounding."""
+ 
+ import datetime
++import re
+ from typing import Union
+ 
++from dateutil import parser as _dateutil_parser
++
+ Dateish = Union[str, datetime.date]
+ 
++_YEAR_MONTH_RE = re.compile(r"^\d{4}-\d{2}$")
++
+ 
+ def parse_date(text):
+-    """Parse a date written as YYYY-MM-DD or YYYY-MM.
++    """Parse a date string in any common format (e.g. YYYY-MM-DD, 'March 4, 2024').
+ 
+     A bare YYYY-MM is treated as the first day of that month. Raises ValueError
+-    on anything else.
++    on unrecognisable input.
+     """
+     text = text.strip()
+-    for fmt in ("%Y-%m-%d", "%Y-%m"):
+-        try:
+-            return datetime.datetime.strptime(text, fmt).date()
+-        except ValueError:
+-            continue
+-    raise ValueError("unrecognized date {!r}; use YYYY-MM-DD or YYYY-MM".format(text))
++    # dateutil fills missing day fields from today's date, so handle the
++    # YYYY-MM form explicitly to preserve the "first of month" contract.
++    if _YEAR_MONTH_RE.match(text):
++        return datetime.datetime.strptime(text, "%Y-%m").date()
++    return _dateutil_parser.parse(text, dayfirst=False).date()
+ 
+ 
+ def month_key(d):
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 539b7c9..91cbc08 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -21,7 +21,15 @@ def test_parse_date_strips_whitespace():
+ 
+ def test_parse_bad_date_raises():
+     with pytest.raises(ValueError):
+-        utils.parse_date("March 4th")
++        utils.parse_date("not-a-date")
++
++
++def test_parse_natural_language_date():
++    assert utils.parse_date("March 4, 2024") == datetime.date(2024, 3, 4)
++
++
++def test_parse_slash_date():
++    assert utils.parse_date("03/04/2024") == datetime.date(2024, 3, 4)
+ 
+ 
+ def test_month_key_from_date():

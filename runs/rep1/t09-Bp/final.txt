@@ -1,0 +1,17 @@
+All 47 tests pass, including the two new ones.
+
+---
+
+**Final report**
+
+Three changes, all in existing files:
+
+- **`tally/store.py`** — added `delete_expense(data, expense_id)`: iterates the expenses list, pops and returns the matching record, returns `None` if not found.
+
+- **`tally/cli.py`** — added `cmd_delete(args)` (prints confirmation or an error message, returns exit code 0/1) and wired it up as the `delete` subparser with a positional `id` integer argument.
+
+- **`tests/test_cli.py`** — added two tests:
+  - `test_delete_removes_expense`: adds two expenses, deletes id 1, verifies the output line, then checks the JSON file directly to confirm id 1 is gone and id 2 remains.
+  - `test_delete_nonexistent_id_returns_error`: verifies rc=1 and that the missing id appears in the error message.
+
+No open questions. The implementation is intentional about not renumbering remaining IDs (consistent with how `next_id` works — max+1 — so gaps in the sequence are fine).

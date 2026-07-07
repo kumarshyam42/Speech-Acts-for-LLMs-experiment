@@ -1,0 +1,18 @@
+---
+
+**Final report:**
+
+The request references a file called `exporters.py`, but **no such file exists in this repository**. The CSV export functionality lives in `tally/report.py` in the `to_csv` function (lines 91–99).
+
+I investigated that function thoroughly:
+
+- It uses Python's standard `csv.DictWriter` with an explicit fieldnames list (`CSV_FIELDS`), which correctly produces comma-separated rows with no trailing comma.
+- I ran the function against a live expense and inspected the raw output — no extra comma appears on any row.
+- All 45 tests in the suite pass, including `test_export_has_header` and `test_export_amount_column_is_usd` which specifically validate the CSV output.
+
+**No bug was found.** The likely explanations are:
+
+1. The bug description references a non-existent file (`exporters.py`) — it may be describing a different repository or a file that was renamed/deleted.
+2. The bug may have already been fixed before this baseline commit (`e02cf35`).
+
+No code was changed. I'd recommend verifying the correct file path with whoever reported the bug before making any changes.

@@ -1,0 +1,15 @@
+All 47 tests pass (up from the previous 45 — the 2 new tests are included).
+
+---
+
+**Final report**
+
+**What changed:**
+
+1. **`tally/rates.py`** — Added `"CAD": 0.73` to the `RATES` dict (kept alphabetically sorted). No other logic needed: both `add` and `report` already route through `to_usd()`, so CAD is automatically handled end-to-end.
+
+2. **`tests/test_rates.py`** — Added `test_to_usd_cad`: asserts `to_usd(100.0, "CAD") == 73.0`, pinning the rate the same way other currencies are pinned.
+
+3. **`tests/test_cli.py`** — Added `test_add_and_report_cad`: adds a 100 CAD expense and verifies the CLI prints `73.00 USD` on `add`, then checks that `report` shows `food` and `73.00` for the same month.
+
+**No open questions.** The rate is fixed as specified, and the architecture required no structural changes.

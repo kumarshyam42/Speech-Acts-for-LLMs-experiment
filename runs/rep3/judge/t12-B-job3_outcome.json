@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "Both docs/pricing.md and docs/faq.md consistently reflect the new 200-expense free-plan limit.",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

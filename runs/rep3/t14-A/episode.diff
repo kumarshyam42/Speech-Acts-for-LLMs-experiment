@@ -1,0 +1,126 @@
+diff --git a/README.md b/README.md
+index c6dbd2a..20866ee 100644
+--- a/README.md
++++ b/README.md
+@@ -20,50 +20,99 @@ run it as a module:
+ python -m tally.cli --help
+ ```
+ 
+-If you like, drop a shell alias so you can just type `tally`.
++To save typing, drop an alias in your shell profile:
++
++```bash
++alias tally='python -m tally.cli'
++```
++
++The examples below assume you have done that. If you have not, substitute
++`python -m tally.cli` wherever you see `tally`.
+ 
+ ## Recording an expense
+ 
+ ```
+-python -m tally.cli add 12.50 food --note "lunch"
++tally add 12.50 food --note "lunch"
+ ```
+ 
+-The first two arguments are the amount and the category. By default the amount is
+-read as US dollars, but you can enter it in another currency and tally will convert
+-it for you:
++The first two arguments are the amount and the category. The categories tally knows
++about are: `food`, `transport`, `rent`, `entertainment`, and `other`.
++
++By default the amount is read as US dollars, but you can enter it in another
++currency and tally will convert it for you at a fixed rate:
+ 
+ ```
+-python -m tally.cli add 39 food --currency EUR --date 2024-03-04
++tally add 39 food --currency EUR --date 2024-03-04
+ ```
+ 
+-If you leave off `--date`, today's date is used.
++If you leave off `--date`, today's date is used. If you leave off `--note`, the
++note is left blank.
++
++Amounts are converted to US dollars at the moment you record them. The original
++amount and currency are kept alongside the stored record for your reference, but
++every total you see is in US dollars. This keeps reports consistent even when a
++month mixes several currencies.
+ 
+ ## Looking at your spending
+ 
+-The `report` command prints category totals for a month. You can narrow it to a
+-single category too:
++The `report` command prints category totals for a month:
++
++```
++tally report --month 2024-03
++tally report --month 2024-03 --category food
++```
++
++Leaving off `--month` shows totals across all months. Passing `--category`
++narrows the output to a single category.
++
++The `list` command shows the individual entries rather than the totals, with the
++same filtering options:
+ 
+ ```
+-python -m tally.cli report --month 2024-03
+-python -m tally.cli report --month 2024-03 --category food
++tally list --month 2024-03
++tally list --month 2024-03 --category food
+ ```
+ 
+-There is also a `list` command if you would rather see the individual expenses
+-instead of the totals, and an `export` command that writes everything out as CSV
+-so you can open it in a spreadsheet after all:
++## Budget tracking
++
++tally compares your spending against the monthly budgets configured in
++`tally/config.py`. The `budget` command shows how much you have spent and how much
++headroom remains in each category:
+ 
+ ```
+-python -m tally.cli list --month 2024-03
+-python -m tally.cli export --out march.csv
++tally budget --month 2024-03
+ ```
+ 
+-## How amounts are stored
++The output flags categories where you have used more than 80% of the budget. To
++change the default amounts, edit the `CATEGORY_BUDGETS` dict in `tally/config.py`.
+ 
+-Whenever you add an expense, tally converts the amount into US dollars using the
+-conversion table in `tally/rates.py` and stores that dollar figure. The original
+-amount and currency you typed are kept alongside it for reference, but every total
+-you ever see is computed in US dollars. This keeps reports consistent even when a
+-month mixes several currencies.
++## Overall statistics
++
++The `stats` command prints a quick summary across all your recorded expenses —
++total count, all-time total and average, and the date range covered:
++
++```
++tally stats
++```
++
++## Exporting your data
++
++The `export` command writes everything out as CSV so you can open it in a
++spreadsheet:
++
++```
++tally export --out march.csv
++tally export                   # writes to stdout
++```
++
++## Keeping multiple stores
++
++By default tally reads and writes `tally.json` in the current directory. Pass
++`--store` before any subcommand to point at a different file:
++
++```
++tally --store ~/finances/2024.json report --month 2024-03
++```
+ 
+ ## A note on scope
+ 

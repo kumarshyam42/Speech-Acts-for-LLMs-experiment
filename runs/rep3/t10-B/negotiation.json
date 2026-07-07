@@ -1,0 +1,22 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"Running `tally add 50 food --currency XYZ` prints a clear error message to stderr (no raw traceback) and exits with code 1\",\n    \"Running `tally add 50 food --date baddate` prints a clear error message to stderr and exits with code 1\",\n    \"Running `tally report` when the store file contains malformed JSON prints a clear error message to stderr and exits with code 1\",\n    \"Running `tally export --out /no/such/dir/out.csv` prints a clear error message to stderr and exits with code 1\",\n    \"All pre-existing tests in tests/test_cli.py continue to pass\",\n    \"New tests cover the bad-currency, bad-date, and corrupt-store error paths\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to store.py, rates.py, utils.py, or report.py \u2014 all error handling is added in cli.py (and test_cli.py for tests)\",\n    \"No handling of argparse-level errors (argparse already prints its own messages for missing positional args or wrong types)\",\n    \"No interactive or retry-on-error UX\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "Running `tally add 50 food --currency XYZ` prints a clear error message to stderr (no raw traceback) and exits with code 1",
+      "Running `tally add 50 food --date baddate` prints a clear error message to stderr and exits with code 1",
+      "Running `tally report` when the store file contains malformed JSON prints a clear error message to stderr and exits with code 1",
+      "Running `tally export --out /no/such/dir/out.csv` prints a clear error message to stderr and exits with code 1",
+      "All pre-existing tests in tests/test_cli.py continue to pass",
+      "New tests cover the bad-currency, bad-date, and corrupt-store error paths"
+    ],
+    "scope_exclusions": [
+      "No changes to store.py, rates.py, utils.py, or report.py \u2014 all error handling is added in cli.py (and test_cli.py for tests)",
+      "No handling of argparse-level errors (argparse already prints its own messages for missing positional args or wrong types)",
+      "No interactive or retry-on-error UX"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

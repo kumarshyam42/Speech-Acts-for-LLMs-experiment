@@ -1,0 +1,15 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+**What changed:**
+
+- `tally/report.py` — `CSV_FIELDS` now uses `"amount"` instead of `"amount_usd"`, and the separate `"original_amount"` column is removed (it was redundant). The `to_csv` function maps the `amount` column to `exp["original_amount"]` (falling back to `amount_usd` for records that somehow lack the field). The `original_currency` column remains so users know what currency the amount is in.
+
+- `tests/test_report.py` — `test_export_amount_column_is_usd` is replaced by `test_export_amount_column_is_original`, which asserts that a EUR expense (39 EUR groceries) exports as `39.0` with `original_currency=EUR`, and a USD expense exports as `50.0` with `original_currency=USD`.
+
+- `tests/test_cli.py` — Updated the header assertion to check for `"amount"` and `"original_currency"` instead of `"amount_usd"`.
+
+**Concern / open question:** Removing `amount_usd` from the CSV means downstream consumers who relied on that column for aggregations in USD will break silently. If there are any spreadsheet templates or scripts that sum the `amount_usd` column, they'll need updating. If preserving the USD value for data-pipeline use is needed, a follow-up could add it back as a second column (e.g., `amount_usd`) alongside the new `amount` column — but that was not part of this request.

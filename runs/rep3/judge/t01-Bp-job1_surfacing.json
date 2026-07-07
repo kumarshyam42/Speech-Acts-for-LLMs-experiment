@@ -1,0 +1,13 @@
+{
+  "task": "t01",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "No mutual-exclusion enforcement between `--year` and `--month` needed \u2014 if both are passed, both filters simply apply (month already implies year).",
+    "span_locator": "event 15, assistant"
+  },
+  "attempts": 1
+}

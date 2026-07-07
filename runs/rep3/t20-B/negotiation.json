@@ -1,0 +1,19 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`tally/rates.py` has `\\\"SGD\\\": 0.75`\",\n    \"`tests/test_rates.py` asserts `rates.to_usd(100.0, \\\"SGD\\\") == 75.0`\",\n    \"`tests/conftest.py` has `74.0` replaced with `75.0` in `EXPECTED_USD`, `EXPECTED_GRAND_TOTAL` updated from `204.22` to `205.22`, and `EXPECTED_MARCH_TOTAL` updated from `172.82` to `173.82`\",\n    \"The full test suite passes with no failures\"\n  ],\n  \"scope_exclusions\": [\n    \"No other currency rates are changed\",\n    \"No business logic beyond the rate constant and its downstream pinned test values is altered\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`tally/rates.py` has `\"SGD\": 0.75`",
+      "`tests/test_rates.py` asserts `rates.to_usd(100.0, \"SGD\") == 75.0`",
+      "`tests/conftest.py` has `74.0` replaced with `75.0` in `EXPECTED_USD`, `EXPECTED_GRAND_TOTAL` updated from `204.22` to `205.22`, and `EXPECTED_MARCH_TOTAL` updated from `172.82` to `173.82`",
+      "The full test suite passes with no failures"
+    ],
+    "scope_exclusions": [
+      "No other currency rates are changed",
+      "No business logic beyond the rate constant and its downstream pinned test values is altered"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

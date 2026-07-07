@@ -1,0 +1,15 @@
+All 48 tests pass (3 new, all green).
+
+---
+
+**Final report**
+
+**What was changed:**
+
+- **`tally/report.py`** — `filter_expenses` gains an optional `year: str` parameter (format `"YYYY"`); it filters out any expense whose date doesn't start with that year. `format_report` gains the same `year` parameter and shows `"Report for YYYY"` in the header when `--year` is given without `--month`.
+
+- **`tally/cli.py`** — `report` subparser gains `--year YYYY`; `cmd_report` passes `year=args.year` to `format_report`.
+
+- **`tests/test_cli.py`** — `test_report_year`: adds three expenses (two in 2024, one in 2025), runs `report --year 2024`, and asserts the output contains both 2024 categories, a TOTAL line, and that the total is 80.00 (not 100.00).
+
+- **`tests/test_report.py`** — two additional unit tests: `test_filter_by_year` (all sample rows are 2024 so count is 6) and `test_format_report_year` (year appears in header, TOTAL and category present).

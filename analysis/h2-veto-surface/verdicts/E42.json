@@ -1,0 +1,23 @@
+{
+  "label": "E42",
+  "rep": "rep1",
+  "task": "t01",
+  "class": "1",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The promised test may not prove that year filtering works, because it uses data where the selected year already contains every sample row. If the implementation ignored `--year`, this specific test could still pass.",
+        "span": "all 6 sample rows are in 2024"
+      },
+      {
+        "description": "The contract leaves combined `--year` and `--month` behavior undefined. Since this is a CLI option added to an existing report command, the requester should confirm whether the flags should be mutually exclusive or composable.",
+        "span": "No defined behavior when both `--year` and `--month` are passed simultaneously"
+      }
+    ],
+    "primary_risk": "The main risk is that the proposed test does not actually validate year filtering because the sample data all falls in 2024."
+  }
+}

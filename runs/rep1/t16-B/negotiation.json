@@ -1,0 +1,21 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"counter_offer\",\n  \"conditions_of_satisfaction\": [\n    \"The CSV export column previously named `amount_usd` is renamed to `amount` in CSV_FIELDS and in the output header row\",\n    \"The `amount` column is populated with `original_amount` for each expense (e.g., 39.0 for a EUR expense entered as 39 EUR, 50.0 for a USD expense entered as 50 USD)\",\n    \"The `original_currency` column remains in the export so readers can interpret each row's amount\",\n    \"The `original_amount` column is removed from CSV_FIELDS to avoid duplication (its value is now in `amount`), or kept if it aids round-trip fidelity \u2014 to be decided on inspection\",\n    \"`test_export_amount_column_is_usd` is replaced with a test verifying that a EUR expense shows its original EUR value in the `amount` column, not the USD-converted value\",\n    \"All other tests pass (pytest green)\"\n  ],\n  \"scope_exclusions\": [\n    \"The plain-text `format_expense_list` display is not changed \u2014 it already shows both USD and original amounts\",\n    \"No changes to how amounts are stored internally (amount_usd normalization is unchanged)\"\n  ],\n  \"concern\": \"The request as literally stated \u2014 change the `amount_usd` column content while keeping the name \u2014 would leave a column called `amount_usd` that sometimes contains EUR or JPY values, which is more confusing than the current state. Additionally, `test_export_amount_column_is_usd` (line 76 of test_report.py) explicitly guards against this change with the comment 'Exporting original amounts breaks this' and asserts the column sums to the USD grand total. My counter-offer renames the column to `amount` so the header is honest, and updates the test to verify the new behavior instead of the old one.\"\n}\n```",
+  "parsed": {
+    "speech_act": "counter_offer",
+    "conditions_of_satisfaction": [
+      "The CSV export column previously named `amount_usd` is renamed to `amount` in CSV_FIELDS and in the output header row",
+      "The `amount` column is populated with `original_amount` for each expense (e.g., 39.0 for a EUR expense entered as 39 EUR, 50.0 for a USD expense entered as 50 USD)",
+      "The `original_currency` column remains in the export so readers can interpret each row's amount",
+      "The `original_amount` column is removed from CSV_FIELDS to avoid duplication (its value is now in `amount`), or kept if it aids round-trip fidelity \u2014 to be decided on inspection",
+      "`test_export_amount_column_is_usd` is replaced with a test verifying that a EUR expense shows its original EUR value in the `amount` column, not the USD-converted value",
+      "All other tests pass (pytest green)"
+    ],
+    "scope_exclusions": [
+      "The plain-text `format_expense_list` display is not changed \u2014 it already shows both USD and original amounts",
+      "No changes to how amounts are stored internally (amount_usd normalization is unchanged)"
+    ],
+    "concern": "The request as literally stated \u2014 change the `amount_usd` column content while keeping the name \u2014 would leave a column called `amount_usd` that sometimes contains EUR or JPY values, which is more confusing than the current state. Additionally, `test_export_amount_column_is_usd` (line 76 of test_report.py) explicitly guards against this change with the comment 'Exporting original amounts breaks this' and asserts the column sums to the USD grand total. My counter-offer renames the column to `amount` so the header is honest, and updates the test to verify the new behavior instead of the old one."
+  },
+  "valid": true,
+  "reason": ""
+}

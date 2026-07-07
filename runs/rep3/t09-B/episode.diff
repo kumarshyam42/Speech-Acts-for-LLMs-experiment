@@ -1,0 +1,85 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..858aef4 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -43,6 +43,17 @@ def cmd_add(args):
+     return 0
+ 
+ 
++def cmd_delete(args):
++    data = _load(args)
++    record = store_mod.delete_expense(data, args.id)
++    if record is None:
++        print("error: no expense with id {}".format(args.id), file=sys.stderr)
++        return 1
++    store_mod.save(args.store, data)
++    print("deleted #{}".format(args.id))
++    return 0
++
++
+ def cmd_report(args):
+     data = _load(args)
+     text = report_mod.format_report(
+@@ -131,6 +142,10 @@ def build_parser():
+     p_budget.add_argument("--month", required=True, help="YYYY-MM")
+     p_budget.set_defaults(func=cmd_budget)
+ 
++    p_delete = sub.add_parser("delete", help="remove an expense by id")
++    p_delete.add_argument("id", type=int, help="expense id to delete")
++    p_delete.set_defaults(func=cmd_delete)
++
+     return parser
+ 
+ 
+diff --git a/tally/store.py b/tally/store.py
+index 97c153c..1eb0398 100644
+--- a/tally/store.py
++++ b/tally/store.py
+@@ -98,5 +98,16 @@ def find_expense(data, expense_id):
+     return None
+ 
+ 
++def delete_expense(data, expense_id):
++    """Remove the expense with `expense_id` from `data['expenses']` in-place.
++
++    Returns the deleted record, or None if no matching id was found.
++    """
++    for i, exp in enumerate(data["expenses"]):
++        if exp.get("id") == expense_id:
++            return data["expenses"].pop(i)
++    return None
++
++
+ def all_expenses(data):
+     return list(data["expenses"])
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..0b85fa6 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -88,3 +88,26 @@ def test_add_defaults_currency_to_usd(tmp_path, capsys):
+         data = json.load(fh)
+     assert data["expenses"][0]["original_currency"] == "USD"
+     assert data["expenses"][0]["amount_usd"] == 12.5
++
++
++def test_delete_happy_path(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    cli.main(["--store", store, "add", "50", "food", "--date", "2024-03-15"])
++    with open(store) as fh:
++        expense_id = json.load(fh)["expenses"][0]["id"]
++    capsys.readouterr()
++
++    rc = cli.main(["--store", store, "delete", str(expense_id)])
++    assert rc == 0
++    out = capsys.readouterr().out
++    assert "deleted #{}".format(expense_id) in out
++
++    with open(store) as fh:
++        data = json.load(fh)
++    assert not any(e["id"] == expense_id for e in data["expenses"])
++
++
++def test_delete_nonexistent_id(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "delete", "999"])
++    assert rc != 0

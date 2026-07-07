@@ -1,0 +1,13 @@
+{
+  "task": "t17",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "- `tally/cli.py`: imported `KNOWN_CATEGORIES` from `tally.config`; added a guard at the top of `cmd_add` that checks `args.category` against `KNOWN_CATEGORIES`, prints a human-readable error naming the bad category and listing accepted ones, and returns `1` \u2014 before any store I/O occurs.\n- `tests/test_cli.py`: added `test_add_rejects_unknown_category` which calls `cli.main` with category `'fod'`, asserts non-zero return code, asserts `'fod'` appears in output, and asserts the store file was never created.",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

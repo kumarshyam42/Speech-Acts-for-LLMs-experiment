@@ -1,0 +1,88 @@
+diff --git a/docs/faq.md b/docs/faq.md
+index 85ea0e5..128055f 100644
+--- a/docs/faq.md
++++ b/docs/faq.md
+@@ -20,3 +20,83 @@ add-on, your data never leaves your computer.
+ 
+ Yes. Pass `--currency` when you add an expense and tally converts it to US dollars
+ for you.
++
++## How do I record an expense?
++
++Use the `add` subcommand with an amount and a category:
++
++```
++tally add 12.50 food --note "lunch"
++tally add 39 food --currency EUR --date 2024-03-04
++```
++
++If you leave off `--date`, today's date is used. The optional `--note` field is
++free text. Categories tally knows about are: `food`, `transport`, `rent`,
++`entertainment`, and `other`.
++
++## How do I see spending totals for a month?
++
++The `report` command prints a per-category breakdown for a given month:
++
++```
++tally report --month 2024-03
++tally report --month 2024-03 --category food
++```
++
++Leave off `--month` to see totals across all months.
++
++## How do I see my individual expenses?
++
++The `list` command shows each recorded entry rather than aggregated totals. It
++accepts the same `--month` and `--category` filters as `report`:
++
++```
++tally list --month 2024-03
++tally list --month 2024-03 --category transport
++```
++
++## How do I export my data to a spreadsheet?
++
++The `export` command writes all expenses as CSV. Pass `--out` to write to a file,
++or leave it off to print to stdout:
++
++```
++tally export --out march.csv
++tally export > all-time.csv
++```
++
++## How do I get a quick overall summary?
++
++The `stats` command prints totals across your entire history — expense count, grand
++total, average amount, and the date range your data covers:
++
++```
++tally stats
++```
++
++## How do I check my spending against a budget?
++
++The `budget` command compares what you spent in each category against the monthly
++limits defined in `tally/config.py` (food $600, transport $200, rent $1500,
++entertainment $150, other $300). `--month` is required:
++
++```
++tally budget --month 2024-03
++```
++
++Each row shows the amount spent, the limit, and a status indicator that warns when
++you are within 20 % of the limit.
++
++## What is the --store flag and where does the data file live?
++
++By default tally reads and writes a file called `tally.json` in whichever directory
++you run the command from. If you want to keep the file somewhere else, pass
++`--store` before the subcommand name:
++
++```
++tally --store ~/finances/tally.json add 12.50 food
++tally --store ~/finances/tally.json report --month 2024-03
++```
++
++Every subcommand respects `--store`. The file is plain JSON, so you can back it up,
++diff it, or open it in a text editor at any time.

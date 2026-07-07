@@ -1,0 +1,179 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..e33624f 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -45,8 +45,9 @@ def cmd_add(args):
+ 
+ def cmd_report(args):
+     data = _load(args)
++    year = str(args.year) if args.year is not None else None
+     text = report_mod.format_report(
+-        store_mod.all_expenses(data), month=args.month, category=args.category
++        store_mod.all_expenses(data), month=args.month, category=args.category, year=year
+     )
+     print(text)
+     return 0
+@@ -110,8 +111,10 @@ def build_parser():
+     p_add.add_argument("--note", default="")
+     p_add.set_defaults(func=cmd_add)
+ 
+-    p_report = sub.add_parser("report", help="category totals for a month")
+-    p_report.add_argument("--month", default=None, help="YYYY-MM")
++    p_report = sub.add_parser("report", help="category totals for a month or year")
++    _period = p_report.add_mutually_exclusive_group()
++    _period.add_argument("--month", default=None, help="YYYY-MM")
++    _period.add_argument("--year", type=int, default=None, metavar="YYYY")
+     p_report.add_argument("--category", default=None)
+     p_report.set_defaults(func=cmd_report)
+ 
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..b0c697c 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -14,10 +14,12 @@ from tally.utils import month_key, round_money
+ CSV_FIELDS = ["id", "date", "category", "amount_usd", "original_amount", "original_currency", "note"]
+ 
+ 
+-def filter_expenses(expenses, month=None, category=None):
+-    """Return the expenses matching an optional month (YYYY-MM) and category."""
++def filter_expenses(expenses, month=None, category=None, year=None):
++    """Return the expenses matching optional year (YYYY), month (YYYY-MM), and category."""
+     result = []
+     for exp in expenses:
++        if year is not None and exp["date"][:4] != year:
++            continue
+         if month is not None and month_key(exp["date"]) != month:
+             continue
+         if category is not None and exp["category"] != category:
+@@ -45,13 +47,15 @@ def monthly_summary(expenses, month):
+     return category_totals(filter_expenses(expenses, month=month))
+ 
+ 
+-def format_report(expenses, month=None, category=None):
++def format_report(expenses, month=None, category=None, year=None):
+     """Render a plain-text report of category totals to a string."""
+-    selected = filter_expenses(expenses, month=month, category=category)
++    selected = filter_expenses(expenses, month=month, category=category, year=year)
+     totals = category_totals(selected)
+     lines = []
+     header = "Report"
+-    if month:
++    if year:
++        header += " for {}".format(year)
++    elif month:
+         header += " for {}".format(month)
+     if category:
+         header += " (category: {})".format(category)
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 857f40c..c1f5ee9 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -22,6 +22,7 @@ EXPECTED_USD = [42.12, 74.0, 50.0, 25.4, 6.7, 6.0]
+ EXPECTED_GRAND_TOTAL = 204.22
+ EXPECTED_MARCH_TOTAL = 172.82  # rows 0,1,2,4
+ EXPECTED_MARCH_FOOD = 92.12  # rows 0,2
++EXPECTED_2024_FOOD = 92.12  # rows 0,2 — all food is in 2024
+ 
+ 
+ @pytest.fixture
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..70601c8 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -74,6 +74,41 @@ def test_list_command(tmp_path, capsys):
+     assert "dinner" in out and "food" in out
+ 
+ 
++def test_report_year_filter(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    cli.main(["--store", store, "add", "50", "food", "--date", "2024-03-15"])
++    cli.main(["--store", store, "add", "30", "transport", "--date", "2024-06-01"])
++    cli.main(["--store", store, "add", "20", "food", "--date", "2023-11-10"])
++    capsys.readouterr()
++    rc = cli.main(["--store", store, "report", "--year", "2024"])
++    assert rc == 0
++    out = capsys.readouterr().out
++    assert "food" in out
++    assert "transport" in out
++    assert "TOTAL" in out
++    # 2024 total is 80.00; 2023 expense must not appear
++    assert "80.00" in out
++
++
++def test_report_year_category_filter(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    cli.main(["--store", store, "add", "50", "food", "--date", "2024-03-15"])
++    cli.main(["--store", store, "add", "30", "transport", "--date", "2024-06-01"])
++    capsys.readouterr()
++    cli.main(["--store", store, "report", "--year", "2024", "--category", "food"])
++    out = capsys.readouterr().out
++    assert "food" in out
++    assert "transport" not in out
++
++
++def test_report_year_month_mutually_exclusive(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    import pytest
++    with pytest.raises(SystemExit) as exc_info:
++        cli.main(["--store", store, "report", "--year", "2024", "--month", "2024-03"])
++    assert exc_info.value.code != 0
++
++
+ def test_no_command_prints_help(capsys):
+     rc = cli.main([])
+     assert rc == 1
+diff --git a/tests/test_report.py b/tests/test_report.py
+index a692745..d55c3f1 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -10,6 +10,7 @@ from conftest import (
+     EXPECTED_GRAND_TOTAL,
+     EXPECTED_MARCH_FOOD,
+     EXPECTED_MARCH_TOTAL,
++    EXPECTED_2024_FOOD,
+ )
+ 
+ 
+@@ -81,6 +82,42 @@ def test_export_amount_column_is_usd(sample_store):
+     assert round(total, 2) == EXPECTED_GRAND_TOTAL
+ 
+ 
++def test_format_report_year_breakdown(sample_store):
++    # All sample expenses are in 2024; year total == grand total.
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), year="2024")
++    assert "2024" in text
++    assert "food" in text
++    assert "TOTAL" in text
++    assert "{:.2f}".format(EXPECTED_GRAND_TOTAL) in text
++    assert "{:.2f}".format(EXPECTED_2024_FOOD) in text
++
++
++def test_format_report_year_no_expenses(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), year="2023")
++    assert "(no expenses)" in text
++
++
++def test_format_report_year_category_filter(sample_store):
++    text = report_mod.format_report(
++        store_mod.all_expenses(sample_store), year="2024", category="food"
++    )
++    assert "food" in text
++    assert "transport" not in text
++    assert "{:.2f}".format(EXPECTED_2024_FOOD) in text
++
++
++def test_filter_expenses_year(sample_store):
++    expenses_2024 = report_mod.filter_expenses(
++        store_mod.all_expenses(sample_store), year="2024"
++    )
++    assert len(expenses_2024) == 6  # all sample rows are 2024
++
++    expenses_2023 = report_mod.filter_expenses(
++        store_mod.all_expenses(sample_store), year="2023"
++    )
++    assert len(expenses_2023) == 0
++
++
+ def test_budget_status_states():
+     data = store_mod.empty_store()
+     # food budget is 600: 480 -> warn (0.8), plus a second row pushing over.

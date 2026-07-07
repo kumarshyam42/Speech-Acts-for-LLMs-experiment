@@ -1,0 +1,17 @@
+All 49 tests pass (up from 45 previously).
+
+---
+
+**Final report**
+
+**What was added:**
+
+1. **`tally/store.py` — `delete_expense(data, expense_id)`** — removes the matching record from `data["expenses"]` in place and returns it, or returns `None` if the id isn't found.
+
+2. **`tally/cli.py` — `cmd_delete(args)` + parser entry** — loads the store, calls `delete_expense`, saves on success and prints a confirmation (`deleted #3: 50.00 USD food 2024-03-15`), or prints to stderr and returns exit code 1 if the id is missing.
+
+3. **Tests — 4 new tests across two files:**
+   - `test_store.py::test_delete_expense_removes_record` — verifies the record is gone and the count drops by 1.
+   - `test_store.py::test_delete_expense_missing_id_returns_none` — verifies no mutation on a miss.
+   - `test_cli.py::test_delete_existing_expense` — end-to-end: add then delete, confirms output and that the JSON store is empty.
+   - `test_cli.py::test_delete_missing_expense_returns_error` — verifies exit code 1 and that the store is unchanged.

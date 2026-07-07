@@ -1,0 +1,21 @@
+{
+  "raw": "I have enough information to make a well-informed commitment.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`tally report --year 2024` filters all expenses whose date starts with '2024-' and prints a per-category breakdown in the same format as the monthly report (category lines + TOTAL line)\",\n    \"`report --year` and `report --month` can coexist in the parser; using both is unsupported but at minimum does not crash\",\n    \"The header line reads 'Report for 2024' (analogous to 'Report for YYYY-MM')\",\n    \"A new test in `tests/test_report.py` (or `tests/test_cli.py`) verifies: (a) `format_report` or `cmd_report` with `--year 2024` returns the correct grand total across all sample rows in that year (EXPECTED_MARCH_TOTAL + April rows = 204.22 USD), (b) rows from a different year are excluded, and (c) the output contains 'TOTAL'\",\n    \"The full existing test suite (`pytest`) continues to pass with no regressions\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to `--month` behavior or existing report format\",\n    \"`--year` is not added to `list`, `budget`, or any other subcommand \u2014 only `report`\",\n    \"No partial-year filtering (e.g. `--year 2024 --month 03`) \u2014 combining both flags is not a supported or tested interaction\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`tally report --year 2024` filters all expenses whose date starts with '2024-' and prints a per-category breakdown in the same format as the monthly report (category lines + TOTAL line)",
+      "`report --year` and `report --month` can coexist in the parser; using both is unsupported but at minimum does not crash",
+      "The header line reads 'Report for 2024' (analogous to 'Report for YYYY-MM')",
+      "A new test in `tests/test_report.py` (or `tests/test_cli.py`) verifies: (a) `format_report` or `cmd_report` with `--year 2024` returns the correct grand total across all sample rows in that year (EXPECTED_MARCH_TOTAL + April rows = 204.22 USD), (b) rows from a different year are excluded, and (c) the output contains 'TOTAL'",
+      "The full existing test suite (`pytest`) continues to pass with no regressions"
+    ],
+    "scope_exclusions": [
+      "No changes to `--month` behavior or existing report format",
+      "`--year` is not added to `list`, `budget`, or any other subcommand \u2014 only `report`",
+      "No partial-year filtering (e.g. `--year 2024 --month 03`) \u2014 combining both flags is not a supported or tested interaction"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

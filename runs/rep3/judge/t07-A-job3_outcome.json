@@ -1,0 +1,13 @@
+{
+  "task": "t07",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "+    p_report.add_argument(\"--week\", default=None, help=\"YYYY-Www (ISO week, Monday-start)\")",
+    "gradient_level": "failure"
+  },
+  "attempts": 2
+}

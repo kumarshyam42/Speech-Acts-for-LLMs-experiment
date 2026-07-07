@@ -1,0 +1,35 @@
+No stale references remain.
+
+---
+
+## Completion Report
+
+All four occurrences of the 100-expense limit have been updated to 200 across the two documentation files. No Python source files or tests were touched.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "docs/pricing.md table row for Free plan reads 'up to 200' in the Expenses per month column",
+      "status": "met",
+      "evidence": "Line 10 of docs/pricing.md now reads '| Free | $0 | up to 200 | 7 days |'"
+    },
+    {
+      "cos": "docs/pricing.md Notes section reads '100 expenses per month' nowhere — replaced with '200 expenses per month' in both prose occurrences",
+      "status": "met",
+      "evidence": "Line 16 of docs/pricing.md now reads '**200 expenses per month**'; grep for '100' in docs/ returns no output"
+    },
+    {
+      "cos": "docs/faq.md answer to 'How many expenses can I track on the free plan?' reads '200 expenses per month' (replacing the two '100' references)",
+      "status": "met",
+      "evidence": "Lines 10–11 of docs/faq.md now read 'up to **200 expenses per month**' and 'only the first 200 in a month'; grep for '100' in docs/ returns no output"
+    },
+    {
+      "cos": "No other file in the repository contains a stale '100' limit in a plan-limit context",
+      "status": "met",
+      "evidence": "grep -rn '100' across all non-.git files filtered by expense/limit/plan/free keywords returned no results outside the two docs files; those docs files now contain no '100'"
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met. Both docs/pricing.md and docs/faq.md consistently reflect the new 200-expense free-plan limit. No source code or test files were modified. No open questions."
+}
+```

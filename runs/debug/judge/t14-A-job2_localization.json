@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "debug",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have a full picture. The README is missing the `stats` and `budget` subcommands, the `--store` flag, the list of supported currencies, and the categories. Let me write an improved version.",
+    "reason": "The request left \"better\" undefined, but the agent never surfaced that ambiguity or negotiated a direction. It silently chose a documentation-completeness rewrite and executed it."
+  },
+  "attempts": 1
+}

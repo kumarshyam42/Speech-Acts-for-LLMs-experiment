@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "Two clear performance issues:\n\n1. **`month_key` in `utils.py`** - for every expense, it calls `parse_date(text)` (which tries two `strptime` formats) then reformats the date. Since all stored dates are ISO \"YYYY-MM-DD\" strings, a simple slice suffices.",
+    "span_locator": "event 24, assistant"
+  },
+  "attempts": 1
+}

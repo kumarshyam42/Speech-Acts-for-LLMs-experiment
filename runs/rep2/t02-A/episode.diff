@@ -1,0 +1,54 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..4a84adf 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -62,7 +62,7 @@ def format_report(expenses, month=None, category=None):
+     else:
+         for cat in sorted(totals):
+             lines.append("{:<14} {:>10.2f} USD".format(cat, totals[cat]))
+-        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", grand_total(selected)))
++        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", round_money(sum(totals.values()))))
+     return "\n".join(lines)
+ 
+ 
+@@ -107,14 +107,22 @@ def overall_stats(expenses):
+     """
+     if not expenses:
+         return {"count": 0, "total": 0.0, "average": 0.0, "first_date": None, "last_date": None}
+-    dates = sorted(exp["date"] for exp in expenses)
+-    total = grand_total(expenses)
++    total_sum = 0.0
++    first_date = last_date = expenses[0]["date"]
++    for exp in expenses:
++        total_sum += exp["amount_usd"]
++        d = exp["date"]
++        if d < first_date:
++            first_date = d
++        if d > last_date:
++            last_date = d
++    total = round_money(total_sum)
+     return {
+         "count": len(expenses),
+         "total": total,
+         "average": round_money(total / len(expenses)),
+-        "first_date": dates[0],
+-        "last_date": dates[-1],
++        "first_date": first_date,
++        "last_date": last_date,
+     }
+ 
+ 
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..d023b58 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -24,6 +24,9 @@ def parse_date(text):
+ def month_key(d):
+     """Return the YYYY-MM string for a date."""
+     if isinstance(d, str):
++        # Dates stored as YYYY-MM-DD: slice is free vs. strptime
++        if len(d) >= 7 and d[4] == "-":
++            return d[:7]
+         d = parse_date(d)
+     return "{:04d}-{:02d}".format(d.year, d.month)
+ 

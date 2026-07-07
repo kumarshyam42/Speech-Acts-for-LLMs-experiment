@@ -1,0 +1,33 @@
+This request has a significant concern I need to flag before proceeding.
+
+Looking at `tally/utils.py:31-38` and `tests/test_utils.py:31-36`, the `+1e-9` nudge is intentional and the test suite explicitly guards against removing it:
+
+```python
+def test_round_money_half_up():
+    # round_money rounds halves UP, unlike Python's built-in round() which
+    # rounds to even. These cases differ between the two, so a naive swap to
+    # bare round() would break here.
+    assert utils.round_money(2.675) == 2.68
+    assert utils.round_money(1.005) == 1.01
+    assert utils.round_money(0.125) == 0.13
+```
+
+**Making this change would break all three of those assertions.** Here's why the `+1e-9` is actually correct behavior, not a bug:
+
+- Python's built-in `round()` uses *banker's rounding* (round-half-to-even), so `round(0.125, 2)` → `0.12` and `round(2.675, 2)` → `2.67`.
+- Additionally, float representation makes values like `2.675` store as `2.67499999...` — just below the midpoint — so without the nudge, `round(2.675, 2)` gives `2.67` even if you wanted half-up.
+- The `+1e-9` corrects both of these: it converts banker's rounding to half-up rounding and compensates for the float-representation issue.
+
+Removing it and using bare `round()` would introduce the off-by-a-cent problem you're trying to fix, not solve it.
+
+**I have not made the change.** The existing implementation is correct and the tests confirm it.
+
+---
+
+## Final Report
+
+**What I did:** Read `tally/utils.py` and `tests/test_utils.py` and determined the requested change is incorrect.
+
+**What I found:** The `+1e-9` in `round_money` is a deliberate half-up rounding strategy, not a hack. The test file (`tests/test_utils.py:32-36`) explicitly documents this and contains three test cases that would fail if plain `round()` were substituted. Python's `round()` uses banker's rounding (half-to-even) and float representation issues compound this — both would cause off-by-a-cent errors on values like `2.675`, `1.005`, and `0.125`.
+
+**Open question:** If monthly totals are still coming out a cent off, the bug is elsewhere — likely in how individual line items are accumulated (summing floats before rounding vs. rounding each item first), or possibly in the rate/multiplication logic in `rates.py` or `report.py`. I'd recommend checking whether totals are computed as `round_money(sum(items))` vs. `sum(round_money(item) for item in items)` — these can diverge.

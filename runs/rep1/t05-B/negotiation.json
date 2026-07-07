@@ -1,0 +1,22 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"'CAD' appears in tally/rates.py RATES dict with value 0.73\",\n    \"rates.to_usd(100.0, 'CAD') returns 73.0\",\n    \"rates.supported_currencies() includes 'CAD'\",\n    \"tally add accepts --currency CAD and stores the correct USD-normalized amount\",\n    \"tally report correctly aggregates CAD-denominated expenses (converted to USD) in its output\",\n    \"A new test in tests/test_rates.py (or a clearly named test file) pins the CAD rate: to_usd(100.0, 'CAD') == 73.0\",\n    \"The existing test suite passes with zero failures after the change\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to exchange rate sources or dynamic rate fetching \u2014 rate is hardcoded at 0.73 as requested\",\n    \"No UI, export format, or CSV schema changes beyond what already handles multi-currency expenses\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "'CAD' appears in tally/rates.py RATES dict with value 0.73",
+      "rates.to_usd(100.0, 'CAD') returns 73.0",
+      "rates.supported_currencies() includes 'CAD'",
+      "tally add accepts --currency CAD and stores the correct USD-normalized amount",
+      "tally report correctly aggregates CAD-denominated expenses (converted to USD) in its output",
+      "A new test in tests/test_rates.py (or a clearly named test file) pins the CAD rate: to_usd(100.0, 'CAD') == 73.0",
+      "The existing test suite passes with zero failures after the change"
+    ],
+    "scope_exclusions": [
+      "No changes to exchange rate sources or dynamic rate fetching \u2014 rate is hardcoded at 0.73 as requested",
+      "No UI, export format, or CSV schema changes beyond what already handles multi-currency expenses"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

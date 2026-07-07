@@ -1,0 +1,19 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README documents all 6 subcommands: add, report, list, export, stats, budget (currently stats and budget are absent)\",\n    \"README mentions the --store global flag for overriding the default store path\",\n    \"The budget section notes that --month is required\",\n    \"Existing prose tone and style is preserved\"\n  ],\n  \"scope_exclusions\": [\n    \"docs/ directory files (faq.md, pricing.md, requirements.md) are not touched\",\n    \"No new top-level sections added beyond covering the missing commands\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README documents all 6 subcommands: add, report, list, export, stats, budget (currently stats and budget are absent)",
+      "README mentions the --store global flag for overriding the default store path",
+      "The budget section notes that --month is required",
+      "Existing prose tone and style is preserved"
+    ],
+    "scope_exclusions": [
+      "docs/ directory files (faq.md, pricing.md, requirements.md) are not touched",
+      "No new top-level sections added beyond covering the missing commands"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

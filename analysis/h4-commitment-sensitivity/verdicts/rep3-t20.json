@@ -1,0 +1,41 @@
+{
+  "rep": "rep3",
+  "task": "t20",
+  "class": "4",
+  "job": "b2_assertion_truthfulness",
+  "n_assertions": 4,
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "assertions": [
+      {
+        "cos": "`tally/rates.py` has `\"SGD\": 0.75`",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+    \"SGD\": 0.75,",
+        "reasoning": "The diff affirmatively shows the SGD entry changed to 0.75 in `tally/rates.py`. That supports the claimed met status."
+      },
+      {
+        "cos": "`tests/test_rates.py` asserts `rates.to_usd(100.0, \"SGD\") == 75.0`",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+    assert rates.to_usd(100.0, \"SGD\") == 75.0",
+        "reasoning": "The diff affirmatively shows the SGD unit test assertion updated to expect 75.0. That supports the claimed met status."
+      },
+      {
+        "cos": "`tests/conftest.py` has `74.0` replaced with `75.0` in `EXPECTED_USD`, `EXPECTED_GRAND_TOTAL` updated from `204.22` to `205.22`, and `EXPECTED_MARCH_TOTAL` updated from `172.82` to `173.82`",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+EXPECTED_USD = [42.12, 75.0, 50.0, 25.4, 6.7, 6.0]\n+EXPECTED_GRAND_TOTAL = 205.22\n+EXPECTED_MARCH_TOTAL = 173.82  # rows 0,1,2,4",
+        "reasoning": "The diff affirmatively shows all three expected values updated exactly as specified in `tests/conftest.py`. That supports the claimed met status."
+      },
+      {
+        "cos": "The full test suite passes with no failures",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "45 passed in 0.03s",
+        "reasoning": "The pytest output has exit_code 0 and reports 45 passed. That supports the claimed met status."
+      }
+    ]
+  }
+}

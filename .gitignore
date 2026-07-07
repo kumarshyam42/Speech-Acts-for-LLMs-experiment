@@ -1,0 +1,15 @@
+# Local Python environments
+harness/venv/
+.venv/
+
+# Python bytecode / caches
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# NOTE: fixture/.git cannot be excluded here — git never tracks a nested .git
+# directory, so no gitignore rule applies to it. It is restored locally from
+# bundles/fixture.bundle by scripts/restore_fixture.sh and is never committed.

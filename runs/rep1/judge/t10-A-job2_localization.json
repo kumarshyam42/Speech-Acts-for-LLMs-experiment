@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "The cleanest fix: top-level `try/except (ValueError, OSError)` in `main()` + explicit validation in `cmd_add` + month-format validation + friendlier message on corrupt store. Let me implement this.",
+    "reason": "The request left the error cases, messages, and exit-code behavior unspecified, but the agent unilaterally chose the scope and behavior without asking the user to agree. The failure originated before implementation because no real conditions of satisfaction were formed."
+  },
+  "attempts": 1
+}

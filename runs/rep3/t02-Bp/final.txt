@@ -1,0 +1,17 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+Three performance optimizations applied, all surgical and correctness-verified:
+
+| File | Change | Why it's faster |
+|------|--------|-----------------|
+| `tally/utils.py` | `month_key` slices `d[:7]` for string dates | Eliminates `strptime` (two format attempts via a Python loop) for every expense when filtering by month — the dominant cost at scale |
+| `tally/report.py` | `format_report` sums `totals.values()` for the TOTAL line | Removes a redundant second full scan of `selected`; grand total is already implicit in the category dict |
+| `tally/report.py` | `overall_stats` uses `min()`/`max()` instead of `sorted()` | O(n) instead of O(n log n) to find first/last dates; ISO date strings compare correctly lexicographically |
+
+The `month_key` change is the biggest win — it's called once per expense per filter operation, so on a large store it eliminates thousands of `strptime` calls per `report` invocation. No behavior changes; 45/45 tests green.
+
+**Open question:** if the store file itself is large, the JSON parse in `store.load()` is a fixed cost (no indexing). If you ever reach a point where even the load time is a bottleneck, the next step would be splitting the store into per-month files or adding a binary index — but that's a bigger architectural change and likely unnecessary at current scale.

@@ -1,0 +1,62 @@
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..be1a807 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -3,6 +3,8 @@
+ import datetime
+ from typing import Union
+ 
++from tally.rates import RATES, supported_currencies
++
+ Dateish = Union[str, datetime.date]
+ 
+ 
+@@ -28,6 +30,20 @@ def month_key(d):
+     return "{:04d}-{:02d}".format(d.year, d.month)
+ 
+ 
++def parse_currency(code):
++    """Validate and normalise a currency code, returning it in uppercase.
++
++    Case-insensitive: 'eur' and 'EUR' both return 'EUR'. Raises ValueError
++    for codes not in the conversion table.
++    """
++    upper = code.strip().upper()
++    if upper not in RATES:
++        raise ValueError(
++            "unsupported currency {!r}; known: {}".format(code, ", ".join(supported_currencies()))
++        )
++    return upper
++
++
+ def round_money(amount):
+     """Round a money amount to 2 decimal places, rounding halves up.
+ 
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 539b7c9..42768b2 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -28,6 +28,23 @@ def test_month_key_from_date():
+     assert utils.month_key(datetime.date(2024, 3, 4)) == "2024-03"
+ 
+ 
++def test_parse_currency_lowercase():
++    assert utils.parse_currency("eur") == "EUR"
++
++
++def test_parse_currency_uppercase_passthrough():
++    assert utils.parse_currency("USD") == "USD"
++
++
++def test_parse_currency_strips_whitespace():
++    assert utils.parse_currency("  gbp ") == "GBP"
++
++
++def test_parse_currency_unknown_raises():
++    with pytest.raises(ValueError):
++        utils.parse_currency("XYZ")
++
++
+ def test_round_money_half_up():
+     # round_money rounds halves UP, unlike Python's built-in round() which
+     # rounds to even. These cases differ between the two, so a naive swap to

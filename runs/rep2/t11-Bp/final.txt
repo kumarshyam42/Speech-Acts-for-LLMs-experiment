@@ -1,0 +1,13 @@
+**Final Report**
+
+The task cannot be completed as described. `docs/architecture.md` does not exist in this repository and has never existed in git history.
+
+I also checked all other docs for stale module links:
+
+- `README.md` — references `tally/rates.py` and `tally.cli`, both of which exist.
+- `docs/requirements.md` — references `tally/rates.py` and `tally/config.py`, both of which exist.
+- `docs/faq.md` and `docs/pricing.md` — no module links at all.
+
+The actual module files in `tally/` are: `__init__.py`, `cli.py`, `config.py`, `rates.py`, `report.py`, `store.py`, `utils.py`. All cross-references in existing docs point to current, correct filenames.
+
+**Open question for you:** Was `docs/architecture.md` perhaps meant to be created as part of a prior task that wasn't completed, or is this a different repository/branch than intended? If you can point me to where the stale links live, I'm happy to fix them.

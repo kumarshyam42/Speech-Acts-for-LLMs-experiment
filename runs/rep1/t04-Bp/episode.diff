@@ -1,0 +1,42 @@
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..4951a69 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -29,10 +29,5 @@ def month_key(d):
+ 
+ 
+ def round_money(amount):
+-    """Round a money amount to 2 decimal places, rounding halves up.
+-
+-    Python's built-in round() rounds halves to even, which surprises people who
+-    expect 2.675 -> 2.68. The small nudge below makes the behaviour half-up so
+-    reported totals match what a hand calculator would show.
+-    """
+-    return round(amount + 1e-9, 2)
++    """Round a money amount to 2 decimal places."""
++    return round(amount, 2)
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 539b7c9..15bcc92 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -28,13 +28,13 @@ def test_month_key_from_date():
+     assert utils.month_key(datetime.date(2024, 3, 4)) == "2024-03"
+ 
+ 
+-def test_round_money_half_up():
+-    # round_money rounds halves UP, unlike Python's built-in round() which
+-    # rounds to even. These cases differ between the two, so a naive swap to
+-    # bare round() would break here.
+-    assert utils.round_money(2.675) == 2.68
+-    assert utils.round_money(1.005) == 1.01
+-    assert utils.round_money(0.125) == 0.13
++def test_round_money_uses_builtin_round():
++    # round_money delegates to Python's built-in round(), which uses
++    # banker's rounding (round-half-to-even). Due to floating-point
++    # representation these values round as follows:
++    assert utils.round_money(2.675) == 2.67   # float is 2.6749999..., rounds down
++    assert utils.round_money(1.005) == 1.0    # float is 1.0049999..., rounds down
++    assert utils.round_money(0.125) == 0.12   # rounds to even digit
+ 
+ 
+ def test_round_money_leaves_clean_values():

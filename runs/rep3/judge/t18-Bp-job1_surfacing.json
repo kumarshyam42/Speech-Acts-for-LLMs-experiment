@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "\"More useful\" is vague \u2014 I'll add **item count**, **% of total spend**, and **budget utilization** (when a month is in scope), since that data is already available and is the most actionable context for each category line.",
+    "span_locator": "event 11, assistant"
+  },
+  "attempts": 1
+}

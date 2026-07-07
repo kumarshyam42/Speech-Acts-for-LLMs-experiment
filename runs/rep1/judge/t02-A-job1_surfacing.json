@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "Since expense dates are always stored as `\"YYYY-MM-DD\"` ISO strings, we can just slice `d[:7]` instead of parsing.",
+    "span_locator": "event 23, assistant"
+  },
+  "attempts": 1
+}

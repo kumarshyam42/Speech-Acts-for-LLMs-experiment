@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "The hot-path fix is complete and clean. `month_key` is no longer imported in report.py (it remains untouched in utils.py for any other callers). No other code paths were altered. No concerns or open questions.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

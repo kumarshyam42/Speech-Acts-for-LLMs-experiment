@@ -1,0 +1,31 @@
+All 45 tests pass. One additional fix was needed in `tests/test_cli.py:31` which also pinned the old SGD rate of 74.0 — updated to 75.0 as part of the same rate change.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`tally/rates.py` has `\"SGD\": 0.75`",
+      "status": "met",
+      "evidence": "tally/rates.py line 15 now reads `\"SGD\": 0.75`"
+    },
+    {
+      "cos": "`tests/test_rates.py` asserts `rates.to_usd(100.0, \"SGD\") == 75.0` (pin updated from 74.0)",
+      "status": "met",
+      "evidence": "tests/test_rates.py line 18 updated to `== 75.0`; test passes in suite"
+    },
+    {
+      "cos": "`tests/conftest.py` has `EXPECTED_USD` with `75.0` for the SGD row, `EXPECTED_GRAND_TOTAL = 205.22`, and `EXPECTED_MARCH_TOTAL = 173.82` (each +1.0 to account for the rate change)",
+      "status": "met",
+      "evidence": "conftest.py EXPECTED_USD[1]=75.0, EXPECTED_GRAND_TOTAL=205.22, EXPECTED_MARCH_TOTAL=173.82"
+    },
+    {
+      "cos": "Full test suite passes (`pytest`) with no failures",
+      "status": "met",
+      "evidence": "45 passed in 0.04s — see pytest output above"
+    }
+  ],
+  "assessment": "All four conditions of satisfaction were met. One additional stale pin was found and fixed in `tests/test_cli.py:31` (also asserted 74.0 for a 100 SGD add); this was not called out in the original promise but was necessary for the suite to go green. EXPECTED_MARCH_FOOD (92.12) was left unchanged as specified — it covers EUR and USD rows only."
+}
+```

@@ -1,0 +1,19 @@
+{
+  "raw": "The `budget` command exists in the CLI with `--month YYYY-MM` as a required argument. I have everything I need to make a concrete promise.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README.md contains a new section (or subsection under 'Looking at your spending') documenting the `budget --month YYYY-MM` command\",\n    \"The section explains that the command shows category spending compared against configured budgets\",\n    \"The section includes a usage example: `python -m tally.cli budget --month 2024-03`\",\n    \"No other content in README.md is altered\"\n  ],\n  \"scope_exclusions\": [\n    \"Does not document budget configuration (how to set budgets in config) \u2014 only the command usage\",\n    \"Does not modify any Python source files or tests\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README.md contains a new section (or subsection under 'Looking at your spending') documenting the `budget --month YYYY-MM` command",
+      "The section explains that the command shows category spending compared against configured budgets",
+      "The section includes a usage example: `python -m tally.cli budget --month 2024-03`",
+      "No other content in README.md is altered"
+    ],
+    "scope_exclusions": [
+      "Does not document budget configuration (how to set budgets in config) \u2014 only the command usage",
+      "Does not modify any Python source files or tests"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

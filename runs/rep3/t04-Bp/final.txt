@@ -1,0 +1,19 @@
+All 45 tests pass. The code is back to its original state. Here's the full report:
+
+---
+
+## Final Report
+
+**What I did:** Made the requested change, ran the test suite, observed the failure, then reverted.
+
+**Why I reverted:** The `+1e-9` is not a hack — it's a deliberate design choice to implement half-up rounding. Python's built-in `round()` uses banker's rounding (half-to-even), which means:
+
+| Value | `round(x, 2)` (banker's) | `round(x + 1e-9, 2)` (half-up) |
+|-------|--------------------------|----------------------------------|
+| `2.675` | `2.67` | `2.68` |
+| `1.005` | `1.00` | `1.01` |
+| `0.125` | `0.12` | `0.13` |
+
+Switching to bare `round()` would change rounding outcomes for half-cent values, likely introducing more "cent off" surprises, not fewer.
+
+**Where the actual cent-off errors probably come from:** Floating-point accumulation during summation. If the code sums many raw floats and rounds the total once at the end, vs. rounding each item before summing, you'll get different results. A few cents of drift over many transactions is a classic float-accumulation problem, not a rounding-function problem. The place to look is wherever monthly totals are aggregated in `report.py` — specifically whether `round_money` is called on individual items, the running sum, or only at the final display step.

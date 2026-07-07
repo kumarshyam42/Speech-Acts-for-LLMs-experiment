@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The README is missing: `stats` and `budget` commands (both real but undocumented), the list of supported currencies, the list of valid categories, the `--store` flag, and how to run tests.",
+    "span_locator": "event 17, assistant"
+  },
+  "attempts": 1
+}

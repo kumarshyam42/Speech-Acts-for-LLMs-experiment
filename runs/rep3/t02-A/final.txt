@@ -1,0 +1,16 @@
+28× faster on the hot path. Since `month_key` is called for every expense on every `report` invocation (and `filter_expenses` is the core of the report path), this directly translates to a much snappier `report` command at scale.
+
+---
+
+**Final report**
+
+**What I found:** The `report` command was slow for two reasons:
+
+1. **`month_key` in `utils.py:24-28`** — every call for a string date invoked `parse_date()`, which tried two `strptime` format strings before succeeding. On a large expense file, this ran for every row. Fix: since all stored dates are ISO "YYYY-MM-DD" strings, `d[:7]` returns the month key directly — 28× faster on this path alone.
+
+2. **`format_report` in `report.py:65`** — the grand total was computed by a second pass over `selected` via `grand_total()`, even though `category_totals()` had already iterated it. Fix: sum `totals.values()` (already in memory) instead of re-traversing the list.
+
+Both changes are minimal and behavior-preserving. All 45 tests pass.
+
+**Open questions / concerns:**
+- `month_key`'s fast path assumes string inputs are well-formed ISO dates (YYYY-MM-DD or YYYY-MM). This is true for all stored expenses (written through `parse_date().isoformat()`) and for CLI `--month` args, but if someone called `month_key` with a malformed string in future code, it would silently return garbage instead of raising. The comment in the code makes the assumption explicit.

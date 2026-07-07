@@ -1,0 +1,13 @@
+All 46 tests pass including the new `test_add_rejects_unknown_category`.
+
+---
+
+**Final report**
+
+**What was done:**
+
+1. **`tally/cli.py`** — Added `KNOWN_CATEGORIES` to the import from `tally.config`, then added an early-return guard at the top of `cmd_add` that checks `args.category` against `KNOWN_CATEGORIES`. If invalid, it prints a clear error to stderr (`error: unknown category 'fod'. Valid categories: food, transport, rent, entertainment, other`) and returns exit code 1 — before touching the store file.
+
+2. **`tests/test_cli.py`** — Added `test_add_rejects_unknown_category` which invokes `tally add 15 fod` and asserts: non-zero return code, the typo appears in the error output, and at least one valid category (`food`) is listed in the error so the user knows what to use instead.
+
+**No open questions.** The `KNOWN_CATEGORIES` list is the single source of truth in `config.py`; the validator reads from it directly, so adding or removing a category there automatically updates what's accepted.

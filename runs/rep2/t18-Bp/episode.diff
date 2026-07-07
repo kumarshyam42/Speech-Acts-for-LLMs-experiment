@@ -1,0 +1,111 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..cc9672d 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -35,6 +35,18 @@ def category_totals(expenses):
+     return totals
+ 
+ 
++def category_stats(expenses):
++    """Return {category: {"total": float, "count": int}} over the given expenses."""
++    stats = {}
++    for exp in expenses:
++        cat = exp["category"]
++        if cat not in stats:
++            stats[cat] = {"total": 0.0, "count": 0}
++        stats[cat]["total"] = round_money(stats[cat]["total"] + exp["amount_usd"])
++        stats[cat]["count"] += 1
++    return stats
++
++
+ def grand_total(expenses):
+     """Return the total USD across the given expenses."""
+     return round_money(sum(exp["amount_usd"] for exp in expenses))
+@@ -48,7 +60,8 @@ def monthly_summary(expenses, month):
+ def format_report(expenses, month=None, category=None):
+     """Render a plain-text report of category totals to a string."""
+     selected = filter_expenses(expenses, month=month, category=category)
+-    totals = category_totals(selected)
++    stats = category_stats(selected)
++    total = grand_total(selected)
+     lines = []
+     header = "Report"
+     if month:
+@@ -57,12 +70,31 @@ def format_report(expenses, month=None, category=None):
+         header += " (category: {})".format(category)
+     lines.append(header)
+     lines.append("-" * len(header))
+-    if not totals:
++    if not stats:
+         lines.append("(no expenses)")
+     else:
+-        for cat in sorted(totals):
+-            lines.append("{:<14} {:>10.2f} USD".format(cat, totals[cat]))
+-        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", grand_total(selected)))
++        for cat in sorted(stats):
++            s = stats[cat]
++            pct = (s["total"] / total * 100) if total else 0.0
++            line = "{:<14} {:>4}  {:>10.2f} USD  {:>5.1f}%".format(
++                cat, s["count"], s["total"], pct
++            )
++            if month and cat in CATEGORY_BUDGETS:
++                budget = CATEGORY_BUDGETS[cat]
++                bpct = (s["total"] / budget * 100) if budget else 0.0
++                ratio = s["total"] / budget if budget else 0.0
++                if s["total"] > budget:
++                    state = "over"
++                elif ratio >= BUDGET_WARN_RATIO:
++                    state = "warn"
++                else:
++                    state = "ok"
++                line += "   budget {:>8.2f}  {:>5.1f}% [{}]".format(budget, bpct, state)
++            lines.append(line)
++        count_total = sum(s["count"] for s in stats.values())
++        lines.append("{:<14} {:>4}  {:>10.2f} USD  {:>5.1f}%".format(
++            "TOTAL", count_total, total, 100.0
++        ))
+     return "\n".join(lines)
+ 
+ 
+diff --git a/tests/test_report.py b/tests/test_report.py
+index a692745..0ace54a 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -102,3 +102,37 @@ def test_budget_status_covers_all_budgets():
+     rows = report_mod.budget_status([], "2024-05")
+     assert len(rows) == 5
+     assert all(r["state"] == "ok" for r in rows)
++
++
++# --- category_stats and enriched format_report ---
++
++def test_category_stats_count_and_total(sample_store):
++    stats = report_mod.category_stats(store_mod.all_expenses(sample_store))
++    assert stats["food"]["count"] == 2
++    assert stats["food"]["total"] == EXPECTED_MARCH_FOOD
++
++
++def test_format_report_shows_count(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    # food has 2 expenses in March; its line must contain "2"
++    food_line = next(l for l in text.splitlines() if l.startswith("food"))
++    assert "2" in food_line
++
++
++def test_format_report_shows_percentage(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    # TOTAL row always shows 100.0%
++    assert "100.0%" in text
++
++
++def test_format_report_shows_budget_when_month_given(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    # food budget is 600.00; state must be "ok" for March spending
++    assert "600.00" in text
++    assert "[ok]" in text
++
++
++def test_format_report_no_budget_without_month(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store))
++    # no month filter → no budget columns
++    assert "budget" not in text

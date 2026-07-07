@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "-    return args.func(args)\n+    try:\n+        return args.func(args)\n+    except (ValueError, OSError) as exc:\n+        print(\"error: {}\".format(exc), file=sys.stderr)\n+        return 1",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

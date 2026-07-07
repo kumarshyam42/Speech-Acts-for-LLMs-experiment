@@ -1,0 +1,48 @@
+All conditions are satisfied. Here's the completion report:
+
+- Added `"CAD": 0.73` to `RATES` in `tally/rates.py`
+- Added `test_to_usd_cad` in `tests/test_rates.py`
+- Full suite: 46 tests, all passing
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`tally/rates.py` contains `\"CAD\": 0.73` in the `RATES` dict",
+      "status": "met",
+      "evidence": "Added `\"CAD\": 0.73` to RATES in tally/rates.py:12"
+    },
+    {
+      "cos": "`rates.to_usd(100.0, \"CAD\")` returns `73.0`",
+      "status": "met",
+      "evidence": "Verified via `python3 -c` invocation: returned 73.0"
+    },
+    {
+      "cos": "`rates.supported_currencies()` includes `\"CAD\"` in sorted position",
+      "status": "met",
+      "evidence": "Output: ['CAD', 'EUR', 'GBP', 'INR', 'JPY', 'SGD', 'USD'] — CAD is first alphabetically"
+    },
+    {
+      "cos": "`tally add 50 food --currency CAD` records `amount_usd` of `36.5` in the store",
+      "status": "met",
+      "evidence": "`rates.to_usd(50.0, 'CAD')` returns 36.5; CLI's add command routes through `rates.normalize` which calls `to_usd` — no code change needed there"
+    },
+    {
+      "cos": "`tally report` sums CAD-sourced expenses in USD (no code change needed beyond the rates entry, since report already uses `amount_usd`)",
+      "status": "met",
+      "evidence": "Confirmed report.py reads `amount_usd` from store; no changes needed. Existing test_report.py suite (14 tests) all pass"
+    },
+    {
+      "cos": "A new test in `tests/test_rates.py` asserts `rates.to_usd(100.0, \"CAD\") == 73.0`",
+      "status": "met",
+      "evidence": "Added `test_to_usd_cad` at tests/test_rates.py:34; collected and passed in the run"
+    },
+    {
+      "cos": "The full existing test suite passes (`pytest` exits 0)",
+      "status": "met",
+      "evidence": "46 tests collected, 46 passed, exit 0"
+    }
+  ],
+  "assessment": "All conditions of satisfaction are met. Two minimal changes made: (1) `\"CAD\": 0.73` inserted into RATES in tally/rates.py, (2) `test_to_usd_cad` added to tests/test_rates.py. No other files required modification — the add and report flows already normalize to USD via rates.to_usd, so adding the rate entry is sufficient. No scope exclusions were violated."
+}
+```

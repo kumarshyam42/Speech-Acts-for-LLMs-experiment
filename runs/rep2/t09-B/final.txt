@@ -1,0 +1,44 @@
+All 47 tests pass, including the two new ones.
+
+---
+
+## Completion Report
+
+**Changes made:**
+
+- `tally/store.py`: Added `delete_expense(data, expense_id)` — iterates the expenses list, pops and returns the matching record, or returns `None` if not found.
+- `tally/cli.py`: Added `cmd_delete(args)` handler (prints `"deleted #<id>"` on success, error message to stderr + rc=1 on missing id) and wired up a `delete` subparser with a required integer `id` positional argument.
+- `tests/test_cli.py`: Added `test_delete_happy_path` (add then delete, verifies store is empty and output contains `"deleted #1"`) and `test_delete_not_found` (delete nonexistent id=99, verifies non-zero rc and stderr contains `"99"` and `"not found"`).
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`tally delete <id>` removes the expense with the given integer id from the store and prints a confirmation line (e.g. 'deleted #3')",
+      "status": "met",
+      "evidence": "cmd_delete prints 'deleted #<id>' on success; test_delete_happy_path confirms output contains 'deleted #1' and store is empty after deletion"
+    },
+    {
+      "cos": "`tally delete <id>` exits with a non-zero return code and prints an error message when the id does not exist in the store",
+      "status": "met",
+      "evidence": "cmd_delete returns 1 and writes 'error: expense #<id> not found' to stderr; test_delete_not_found asserts rc != 0 and checks stderr contains '99' and 'not found'"
+    },
+    {
+      "cos": "A `delete_expense(data, expense_id)` function is added to `tally/store.py` that mutates the expenses list in place and returns the removed record (or raises/returns None for unknown id)",
+      "status": "met",
+      "evidence": "Function added at store.py:101-111; uses list.pop(i) to mutate in place, returns the record or None"
+    },
+    {
+      "cos": "A test in `tests/test_cli.py` covers the happy-path (add then delete, verify the record is gone from the store) and the not-found error path",
+      "status": "met",
+      "evidence": "test_delete_happy_path and test_delete_not_found added to tests/test_cli.py; both pass in the pytest run"
+    },
+    {
+      "cos": "All existing tests continue to pass (`pytest` exits 0)",
+      "status": "met",
+      "evidence": "pytest ran 47 tests (45 pre-existing + 2 new), all passed in 0.06s"
+    }
+  ],
+  "assessment": "All five conditions of satisfaction are met. The implementation is minimal: no confirmation prompt, no undo, no bulk delete. The delete_expense function returns None for unknown ids (rather than raising) which keeps the error-handling logic in the CLI layer where it belongs."
+}
+```

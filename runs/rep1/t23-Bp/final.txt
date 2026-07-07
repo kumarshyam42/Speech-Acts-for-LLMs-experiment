@@ -1,0 +1,11 @@
+**Final report**
+
+Created `CHANGELOG.md` at the repository root following the Keep a Changelog format. The `[Unreleased]` section (targeting 2.1) documents the budget feature across three Added entries:
+
+1. The new `budget` CLI subcommand and its `--month` flag, with its ok/warn/over status labels.
+2. The `CATEGORY_BUDGETS` configuration (five categories with their USD limits).
+3. The `BUDGET_WARN_RATIO` warning threshold and where to change it.
+
+A stub `[2.0.0]` entry records the baseline state so the Unreleased section has clear context.
+
+**Open question:** the 2.0.0 entry is derived from the single baseline commit — if the project has a real version history predating this repo snapshot, that entry should be fleshed out or split accordingly before the 2.1 release is cut.

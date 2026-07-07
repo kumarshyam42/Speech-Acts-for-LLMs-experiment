@@ -1,0 +1,19 @@
+{
+  "label": "E03",
+  "rep": "rep2",
+  "task": "t17",
+  "class": "1",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract explicitly leaves the lower-level write path able to accept unknown categories, so any non-CLI caller could still create invalid expense records. That may undercut the requirement that expenses use the known category set if `store.add_expense` is a public or reused write API.",
+        "span": "No changes to validation logic inside `store.add_expense` \u2014 validation is added at the CLI layer in `cmd_add`"
+      }
+    ],
+    "primary_risk": "Validation only at the CLI layer may leave other write paths able to persist invalid categories."
+  }
+}

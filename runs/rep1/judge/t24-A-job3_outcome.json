@@ -1,0 +1,13 @@
+{
+  "task": "t24",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "**Concern to flag:** The new documentation does not match the actual code behavior. `tally/rates.py` converts every amount to USD via `normalize()`, `tally/store.py` saves the converted figure as `amount_usd`, and `tally/report.py` uses `amount_usd` for all totals (including the \"USD\" label in report output).",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

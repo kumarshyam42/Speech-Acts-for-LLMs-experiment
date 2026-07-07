@@ -1,0 +1,13 @@
+Done. Here's a summary of the changes:
+
+**What was improved:**
+
+- **Added two missing commands** — `stats` and `budget` had zero coverage in the original README despite being fully implemented subcommands.
+- **Added available categories** — the set of valid category values (`food`, `transport`, `rent`, `entertainment`, `other`) is now explicit so users don't have to guess or read source.
+- **Added supported currencies** — the six supported codes (EUR, GBP, INR, JPY, SGD, USD) are now listed rather than implied.
+- **Concrete alias example** — replaced the vague "drop a shell alias" suggestion with an actual `alias` line.
+- **Documented `--store`** — the global flag for using a custom JSON file path is now shown.
+- **Added a typical session** — a short, realistic terminal transcript that shows the full add → report → budget loop at a glance.
+- **Added testing instructions** — one line (`python -m pytest`) so contributors know how to run the suite without reading CONTRIBUTING.md.
+- **Tightened Requirements** — replaced the wordy installation section with a two-line Requirements block.
+- **Kept the tone** — the conversational, no-nonsense voice of the original is preserved throughout.

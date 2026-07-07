@@ -1,0 +1,14 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "tally/report.py's to_csv() produces rows with no trailing comma (each row ends after the last field value, before the line terminator)",
+    "The existing test suite (pytest) continues to pass with zero failures",
+    "Manual verification: splitting any data row on ',' yields exactly len(CSV_FIELDS) elements"
+  ],
+  "scope_exclusions": [
+    "No file named exporters.py will be created — fix applies only to the existing CSV export implementation in tally/report.py"
+  ],
+  "concern": "exporters.py does not exist anywhere in this repository. The CSV export functionality lives in tally/report.py (to_csv function, line 91). I can fix a trailing-comma bug there if one exists, but I cannot fix a file that isn't present. Note: the current implementation delegates to Python's csv.DictWriter, which does not add trailing commas by default — I would need to verify whether the bug manifests (possibly via a custom delimiter/terminator setting or a row-building loop) before promising a fix. My counter-offer is to investigate and fix the trailing-comma defect in tally/report.py with the CoS above."
+}
+```

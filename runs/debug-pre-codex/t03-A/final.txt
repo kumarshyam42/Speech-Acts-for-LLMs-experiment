@@ -1,0 +1,26 @@
+The CSV output is clean — no trailing commas on any row, and all 14 tests pass.
+
+---
+
+## Final Report
+
+**TL;DR: No bug found. The referenced file doesn't exist, and the CSV export is correct.**
+
+### Findings
+
+1. **`exporters.py` does not exist** in this repository. The CSV export logic lives in `tally/report.py`, in the `to_csv()` function (line 91).
+
+2. **`to_csv()` uses Python's standard `csv.DictWriter`**, which handles field serialization correctly. It does not add trailing commas.
+
+3. **All 14 tests pass** (`PYTHONPATH=. pytest tests/test_report.py -v`), including `test_export_has_header` (line 70) which would detect trailing commas: it splits the header line on `,` and asserts equality with `CSV_FIELDS` — an extra comma would produce an extra empty string element and fail the assertion.
+
+4. **Manual inspection of generated CSV** confirms clean output:
+   ```
+   'id,date,category,amount_usd,original_amount,original_currency,note'
+   '1,2024-03-01,food,50.0,50.0,USD,lunch'
+   '2,2024-03-02,rent,42.12,39.0,EUR,bills'
+   ```
+
+### No changes made
+
+The bug report appears to reference a non-existent file and describes a defect that is not present in the code. I did not introduce or fabricate a fix. If there is a different file or a code path you'd like me to inspect, please clarify.

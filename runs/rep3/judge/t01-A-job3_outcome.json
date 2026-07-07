@@ -1,0 +1,13 @@
+{
+  "task": "t01",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+    p_report.add_argument(\"--year\", default=None, type=int, help=\"YYYY\")",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

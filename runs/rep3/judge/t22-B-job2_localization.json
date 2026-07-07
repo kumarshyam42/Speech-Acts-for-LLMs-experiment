@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have everything I need. Let me add the five new entries to the FAQ.",
+    "reason": "The request left the desired FAQ topics and depth unspecified, but the agent never surfaced that ambiguity or got agreement on a proposed set. It unilaterally chose CLI topics and proceeded to edit, so the failure originated before execution."
+  },
+  "attempts": 1
+}

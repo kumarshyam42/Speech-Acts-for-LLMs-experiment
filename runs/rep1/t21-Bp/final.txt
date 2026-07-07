@@ -1,0 +1,3 @@
+**Final report**
+
+Added a new "Checking against your budget" section to `README.md` between the existing list/export block and "How amounts are stored". It shows the `budget --month YYYY-MM` command with an example, and notes that limits are configured in `tally/config.py` under `CATEGORY_BUDGETS`. No other files were touched.

@@ -1,0 +1,13 @@
+46/46 green, no regressions.
+
+---
+
+**Final report**
+
+**What changed:**
+
+- **`tally/utils.py`** — replaced the hand-rolled `parse_date` (strptime loop over two fixed formats) with `python-dateutil`. The one edge case requiring explicit handling: bare `YYYY-MM` strings — dateutil fills in today's day for missing day components, so those are intercepted by a regex check and dispatched to `strptime` exactly as before, returning the 1st of the month. Everything else goes to `dateutil.parser.parse(...).date()`. `dateutil.ParserError` is a subclass of `ValueError`, so callers that catch `ValueError` are unaffected.
+
+- **`tests/test_utils.py`** — `test_parse_bad_date_raises` changed its input from `"March 4th"` (now a valid dateutil input) to `"not-a-date"` (which dateutil correctly rejects). Added `test_parse_natural_language_date` to demonstrate the new format breadth (`"March 4, 2024"` now parses correctly).
+
+**No concerns.** `python-dateutil` was already installed in the environment. There's no `requirements.txt` or `pyproject.toml` in this project to update.

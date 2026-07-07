@@ -1,0 +1,31 @@
+{
+  "task": "t21",
+  "condition": "B",
+  "run": "debug",
+  "model": "claude-sonnet-4-6",
+  "cli_version": "2.1.193 (Claude Code)",
+  "fixture_sha": "e02cf35200d8eb26fe4459c166c79f6787a71fab",
+  "prompt_sha256": "d8fd75eed2376ffbe8b1873a8bbc013986e424610c35617c93707cd8f50e8695",
+  "phases": [
+    {
+      "phase": "negotiate",
+      "tokens_in": 115376,
+      "tokens_out": 745,
+      "turns": 4,
+      "wall_s": 20.86
+    },
+    {
+      "phase": "execute",
+      "tokens_in": 84008,
+      "tokens_out": 939,
+      "turns": 3,
+      "wall_s": 26.32
+    }
+  ],
+  "speech_act": "promise",
+  "diff_nonempty": true,
+  "pytest_exit": 0,
+  "protocol_error": null,
+  "cap_hit": null,
+  "timestamp": "2026-07-05T11:16:17.712169+08:00"
+}

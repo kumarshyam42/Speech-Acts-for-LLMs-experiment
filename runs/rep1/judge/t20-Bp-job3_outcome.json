@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "Updated the SGD rate from 0.74 to 0.75 across 5 locations:",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

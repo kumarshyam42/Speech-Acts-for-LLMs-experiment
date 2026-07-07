@@ -1,0 +1,1 @@
+Done. Added a "Checking against your budget" section between the spending commands and the amounts section. It follows the same prose-then-code-block pattern as the surrounding entries, explains the `--month YYYY-MM` flag, and mentions that spending is shown against configured budgets.

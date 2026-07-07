@@ -1,0 +1,13 @@
+All 49 tests pass. Here's what changed and why:
+
+**`tally/report.py` — `format_report`:**
+- Each category row now shows **item count** (`1 item` / `2 items`), **USD total**, and **% of period total**
+- When a `month` filter is active, any category with a configured budget also shows **remaining budget** (`143.30 left`) and a `warn`/`OVER` flag if spending is high — reusing the already-imported `CATEGORY_BUDGETS` and `BUDGET_WARN_RATIO` constants
+
+**`tests/test_report.py` — 4 new tests:**
+- `test_format_report_shows_item_count` — verifies singular/plural count in output
+- `test_format_report_shows_percentage` — verifies `%` column present
+- `test_format_report_shows_budget_remaining_when_month_given` — verifies `left` column when month is supplied
+- `test_format_report_omits_budget_without_month` — verifies budget column is absent for all-time/unfiltered reports
+
+The existing `budget` subcommand is unchanged — the report enhancement adds a quick at-a-glance budget note without replacing the dedicated budget view.

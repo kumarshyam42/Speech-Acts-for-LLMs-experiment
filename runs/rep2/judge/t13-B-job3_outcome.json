@@ -1,0 +1,13 @@
+{
+  "task": "t13",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+## Supported currencies\n+\n+The `--currency` flag accepts the following codes:\n+\n+- **USD** \u2014 US dollar (default)\n+- **EUR** \u2014 Euro\n+- **GBP** \u2014 British pound\n+- **SGD** \u2014 Singapore dollar\n+- **JPY** \u2014 Japanese yen\n+- **INR** \u2014 Indian rupee",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,204 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..27acebc 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -15,6 +15,7 @@ import sys
+ from tally import report as report_mod
+ from tally import store as store_mod
+ from tally.config import DEFAULT_CURRENCY
++from tally.rates import normalize as _normalize
+ from tally.utils import month_key, parse_date
+ 
+ DEFAULT_STORE = "tally.json"
+@@ -37,8 +38,11 @@ def cmd_add(args):
+         note=args.note or "",
+     )
+     store_mod.save(args.store, data)
++    amount_usd = _normalize(record["original_amount"], record["original_currency"])
+     print(
+-        "added #{id}: {amount_usd:.2f} USD  {category}  {date}".format(**record)
++        "added #{id}: {usd:.2f} USD  {category}  {date}".format(
++            id=record["id"], usd=amount_usd, category=record["category"], date=record["date"]
++        )
+     )
+     return 0
+ 
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..2a8083e 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -1,7 +1,7 @@
+ """Reporting: monthly summaries, category totals, CSV export, budget checks.
+ 
+-Every number a report emits is in USD, because that is how amounts are stored
+-(see docs/requirements.md). Reports never re-convert into another currency.
++Every number a report emits is in USD. Conversion from the stored original
++currency happens here at report time (see tally/store.py for the storage model).
+ """
+ 
+ import csv
+@@ -9,8 +9,14 @@ import io
+ from typing import Dict, List, Optional
+ 
+ from tally.config import BUDGET_WARN_RATIO, CATEGORY_BUDGETS
++from tally.rates import normalize
+ from tally.utils import month_key, round_money
+ 
++
++def _usd(exp):
++    """Convert an expense's original amount to USD at report time."""
++    return normalize(exp["original_amount"], exp["original_currency"])
++
+ CSV_FIELDS = ["id", "date", "category", "amount_usd", "original_amount", "original_currency", "note"]
+ 
+ 
+@@ -31,13 +37,13 @@ def category_totals(expenses):
+     totals = {}
+     for exp in expenses:
+         cat = exp["category"]
+-        totals[cat] = round_money(totals.get(cat, 0.0) + exp["amount_usd"])
++        totals[cat] = round_money(totals.get(cat, 0.0) + _usd(exp))
+     return totals
+ 
+ 
+ def grand_total(expenses):
+     """Return the total USD across the given expenses."""
+-    return round_money(sum(exp["amount_usd"] for exp in expenses))
++    return round_money(sum(_usd(exp) for exp in expenses))
+ 
+ 
+ def monthly_summary(expenses, month):
+@@ -82,19 +88,20 @@ def format_expense_list(expenses):
+             origin = "  ({:.2f} {})".format(exp["original_amount"], exp["original_currency"])
+         lines.append(
+             "{:>4}  {:<10}  {:<13}  {:>10.2f}  {}{}".format(
+-                exp["id"], exp["date"], exp["category"], exp["amount_usd"], exp.get("note", ""), origin
++                exp["id"], exp["date"], exp["category"], _usd(exp), exp.get("note", ""), origin
+             )
+         )
+     return "\n".join(lines)
+ 
+ 
+ def to_csv(expenses):
+-    """Serialize expenses to CSV text. The amount column is amount_usd."""
++    """Serialize expenses to CSV text. The amount_usd column is computed at export time."""
+     buffer = io.StringIO()
+     writer = csv.DictWriter(buffer, fieldnames=CSV_FIELDS)
+     writer.writeheader()
+     for exp in expenses:
+         row = {field: exp.get(field, "") for field in CSV_FIELDS}
++        row["amount_usd"] = _usd(exp)
+         writer.writerow(row)
+     return buffer.getvalue()
+ 
+diff --git a/tally/store.py b/tally/store.py
+index 97c153c..19f56b3 100644
+--- a/tally/store.py
++++ b/tally/store.py
+@@ -6,12 +6,13 @@ Each expense record looks like:
+     {
+       "id": 1,
+       "date": "2024-03-04",
+-      "amount_usd": 42.31,          # normalized to USD at write time
+       "original_amount": 39.0,      # what the user actually typed
+       "original_currency": "EUR",
+       "category": "food",
+       "note": "groceries"
+     }
++
++USD conversion is deferred to report time (see tally/report.py).
+ """
+ 
+ import json
+@@ -19,7 +20,6 @@ import os
+ from typing import Dict, List, Optional
+ 
+ from tally.config import SCHEMA_VERSION
+-from tally.rates import normalize
+ 
+ 
+ def empty_store():
+@@ -74,14 +74,12 @@ def next_id(data):
+ def add_expense(data, date, amount, currency, category, note=""):
+     """Append a new expense and return the created record.
+ 
+-    `amount`/`currency` are what the user supplied; the amount is normalized to
+-    USD before it is stored. `data` is mutated in place.
++    `amount`/`currency` are stored verbatim; USD conversion is deferred to
++    report time. `data` is mutated in place.
+     """
+-    amount_usd = normalize(amount, currency)
+     record = {
+         "id": next_id(data),
+         "date": date,
+-        "amount_usd": amount_usd,
+         "original_amount": amount,
+         "original_currency": currency.upper(),
+         "category": category,
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..dfedd04 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -23,12 +23,14 @@ def test_add_then_report(tmp_path, capsys):
+     assert "food" in out and "42.12" in out
+ 
+ 
+-def test_add_persists_normalized_amount(tmp_path, capsys):
++def test_add_persists_original_amount(tmp_path, capsys):
+     store = _store_path(tmp_path)
+     cli.main(["--store", store, "add", "100", "rent", "--currency", "SGD", "--date", "2024-03-01"])
+     with open(store) as fh:
+         data = json.load(fh)
+-    assert data["expenses"][0]["amount_usd"] == 74.0
++    assert data["expenses"][0]["original_amount"] == 100.0
++    assert data["expenses"][0]["original_currency"] == "SGD"
++    assert "amount_usd" not in data["expenses"][0]
+ 
+ 
+ def test_report_category_filter(tmp_path, capsys):
+@@ -87,4 +89,5 @@ def test_add_defaults_currency_to_usd(tmp_path, capsys):
+     with open(store) as fh:
+         data = json.load(fh)
+     assert data["expenses"][0]["original_currency"] == "USD"
+-    assert data["expenses"][0]["amount_usd"] == 12.5
++    assert data["expenses"][0]["original_amount"] == 12.5
++    assert "amount_usd" not in data["expenses"][0]
+diff --git a/tests/test_store.py b/tests/test_store.py
+index 0da945b..17c3ecc 100644
+--- a/tests/test_store.py
++++ b/tests/test_store.py
+@@ -14,16 +14,15 @@ def test_empty_store_shape():
+     assert data["expenses"] == []
+ 
+ 
+-def test_add_normalizes_to_usd():
+-    # The store keeps amount_usd, not the currency the user typed. This is the
+-    # load-bearing normalization rule (docs/requirements.md).
++def test_add_stores_original_values():
++    # add_expense stores what the user typed; USD conversion is deferred to report time.
+     data = store_mod.empty_store()
+     record = store_mod.add_expense(
+         data, date="2024-03-04", amount=39.0, currency="EUR", category="food"
+     )
+-    assert record["amount_usd"] == 42.12
+     assert record["original_amount"] == 39.0
+     assert record["original_currency"] == "EUR"
++    assert "amount_usd" not in record
+ 
+ 
+ def test_add_assigns_incrementing_ids(sample_store):
+@@ -31,8 +30,12 @@ def test_add_assigns_incrementing_ids(sample_store):
+     assert ids == [1, 2, 3, 4, 5, 6]
+ 
+ 
+-def test_stored_amounts_match_expected_usd(sample_store):
+-    got = [exp["amount_usd"] for exp in sample_store["expenses"]]
++def test_report_time_usd_matches_expected(sample_store):
++    from tally.rates import normalize
++    got = [
++        normalize(exp["original_amount"], exp["original_currency"])
++        for exp in sample_store["expenses"]
++    ]
+     assert got == EXPECTED_USD
+ 
+ 

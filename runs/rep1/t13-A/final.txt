@@ -1,0 +1,1 @@
+Done. Added a "Supported currencies" section to `README.md` between "How amounts are stored" and "A note on scope" — the natural location since the preceding section already explains the USD-based storage model. The section lists all six currencies (USD, EUR, GBP, SGD, JPY, INR) in a table with their full names, and includes a one-line recap that all amounts are stored in USD.

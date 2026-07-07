@@ -1,0 +1,13 @@
+All 47 tests pass (2 new, 45 pre-existing).
+
+---
+
+**Final report:**
+
+Added `tally delete <id>` in three changes:
+
+- **`tally/store.py`** — new `delete_expense(data, expense_id)` function that pops the matching record from `data["expenses"]` in place and returns it (or `None` if the id doesn't exist).
+- **`tally/cli.py`** — new `cmd_delete` handler (prints confirmation or an error and returns exit code 1), plus a `delete` subparser that takes a positional `id` (int).
+- **`tests/test_cli.py`** — two new tests:
+  - `test_delete_removes_expense` — adds two expenses, deletes id 1, verifies the confirmation message and that the store no longer contains id 1 while id 2 remains.
+  - `test_delete_unknown_id_returns_error` — verifies exit code 1 and the error message when the id doesn't exist.

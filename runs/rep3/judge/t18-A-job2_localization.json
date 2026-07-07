@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "The `format_report` function shows bare category totals: just a name and dollar amount. I'll enrich it with transaction count, percentage of total, and budget utilization (when a month is specified).",
+    "reason": "The request was explicitly open-ended, but the agent did not surface that ambiguity or form agreement on what 'more useful' should mean. It unilaterally picked counts, percentages, and budget utilization and implemented them."
+  },
+  "attempts": 1
+}

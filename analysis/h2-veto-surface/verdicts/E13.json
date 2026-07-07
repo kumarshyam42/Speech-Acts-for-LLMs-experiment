@@ -1,0 +1,23 @@
+{
+  "label": "E13",
+  "rep": "rep3",
+  "task": "t22",
+  "class": "2",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract commits to an additive-only edit, which may leave the existing thin material unimproved. If the current FAQ entries are the weak part, this would only partially satisfy the request.",
+        "span": "docs/faq.md retains all four existing entries unchanged"
+      },
+      {
+        "description": "The proposed improvement is limited to specific CLI topics, but the requester asked broadly for a more helpful FAQ. This should be confirmed as the right direction before work begins.",
+        "span": "At least five new Q&A entries are added covering CLI usage topics absent from the current FAQ"
+      }
+    ],
+    "primary_risk": "The contract may satisfy the request only by adding CLI entries while leaving the existing thin FAQ content unchanged."
+  }
+}

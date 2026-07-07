@@ -1,0 +1,13 @@
+{
+  "task": "t19",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "No requirements file or pyproject.toml will be created/updated (none exists in the repo); dateutil is already installed in the environment",
+    "reason": "The agent treated dateutil as acceptable because it was installed, but never surfaced the project constraint in CONTRIBUTING.md forbidding third-party runtime dependencies. It therefore barreled ahead on the literal infeasible request instead of forming an agreement around a stdlib-only alternative."
+  },
+  "attempts": 1
+}

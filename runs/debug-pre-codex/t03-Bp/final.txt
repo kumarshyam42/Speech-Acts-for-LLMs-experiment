@@ -1,0 +1,22 @@
+---
+
+## Final Report
+
+**The bug described does not exist in this repository.**
+
+Here's what I found:
+
+1. **No `exporters.py` file** — the repository has no file by that name. The CSV export logic lives in `tally/report.py` in the `to_csv` function (line 91–99).
+
+2. **The `to_csv` function is correct** — it uses Python's standard `csv.DictWriter` with an explicit `fieldnames=CSV_FIELDS` list. Actual output verified:
+   ```
+   id,date,category,amount_usd,original_amount,original_currency,note\r\n
+   1,2024-01-01,food,10.0,10.0,USD,lunch\r\n
+   ```
+   No trailing comma anywhere.
+
+3. **All 45 tests pass**, including `test_export_has_header` and `test_export_amount_column_is_usd` which specifically cover the CSV export path.
+
+4. **Single commit history** (`e02cf35 Baseline: tally expense-tracker CLI, suite green`) — there's no prior buggy version to diff against.
+
+**No code was changed.** There is nothing to fix. If you're seeing trailing commas in a different environment or a different version of this code, the issue may be in a file that was not committed, or the `exporters.py` name may refer to a planned-but-not-yet-created module. Please share the actual file or output showing the trailing commas and I'll investigate further.

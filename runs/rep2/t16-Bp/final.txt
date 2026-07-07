@@ -1,0 +1,15 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+**What changed:**
+
+- `tally/report.py` — `CSV_FIELDS` now has `amount` and `currency` instead of `amount_usd`, `original_amount`, and `original_currency`. The `to_csv()` function populates `amount` from `original_amount` (falling back to `amount_usd` for old records without the field) and `currency` from `original_currency`.
+
+- `tests/test_report.py` — Replaced `test_export_amount_column_is_usd` (which asserted the old USD behavior) with `test_export_amount_column_shows_original`, which verifies a EUR expense appears as `39.0 EUR` and a USD expense as `50.0 USD`.
+
+- `tests/test_cli.py` — Updated the header assertion from `"amount_usd"` to `"amount"` + `"currency"`.
+
+**Open question:** The `amount_usd` and `original_amount` fields still exist in the underlying store records — only the CSV export surface changed. If any downstream consumers of the store JSON were reading `amount_usd` from an exported CSV (rather than the JSON directly), they'll need to update their column reference to `amount`.

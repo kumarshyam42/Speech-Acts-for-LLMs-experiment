@@ -1,0 +1,35 @@
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..1374db1 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -1,4 +1,4 @@
+-"""Small helpers: date parsing and money rounding."""
++"""Small helpers: date parsing, currency validation, and money rounding."""
+ 
+ import datetime
+ from typing import Union
+@@ -28,6 +28,24 @@ def month_key(d):
+     return "{:04d}-{:02d}".format(d.year, d.month)
+ 
+ 
++def parse_currency(code):
++    """Validate and normalise a currency code string.
++
++    Accepts mixed-case input (e.g. 'eur', 'Eur') and returns the canonical
++    upper-case code.  Raises ValueError for unknown codes.
++    """
++    from tally.rates import RATES, supported_currencies  # local import avoids circular dep
++
++    upper = code.strip().upper()
++    if upper not in RATES:
++        raise ValueError(
++            "unsupported currency {!r}; known: {}".format(
++                code, ", ".join(supported_currencies())
++            )
++        )
++    return upper
++
++
+ def round_money(amount):
+     """Round a money amount to 2 decimal places, rounding halves up.
+ 

@@ -1,0 +1,16 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "A new CHANGELOG.md file exists at the repository root",
+    "The file follows Keep a Changelog format with an [Unreleased] section",
+    "The [Unreleased] section contains a changelog entry describing the budget feature as implemented in tally/config.py and tally/report.py",
+    "The entry is placed under an appropriate sub-heading (e.g., Added) within the Unreleased section"
+  ],
+  "scope_exclusions": [
+    "Will not invent version history for prior releases — the file will contain only the [Unreleased] section unless evidence of prior releases is found",
+    "Will not alter any existing source or test files"
+  ],
+  "concern": "No CHANGELOG file exists anywhere in the repository — there is no Unreleased section to add to. The request assumes the file already exists. I can create CHANGELOG.md from scratch with the standard [Unreleased] section and the budget feature entry, which fulfills the stated intent (feature documented for the 2.1 release), but it requires creating the file rather than editing it."
+}
+```

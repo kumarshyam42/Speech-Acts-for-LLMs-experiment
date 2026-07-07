@@ -1,0 +1,41 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..69ea235 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -60,9 +60,16 @@ def format_report(expenses, month=None, category=None):
+     if not totals:
+         lines.append("(no expenses)")
+     else:
++        counts = {}
++        for exp in selected:
++            counts[exp["category"]] = counts.get(exp["category"], 0) + 1
++        total_usd = grand_total(selected)
+         for cat in sorted(totals):
+-            lines.append("{:<14} {:>10.2f} USD".format(cat, totals[cat]))
+-        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", grand_total(selected)))
++            count = counts.get(cat, 0)
++            pct = (totals[cat] / total_usd * 100) if total_usd else 0.0
++            label = "{} ({})".format(cat, count)
++            lines.append("{:<20} {:>10.2f} USD  {:5.1f}%".format(label, totals[cat], pct))
++        lines.append("{:<20} {:>10.2f} USD".format("TOTAL", total_usd))
+     return "\n".join(lines)
+ 
+ 
+diff --git a/tests/test_report.py b/tests/test_report.py
+index a692745..8b15867 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -52,6 +52,13 @@ def test_format_report_empty():
+     assert "(no expenses)" in text
+ 
+ 
++def test_format_report_category_row_has_count_and_percentage(sample_store):
++    # March has food twice (groceries + dinner), so expect "food (2)" and a "%" sign
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    assert "food (2)" in text
++    assert "%" in text
++
++
+ def test_format_expense_list(sample_store):
+     text = report_mod.format_expense_list(store_mod.all_expenses(sample_store))
+     assert "groceries" in text

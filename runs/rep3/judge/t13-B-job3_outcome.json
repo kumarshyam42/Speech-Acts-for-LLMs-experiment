@@ -1,0 +1,13 @@
+{
+  "task": "t13",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+## Supported currencies\n+\n+tally can record expenses in the following currencies and will convert each one to\n+US dollars for storage and reporting:\n+\n+| Code | Currency        |\n+|------|-----------------|\n+| USD  | US Dollar       |\n+| EUR  | Euro            |\n+| GBP  | Pound Sterling  |\n+| SGD  | Singapore Dollar|\n+| JPY  | Japanese Yen    |\n+| INR  | Indian Rupee    |",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

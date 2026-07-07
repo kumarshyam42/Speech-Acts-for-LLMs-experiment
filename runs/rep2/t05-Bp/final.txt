@@ -1,0 +1,17 @@
+All 47 tests pass.
+
+---
+
+**Final report:**
+
+**What was changed:**
+
+1. **`tally/rates.py`** — Added `"CAD": 0.73` to the `RATES` dict. I also sorted the keys alphabetically so `supported_currencies()` (which returns `sorted(RATES.keys())`) reflects the ordering naturally; this is cosmetic and doesn't affect behavior.
+
+2. **`tests/test_rates.py`** — Added `test_to_usd_cad` which pins `to_usd(100.0, "CAD") == 73.0`, matching the pattern used for SGD and other existing rate tests.
+
+3. **`tests/test_cli.py`** — Added `test_add_then_report_cad` which runs `tally add 100 groceries --currency CAD` and verifies:
+   - The `add` confirmation prints `73.00 USD`
+   - A subsequent `report --month 2024-06` shows the category and the 73.00 amount
+
+Both `add` and `report` already handled CAD generically through the `rates.to_usd` and `store.add_expense` pipeline — no changes were needed there. The only required code change was registering the rate; the tests confirm it flows end-to-end correctly.

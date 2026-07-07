@@ -1,0 +1,13 @@
+{
+  "task": "t16",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "-CSV_FIELDS = [\"id\", \"date\", \"category\", \"amount_usd\", \"original_amount\", \"original_currency\", \"note\"]\n+CSV_FIELDS = [\"id\", \"date\", \"category\", \"amount\", \"original_currency\", \"note\"]",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

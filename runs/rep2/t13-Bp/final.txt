@@ -1,0 +1,1 @@
+Done. Added a "Supported currencies" section between "How amounts are stored" and "A note on scope." It lists all six currencies (USD, EUR, GBP, SGD, JPY, INR) with full names, notes USD as the default, and points to `tally/rates.py` for the conversion rates — consistent with what the surrounding sections already say.

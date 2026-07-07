@@ -1,0 +1,10 @@
+All 9 tests pass. Here's what was done:
+
+**`tally/cli.py`**
+- Imported `KNOWN_CATEGORIES` from `tally.config`
+- Added an early-return guard at the top of `cmd_add`: if `args.category` is not in `KNOWN_CATEGORIES`, it prints a clear error to stderr (`error: unknown category 'fod'. Choose from: food, transport, rent, entertainment, other`) and returns exit code 1 — before touching the store file
+
+**`tests/test_cli.py`**
+- Added `test_add_rejects_unknown_category`: passes `'fod'` as the category, asserts `rc == 1`, and checks that both the typo and a valid category appear in stderr
+
+No changes to `config.py` were needed — `KNOWN_CATEGORIES` was already there and is now the single source of truth for validation.

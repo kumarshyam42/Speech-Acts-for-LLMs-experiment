@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The request is intentionally open-ended.",
+    "span_locator": "event 13, assistant"
+  },
+  "attempts": 1
+}

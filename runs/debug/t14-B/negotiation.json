@@ -1,0 +1,22 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"All six CLI subcommands (add, report, list, export, stats, budget) are documented with at least one example invocation each\",\n    \"The `--store` global flag is documented\",\n    \"Valid categories (food, transport, rent, entertainment, other) are listed\",\n    \"The budget configuration in config.py (CATEGORY_BUDGETS) is mentioned so users know it exists and where to edit it\",\n    \"The existing informal prose voice of the README is preserved\",\n    \"No commands currently documented are removed or made less accurate\"\n  ],\n  \"scope_exclusions\": [\n    \"Not adding badges, CI status, or project metadata\",\n    \"Not creating new documentation files\",\n    \"Not rewriting the entire README from scratch\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "All six CLI subcommands (add, report, list, export, stats, budget) are documented with at least one example invocation each",
+      "The `--store` global flag is documented",
+      "Valid categories (food, transport, rent, entertainment, other) are listed",
+      "The budget configuration in config.py (CATEGORY_BUDGETS) is mentioned so users know it exists and where to edit it",
+      "The existing informal prose voice of the README is preserved",
+      "No commands currently documented are removed or made less accurate"
+    ],
+    "scope_exclusions": [
+      "Not adding badges, CI status, or project metadata",
+      "Not creating new documentation files",
+      "Not rewriting the entire README from scratch"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

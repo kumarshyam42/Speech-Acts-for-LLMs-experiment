@@ -1,0 +1,13 @@
+{
+  "task": "t05",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "- Added `\"CAD\": 0.73` to `RATES` in `tally/rates.py`\n- Added `test_to_usd_cad` in `tests/test_rates.py`\n- Full suite: 46 tests, all passing",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

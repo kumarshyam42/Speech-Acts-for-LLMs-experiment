@@ -1,0 +1,35 @@
+All 45 tests pass.
+
+---
+
+**Completion Report**
+
+All three declared files were updated and the full suite is green. One additional pinned value (`74.0` in `tests/test_cli.py:31`) was discovered and fixed — it wasn't listed in the original conditions of satisfaction but was directly downstream of the same rate change and would have blocked the suite.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`tally/rates.py` has `\"SGD\": 0.75`",
+      "status": "met",
+      "evidence": "tally/rates.py line 15 now reads `\"SGD\": 0.75`"
+    },
+    {
+      "cos": "`tests/test_rates.py` asserts `rates.to_usd(100.0, \"SGD\") == 75.0`",
+      "status": "met",
+      "evidence": "tests/test_rates.py line 18 updated to `== 75.0`; comment updated from 0.74 to 0.75"
+    },
+    {
+      "cos": "`tests/conftest.py` has `74.0` replaced with `75.0` in `EXPECTED_USD`, `EXPECTED_GRAND_TOTAL` updated from `204.22` to `205.22`, and `EXPECTED_MARCH_TOTAL` updated from `172.82` to `173.82`",
+      "status": "met",
+      "evidence": "All three constants in conftest.py updated as specified"
+    },
+    {
+      "cos": "The full test suite passes with no failures",
+      "status": "met",
+      "evidence": "`python3 -m pytest --tb=short -q` → 45 passed, 0 failed"
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met. One out-of-scope file (`tests/test_cli.py` line 31) also had a pinned `74.0` value that the promise did not mention; it was updated to `75.0` to keep the suite green. No other currency rates or business logic were changed."
+}
+```

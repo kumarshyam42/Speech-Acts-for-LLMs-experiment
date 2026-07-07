@@ -1,0 +1,23 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`tally/rates.py` contains `\\\"CAD\\\": 0.73` in the `RATES` dict\",\n    \"`rates.to_usd(100.0, \\\"CAD\\\")` returns `73.0`\",\n    \"`rates.supported_currencies()` includes `\\\"CAD\\\"` in sorted position\",\n    \"`tally add 50 food --currency CAD` records `amount_usd` of `36.5` in the store\",\n    \"`tally report` sums CAD-sourced expenses in USD (no code change needed beyond the rates entry, since report already uses `amount_usd`)\",\n    \"A new test in `tests/test_rates.py` asserts `rates.to_usd(100.0, \\\"CAD\\\") == 73.0`\",\n    \"The full existing test suite passes (`pytest` exits 0)\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to report display format \u2014 reports already emit USD and work with any supported currency\",\n    \"No live exchange-rate fetching \u2014 rate is hardcoded as 0.73 per the request\",\n    \"No changes to docs unless they explicitly list supported currencies\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`tally/rates.py` contains `\"CAD\": 0.73` in the `RATES` dict",
+      "`rates.to_usd(100.0, \"CAD\")` returns `73.0`",
+      "`rates.supported_currencies()` includes `\"CAD\"` in sorted position",
+      "`tally add 50 food --currency CAD` records `amount_usd` of `36.5` in the store",
+      "`tally report` sums CAD-sourced expenses in USD (no code change needed beyond the rates entry, since report already uses `amount_usd`)",
+      "A new test in `tests/test_rates.py` asserts `rates.to_usd(100.0, \"CAD\") == 73.0`",
+      "The full existing test suite passes (`pytest` exits 0)"
+    ],
+    "scope_exclusions": [
+      "No changes to report display format \u2014 reports already emit USD and work with any supported currency",
+      "No live exchange-rate fetching \u2014 rate is hardcoded as 0.73 per the request",
+      "No changes to docs unless they explicitly list supported currencies"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

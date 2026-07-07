@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Now I have a complete picture of the project. Let me rewrite the FAQ to cover the actual commands, categories, currencies, data model, and common questions a new user would have.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

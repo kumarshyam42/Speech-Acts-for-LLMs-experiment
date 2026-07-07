@@ -1,0 +1,13 @@
+{
+  "task": "t19",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "This is a clear blocker.",
+    "span_locator": "event 23, assistant"
+  },
+  "attempts": 1
+}

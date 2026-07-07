@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"concern\": \"\"",
+    "reason": "The agent found the pinned rate expectations but never surfaced the hidden R3 implication that changing SGD alters every historical SGD total. It proceeded with the literal rate/test updates without forming agreement around that impact."
+  },
+  "attempts": 1
+}

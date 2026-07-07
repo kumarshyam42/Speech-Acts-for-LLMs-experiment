@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "I'll enrich it with transaction count, percentage of total, and budget utilization (when a month is specified).",
+    "span_locator": "event 14, assistant"
+  },
+  "attempts": 1
+}

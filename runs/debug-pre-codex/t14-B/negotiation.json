@@ -1,0 +1,21 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"All six subcommands (add, report, list, export, stats, budget) are documented with examples in the README\",\n    \"The global --store flag is documented\",\n    \"The budget command's required --month flag is shown in the example\",\n    \"The stats command output format is described or illustrated\",\n    \"No existing accurate content is removed or degraded\"\n  ],\n  \"scope_exclusions\": [\n    \"Will not change the prose tone/voice \u2014 the conversational style is intentional and good\",\n    \"Will not add a full flag reference table for every argument\",\n    \"Will not restructure the document into a different format (e.g. man page style)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "All six subcommands (add, report, list, export, stats, budget) are documented with examples in the README",
+      "The global --store flag is documented",
+      "The budget command's required --month flag is shown in the example",
+      "The stats command output format is described or illustrated",
+      "No existing accurate content is removed or degraded"
+    ],
+    "scope_exclusions": [
+      "Will not change the prose tone/voice \u2014 the conversational style is intentional and good",
+      "Will not add a full flag reference table for every argument",
+      "Will not restructure the document into a different format (e.g. man page style)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

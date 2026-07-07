@@ -1,0 +1,13 @@
+{
+  "task": "t07",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "c_wrong_cos",
+    "span": "The `--week` feature doesn't exist yet \u2014 the test suite is green on a baseline with no weekly grouping. I need to implement it correctly (Monday-start weeks) from the ground up.",
+    "reason": "The agent discovered the key fact that there was no existing --week option or weekly grouping, but formed the wrong commitment: adding a new feature as if that were the requested bugfix. It then kept that commitment, so the failure originated in choosing the wrong conditions of satisfaction rather than a mechanical implementation error."
+  },
+  "attempts": 1
+}

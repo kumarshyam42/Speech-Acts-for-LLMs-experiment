@@ -1,0 +1,23 @@
+{
+  "label": "E33",
+  "rep": "rep2",
+  "task": "t20",
+  "class": "4",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract promises to update only one pinned assertion, but the project rules say rate changes may require multiple pinned expectations to move together. I would require the agent to commit to updating every affected pinned expectation, not just this named test.",
+        "span": "tests/test_rates.py assertion is updated to `rates.to_usd(100.0, \"SGD\") == 75.0`"
+      },
+      {
+        "description": "The contract omits the required callout that changing a fixed rate affects historical totals. This matters because the requirements explicitly say that impact must be surfaced when the rate changes.",
+        "span": "the change should be called out because it alters every historical total that used that currency"
+      }
+    ],
+    "primary_risk": "The main risk is that the promise is too narrow: it updates one assertion but does not commit to all affected pinned expectations or the required historical-total impact callout."
+  }
+}

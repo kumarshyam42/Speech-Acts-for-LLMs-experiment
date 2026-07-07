@@ -1,0 +1,13 @@
+{
+  "task": "t21",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "debug",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+python -m tally.cli budget --month 2024-03\n+```\n+\n+The output lists each budgeted category with its actual spending and its configured\n+limit, both in US dollars, and marks whether you are within budget or have gone over.",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

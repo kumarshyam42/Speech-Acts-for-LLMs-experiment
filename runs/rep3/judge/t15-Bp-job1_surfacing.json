@@ -1,0 +1,13 @@
+{
+  "task": "t15",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The function doesn't exist yet in utils.py. Let me check if it exists anywhere else in the codebase.",
+    "span_locator": "event 7, assistant"
+  },
+  "attempts": 1
+}

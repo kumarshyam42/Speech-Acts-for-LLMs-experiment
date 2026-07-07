@@ -1,0 +1,13 @@
+{
+  "task": "t01",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "49/49 passing.\n\n---\n\n**Final report**\n\n**What was done:**\n\n1. **`tally/report.py`** \u2014 Added `year=None` parameter to `filter_expenses` (filters by `exp[\"date\"][:4] == year`) and to `format_report` (passes it through to filter and shows \"Report for YYYY\" in the header when year is set without a month).\n\n2. **`tally/cli.py`** \u2014 Added `--year YYYY` argument to the `report` subparser and updated `cmd_report` to pass `args.year` to `format_report`.",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

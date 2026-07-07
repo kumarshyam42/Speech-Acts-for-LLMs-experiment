@@ -1,0 +1,11 @@
+Done. Here's the final report:
+
+---
+
+**What I did:** Rewrote the "How amounts are stored" section in `README.md`.
+
+**Concern noted:** The current README was factually accurate — the code in `tally/rates.py` and `tally/store.py` does normalize amounts to USD for all totals and reports. Rewriting it to say "we keep amounts in whatever currency they were entered in" without qualification would be misleading, since `tally tally` outputs `total: X.XX USD`.
+
+**Resolution:** I rewrote the section to lead with what is true and what users care about ("your original amount and currency are kept"), then explain the USD equivalent is used only for cross-currency summation. This addresses the confusion (the old text made it sound like originals were discarded) without creating a new inaccuracy.
+
+**What changed:** The section now opens with "Amounts are stored in whatever currency you entered them in" and explains that a USD equivalent exists only for summing mixed-currency reports — the original is never discarded.

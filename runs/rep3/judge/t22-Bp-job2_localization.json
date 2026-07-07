@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "I'll expand it significantly, organized into logical sections, staying strictly consistent with the code and `docs/pricing.md`.",
+    "reason": "The agent recognized the request was open-ended but did not form an agreement with the user about which FAQ topics or depth to add. It proceeded unilaterally with a broad expansion instead of asking for or proposing selectable additions."
+  },
+  "attempts": 1
+}

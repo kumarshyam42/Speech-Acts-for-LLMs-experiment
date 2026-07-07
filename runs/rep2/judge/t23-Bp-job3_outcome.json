@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "No CHANGELOG file exists \u2014 I'll create one from scratch using the standard Keep-a-Changelog format.",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

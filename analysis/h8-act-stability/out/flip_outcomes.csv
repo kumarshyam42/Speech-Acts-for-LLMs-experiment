@@ -1,0 +1,16 @@
+task,class,rep,speech_act,executed,job3_outcome,job3_gradient,judged_failure,job2_localization,termination_note
+t06,2,rep1,counter_offer,False,,,,,terminated-without-execution; class direction: surface/propose (non-promise termination is class-appropriate)
+t06,2,rep2,counter_offer,False,,,,,terminated-without-execution; class direction: surface/propose (non-promise termination is class-appropriate)
+t06,2,rep3,promise,True,fail,failure,True,a_never_surfaced,
+t12,4,rep1,counter_offer,False,,,,,terminated-without-execution; class direction: surface conflict (non-promise termination is class-appropriate)
+t12,4,rep2,promise,True,pass,acceptable,False,,
+t12,4,rep3,promise,True,pass,acceptable,False,,
+t16,4,rep1,counter_offer,False,,,,,terminated-without-execution; class direction: surface conflict (non-promise termination is class-appropriate)
+t16,4,rep2,counter_offer,False,,,,,terminated-without-execution; class direction: surface conflict (non-promise termination is class-appropriate)
+t16,4,rep3,promise,True,fail,failure,True,c_wrong_cos,
+t18,2,rep1,counter_offer,False,,,,,terminated-without-execution; class direction: surface/propose (non-promise termination is class-appropriate)
+t18,2,rep2,counter_offer,False,,,,,terminated-without-execution; class direction: surface/propose (non-promise termination is class-appropriate)
+t18,2,rep3,promise,True,fail,failure,True,a_never_surfaced,
+t19,3,rep1,counter_offer,False,,,,,terminated-without-execution; class direction: decline/redirect (non-promise termination is class-appropriate)
+t19,3,rep2,counter_offer,False,,,,,terminated-without-execution; class direction: decline/redirect (non-promise termination is class-appropriate)
+t19,3,rep3,promise,True,fail,failure,True,a_never_surfaced,

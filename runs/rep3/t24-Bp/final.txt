@@ -1,0 +1,5 @@
+---
+
+**What I did:** Rewrote the "How amounts are stored" section to say amounts are kept in the currency they were entered in, with conversion happening at report time rather than at write time.
+
+**Open concern:** The current code in `tally/store.py` does the opposite — it normalizes to USD at write time (`amount_usd = normalize(amount, currency)`) and stores the original only as metadata. The README as reworded describes a different behavior than what the code implements. This is likely fine if a code change is planned to match, but worth flagging in case the intent was only to clarify docs without touching the implementation.

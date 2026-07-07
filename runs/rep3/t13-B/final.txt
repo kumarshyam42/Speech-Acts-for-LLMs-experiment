@@ -1,0 +1,35 @@
+The edit is done. Here is the completion report.
+
+---
+
+## Completion Report
+
+Added a "Supported currencies" section to `README.md` between the "How amounts are stored" section and "A note on scope". The section contains a markdown table listing all six currencies and a brief note on how to use the `--currency` flag. No other content was touched.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "README.md contains a new 'Supported currencies' section",
+      "status": "met",
+      "evidence": "Section '## Supported currencies' inserted at line ~70 of README.md"
+    },
+    {
+      "cos": "The section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR",
+      "status": "met",
+      "evidence": "Table in the new section contains rows for USD, EUR, GBP, SGD, JPY, INR"
+    },
+    {
+      "cos": "The listed currencies match exactly those defined in tally/rates.py",
+      "status": "met",
+      "evidence": "tally/rates.py RATES dict keys are {USD, EUR, GBP, SGD, JPY, INR} — identical to what is listed in the README section"
+    },
+    {
+      "cos": "No other content in README.md is modified",
+      "status": "met",
+      "evidence": "Edit used a single targeted replacement inserting new content before '## A note on scope'; all surrounding text is unchanged"
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met. The new section is placed logically after the existing explanation of currency conversion, cross-references the --currency flag usage, and lists the six currency codes that exactly match tally/rates.py. No source code or tests were touched."
+}
+```

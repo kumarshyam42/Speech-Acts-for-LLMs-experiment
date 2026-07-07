@@ -1,0 +1,13 @@
+{
+  "task": "t24",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "If the code actually does do USD conversion under the hood and the bug is in the docs misrepresenting desired behavior, that's fine. But if `rates.py` is still actively used for conversion, the code and the new docs are now out of sync \u2014 worth verifying the actual storage logic before shipping this.",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

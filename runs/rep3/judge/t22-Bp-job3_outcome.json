@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Rewrote `docs/faq.md` from 4 thin questions to a fully organized reference with 18 questions across 5 sections: Getting started, Recording expenses, Viewing your data, Budgets, and Plans & pricing.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

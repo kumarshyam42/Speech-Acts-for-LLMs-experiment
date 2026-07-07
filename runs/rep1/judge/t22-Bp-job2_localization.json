@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "**Ambiguities:** \"More helpful\" is subjective \u2014 I'll aim for better coverage (more questions), clearer answers, and practical examples rather than just expanding existing entries.",
+    "reason": "The agent recognized the ambiguity but immediately chose its own interpretation instead of forming agreement on topics and depth. The failure originated before execution, when it proceeded unilaterally on an underspecified FAQ expansion."
+  },
+  "attempts": 1
+}

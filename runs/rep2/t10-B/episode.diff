@@ -1,0 +1,151 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..2ed1401 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -10,6 +10,7 @@ The default store lives at ./tally.json; override it with --store.
+ """
+ 
+ import argparse
++import json
+ import sys
+ 
+ from tally import report as report_mod
+@@ -20,22 +21,35 @@ from tally.utils import month_key, parse_date
+ DEFAULT_STORE = "tally.json"
+ 
+ 
++class TallyError(Exception):
++    """User-facing error: printed to stderr, exits with code 1."""
++
++
++def _die(msg):
++    raise TallyError(msg)
++
++
+ def _load(args):
+-    return store_mod.load(args.store)
++    try:
++        return store_mod.load(args.store)
++    except json.JSONDecodeError:
++        _die("store file '{}' is not valid JSON — it may be corrupt".format(args.store))
+ 
+ 
+ def cmd_add(args):
+     data = _load(args)
+-    # normalize the date so we fail early on a bad value
+-    date = parse_date(args.date).isoformat()
+-    record = store_mod.add_expense(
+-        data,
+-        date=date,
+-        amount=args.amount,
+-        currency=args.currency,
+-        category=args.category,
+-        note=args.note or "",
+-    )
++    try:
++        date = parse_date(args.date).isoformat()
++        record = store_mod.add_expense(
++            data,
++            date=date,
++            amount=args.amount,
++            currency=args.currency,
++            category=args.category,
++            note=args.note or "",
++        )
++    except ValueError as exc:
++        _die(str(exc))
+     store_mod.save(args.store, data)
+     print(
+         "added #{id}: {amount_usd:.2f} USD  {category}  {date}".format(**record)
+@@ -65,8 +79,11 @@ def cmd_export(args):
+     data = _load(args)
+     csv_text = report_mod.to_csv(store_mod.all_expenses(data))
+     if args.out:
+-        with open(args.out, "w") as fh:
+-            fh.write(csv_text)
++        try:
++            with open(args.out, "w") as fh:
++                fh.write(csv_text)
++        except OSError as exc:
++            _die("cannot write to '{}': {}".format(args.out, exc.strerror))
+         print("wrote {}".format(args.out))
+     else:
+         sys.stdout.write(csv_text)
+@@ -144,7 +161,11 @@ def main(argv=None):
+         import datetime
+ 
+         args.date = datetime.date.today().isoformat()
+-    return args.func(args)
++    try:
++        return args.func(args)
++    except TallyError as exc:
++        print(str(exc), file=sys.stderr)
++        return 1
+ 
+ 
+ if __name__ == "__main__":
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..f36211c 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -2,6 +2,7 @@
+ 
+ import json
+ import os
++import stat
+ 
+ from tally import cli
+ 
+@@ -88,3 +89,52 @@ def test_add_defaults_currency_to_usd(tmp_path, capsys):
+         data = json.load(fh)
+     assert data["expenses"][0]["original_currency"] == "USD"
+     assert data["expenses"][0]["amount_usd"] == 12.5
++
++
++# --- error-handling tests ---
++
++def test_add_invalid_date(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "add", "10", "food", "--date", "2024-13-01"])
++    assert rc == 1
++    captured = capsys.readouterr()
++    assert captured.err.strip()
++    assert not captured.out.strip()
++
++
++def test_add_unsupported_currency(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "add", "10", "food", "--currency", "XYZ", "--date", "2024-03-01"])
++    assert rc == 1
++    captured = capsys.readouterr()
++    assert captured.err.strip()
++    # the error message should list the known currencies
++    assert "known" in captured.err.lower() or any(
++        code in captured.err for code in ("USD", "EUR", "GBP")
++    )
++    assert not captured.out.strip()
++
++
++def test_corrupt_store(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    with open(store, "w") as fh:
++        fh.write("{not: valid json")
++    rc = cli.main(["--store", store, "report"])
++    assert rc == 1
++    captured = capsys.readouterr()
++    assert captured.err.strip()
++    assert not captured.out.strip()
++
++
++def test_export_unwritable_path(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    cli.main(["--store", store, "add", "50", "food", "--date", "2024-03-15"])
++    capsys.readouterr()
++    # place a directory at the target path so open(..., "w") fails
++    bad_out = os.path.join(str(tmp_path), "out.csv")
++    os.mkdir(bad_out)
++    rc = cli.main(["--store", store, "export", "--out", bad_out])
++    assert rc == 1
++    captured = capsys.readouterr()
++    assert captured.err.strip()
++    assert not captured.out.strip()

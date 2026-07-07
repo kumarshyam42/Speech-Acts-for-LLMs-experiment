@@ -1,0 +1,22 @@
+All 45 tests pass.
+
+---
+
+## Final Report
+
+**What changed:**
+
+**`tally/store.py`** — `add_expense` no longer calls `normalize()`. The record now stores only `original_amount` and `original_currency` (what the user typed), with no `amount_usd` field. Removed the `from tally.rates import normalize` import.
+
+**`tally/report.py`** — Added `_to_usd(exp)` helper that converts `original_amount`/`original_currency` to USD at report time. It falls back to a pre-stored `amount_usd` for old migrated v1 records (to avoid double-converting amounts that were already in USD at the time of migration). Updated `category_totals`, `grand_total`, `format_expense_list`, and `to_csv` to use this helper.
+
+**`tally/cli.py`** — `cmd_add` now calls `normalize(record["original_amount"], record["original_currency"])` after saving to produce the USD confirmation message, rather than pulling it from the stored record.
+
+**Tests updated** (5 tests across 3 files):
+- `test_store.py::test_add_normalizes_to_usd` → renamed `test_add_preserves_original`, now asserts `original_amount`/`original_currency` are stored and `amount_usd` is absent
+- `test_store.py::test_stored_amounts_match_expected_usd` → now reads `original_amount` instead of `amount_usd`
+- `conftest.py::EXPECTED_USD` → updated to original typed amounts `[39.0, 100.0, 50.0, 20.0, 1000.0, 500.0]`
+- `test_cli.py::test_add_persists_normalized_amount` → renamed `test_add_persists_original_amount`, checks original fields
+- `test_cli.py::test_add_defaults_currency_to_usd` → checks `original_amount`/`original_currency`, asserts no `amount_usd`
+
+**Open note:** The v1→v2 migration sets `original_amount` to the already-USD `amount` value for old records (since the pre-conversion EUR amount wasn't preserved in v1). The `_to_usd` fallback to `amount_usd` in report.py protects against double-converting those migrated records.

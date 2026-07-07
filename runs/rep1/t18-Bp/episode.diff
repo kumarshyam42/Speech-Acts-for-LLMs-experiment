@@ -1,0 +1,110 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..4bbd0f7 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -46,9 +46,23 @@ def monthly_summary(expenses, month):
+ 
+ 
+ def format_report(expenses, month=None, category=None):
+-    """Render a plain-text report of category totals to a string."""
++    """Render a plain-text report of category totals to a string.
++
++    Each row shows the USD total, number of transactions, and percentage share
++    of the report total.  When the report is scoped to a month, rows for
++    budgeted categories also show what fraction of the monthly budget has been
++    used, with a "(warn)" or "(over)" marker when relevant.
++    """
+     selected = filter_expenses(expenses, month=month, category=category)
+     totals = category_totals(selected)
++
++    counts: Dict[str, int] = {}
++    for exp in selected:
++        cat = exp["category"]
++        counts[cat] = counts.get(cat, 0) + 1
++
++    total = grand_total(selected)
++
+     lines = []
+     header = "Report"
+     if month:
+@@ -60,9 +74,27 @@ def format_report(expenses, month=None, category=None):
+     if not totals:
+         lines.append("(no expenses)")
+     else:
++        show_budget = month is not None
+         for cat in sorted(totals):
+-            lines.append("{:<14} {:>10.2f} USD".format(cat, totals[cat]))
+-        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", grand_total(selected)))
++            amount = totals[cat]
++            n = counts.get(cat, 0)
++            pct = (amount / total * 100) if total else 0.0
++            line = "{:<14} {:>10.2f} USD  {:>3} exp  {:>5.1f}%".format(
++                cat, amount, n, pct
++            )
++            if show_budget and cat in CATEGORY_BUDGETS:
++                budget = CATEGORY_BUDGETS[cat]
++                bpct = (amount / budget * 100) if budget else 0.0
++                if amount > budget:
++                    marker = " (over)"
++                elif bpct >= BUDGET_WARN_RATIO * 100:
++                    marker = " (warn)"
++                else:
++                    marker = ""
++                line += "  {:>5.1f}% of budget{}".format(bpct, marker)
++            lines.append(line)
++        total_count = sum(counts.values())
++        lines.append("{:<14} {:>10.2f} USD  {:>3} exp".format("TOTAL", total, total_count))
+     return "\n".join(lines)
+ 
+ 
+diff --git a/tests/test_report.py b/tests/test_report.py
+index a692745..7b67f0c 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -52,6 +52,46 @@ def test_format_report_empty():
+     assert "(no expenses)" in text
+ 
+ 
++def test_format_report_shows_transaction_counts(sample_store):
++    # March has food(2), entertainment(1), rent(1) -> TOTAL 4 exp
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    assert "  2 exp" in text
++    assert "  1 exp" in text
++    assert "  4 exp" in text  # TOTAL row
++
++
++def test_format_report_shows_pct_of_total(sample_store):
++    # food: 92.12 / 172.82 = 53.3 %
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    assert "53.3%" in text
++
++
++def test_format_report_shows_budget_pct_for_month(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    assert "of budget" in text
++
++
++def test_format_report_no_budget_without_month(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store))
++    assert "of budget" not in text
++
++
++def test_format_report_budget_warn_marker():
++    from tally import store as store_mod2
++    data = store_mod2.empty_store()
++    store_mod2.add_expense(data, date="2024-05-01", amount=480.0, currency="USD", category="food")
++    text = report_mod.format_report(store_mod2.all_expenses(data), month="2024-05")
++    assert "(warn)" in text
++
++
++def test_format_report_budget_over_marker():
++    from tally import store as store_mod2
++    data = store_mod2.empty_store()
++    store_mod2.add_expense(data, date="2024-05-01", amount=650.0, currency="USD", category="food")
++    text = report_mod.format_report(store_mod2.all_expenses(data), month="2024-05")
++    assert "(over)" in text
++
++
+ def test_format_expense_list(sample_store):
+     text = report_mod.format_expense_list(store_mod.all_expenses(sample_store))
+     assert "groceries" in text

@@ -1,0 +1,13 @@
+{
+  "task": "t09",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "All 47 tests pass, including the two new ones.\n\n---\n\n**Final report**\n\nThree changes, all in existing files:\n\n- **`tally/store.py`** \u2014 added `delete_expense(data, expense_id)`: iterates the expenses list, pops and returns the matching record, returns `None` if not found.\n\n- **`tally/cli.py`** \u2014 added `cmd_delete(args)` (prints confirmation or an error message, returns exit code 0/1) and wired it up as the `delete` subparser with a positional `id` integer argument.",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

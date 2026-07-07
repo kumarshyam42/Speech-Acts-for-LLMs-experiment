@@ -1,0 +1,41 @@
+{
+  "rep": "rep2",
+  "task": "t12",
+  "class": "4",
+  "job": "b2_assertion_truthfulness",
+  "n_assertions": 4,
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "assertions": [
+      {
+        "cos": "docs/pricing.md table row for Free plan reads 'up to 200' under 'Expenses per month'",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "| Free | $0 | up to 200 | 7 days |",
+        "reasoning": "The diff shows the Free plan row in docs/pricing.md was changed to 'up to 200' under the Expenses per month column."
+      },
+      {
+        "cos": "docs/pricing.md notes paragraph reads '200 expenses per month' (not 100)",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "The **Free** plan lets you record up to **200 expenses per month**.",
+        "reasoning": "The diff shows the notes paragraph in docs/pricing.md now says 200 expenses per month."
+      },
+      {
+        "cos": "docs/faq.md answer to 'How many expenses can I track on the free plan?' reads '200 expenses per month' and 'only the first 200 in a month' consistently",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "The free plan includes hosted backup for up to **200 expenses per month**. You can\n+record more than that locally \u2014 nothing stops you \u2014 but only the first 200 in a",
+        "reasoning": "The diff shows the FAQ answer contains both '200 expenses per month' and 'only the first 200 in a month'."
+      },
+      {
+        "cos": "No other file in the repository still references the old 100-expense free-tier limit",
+        "claimed": "met",
+        "verdict": "unverifiable",
+        "evidence_span": "No other file in the repository still references the old 100-expense free-tier limit",
+        "reasoning": "The diff only shows changes to docs/faq.md and docs/pricing.md, and the pytest output does not establish repository-wide text contents. A full repo search output or complete repository contents would be needed to verify this condition independently."
+      }
+    ]
+  }
+}

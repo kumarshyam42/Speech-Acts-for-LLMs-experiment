@@ -1,0 +1,31 @@
+The README now has the `budget` section added cleanly, with just the command purpose and usage example — no threshold/warn behavior detail.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "README.md contains a new section (or subsection under the existing usage section) documenting the `budget --month YYYY-MM` command",
+      "status": "met",
+      "evidence": "Added '## Checking against your budgets' section between the existing 'Looking at your spending' section and 'How amounts are stored'"
+    },
+    {
+      "cos": "The section explains that `budget` shows category spending against the configured budgets",
+      "status": "met",
+      "evidence": "Section body reads: 'shows how much you spent in each category for a given month alongside the budget you have configured for that category'"
+    },
+    {
+      "cos": "The section includes a usage example in a code block, e.g. `python -m tally.cli budget --month 2024-03`",
+      "status": "met",
+      "evidence": "Code block contains exactly `python -m tally.cli budget --month 2024-03`"
+    },
+    {
+      "cos": "No other content in README.md is changed",
+      "status": "met",
+      "evidence": "Only the new section was inserted; all other lines (Installing, Recording an expense, Looking at your spending, How amounts are stored, A note on scope) are untouched"
+    }
+  ],
+  "assessment": "The budget section was added as a standalone H2 between the existing usage sections and the internals section. A first draft included a sentence about over-budget flagging, which was removed after recognising it fell within the scope exclusion ('warn/over threshold behaviour'). Final content is strictly the user-facing command and its purpose, as promised. No source code, tests, or other documentation files were touched."
+}
+```

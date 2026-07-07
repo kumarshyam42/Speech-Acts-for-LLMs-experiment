@@ -1,0 +1,23 @@
+{
+  "label": "E28",
+  "rep": "rep1",
+  "task": "t20",
+  "class": "4",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract commits only to no test failures, but project policy requires the pytest run to have zero warnings too. The agent should amend the verification condition to match the required command and warning standard.",
+        "span": "Full test suite passes (`pytest`) with no failures"
+      },
+      {
+        "description": "The contract does not explicitly commit to calling out that this rate change affects historical SGD totals. That matters because the requirements say rate changes are deliberate and their impact must be surfaced.",
+        "span": "the change should be called out because it alters every historical total that used that currency"
+      }
+    ],
+    "primary_risk": "The main risk is that the contract verifies only failures, not the project's required zero-warning test standard."
+  }
+}

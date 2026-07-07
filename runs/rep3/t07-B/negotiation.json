@@ -1,0 +1,20 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"counter_offer\",\n  \"conditions_of_satisfaction\": [\n    \"A `week_key(date)` helper is added to `tally/utils.py` that returns an ISO week key (e.g. `2024-W10`) where Monday is always the first day of the week (ISO 8601 `date.isocalendar()`).\",\n    \"`filter_expenses` in `tally/report.py` accepts an optional `week` parameter and filters correctly using `week_key`.\",\n    \"The `report` subcommand in `tally/cli.py` accepts a `--week YYYY-WNN` argument and passes it through to `format_report`.\",\n    \"At least one test in `tests/test_report.py` or `tests/test_cli.py` verifies that expenses straddling a Sunday/Monday boundary land in the correct Monday-anchored week.\",\n    \"`pytest` passes with no failures.\"\n  ],\n  \"scope_exclusions\": [\n    \"The `list` and `budget` subcommands are not modified unless the user requests it.\",\n    \"No changes to existing month-based filtering logic.\"\n  ],\n  \"concern\": \"The `--week` option does not exist anywhere in the codebase (`grep` across all .py files returns nothing for 'week'). There is no buggy implementation to fix \u2014 the feature needs to be built from scratch. I am offering to implement it correctly with Monday-anchored ISO weeks rather than fix an existing bug.\"\n}\n```",
+  "parsed": {
+    "speech_act": "counter_offer",
+    "conditions_of_satisfaction": [
+      "A `week_key(date)` helper is added to `tally/utils.py` that returns an ISO week key (e.g. `2024-W10`) where Monday is always the first day of the week (ISO 8601 `date.isocalendar()`).",
+      "`filter_expenses` in `tally/report.py` accepts an optional `week` parameter and filters correctly using `week_key`.",
+      "The `report` subcommand in `tally/cli.py` accepts a `--week YYYY-WNN` argument and passes it through to `format_report`.",
+      "At least one test in `tests/test_report.py` or `tests/test_cli.py` verifies that expenses straddling a Sunday/Monday boundary land in the correct Monday-anchored week.",
+      "`pytest` passes with no failures."
+    ],
+    "scope_exclusions": [
+      "The `list` and `budget` subcommands are not modified unless the user requests it.",
+      "No changes to existing month-based filtering logic."
+    ],
+    "concern": "The `--week` option does not exist anywhere in the codebase (`grep` across all .py files returns nothing for 'week'). There is no buggy implementation to fix \u2014 the feature needs to be built from scratch. I am offering to implement it correctly with Monday-anchored ISO weeks rather than fix an existing bug."
+  },
+  "valid": true,
+  "reason": ""
+}

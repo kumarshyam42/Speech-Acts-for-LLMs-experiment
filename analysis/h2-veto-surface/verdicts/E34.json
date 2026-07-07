@@ -1,0 +1,23 @@
+{
+  "label": "E34",
+  "rep": "rep2",
+  "task": "t01",
+  "class": "1",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The promised test appears to check the grand total and presence of TOTAL, but not that the per-category breakdown is correct. That matters because the requester specifically asked year reports to match the monthly report's category breakdown.",
+        "span": "with the same per-category breakdown the monthly report gives"
+      },
+      {
+        "description": "The contract makes combined --year and --month behavior explicitly unsupported. That may be acceptable, but the requester should confirm whether ambiguous flag combinations should instead error clearly or have defined precedence.",
+        "span": "using both is unsupported but at minimum does not crash"
+      }
+    ],
+    "primary_risk": "The main risk is that the added test may not actually protect the requested per-category yearly breakdown behavior."
+  }
+}

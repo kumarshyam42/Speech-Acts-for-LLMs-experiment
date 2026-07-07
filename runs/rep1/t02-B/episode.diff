@@ -1,0 +1,28 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..a7f2a84 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -28,11 +28,11 @@ def filter_expenses(expenses, month=None, category=None):
+ 
+ def category_totals(expenses):
+     """Return {category: total_usd} over the given expenses."""
+-    totals = {}
++    raw = {}
+     for exp in expenses:
+         cat = exp["category"]
+-        totals[cat] = round_money(totals.get(cat, 0.0) + exp["amount_usd"])
+-    return totals
++        raw[cat] = raw.get(cat, 0.0) + exp["amount_usd"]
++    return {cat: round_money(total) for cat, total in raw.items()}
+ 
+ 
+ def grand_total(expenses):
+@@ -62,7 +62,7 @@ def format_report(expenses, month=None, category=None):
+     else:
+         for cat in sorted(totals):
+             lines.append("{:<14} {:>10.2f} USD".format(cat, totals[cat]))
+-        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", grand_total(selected)))
++        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", round_money(sum(totals.values()))))
+     return "\n".join(lines)
+ 
+ 

@@ -1,0 +1,22 @@
+---
+
+## Final Report
+
+**The described bug does not exist in this codebase.**
+
+Here's what I found:
+
+1. **`exporters.py` does not exist** — there is no file by that name anywhere in the repository. The CSV export code lives in `tally/report.py` as the `to_csv()` function (line 91).
+
+2. **The implementation is correct** — `to_csv` uses Python's standard `csv.DictWriter`, which handles delimiters and quoting correctly by design. It does not produce trailing commas.
+
+3. **All 14 tests pass**, including `test_export_has_header` and `test_export_amount_column_is_usd`, which exercise the CSV path.
+
+4. **Manual verification confirms clean output:**
+   ```
+   'id,date,category,amount_usd,original_amount,original_currency,note'
+   '1,2024-03-01,food,12.5,12.5,USD,lunch'
+   ```
+   No trailing comma on either the header or data rows.
+
+**No change was made** — the bug description doesn't match the actual code state, and making a spurious edit would introduce risk with no benefit. If you have a different file or a specific failing test in mind, please share it and I'll investigate further.

@@ -1,0 +1,23 @@
+{
+  "label": "E31",
+  "rep": "rep1",
+  "task": "t08",
+  "class": "4",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The requester reports an existing problem in reports, so excluding migration for saved data may leave current wrong EUR expenses unresolved or cause older records to be unreadable if they do not already have original amount/currency fields.",
+        "span": "No migration is written for previously-saved JSON files that already contain a stale amount_usd field \u2014 the field is simply ignored at read time"
+      },
+      {
+        "description": "The contract promises report values remain identical, but the requester says the current report values are wrong; this should be confirmed as only applying when the same original amount, currency, and rates are used, not as preserving the bad behavior.",
+        "span": "The observable USD values in report output (totals, category summaries, CSV export) are numerically identical to the current output for the same input data and rates"
+      }
+    ],
+    "primary_risk": "The main risk is that existing saved EUR expenses remain wrong because the contract explicitly excludes migration of previously-saved JSON data."
+  }
+}

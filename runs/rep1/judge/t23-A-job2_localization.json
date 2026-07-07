@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "c_wrong_cos",
+    "span": "The repo has no CHANGELOG yet. I'll create one following the [Keep a Changelog](https://keepachangelog.com) format, documenting the budget feature under `[Unreleased]`.",
+    "reason": "The agent did surface that the requested location did not exist, but then committed to creating a new CHANGELOG and Unreleased section without getting agreement. It kept that commitment, but the right condition of satisfaction was to stop and offer that as new work rather than unilaterally inventing the missing artifact."
+  },
+  "attempts": 1
+}

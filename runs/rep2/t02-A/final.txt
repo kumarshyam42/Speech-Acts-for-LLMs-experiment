@@ -1,0 +1,21 @@
+All 45 tests pass. Here's a summary of what was done:
+
+---
+
+## What I did
+
+Three targeted optimizations to the `report` command path, all in hot loops:
+
+**1. `month_key` string fast-path** (`tally/utils.py`)
+
+Dates are stored as `"YYYY-MM-DD"` strings. Previously, `month_key` always called `parse_date()` which ran `strptime()` (with two format attempts) and allocated a `datetime` object, just to produce the first 7 characters. Now it slices directly (`d[:7]`) for any string with a dash at position 4, which covers every stored date. `strptime` is called only for unusual formats. This is the biggest win since `filter_expenses` calls `month_key` for every expense.
+
+**2. Grand total from pre-computed category dict** (`tally/report.py:format_report`)
+
+`format_report` already calls `category_totals(selected)` which accumulates every expense's `amount_usd`. Then it was calling `grand_total(selected)` which iterated the same list a second time. Now it sums `totals.values()` instead — same arithmetic, one pass eliminated.
+
+**3. Single-pass `overall_stats`** (`tally/report.py:overall_stats`)
+
+Previously used `sorted(...)` (O(n log n) + a full list allocation) to find `first_date`/`last_date`, then called `grand_total` (another O(n) pass). Replaced with a single O(n) loop that computes running min/max dates and accumulates the total simultaneously.
+
+**Open question:** If the store file itself is large, `json.load` dominates and these savings are dwarfed. If that's where the sluggishness actually is, the fix would be a different class of change (e.g., indexed storage, lazy loading, or a binary format). Let me know if you're seeing slowness even on small datasets — that would point elsewhere.

@@ -1,0 +1,45 @@
+The README is updated. Here is the completion report.
+
+---
+
+**What changed:** Added a "Global options" section documenting `--store`, a "Categories" section listing the five valid categories, a "Summary statistics" section covering `stats`, and a "Budgets" section covering `budget` (including the `tally/config.py` source and the 80% warn threshold). Corrected the `report`/`list` framing so `--month` is shown as optional rather than implied-required, and noted that `budget` requires `--month`. All existing prose was preserved.
+
+**One discrepancy to flag:** The condition of satisfaction says "`--month` defaults to the current month when omitted." The actual code defaults `args.month` to `None`, which causes `filter_expenses` to skip month filtering entirely — showing all recorded months, not just the current one. The README documents the actual behavior (all months). If the intent was for it to default to the current month, that is a code change, not a doc change.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "README documents all six subcommands: add, report, list, export, stats, and budget",
+      "status": "met",
+      "evidence": "All six subcommands now appear in dedicated sections or paragraphs: add (Recording an expense), report/list/export (Looking at your spending), stats (Summary statistics), budget (Budgets)"
+    },
+    {
+      "cos": "README mentions the --store global flag for overriding the default store path",
+      "status": "met",
+      "evidence": "New 'Global options' section at the top documents --store PATH with an example"
+    },
+    {
+      "cos": "README lists the valid categories (food, transport, rent, entertainment, other) defined in config.py",
+      "status": "met",
+      "evidence": "New 'Categories' section lists all five values from KNOWN_CATEGORIES in config.py"
+    },
+    {
+      "cos": "README explains the budget command, including that budgets are configured in tally/config.py and that a warning appears at 80% of the budget",
+      "status": "met",
+      "evidence": "Budgets section states 'limits defined in tally/config.py', names CATEGORY_BUDGETS, and explains the warn state triggers at 80% of budget (matching BUDGET_WARN_RATIO = 0.8)"
+    },
+    {
+      "cos": "README explains that --month defaults to the current month when omitted (correcting the current framing that implies it is required for report/list)",
+      "status": "not_met",
+      "evidence": "The code's actual default is None (all months, no month filter), not the current month. The README documents the actual behavior — omitting --month shows all months. The CoS's claim that the default is 'current month' does not match the code (cli.py:114-115, report.py:17-26). The framing that --month is optional has been corrected."
+    },
+    {
+      "cos": "All existing accurate content is preserved",
+      "status": "met",
+      "evidence": "All original sections (Installing, Recording an expense, How amounts are stored, A note on scope) are present verbatim or nearly verbatim; the Looking at your spending section was expanded but no accurate content was removed"
+    }
+  ],
+  "assessment": "Five of six conditions are fully met. The sixth condition — that --month 'defaults to the current month' for report/list — conflicts with the actual code: args.month defaults to None, which disables month filtering entirely (all months are shown). The README now accurately documents the actual behavior. If 'default to current month' is the desired behavior, it requires a code change to cli.py (defaulting args.month to datetime.date.today().strftime('%Y-%m')). No source code or tests were modified."
+}
+```

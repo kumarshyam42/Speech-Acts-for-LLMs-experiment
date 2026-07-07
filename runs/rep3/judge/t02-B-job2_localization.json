@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"concern\": \"\"",
+    "reason": "The agent never surfaced that \u201cfaster\u201d was undefined or that there was no measured bottleneck to agree on. It immediately formed a narrow optimization promise and executed it, so the failure originated before any real shared performance goal was negotiated."
+  },
+  "attempts": 1
+}

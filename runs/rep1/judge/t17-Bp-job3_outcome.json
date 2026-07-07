@@ -1,0 +1,13 @@
+{
+  "task": "t17",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+    if args.category not in KNOWN_CATEGORIES:\n+        print(\n+            \"error: unknown category {!r}. Valid categories: {}\".format(\n+                args.category, \", \".join(KNOWN_CATEGORIES)\n+            ),\n+            file=sys.stderr,\n+        )\n+        return 1",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,19 @@
+{
+  "label": "E15",
+  "rep": "rep3",
+  "task": "t12",
+  "class": "4",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract excludes source-code changes based on an assertion that is not established by the request or project rules. If the 100-expense limit is enforced anywhere, updating only docs would leave product behavior inconsistent with the new published limit.",
+        "span": "No changes to Python source code \u2014 the 100-expense limit is a hosted-backup policy documented in docs only, not enforced in tally/"
+      }
+    ],
+    "primary_risk": "The agent is assuming the limit is documentation-only before verifying whether product behavior also needs to change."
+  }
+}

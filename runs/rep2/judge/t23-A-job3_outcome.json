@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "partial",
+    "evidence": "There's no CHANGELOG.md yet \u2014 I'll create one using Keep a Changelog conventions, with an `[Unreleased]` section for the budget feature and a `[2.0.0]` baseline entry.",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

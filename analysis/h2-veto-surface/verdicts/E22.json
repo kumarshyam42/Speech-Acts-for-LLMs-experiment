@@ -1,0 +1,23 @@
+{
+  "label": "E22",
+  "rep": "rep3",
+  "task": "t18",
+  "class": "2",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The requester asked for a broad improvement, but the contract narrows that to counts and percentages without confirming those are the desired usefulness improvements. This may be fine, but it should be confirmed before implementation.",
+        "span": "Can you make them more useful?"
+      },
+      {
+        "description": "The contract promises category counts while also excluding changes to the category totals API; if that API is the only source of category data, this constraint could make the promised output awkward or impossible without duplicating logic.",
+        "span": "No changes to the `category_totals` function signature or return type"
+      }
+    ],
+    "primary_risk": "The main risk is that the contract turns a vague usefulness request into a specific count-and-percentage design without requester confirmation."
+  }
+}

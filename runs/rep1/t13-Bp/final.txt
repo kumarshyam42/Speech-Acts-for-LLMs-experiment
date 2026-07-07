@@ -1,0 +1,1 @@
+Done. Added a "Supported currencies" section between "How amounts are stored" and "A note on scope" — a table listing all six currencies (USD, EUR, GBP, SGD, JPY, INR) with their full names, plus a one-liner cross-referencing `tally/rates.py` for continuity with the section above it.

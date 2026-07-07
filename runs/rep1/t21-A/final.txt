@@ -1,0 +1,3 @@
+Done. I added a "Checking against your budget" section between "Looking at your spending" and "How amounts are stored". It shows the `budget --month YYYY-MM` command and explains that it prints each configured category's spending versus its limit, omitting categories with no budget set.
+
+No open questions — the request was self-contained and the placement (after the other usage commands, before the internals section) follows the existing doc structure naturally.

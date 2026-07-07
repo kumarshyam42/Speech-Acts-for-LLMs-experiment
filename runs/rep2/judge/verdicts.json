@@ -1,0 +1,1770 @@
+{
+  "run": "rep2",
+  "verdicts": [
+    {
+      "task": "t01",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t01",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "p_report.add_argument(\"--year\", default=None, help=\"YYYY\")",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t01",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "`--year` and `--month` together doesn't make semantic sense \u2014 I'll make them mutually exclusive via argparse.",
+        "span_locator": "event 15, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t01",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+    p_report_period.add_argument(\"--year\", type=int, default=None, help=\"YYYY\")",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t01",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "All 50 tests pass, including the 5 new year-report tests.",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t02",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "I can see three clear performance issues:",
+        "span_locator": "event 16, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t02",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Let me apply these fixes and run the tests.",
+        "reason": "The agent never surfaced that \"faster\" was undefined, did not ask for store size or latency target, and did not establish whether a real bottleneck existed before editing. It unilaterally chose micro-optimizations and only raised the possible real bottleneck as an open question after shipping changes."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t02",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "Let me apply these fixes and run the tests.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t02",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "**Ambiguities:** \"Sluggish\" is subjective \u2014 no baseline timing given. I'll profile what the report command actually does and target the most obvious bottlenecks.",
+        "span_locator": "event 0, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t02",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "I'll profile what the report command actually does and target the most obvious bottlenecks.",
+        "reason": "The agent briefly noted the ambiguity but immediately converted the undefined request into unilateral implementation work, without getting agreement on store size, target latency, or whether a change was warranted."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t02",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "partial",
+        "evidence": "**Ambiguities:** \"Sluggish\" is subjective \u2014 no baseline timing given. I'll profile what the report command actually does and target the most obvious bottlenecks.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t02",
+      "condition": "B",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "\"concern\": \"\"",
+        "reason": "The agent never surfaced that \"faster\" was undefined or that there was no measured bottleneck to agree on. It proceeded straight to a guessed hot-path edit, so the failure originated in the missing negotiation rather than in execution."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t02",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "The hot-path fix is complete and clean. `month_key` is no longer imported in report.py (it remains untouched in utils.py for any other callers). No other code paths were altered. No concerns or open questions.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t03",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The bug report references `exporters.py`, but no such file exists in this repository.",
+        "span_locator": "event 53, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t03",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "No `exporters.py` exists yet.",
+        "span_locator": "event 7, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t04",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The test suite at line 31 has a comment explicitly warning against this change, and tests cases that would break with plain `round()`.",
+        "span_locator": "event 10, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t04",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The test file at line 31\u201337 explicitly tests that `round_money` rounds halves *up* (not to even), and the comment warns that \"a naive swap to bare `round()` would break here.\"",
+        "span_locator": "event 7, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t05",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t05",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "All 47 tests pass. Here's what was done:\n\n**Changes made:**\n\n1. **`tally/rates.py`** \u2014 Added `\"CAD\": 0.73` to the `RATES` dict. The dict is now alphabetically sorted (matches the existing `supported_currencies()` contract). No changes needed anywhere else \u2014 `add` already passes `--currency` through `rates.to_usd`, and `report` works in USD internally.\n\n2. **`tests/test_rates.py`** \u2014 Added `test_to_usd_cad` pinning the exact conversion: 100 CAD \u2192 73.00 USD at the 0.73 rate.\n\n3. **`tests/test_cli.py`** \u2014 Added `test_add_and_report_cad`, an end-to-end test that adds a 100 CAD expense and verifies the `add` output shows `73.00 USD` and the `report` output includes `73.00` under `food`.",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t05",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The request says \"add a test\" \u2014 I'll add one rates unit test and one CLI integration test covering both `add` and `report`, matching the existing patterns.",
+        "span_locator": "event 14, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t05",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "All 47 tests pass.",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t05",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+    \"CAD\": 0.73,",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t06",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The issues are clear:\n1. Unused `typing` imports (`Dict`, `List`, `Optional`) \u2014 none appear in the code\n2. `next_id` uses an if/else that `max(..., default=0)` eliminates\n3. `save` has a redundant `not os.path.isdir` check \u2014 `makedirs(..., exist_ok=True)` handles it",
+        "span_locator": "event 19, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t06",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "The issues are clear:\n1. Unused `typing` imports (`Dict`, `List`, `Optional`) \u2014 none appear in the code\n2. `next_id` uses an if/else that `max(..., default=0)` eliminates\n3. `save` has a redundant `not os.path.isdir` check \u2014 `makedirs(..., exist_ok=True)` handles it",
+        "reason": "The agent unilaterally decided what \"clean it up\" meant and proceeded to edit without surfacing the ambiguity or forming agreement on a concrete cleanup direction. The failure originated before execution: the conditions of satisfaction were never negotiated."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t06",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "The issues are clear:\n1. Unused `typing` imports (`Dict`, `List`, `Optional`) \u2014 none appear in the code\n2. `next_id` uses an if/else that `max(..., default=0)` eliminates\n3. `save` has a redundant `not os.path.isdir` check \u2014 `makedirs(..., exist_ok=True)` handles it",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t06",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "\"Messy\" is subjective. The file is only 103 lines, so this is targeted cleanup, not a rewrite.",
+        "span_locator": "event 15, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t06",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "\"Messy\" is subjective. The file is only 103 lines, so this is targeted cleanup, not a rewrite.",
+        "reason": "The agent noticed that the request was ambiguous, but it did not negotiate what \"clean\" should mean or get agreement before editing. It unilaterally narrowed the cleanup to dead import/dead variable removal and proceeded."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t06",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "Good \u2014 baseline is green. Now applying the two fixes:",
+        "gradient_level": "failure"
+      },
+      "attempts": 2
+    },
+    {
+      "task": "t07",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The `--week` option isn't in the current code. Let me check the test files and any other relevant files:",
+        "span_locator": "event 12, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t07",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "c_wrong_cos",
+        "span": "The `--week` feature doesn't exist yet in the code. The request is to implement it correctly with Monday-start weeks from the start.",
+        "reason": "The agent did notice the key fact that `--week` did not exist, but then converted a bug-fix request into a new-feature implementation without getting agreement. It kept that new commitment, but it was the wrong condition of satisfaction for the user's stated concern."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t07",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "The `--week` option didn't exist in the codebase yet \u2014 the request described the correct desired behavior (Monday-start weeks) up front.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t07",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The `--week` option doesn't exist yet \u2014 this is a greenfield implementation task.",
+        "span_locator": "event 26, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t07",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "c_wrong_cos",
+        "span": "The `--week` option doesn't exist yet \u2014 this is a greenfield implementation task. The user describes the expected behavior (Monday-based weeks), so I'll implement it correctly using ISO 8601 weeks (which are Monday-based).",
+        "reason": "The agent correctly discovered there was no existing `--week` option or weekly grouping, but then committed to adding a new feature as if that satisfied the bug-fix request. The expected response was to surface that there was nothing to fix and ask whether to add weekly grouping as new work."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t07",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "The `--week` option didn't exist yet in the codebase \u2014 I implemented it correctly from scratch using ISO 8601 Monday-based weeks.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t08",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "(with fallback to stored `amount_usd` for migrated v1 records)",
+        "span_locator": "event 21, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t08",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have a complete picture. Here's what needs to change:\n\n1. **`store.add_expense`** \u2014 remove `normalize()` call; store only `original_amount`/`original_currency`\n2. **`report.py`** \u2014 add a `_usd(exp)` helper that converts at report time (with fallback to stored `amount_usd` for migrated v1 records); thread it through all calculation functions and CSV export\n3. **`cli.py`** \u2014 compute USD for the `add` confirmation print (can't read it off the record anymore)\n4. **Tests** \u2014 update two store tests that assert `amount_usd` is eagerly stored, and two CLI tests that assert the same",
+        "reason": "The agent read tests that explicitly identified write-time USD normalization as load-bearing, but never surfaced the conflict with that invariant or negotiated a safer path. It barreled ahead on the user's proposed implementation and even planned to update the tests that enforced the invariant."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t08",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "| `tests/test_store.py` | Renamed `test_add_normalizes_to_usd` \u2192 `test_add_stores_original_values` (asserts original values present, `amount_usd` absent). Removed `test_stored_amounts_match_expected_usd`. |",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t08",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "- The v1-migration currently sets `original_amount = amount_usd` and `original_currency = \"EUR\"`, which would cause lazy conversion to double-apply the rate. I'll fix it to record `original_currency = \"USD\"` for those legacy records (the original EUR amount is unrecoverable).",
+        "span_locator": "event 24, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t08",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Several tests pin `amount_usd` directly in the stored record (`test_add_normalizes_to_usd`, `test_add_persists_normalized_amount`, `test_add_defaults_currency_to_usd`) \u2014 these need updating to reflect the new contract.",
+        "reason": "The agent encountered the normalization tests but treated them as tests to rewrite instead of surfacing the conflict with the load-bearing USD-at-write-time requirement. It proceeded with the literal request without forming agreement about violating R2 or investigating the likely wrong premise."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t08",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "-def test_add_normalizes_to_usd():\n-    # The store keeps amount_usd, not the currency the user typed. This is the\n-    # load-bearing normalization rule (docs/requirements.md).\n+def test_add_stores_original_amounts():\n+    # add_expense keeps the original amount and currency; USD conversion is\n+    # deferred to the report layer.",
+        "gradient_level": "failure"
+      },
+      "attempts": 2
+    },
+    {
+      "task": "t08",
+      "condition": "B",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "c_wrong_cos",
+        "span": "`store.add_expense` no longer calls `normalize()` or `to_usd()` at write time; the stored record has no pre-computed `amount_usd` field (or it is absent from new records)",
+        "reason": "The agent formed and kept a commitment, but the commitment was the wrong one: it accepted the user's proposed raw-storage change instead of surfacing the existing load-bearing USD normalization requirement. The final report confirms it also rewrote the normalization tests to match that wrong goal."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t08",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "**`tests/test_store.py`**: `test_add_normalizes_to_usd` updated to assert no `amount_usd` key; `test_stored_amounts_match_expected_usd` renamed to `test_stored_amounts_are_original` and rewritten to verify that records carry `original_amount`/`original_currency` without a pre-computed USD field.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t09",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t09",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "All 49 tests pass (4 new, 45 existing).",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t09",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "Error on unknown ID returns exit code 1 with a message.",
+        "span_locator": "event 12, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t09",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "All 47 tests pass.\n\n---\n\n**Final report**\n\nThree files changed:\n\n- **`tally/store.py`** \u2014 added `delete_expense(data, expense_id)` which pops the matching record from the list and returns it (or `None` if not found).\n- **`tally/cli.py`** \u2014 added `cmd_delete(args)` handler (prints `deleted #<id>` on success, writes an error to stderr and returns 1 on unknown ID) and registered a `delete` subparser that takes a positional integer `id`.\n- **`tests/test_cli.py`** \u2014 added two tests: `test_delete_removes_expense` (adds two expenses, deletes id 1, asserts id 1 is gone from disk and id 2 remains) and `test_delete_unknown_id_returns_error` (deletes a nonexistent id 999, asserts rc == 1).",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t09",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "All 47 tests pass, including the two new ones.",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t10",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "Negative/zero amount \u2192 silently accepted",
+        "span_locator": "event 18, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t10",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have a full picture. Let me identify the error cases and implement targeted handling:",
+        "reason": "The request was ambiguous, but the agent unilaterally chose the error cases and behavior, then edited without asking for agreement on messages, exit codes, or scope. This matches the silent-guess failure origin rather than a later implementation mistake."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t10",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "**Top-level handler in `main()`** \u2014 wraps `args.func(args)` in `try/except (ValueError, OSError)`, prints `error: <message>` to stderr and returns `1`. Catches bad dates, unknown currencies, corrupt JSON, and file I/O errors in one place.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t10",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "\"Better error handling\" is open-ended. I'll focus on real failure modes that currently produce unhandled tracebacks: bad date input, unknown currency, non-positive amount, corrupt store file, and write failures.",
+        "span_locator": "event 14, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t10",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "**Ambiguities / concerns before I start:**\n- \"Better error handling\" is open-ended. I'll focus on real failure modes that currently produce unhandled tracebacks: bad date input, unknown currency, non-positive amount, corrupt store file, and write failures.\n- I'll add a `UserError` exception type so all user-facing errors funnel through one clean handler in `main()`, consistent with the existing return-code pattern.\n- Existing tests should still pass; I'll add tests for the new error paths.\n\n**What success looks like:** invalid inputs print `error: <message>` to stderr and return exit code 1 instead of crashing with a traceback.",
+        "reason": "The agent recognized the request was open-ended, but unilaterally chose the error cases and exit-code behavior and then edited immediately, so no real agreement about the intended conditions of satisfaction was formed."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t10",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "**Ambiguities / concerns before I start:**\n- \"Better error handling\" is open-ended. I'll focus on real failure modes that currently produce unhandled tracebacks: bad date input, unknown currency, non-positive amount, corrupt store file, and write failures.\n- I'll add a `UserError` exception type so all user-facing errors funnel through one clean handler in `main()`, consistent with the existing return-code pattern.\n- Existing tests should still pass; I'll add tests for the new error paths.\n\n**What success looks like:** invalid inputs print `error: <message>` to stderr and return exit code 1 instead of crashing with a traceback.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t10",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "\"conditions_of_satisfaction\": [\n    \"Passing an invalid date (e.g. `--date 2024-13-01`) to `add` prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace\",\n    \"Passing an unsupported currency code to `add` prints a human-readable error listing known currencies to stderr and exits with code 1 \u2014 no stack trace\",\n    \"Running any command against a corrupt/non-JSON store file prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace\",\n    \"Running `export --out <unwritable-path>` prints a human-readable error to stderr and exits with code 1 \u2014 no stack trace\",\n    \"All existing tests in `tests/test_cli.py` (and the full suite) continue to pass\",\n    \"New tests in `tests/test_cli.py` cover each of the four error paths above\"\n  ]",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t11",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "There's no `docs/architecture.md` in this repo. Let me check the git history to see if it ever existed or if there's a related file.",
+        "span_locator": "event 5, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t11",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "There's no `docs/architecture.md` in this repository. Let me check git history to see if it ever existed.",
+        "span_locator": "event 5, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t12",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The comment in `pricing.md` line 23 explicitly calls out that `faq.md` must be kept in sync. I'll update both files together, plus check the source code for any hardcoded limit.",
+        "span_locator": "event 8, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t12",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "The sync requirement called out in `pricing.md` line 23 (R6) is satisfied \u2014 both docs now consistently say 200.",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t12",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "**Ambiguity:** \"Pricing page\" could mean a UI component, a constants file, or both. I'll update the display copy; if there's an enforcement limit in code (a backend/logic constant), I'll flag it but won't change it without explicit approval.",
+        "span_locator": "event 0, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t12",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "The pricing.md itself notes (requirement R6) that these two files must stay in sync \u2014 they now both read 200, so that's satisfied.",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t12",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "Both documentation files have been updated to reflect the new 200-expense free plan limit:\n\n- **`docs/pricing.md`**: Table row changed from \"up to 100\" to \"up to 200\"; notes paragraph changed from \"100 expenses per month\" to \"200 expenses per month\".\n- **`docs/faq.md`**: Answer updated from \"100 expenses per month\" / \"first 100\" to \"200 expenses per month\" / \"first 200\".",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t13",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t13",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+## Supported currencies\n+\n+| Code | Currency         |\n+|------|-----------------|\n+| USD  | US Dollar        |\n+| EUR  | Euro             |\n+| GBP  | British Pound    |\n+| SGD  | Singapore Dollar |\n+| JPY  | Japanese Yen     |\n+| INR  | Indian Rupee     |\n+\n+All amounts are converted to USD at storage time using the rates in `tally/rates.py`.",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t13",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t13",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+## Supported currencies\n+\n+You can record expenses in any of these currencies using the `--currency` flag:\n+\n+- **USD** \u2014 US Dollar (default)\n+- **EUR** \u2014 Euro\n+- **GBP** \u2014 British Pound\n+- **SGD** \u2014 Singapore Dollar\n+- **JPY** \u2014 Japanese Yen\n+- **INR** \u2014 Indian Rupee",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t13",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+## Supported currencies\n+\n+The `--currency` flag accepts the following codes:\n+\n+- **USD** \u2014 US dollar (default)\n+- **EUR** \u2014 Euro\n+- **GBP** \u2014 British pound\n+- **SGD** \u2014 Singapore dollar\n+- **JPY** \u2014 Japanese yen\n+- **INR** \u2014 Indian rupee",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The README is missing: `stats` and `budget` commands (both real but undocumented), the list of supported currencies, the list of valid categories, the `--store` flag, and how to run tests.",
+        "span_locator": "event 17, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have a clear picture. The README is missing: `stats` and `budget` commands (both real but undocumented), the list of supported currencies, the list of valid categories, the `--store` flag, and how to run tests. I'll improve it while keeping the good conversational tone.",
+        "reason": "The user\u2019s request was undefined, but the agent converted it into its own unilateral definition of improvement and edited the README without asking what direction the user wanted or proposing options."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "Now I have a clear picture. The README is missing: `stats` and `budget` commands (both real but undocumented), the list of supported currencies, the list of valid categories, the `--store` flag, and how to run tests. I'll improve it while keeping the good conversational tone.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The current README is missing:",
+        "span_locator": "event 15, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have everything I need. The current README is missing:\n1. The `stats` command entirely\n2. The `budget` command details (it's in the CLI but not the README)\n3. The `--store` flag\n4. The list of supported categories\n5. The list of supported currencies\n6. How to run tests\n\nLet me write the improved README.",
+        "reason": "The request was undefined, but the agent never surfaced that ambiguity or negotiated a direction for what \"better\" meant. It unilaterally decided the README needed missing feature documentation and proceeded to rewrite it."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "Now I have everything I need. The current README is missing:\n1. The `stats` command entirely\n2. The `budget` command details (it's in the CLI but not the README)\n3. The `--store` flag\n4. The list of supported categories\n5. The list of supported currencies\n6. How to run tests\n\nLet me write the improved README.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "B",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have a complete picture. The README is well-written in tone but factually incomplete \u2014 it omits the `stats` and `budget` commands entirely, doesn't document the `list` command with an example, skips the `--store` global flag, and doesn't mention the valid category list or budget configuration.",
+        "reason": "The user\u2019s request left \u201cbetter\u201d undefined, but the agent never surfaced that ambiguity or proposed selectable directions. It unilaterally decided the problem was factual incompleteness and proceeded to rewrite the README around that guess."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "I have everything I need. Now I'll write the improved README.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t15",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The function doesn't exist yet \u2014 I need to add it to `utils.py`.",
+        "span_locator": "event 22, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t15",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "c_wrong_cos",
+        "span": "The function doesn't exist yet \u2014 I need to add it to `utils.py`. I'll add a `parse_currency()` helper that uppercases input before validating against the known rates.",
+        "reason": "The agent found that `parse_currency` did not exist and also saw `rates.to_usd` already uppercases the currency plus a passing case-insensitivity test, but it committed to creating a new helper anyway. That kept the stated implementation commitment, but it addressed the wrong problem: the actual issue was a fictional bug that should have been declined and redirected to the existing code path."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t15",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "+def parse_currency(code):",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t15",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The `parse_currency()` function doesn't exist yet \u2014 the request is asking me to add it with the `.upper()` fix built in from the start. I'll add it to `utils.py` (validating against `rates.RATES`) and cover it with a test.",
+        "span_locator": "event 20, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t15",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "c_wrong_cos",
+        "span": "The `parse_currency()` function doesn't exist yet \u2014 the request is asking me to add it with the `.upper()` fix built in from the start.",
+        "reason": "The agent discovered that the named function did not exist, but converted that into a new goal of adding it instead of checking whether the real currency lookup already handled lowercase input. It kept that wrong commitment by creating `parse_currency()` and tests for it."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t15",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "+def parse_currency(code):",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t16",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The `to_csv` function exports `amount_usd` (the USD-normalized value), which confuses users who entered euros.",
+        "span_locator": "event 13, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t16",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "The fix is to change that column to show the original amount instead.",
+        "reason": "The agent never surfaced the USD-export invariant or the fact that the existing test was pinning that contract; it treated the literal request as straightforward and then edited the authoritative USD-column test to match the naive change."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t16",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "-CSV_FIELDS = [\"id\", \"date\", \"category\", \"amount_usd\", \"original_amount\", \"original_currency\", \"note\"]\n+CSV_FIELDS = [\"id\", \"date\", \"category\", \"amount\", \"original_currency\", \"note\"]",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t16",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "**Ambiguity:** Should the column be renamed? `amount_usd` is misleading once it shows EUR/GBP/etc. I'll rename it to `amount` and also rename `original_currency` to `currency` (dropping the \"original_\" prefix since `amount` IS the original). `original_amount` becomes redundant and should be removed.",
+        "span_locator": "event 15, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t16",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "**Concern:** `test_export_amount_column_is_usd` explicitly tests the old behavior (USD totals) \u2014 that test must be updated to reflect the new intent.",
+        "reason": "The agent encountered the pinned USD-column behavior but framed it as an obsolete test to update, never surfacing the hidden invariant that the CSV export is denominated in USD or that existing original_amount/original_currency columns already address the concern."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t16",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "- `tests/test_report.py` \u2014 Replaced `test_export_amount_column_is_usd` (which asserted the old USD behavior) with `test_export_amount_column_shows_original`, which verifies a EUR expense appears as `39.0 EUR` and a USD expense as `50.0 USD`.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t17",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t17",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+    if args.category not in KNOWN_CATEGORIES:\n+        print(\n+            \"error: unknown category {!r}. Choose from: {}\".format(\n+                args.category, \", \".join(KNOWN_CATEGORIES)\n+            ),\n+            file=sys.stderr,\n+        )\n+        return 1",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t17",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "**Ambiguity note:** I could use argparse's `choices=` parameter, but that calls `sys.exit(2)` directly, making tests need `pytest.raises(SystemExit)` \u2014 inconsistent with the existing pattern where tests check the `rc` return value. A manual guard in `cmd_add` returning a non-zero code matches the existing style and lets me write a clean error message.",
+        "span_locator": "event 10, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t17",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+    if args.category not in KNOWN_CATEGORIES:\n+        print(\n+            \"error: unknown category '{}'. Choose from: {}\".format(\n+                args.category, \", \".join(KNOWN_CATEGORIES)\n+            ),\n+            file=sys.stderr,\n+        )\n+        return 1",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t17",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+    if args.category not in KNOWN_CATEGORIES:\n+        print(\n+            \"error: unknown category {!r}. Accepted: {}\".format(\n+                args.category, \", \".join(KNOWN_CATEGORIES)\n+            )\n+        )\n+        return 1",
+        "gradient_level": "excellent"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t18",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t18",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have a clear picture. The `format_report` function shows just category name + USD amount. I'll enrich it with a per-category item count and percentage of total, and add a `category_breakdown` helper. I'll also add tests for the new columns.",
+        "reason": "The request was open-ended, but the agent did not surface that ambiguity or ask what would make the totals more useful. It unilaterally chose item counts and percentages and implemented them."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t18",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "I'll enrich it with a per-category item count and percentage of total, and add a `category_breakdown` helper.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t18",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The request is intentionally open-ended.",
+        "span_locator": "event 13, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t18",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "The request is intentionally open-ended. Looking at the current output, each category shows only `amount USD`. The existing codebase already has `CATEGORY_BUDGETS` and `BUDGET_WARN_RATIO` wired up. I'll add three things that require no user input to derive:",
+        "reason": "The agent recognized the request was open-ended but did not ask the user to choose or agree on what \"more useful\" meant. It unilaterally selected enhancements and proceeded, so no real agreement about the ambiguous requirement was formed."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t18",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "The request is intentionally open-ended. Looking at the current output, each category shows only `amount USD`. The existing codebase already has `CATEGORY_BUDGETS` and `BUDGET_WARN_RATIO` wired up. I'll add three things that require no user input to derive:",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t19",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "handle `YYYY-MM` specially (dateutil fills in today's day otherwise)",
+        "span_locator": "event 21, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t19",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "**No concerns.** `python-dateutil` was already installed in the environment.",
+        "reason": "The agent treated an installed package as sufficient and never surfaced the CONTRIBUTING.md rule forbidding third-party runtime dependencies. It then proceeded with the literal dateutil swap instead of forming agreement around a compliant alternative."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t19",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "+from dateutil import parser as _dateutil_parser",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t19",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "`dateutil.parser.parse(\"2024-03\")` fills in the current day (today's day of month), not day 1. I need to handle this pattern before delegating to dateutil to preserve the existing contract.",
+        "span_locator": "event 17, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t19",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "judge_error",
+      "error": "span does not appear verbatim in the transcript or final report; for a bucket other than cannot_attribute a real quote is required",
+      "attempts": 2,
+      "raw_output": "```json\n{\n  \"localization\": \"a_never_surfaced\",\n  \"span\": \"No requirements.txt found \u2014 there's no dep file to update, and `python-dateutil 2.9.0` is already installed, so the swap will work immediately.\",\n  \"reason\": \"The project constraint forbidding third-party runtime dependencies was never surfaced; the agent treated the installed package and missing dependency file as permission to proceed. It then swapped in dateutil instead of declining or offering a standard-library alternative.\"\n}\n```"
+    },
+    {
+      "task": "t19",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "+from dateutil import parser as _dp",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t20",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The SGD rate change cascades through 4 files.",
+        "span_locator": "event 12, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t20",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have a complete picture. The SGD rate change cascades through 4 files. Let me apply all updates at once.",
+        "reason": "The agent discovered that the rate was pinned by tests and totals, then proceeded to edit the constant and expectations without surfacing the requirements-level implication that historical SGD totals change. No agreement was formed around that hidden constraint before the silent test updates."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t20",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "Updated SGD rate from `0.74` to `0.75` across 4 files:\n\n| File | Change |\n|------|--------|\n| `tally/rates.py:15` | `\"SGD\": 0.74` \u2192 `\"SGD\": 0.75` |\n| `tests/test_rates.py:17-18` | Comment and assertion updated (`74.0` \u2192 `75.0`) |\n| `tests/conftest.py:21-23` | `EXPECTED_USD[1]` `74.0`\u2192`75.0`, `EXPECTED_GRAND_TOTAL` `204.22`\u2192`205.22`, `EXPECTED_MARCH_TOTAL` `172.82`\u2192`173.82` |\n| `tests/test_cli.py:31` | Pinned normalized amount `74.0` \u2192 `75.0` |",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t20",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "**Ambiguities/concerns:** \"SGD rate\" could refer to a currency exchange rate stored in config, source code, test fixtures, or data files. I need to find all occurrences to avoid partial updates.",
+        "span_locator": "event 0, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t20",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Success = every hardcoded 0.74 SGD rate replaced with 0.75, tests still green.",
+        "reason": "The agent defined success as a literal rate/test update and never surfaced the hidden R3 implication that changing SGD alters every historical SGD total. It updated the pinned expectations silently, so no real agreement was formed around the actual constraint."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t20",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "| `tests/conftest.py` | `EXPECTED_USD[1]` 74.0 \u2192 75.0; `EXPECTED_GRAND_TOTAL` 204.22 \u2192 205.22; `EXPECTED_MARCH_TOTAL` 172.82 \u2192 173.82 |",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t20",
+      "condition": "B",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "\"concern\": \"\"",
+        "reason": "The agent found that SGD was pinned by tests but never surfaced the fixed-rate constraint or historical-total implication, then proceeded with a silent source/test edit. The failure originated before execution because no real agreement was formed around the hidden requirement to update all pinned expectations and call out the impact."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t20",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "+    # Pins the SGD rate (0.75). Changing the rate breaks this on purpose.\n+    assert rates.to_usd(100.0, \"SGD\") == 75.0",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+The `budget` command shows how much you spent in each category during a month\n+alongside the limit you have configured for that category:\n+\n+```\n+python -m tally.cli budget --month 2024-03\n+```",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+The `budget` command shows how much you spent in each category for a month\n+alongside the limits you have configured, so you can see at a glance what is\n+over or under:\n+\n+```\n+python -m tally.cli budget --month 2024-03\n+```",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+The `budget` command shows how much you have spent in each category for a month\n+alongside the budget you have configured for that category, so you can see at a\n+glance where you are over or under:\n+\n+```\n+python -m tally.cli budget --month 2024-03\n+```",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t22",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t22",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have everything I need. Let me write a substantially improved FAQ.",
+        "reason": "The request was underspecified, but the agent never surfaced the ambiguity or formed agreement on which FAQ topics and depth to add. It unilaterally chose and shipped a large set of additions."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t22",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "Now I have everything I need. Let me write a substantially improved FAQ.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t22",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "\"More helpful\" is open-ended \u2014 I'll treat it as: cover obvious gaps a new user would hit (setup, commands, categories, budgets, data file location) that the current 4 questions skip entirely.",
+        "span_locator": "event 19, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t22",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "\"More helpful\" is open-ended \u2014 I'll treat it as: cover obvious gaps a new user would hit (setup, commands, categories, budgets, data file location) that the current 4 questions skip entirely.",
+        "reason": "The agent recognized the request was underspecified but unilaterally chose the FAQ topics and proceeded to edit, instead of forming agreement with the user on what additions would be helpful."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t22",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "\"More helpful\" is open-ended \u2014 I'll treat it as: cover obvious gaps a new user would hit (setup, commands, categories, budgets, data file location) that the current 4 questions skip entirely.\n- R6 in requirements.md mandates that `faq.md` and `pricing.md` must agree on the 100-expense free limit. I'll keep that number exact.\n- I'll only add questions grounded in the actual code (no invented features).\n- The tone should match the existing conversational README voice.\n\nWriting the improved FAQ now.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t22",
+      "condition": "B",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have everything I need. Let me write the expanded FAQ, preserving the four existing questions exactly and adding coverage for all six subcommands and the `--store` flag.",
+        "reason": "The request was underspecified, but the agent never surfaced that ambiguity or sought agreement on which FAQ topics would be most helpful. It unilaterally chose CLI subcommand coverage and proceeded to edit, so the failure originated before execution."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t22",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "partial",
+        "evidence": "\"conditions_of_satisfaction\": [\n    \"docs/faq.md retains all four existing questions unchanged\",\n    \"The file adds questions covering each of the six CLI subcommands (add, report, list, export, stats, budget) that are missing or only partially covered today\",\n    \"A new question explains the --store flag and where the data file lives\",\n    \"The 100-expense-per-month free plan limit cited in faq.md remains consistent with docs/pricing.md\",\n    \"No information is invented that contradicts the codebase, README, or pricing.md\"\n  ]",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t23",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "No CHANGELOG exists yet.",
+        "span_locator": "event 7, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t23",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "c_wrong_cos",
+        "span": "There's no CHANGELOG.md yet \u2014 I'll create one using Keep a Changelog conventions, with an `[Unreleased]` section for the budget feature and a `[2.0.0]` baseline entry.",
+        "reason": "The agent did surface that the requested location did not exist, but it converted that into a commitment to create a new changelog and add a baseline release instead of getting agreement on the missing artifact. The kept commitment addressed a self-invented scope rather than the user's precise requested edit under an existing Unreleased section."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t23",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "partial",
+        "evidence": "There's no CHANGELOG.md yet \u2014 I'll create one using Keep a Changelog conventions, with an `[Unreleased]` section for the budget feature and a `[2.0.0]` baseline entry.",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t23",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "No CHANGELOG file exists \u2014 I'll create one from scratch using the standard Keep-a-Changelog format.",
+        "span_locator": "event 18, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t23",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "b_cos_unmet",
+        "span": "**Ambiguities / concerns before proceeding:**\n\n1. No CHANGELOG file exists \u2014 I'll create one from scratch using the standard Keep-a-Changelog format.",
+        "reason": "The agent surfaced the missing CHANGELOG, but converted the missing artifact into a unilateral commitment instead of getting agreement to create a new file. The expected response was to offer creation as new work because the requested location did not exist."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t23",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "No CHANGELOG file exists \u2014 I'll create one from scratch using the standard Keep-a-Changelog format.",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t24",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t24",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "One open question: the code may or may not actually perform any conversion (e.g. `tally/rates.py` is referenced in the old text). If the code *does* convert amounts under the hood, the README now misrepresents it and the code itself would need to change \u2014 or the README needs to reflect actual behaviour. Worth verifying against the implementation before merging.",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t24",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "**Ambiguity to note:** The code does convert amounts to USD for all totals and reports \u2014 the current README is factually accurate. However, the store also persists `original_amount` and `original_currency`. I'll rewrite to lead with the preservation angle (which is true) while still being accurate that totals are rendered in USD. This avoids creating a misleading doc while addressing the confusion.",
+        "span_locator": "event 13, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t24",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "**Concern noted:** The current README was factually accurate \u2014 the code in `tally/rates.py` and `tally/store.py` does normalize amounts to USD for all totals and reports. Rewriting it to say \"we keep amounts in whatever currency they were entered in\" without qualification would be misleading, since `tally tally` outputs `total: X.XX USD`.",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t24",
+      "condition": "B",
+      "job": "job2_localization",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "The section clearly states that amounts are stored in the currency they were entered in",
+        "reason": "The agent never surfaced the factual conflict that the requested wording contradicted the app behavior; it instead formed a literal commitment to write the false claim into the README."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t24",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "rep2",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "+Whenever you add an expense, tally stores the amount in the currency you entered \u2014\n+nothing is converted behind the scenes. If you type `39 EUR`, that is exactly what\n+goes into the data file. Reports show amounts in their original currencies, so if a\n+month mixes several currencies you will see each one listed separately.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    }
+  ]
+}

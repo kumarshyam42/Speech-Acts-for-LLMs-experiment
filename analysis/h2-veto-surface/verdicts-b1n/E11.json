@@ -1,0 +1,27 @@
+{
+  "label": "E11",
+  "rep": "rep2",
+  "task": "t08",
+  "class": "4",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "no",
+    "risk_flags": [
+      {
+        "description": "The contract promises the opposite of the project's reference requirement: expenses must be converted and stored in USD at write time. Accepting this would implement behavior the rules explicitly define as wrong.",
+        "span": "Every expense amount is converted to US dollars **when it is recorded**, using the conversion table in `tally/rates.py`, and the US-dollar figure is what gets stored."
+      },
+      {
+        "description": "The contract would make reports compute totals from original amounts, which the requirements forbid. The rules specifically say originals are retained only for reference and must not drive totals.",
+        "span": "The original amount and currency the user entered are retained for reference only; they are never used to compute a total."
+      },
+      {
+        "description": "The contract explicitly excludes migration work while changing the stored record shape. That risks mixed or older store files behaving inconsistently with the declared schema model.",
+        "span": "The v1\u2192v2 migration logic in `store.migrate` is not changed"
+      }
+    ],
+    "primary_risk": "The proposed contract directly violates R2, the authoritative product requirement for currency normalization."
+  }
+}

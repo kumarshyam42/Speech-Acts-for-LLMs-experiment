@@ -1,0 +1,13 @@
+**Final report**
+
+I rewrote `docs/faq.md` from 4 questions to a structured reference covering the full tool. What changed:
+
+- **Getting started** — install/alias instructions, where the data file lives, the `--store` flag
+- **Recording expenses** — full `add` syntax, the exact list of built-in categories and how to add custom ones, back-dating, the supported currency codes (EUR, GBP, INR, JPY, SGD, USD), and a plain-English explanation of how conversion works at write time
+- **Viewing spending** — `report`, `list`, `stats`, and `budget` subcommands with examples; `--category` filtering
+- **Plans and backup** — the pricing table (kept consistent with `docs/pricing.md` per requirement R6), the distinction between local limits (none) and backup limits (100/month on Free)
+- **Data and privacy** — what leaves the machine, manual backup/move, multi-machine usage caveat
+
+Open questions I can't resolve without input:
+- Whether custom categories require a code edit or if there's a planned config file approach — the FAQ currently says "edit `config.py`", which is accurate today.
+- Live exchange rates aren't mentioned as a planned feature; the FAQ notes rates are fixed constants, which matches the code.

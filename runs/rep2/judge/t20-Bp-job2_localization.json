@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Success = every hardcoded 0.74 SGD rate replaced with 0.75, tests still green.",
+    "reason": "The agent defined success as a literal rate/test update and never surfaced the hidden R3 implication that changing SGD alters every historical SGD total. It updated the pinned expectations silently, so no real agreement was formed around the actual constraint."
+  },
+  "attempts": 1
+}

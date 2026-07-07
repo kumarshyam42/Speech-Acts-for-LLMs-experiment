@@ -1,0 +1,11 @@
+{
+  "label": "E25",
+  "rep": "rep2",
+  "task": "t05",
+  "class": "1",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "judge_error",
+  "attempts": 2,
+  "error": "risk_flags[1].span does not appear verbatim in the request or contract; copy the exact words",
+  "raw_output": "```json\n{\n  \"accept\": \"yes_with_conditions\",\n  \"risk_flags\": [\n    {\n      \"description\": \"The promised test only pins the exchange rate, but the request specifically asks that add and report both handle CAD. I would ask for the test commitment to cover the add/report behavior, not just rates.to_usd.\",\n      \"span\": \"tests/test_rates.py contains a test that pins the CAD rate (e.g. to_usd(100.0, 'CAD') == 73.0)\"\n    },\n    {\n      \"description\": \"The contract promises zero failures but omits the project's zero-warnings requirement. The acceptance condition should match the contribution policy exactly.\",\n      \"span\": \"python -m pytest with zero failures and zero warnings before you open a pull request\"\n    }\n  ],\n  \"primary_risk\": \"The main risk is that the promised test coverage may not actually prove CAD works through the add and report paths the requester named.\"\n}\n```"
+}

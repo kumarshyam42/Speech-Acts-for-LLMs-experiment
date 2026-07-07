@@ -1,0 +1,14 @@
+{
+  "label": "E37",
+  "rep": "rep3",
+  "task": "t09",
+  "class": "1",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes",
+    "risk_flags": [],
+    "primary_risk": ""
+  }
+}

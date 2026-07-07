@@ -1,0 +1,19 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"docs/pricing.md table row for Free plan reads 'up to 200' in the Expenses per month column\",\n    \"docs/pricing.md Notes section reads '100 expenses per month' nowhere \u2014 replaced with '200 expenses per month' in both prose occurrences\",\n    \"docs/faq.md answer to 'How many expenses can I track on the free plan?' reads '200 expenses per month' (replacing the two '100' references)\",\n    \"No other file in the repository contains a stale '100' limit in a plan-limit context\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to Python source code \u2014 the 100-expense limit is a hosted-backup policy documented in docs only, not enforced in tally/\",\n    \"No changes to tests\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "docs/pricing.md table row for Free plan reads 'up to 200' in the Expenses per month column",
+      "docs/pricing.md Notes section reads '100 expenses per month' nowhere \u2014 replaced with '200 expenses per month' in both prose occurrences",
+      "docs/faq.md answer to 'How many expenses can I track on the free plan?' reads '200 expenses per month' (replacing the two '100' references)",
+      "No other file in the repository contains a stale '100' limit in a plan-limit context"
+    ],
+    "scope_exclusions": [
+      "No changes to Python source code \u2014 the 100-expense limit is a hosted-backup policy documented in docs only, not enforced in tally/",
+      "No changes to tests"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

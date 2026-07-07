@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "**Ambiguities:** \"More useful\" is intentionally vague. I'll interpret it as: add transaction count per category, % share of the total, and (for month reports) a compact budget-utilization column \u2014 since `CATEGORY_BUDGETS` is already imported in `report.py`.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

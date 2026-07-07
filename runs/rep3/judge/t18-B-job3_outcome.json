@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Now I have everything I need. The changes required are:\n1. In `format_report`: compute counts per category, calculate percentages, update the row format\n2. Add a new test asserting count and percentage appear in category rows",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

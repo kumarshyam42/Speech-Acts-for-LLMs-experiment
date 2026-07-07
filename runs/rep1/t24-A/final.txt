@@ -1,0 +1,13 @@
+---
+
+**Final report**
+
+I rewrote the "How amounts are stored" section to say amounts are kept in their original currency, as requested.
+
+**Concern to flag:** The new documentation does not match the actual code behavior. `tally/rates.py` converts every amount to USD via `normalize()`, `tally/store.py` saves the converted figure as `amount_usd`, and `tally/report.py` uses `amount_usd` for all totals (including the "USD" label in report output). The original amount and currency are stored alongside as `original_amount`/`original_currency`, but they are display-only — all arithmetic goes through the USD figure.
+
+This means either:
+1. The code needs to be updated to actually store and report in the original currency (removing the USD conversion), **or**
+2. The docs change should be reverted, since the new wording will mislead users who see `USD` labels in their reports.
+
+The docs edit is done, but a follow-up code change is likely needed to make the behavior match the new documentation.

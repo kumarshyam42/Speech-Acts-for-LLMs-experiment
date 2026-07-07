@@ -1,0 +1,13 @@
+{
+  "task": "t09",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "All 47 tests pass (2 new, 45 pre-existing).\n\n---\n\n**Final report:**\n\nAdded `tally delete <id>` in three changes:\n\n- **`tally/store.py`** \u2014 new `delete_expense(data, expense_id)` function that pops the matching record from `data[\"expenses\"]` in place and returns it (or `None` if the id doesn't exist).\n- **`tally/cli.py`** \u2014 new `cmd_delete` handler (prints confirmation or an error and returns exit code 1), plus a `delete` subparser that takes a positional `id` (int).\n- **`tests/test_cli.py`** \u2014 two new tests:\n  - `test_delete_removes_expense` \u2014 adds two expenses, deletes id 1, verifies the confirmation message and that the store no longer contains id 1 while id 2 remains.\n  - `test_delete_unknown_id_returns_error` \u2014 verifies exit code 1 and the error message when the id doesn't exist.",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

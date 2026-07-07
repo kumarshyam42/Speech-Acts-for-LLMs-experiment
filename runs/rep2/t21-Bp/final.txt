@@ -1,0 +1,12 @@
+---
+
+**Final report:**
+
+Added a "Checking against your budget" section to `README.md` between "Looking at your spending" and "How amounts are stored". The section:
+
+- Shows the exact `budget --month YYYY-MM` invocation (with `--month` marked required, matching the CLI definition)
+- Explains it compares actual spending against configured category budgets
+- Notes that categories without a configured limit are omitted (confirmed by reading `report.py` / CLI behavior)
+- Matches the existing README's conversational prose style and code-block pattern
+
+No open questions. The edit is minimal and stays within the scope of what was asked.

@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "debug",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"Better\" is open-ended \u2014 I'll read the current README and the codebase, then improve for clarity, completeness, and accuracy.",
+    "reason": "The agent recognized that the request was undefined but immediately chose its own direction instead of asking the user to agree on what kind of README improvement was wanted. The collaboration failed at forming an agreed direction before editing."
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t15",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "`parse_currency()` doesn't exist yet \u2014 the request is describing a function that needs to be added to `utils.py` with the case-insensitivity fix built in from the start. I'll add it with `.upper()` before the RATES lookup, plus a matching test.",
+    "span_locator": "event 20, assistant"
+  },
+  "attempts": 1
+}

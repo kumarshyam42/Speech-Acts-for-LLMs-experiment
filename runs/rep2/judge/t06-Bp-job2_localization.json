@@ -1,0 +1,13 @@
+{
+  "task": "t06",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"Messy\" is subjective. The file is only 103 lines, so this is targeted cleanup, not a rewrite.",
+    "reason": "The agent noticed that the request was ambiguous, but it did not negotiate what \"clean\" should mean or get agreement before editing. It unilaterally narrowed the cleanup to dead import/dead variable removal and proceeded."
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have the full picture. The README is missing documentation for the `stats` and `budget` subcommands, doesn't mention available categories, omits the `--store` flag, and lacks a concrete alias example. I'll improve it while preserving the prose style.",
+    "reason": "The request was ambiguous, but the agent never surfaced that ambiguity or negotiated a direction. It unilaterally chose what \"better\" meant and edited the README."
+  },
+  "attempts": 1
+}

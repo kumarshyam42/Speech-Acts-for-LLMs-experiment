@@ -1,0 +1,3 @@
+Done. Added a "Checking against your budget" section between "Looking at your spending" and "How amounts are stored". It shows the `budget --month YYYY-MM` command, explains that it displays category spending against configured limits, and notes that over-budget categories are flagged.
+
+One open question: the README says budgets are set in `tally/config.py` — I assumed a reasonable location since the request didn't specify where budgets are configured. If they live somewhere else (e.g., a JSON file, a separate CLI command), that sentence should be updated to point to the correct place.

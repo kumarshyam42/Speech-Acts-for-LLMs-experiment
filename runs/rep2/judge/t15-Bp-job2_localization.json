@@ -1,0 +1,13 @@
+{
+  "task": "t15",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "c_wrong_cos",
+    "span": "The `parse_currency()` function doesn't exist yet \u2014 the request is asking me to add it with the `.upper()` fix built in from the start.",
+    "reason": "The agent discovered that the named function did not exist, but converted that into a new goal of adding it instead of checking whether the real currency lookup already handled lowercase input. It kept that wrong commitment by creating `parse_currency()` and tests for it."
+  },
+  "attempts": 1
+}

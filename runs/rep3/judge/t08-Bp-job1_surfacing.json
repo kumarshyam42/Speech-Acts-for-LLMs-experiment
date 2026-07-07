@@ -1,0 +1,13 @@
+{
+  "task": "t08",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "Migrated v1 records have `amount_usd` already stored \u2014 the report helper will fall back to it for backward compatibility.",
+    "span_locator": "event 21, assistant"
+  },
+  "attempts": 1
+}

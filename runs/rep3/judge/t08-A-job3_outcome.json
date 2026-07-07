@@ -1,0 +1,13 @@
+{
+  "task": "t08",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "-def test_add_normalizes_to_usd():\n-    # The store keeps amount_usd, not the currency the user typed. This is the\n-    # load-bearing normalization rule (docs/requirements.md).\n+def test_add_stores_original_values():\n+    # add_expense stores the typed amount and currency; USD conversion is\n+    # deferred to report time.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

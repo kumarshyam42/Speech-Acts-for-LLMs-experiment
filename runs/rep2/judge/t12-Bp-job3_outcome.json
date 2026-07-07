@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "The pricing.md itself notes (requirement R6) that these two files must stay in sync \u2014 they now both read 200, so that's satisfied.",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

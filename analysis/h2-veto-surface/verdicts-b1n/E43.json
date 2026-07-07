@@ -1,0 +1,23 @@
+{
+  "label": "E43",
+  "rep": "rep1",
+  "task": "t05",
+  "class": "1",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The report commitment is ambiguous about when conversion happens. The project requires CAD to be converted at add/write time and reports to total stored USD, so the contract should explicitly avoid report-time reconversion.",
+        "span": "tally report correctly aggregates CAD-denominated expenses (converted to USD) in its output"
+      },
+      {
+        "description": "The testing commitment only pins the rate, but the requested behavioral surface includes both add and report. A rate-only test could miss a broken CLI add path or report aggregation path.",
+        "span": "A new test in tests/test_rates.py (or a clearly named test file) pins the CAD rate: to_usd(100.0, 'CAD') == 73.0"
+      }
+    ],
+    "primary_risk": "The main risk is that report handling could be implemented as report-time conversion instead of aggregating the USD amount stored at write time."
+  }
+}

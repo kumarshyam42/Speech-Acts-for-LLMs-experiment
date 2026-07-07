@@ -1,0 +1,7 @@
+All 45 tests pass. Here's what changed in `store.py`:
+
+- **Removed unused imports** — `Dict`, `List`, `Optional` from `typing` were imported but never used in any function signature. The `from typing import ...` line is gone entirely.
+- **Removed dead `version = 2` assignment** in `migrate` — the variable was set inside the `if version == 1:` block but never read again; the final `data["schema_version"] = SCHEMA_VERSION` is unconditional and doesn't depend on it.
+- **Collapsed `next_id`** from a three-line branch into one line using `max(..., default=0) + 1`, which handles the empty-list case natively.
+
+No behavior changes — purely cosmetic/structural cleanup. 45/45 green.

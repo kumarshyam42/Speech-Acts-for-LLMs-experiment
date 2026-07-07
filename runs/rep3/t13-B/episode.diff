@@ -1,0 +1,28 @@
+diff --git a/README.md b/README.md
+index c6dbd2a..c78b7f4 100644
+--- a/README.md
++++ b/README.md
+@@ -65,6 +65,23 @@ amount and currency you typed are kept alongside it for reference, but every tot
+ you ever see is computed in US dollars. This keeps reports consistent even when a
+ month mixes several currencies.
+ 
++## Supported currencies
++
++tally can record expenses in the following currencies and will convert each one to
++US dollars for storage and reporting:
++
++| Code | Currency        |
++|------|-----------------|
++| USD  | US Dollar       |
++| EUR  | Euro            |
++| GBP  | Pound Sterling  |
++| SGD  | Singapore Dollar|
++| JPY  | Japanese Yen    |
++| INR  | Indian Rupee    |
++
++Pass the code with `--currency` when adding an expense (e.g. `--currency EUR`).
++Amounts with no `--currency` flag are assumed to be USD.
++
+ ## A note on scope
+ 
+ This is a personal tool, not an accounting package. It does not do tax categories,

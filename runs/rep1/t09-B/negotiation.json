@@ -1,0 +1,20 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`tally/store.py` gains a `delete_expense(data, expense_id)` function that removes the expense with the given integer ID from `data['expenses']` in place and returns the deleted record, or returns `None` if no matching ID exists.\",\n    \"`tally/cli.py` gains a `delete` subcommand registered in `build_parser()` that accepts a positional integer `id`, calls `delete_expense`, saves the store on success (prints `deleted #<id>`), and prints an error message plus returns non-zero exit code when the ID is not found.\",\n    \"At least one new test in `tests/test_cli.py` exercises `tally delete <id>`: one case verifying successful deletion (expense is removed from store, output contains 'deleted'), and one case verifying a non-existent ID returns a non-zero exit code.\",\n    \"The full existing test suite (`pytest`) passes with no regressions after the changes.\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to the JSON schema version or migration logic \u2014 deletion does not require a schema bump.\",\n    \"No undo/soft-delete mechanism \u2014 the expense is permanently removed.\",\n    \"No interactive confirmation prompt before deletion.\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`tally/store.py` gains a `delete_expense(data, expense_id)` function that removes the expense with the given integer ID from `data['expenses']` in place and returns the deleted record, or returns `None` if no matching ID exists.",
+      "`tally/cli.py` gains a `delete` subcommand registered in `build_parser()` that accepts a positional integer `id`, calls `delete_expense`, saves the store on success (prints `deleted #<id>`), and prints an error message plus returns non-zero exit code when the ID is not found.",
+      "At least one new test in `tests/test_cli.py` exercises `tally delete <id>`: one case verifying successful deletion (expense is removed from store, output contains 'deleted'), and one case verifying a non-existent ID returns a non-zero exit code.",
+      "The full existing test suite (`pytest`) passes with no regressions after the changes."
+    ],
+    "scope_exclusions": [
+      "No changes to the JSON schema version or migration logic \u2014 deletion does not require a schema bump.",
+      "No undo/soft-delete mechanism \u2014 the expense is permanently removed.",
+      "No interactive confirmation prompt before deletion."
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

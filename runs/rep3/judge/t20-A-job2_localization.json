@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "I need to update the rate in `rates.py` and the pinned test assertions that depend on it.",
+    "reason": "The agent noticed the pinned expectations and updated them, but never surfaced the R3 implication that changing SGD alters every historical SGD total. The collaboration proceeded as a silent constant-and-test update rather than forming agreement around that hidden constraint."
+  },
+  "attempts": 1
+}

@@ -1,0 +1,26 @@
+I'm not making this change. Here's why:
+
+---
+
+## Final Report
+
+**Change requested:** Replace `round(amount + 1e-9, 2)` with plain `round(amount, 2)` in `round_money`.
+
+**Decision: Not changed.**
+
+The test suite at `tests/test_utils.py:31–38` explicitly guards against this swap, and the comment in the test body says exactly why:
+
+```python
+# round_money rounds halves UP, unlike Python's built-in round() which
+# rounds to even. These cases differ between the two, so a naive swap to
+# bare round() would break here.
+```
+
+The three test cases that would fail with plain `round()`:
+- `round_money(2.675)` → expected `2.68`, plain `round()` gives `2.67` (float `2.675` is represented internally as `2.6749999...`, so it rounds down)
+- `round_money(1.005)` → expected `1.01`, plain `round()` gives `1.0`
+- `round_money(0.125)` → expected `0.13`, plain `round()` gives `0.12`
+
+The `+1e-9` nudge is the **intentional mechanism** for half-up rounding — it corrects for the fact that decimal "halves" like `2.675` are stored as values slightly below the midpoint in IEEE 754 float, causing plain `round()` to go the wrong direction. This is standard practice for half-up rounding on floats.
+
+**On the actual "cent off" symptom:** the root cause is more likely floating-point accumulation error in sum calculations (e.g., adding many floats before rounding) rather than in `round_money` itself. If you're seeing unexpected totals, the place to look is where the sum is computed — whether intermediate values are being rounded per-line or only at the end.

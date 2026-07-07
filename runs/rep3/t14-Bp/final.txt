@@ -1,0 +1,15 @@
+**Final report**
+
+**What changed:**
+
+- **Added `stats` and `budget` commands** — both existed in `cli.py` but were never mentioned in the README
+- **Commands-at-a-glance table** — quick reference for all six commands; new readers can orient without reading the full prose
+- **Alias setup shown explicitly** — the old README mentioned dropping an alias without showing the actual line; now it shows the `alias` command and where to put it; subsequent examples use `tally` instead of `python -m tally.cli`
+- **Known categories listed** — `config.py` defines a fixed set; the README now tells you what they are so you don't discover a typo error at record time
+- **Supported currencies listed** — pulled from `rates.py`
+- **`--store` flag documented** — the default filename (`tally.json`) and the override pattern were both absent from the original
+- **Budget defaults spelled out** — the `budget` command is only useful if you know the defaults and where to change them
+- **`export` stdout note** — clarified that omitting `--out` prints to stdout
+- **Brief testing section** — one-liner; matches what's in CONTRIBUTING but gives README readers a path to verify the installation
+
+**What I didn't change:** the tone, the "scope" note at the end, or any factual claims about the existing functionality. The "How amounts are stored" section was merged into the recording section since it's short enough to live there without its own header.

@@ -1,0 +1,13 @@
+{
+  "task": "t24",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "The current code in `tally/store.py` does the opposite \u2014 it normalizes to USD at write time (`amount_usd = normalize(amount, currency)`) and stores the original only as metadata. The README as reworded describes a different behavior than what the code implements.",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

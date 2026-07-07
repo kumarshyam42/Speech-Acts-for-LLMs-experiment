@@ -1,0 +1,41 @@
+{
+  "rep": "rep3",
+  "task": "t21",
+  "class": "1",
+  "job": "b2_assertion_truthfulness",
+  "n_assertions": 4,
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "assertions": [
+      {
+        "cos": "README.md contains a new section (or subsection under 'Looking at your spending') documenting the `budget --month YYYY-MM` command",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+The `budget` command compares what you actually spent in each category against the\n+budgets you have configured, so you can see at a glance where you came in under and\n+where you went over:",
+        "reasoning": "The diff adds README text for the `budget` command in the usage area immediately before the next section. The added example below it documents the `--month` form."
+      },
+      {
+        "cos": "The section explains that the command shows category spending compared against configured budgets",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+The `budget` command compares what you actually spent in each category against the\n+budgets you have configured, so you can see at a glance where you came in under and\n+where you went over:",
+        "reasoning": "The added text explicitly says the command compares spending in each category against configured budgets."
+      },
+      {
+        "cos": "The section includes a usage example: `python -m tally.cli budget --month 2024-03`",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+python -m tally.cli budget --month 2024-03",
+        "reasoning": "The diff includes the required command exactly in the added code block."
+      },
+      {
+        "cos": "No other content in README.md is altered",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "@@ -57,6 +57,14 @@ python -m tally.cli list --month 2024-03\n python -m tally.cli export --out march.csv\n ```\n \n+The `budget` command compares what you actually spent in each category against the\n+budgets you have configured, so you can see at a glance where you came in under and\n+where you went over:\n+\n+```\n+python -m tally.cli budget --month 2024-03\n+```\n+\n ## How amounts are stored",
+        "reasoning": "The README diff hunk shows only added lines between unchanged surrounding lines. There are no removed or modified README content lines in the provided diff."
+      }
+    ]
+  }
+}

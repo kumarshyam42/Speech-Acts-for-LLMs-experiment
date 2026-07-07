@@ -1,0 +1,31 @@
+diff --git a/README.md b/README.md
+index c6dbd2a..89c34af 100644
+--- a/README.md
++++ b/README.md
+@@ -29,8 +29,8 @@ python -m tally.cli add 12.50 food --note "lunch"
+ ```
+ 
+ The first two arguments are the amount and the category. By default the amount is
+-read as US dollars, but you can enter it in another currency and tally will convert
+-it for you:
++treated as US dollars, but you can specify any currency with `--currency` and tally
++will store it as-is:
+ 
+ ```
+ python -m tally.cli add 39 food --currency EUR --date 2024-03-04
+@@ -59,11 +59,10 @@ python -m tally.cli export --out march.csv
+ 
+ ## How amounts are stored
+ 
+-Whenever you add an expense, tally converts the amount into US dollars using the
+-conversion table in `tally/rates.py` and stores that dollar figure. The original
+-amount and currency you typed are kept alongside it for reference, but every total
+-you ever see is computed in US dollars. This keeps reports consistent even when a
+-month mixes several currencies.
++Whenever you add an expense, tally stores the amount in the currency you entered.
++Nothing is converted — if you typed 39 EUR, that is what gets saved. When you run a
++report that mixes currencies, tally groups or labels entries by currency so the
++figures remain comparable.
+ 
+ ## A note on scope
+ 

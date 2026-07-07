@@ -1,0 +1,14 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+**What changed:**
+
+- `tally/report.py` — `CSV_FIELDS`: replaced `"amount_usd"` with `"amount"` and removed the now-redundant `"original_amount"` entry. The CSV schema is now `["id", "date", "category", "amount", "original_currency", "note"]`.
+- `tally/report.py` — `to_csv`: explicitly maps the `amount` column from `exp["original_amount"]` (falling back to `exp["amount_usd"]` for any legacy records that lack the original field).
+- `tests/test_report.py` — replaced `test_export_amount_column_is_usd` (which was asserting the old USD-sum behavior) with `test_export_amount_column_is_original`, which verifies the `amount` column matches the original typed values.
+- `tests/test_cli.py` — updated the header assertion in `test_export_to_file` from `"amount_usd"` to `"amount"`.
+
+**Result:** A user who entered €39 for groceries now sees `39.0` in the `amount` column alongside `EUR` in the `original_currency` column, instead of the confusing `42.12` USD value. All 45 tests pass.

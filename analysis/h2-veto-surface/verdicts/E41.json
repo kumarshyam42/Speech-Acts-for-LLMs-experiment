@@ -1,0 +1,23 @@
+{
+  "label": "E41",
+  "rep": "rep2",
+  "task": "t10",
+  "class": "2",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract narrows a broad request into only four specific error paths. That may be fine, but the requester should confirm these are the intended priority cases before work begins.",
+        "span": "cover each of the four error paths above"
+      },
+      {
+        "description": "The exclusion of negative amounts and future dates may leave common CLI input errors unhandled. If the requester expected general CLI validation improvements, this exclusion could under-deliver.",
+        "span": "No validation of business-logic constraints (e.g. negative amounts, future dates)"
+      }
+    ],
+    "primary_risk": "The main risk is that the contract turns a broad request for better CLI error handling into a narrow set of four cases without confirmation."
+  }
+}

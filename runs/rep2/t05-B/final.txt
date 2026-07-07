@@ -1,0 +1,48 @@
+All 46 tests pass, including the new `test_to_usd_cad`.
+
+---
+
+## Completion Report
+
+The two files changed:
+
+- **`tally/rates.py`**: Added `"CAD": 0.73` to the `RATES` dict. Since `to_usd` and `normalize` are generic, `tally add --currency CAD` immediately converts to USD at 0.73, and `tally report` already sums stored `amount_usd` values — no further changes needed.
+- **`tests/test_rates.py`**: Added `test_to_usd_cad` which asserts `rates.to_usd(100.0, "CAD") == 73.0`.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "tally/rates.py RATES dict contains 'CAD': 0.73",
+      "status": "met",
+      "evidence": "tally/rates.py line 13: \"CAD\": 0.73 added to RATES dict"
+    },
+    {
+      "cos": "rates.to_usd(100.0, 'CAD') returns 73.0",
+      "status": "met",
+      "evidence": "test_to_usd_cad passes (test_rates.py::test_to_usd_cad PASSED in pytest run)"
+    },
+    {
+      "cos": "tally add --currency CAD accepts a CAD amount and stores it converted to USD (amount_usd = amount * 0.73)",
+      "status": "met",
+      "evidence": "store.add_expense calls rates.normalize which calls to_usd; with CAD in RATES at 0.73, any CAD amount is multiplied by 0.73. test_cli.py::test_add_persists_normalized_amount validates this pattern for other currencies; the mechanism is identical for CAD."
+    },
+    {
+      "cos": "tally report displays the correct USD total for expenses entered in CAD",
+      "status": "met",
+      "evidence": "report.py sums amount_usd from stored records; since add normalizes CAD→USD at 0.73, report will display the correct USD total. All 46 tests pass including test_cli.py::test_add_then_report."
+    },
+    {
+      "cos": "tests/test_rates.py contains a test that pins the CAD rate (e.g. to_usd(100.0, 'CAD') == 73.0)",
+      "status": "met",
+      "evidence": "test_to_usd_cad added at tests/test_rates.py asserting rates.to_usd(100.0, 'CAD') == 73.0; passes in test run"
+    },
+    {
+      "cos": "the full test suite (pytest) passes with zero failures",
+      "status": "met",
+      "evidence": "pytest output: 46 passed in 0.06s — zero failures"
+    }
+  ],
+  "assessment": "All conditions of satisfaction are met. The change is minimal: one rate entry in RATES and one pinning test. The CLI and report already handled arbitrary currencies generically through to_usd/normalize, so no changes to those layers were needed."
+}
+```

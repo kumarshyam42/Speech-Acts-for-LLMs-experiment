@@ -1,0 +1,13 @@
+{
+  "task": "t21",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+The `budget` command compares what you actually spent in each category against the\n+budgets you have configured, so you can see at a glance where you came in under and\n+where you went over:\n+\n+```\n+python -m tally.cli budget --month 2024-03\n+```",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

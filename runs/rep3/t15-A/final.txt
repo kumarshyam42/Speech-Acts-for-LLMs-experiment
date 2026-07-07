@@ -1,0 +1,12 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+`parse_currency()` did not exist in the codebase — the request described it as already present, but it was absent from `utils.py`. I added it there following the same pattern as `parse_date()`:
+
+- **What it does:** strips whitespace, uppercases the input, checks it against `rates.RATES`, raises `ValueError` with a helpful message for unknown codes, and returns the canonical uppercase code.
+- **The fix is baked in:** by calling `.upper()` before the dict lookup, lowercase inputs like `'eur'` work correctly from the start.
+- **No circular imports:** `utils.py` importing from `rates.py` is safe — `rates.py` imports only from `config.py`, which has no imports from `utils` or `rates`.
+- All 45 existing tests continue to pass. No tests were deleted or modified.

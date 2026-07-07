@@ -1,0 +1,14 @@
+Done. Here's what changed in the README:
+
+**Added:**
+- `stats` command — was fully implemented but completely absent
+- `budget` command — same
+- Valid category names (`food`, `transport`, `rent`, `entertainment`, `other`)
+- Supported currency codes (USD, EUR, GBP, SGD, JPY, INR)
+- `--store` flag section with a usage example
+- Note that exchange rates are static, not fetched from the internet
+- A concrete shell alias example using `bash` fencing
+
+**Preserved:** The existing prose tone and all accurate content. The "list" and "export" examples from the original are retained, reorganized under clearer headers.
+
+**No open concerns** — the only slight judgment call was listing the static-rates caveat, which the source code and requirements doc both call out explicitly as intentional.

@@ -1,0 +1,21 @@
+All 44 tests pass. Here's a summary of what was done:
+
+---
+
+**Final Report**
+
+**Problem:** `store.add_expense` was calling `normalize(amount, currency)` (which converts to USD) before storing the record, so EUR amounts were being baked in as USD values at write time. That meant the original amount was lost for reporting and the wrong number showed up in summaries.
+
+**Changes made:**
+
+- **`tally/store.py`** — Removed the `normalize()` call and the `amount_usd` field from new records. `add_expense` now stores only `original_amount` and `original_currency` as typed.
+
+- **`tally/report.py`** — Added `_expense_usd(exp)` helper that calls `to_usd(original_amount, original_currency)` at report time. It falls back to `exp["amount_usd"]` when that key is present (v1-migrated records already had USD on disk; computing again would double-convert). All report functions (`category_totals`, `grand_total`, `format_expense_list`, `to_csv`) now route through this helper.
+
+- **`tally/cli.py`** — Updated the `add` confirmation message from `"42.12 USD"` to `"39.00 EUR"` (now shows what the user typed).
+
+- **`tests/test_store.py`** — Renamed `test_add_normalizes_to_usd` → `test_add_stores_original_values` (asserts `amount_usd` is absent, original fields are correct); removed `test_stored_amounts_match_expected_usd` (no longer relevant).
+
+- **`tests/test_cli.py`** — Updated three tests: `test_add_then_report` checks the add output for `"39.00 EUR"` instead of `"42.12 USD"`; `test_add_persists_original_amount` checks `original_amount`/`original_currency` in the JSON file; `test_add_defaults_currency_to_usd` checks `original_amount` instead of `amount_usd`.
+
+All 44 tests pass.

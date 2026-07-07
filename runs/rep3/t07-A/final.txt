@@ -1,0 +1,26 @@
+All 52 tests pass. Here's a summary of what was done:
+
+---
+
+## Final Report
+
+**Problem:** The `--week` option on `report` didn't exist at all in the codebase, so there was no implementation to put expenses in the wrong week — the feature was missing entirely.
+
+**What I built:**
+
+1. **`tally/utils.py` — `week_key()` function**: Uses Python's `datetime.date.isocalendar()` which implements ISO 8601 week numbering. ISO weeks start on **Monday** by default, which is the correct behavior. Returns a string like `"2024-W10"`.
+
+2. **`tally/report.py`**: Added a `week` parameter to `filter_expenses()` and `format_report()`. When `--week` is specified, expenses are filtered to match that ISO week key. The report header shows the week label.
+
+3. **`tally/cli.py`**: Added `--week YYYY-Www` argument to the `report` subcommand. `cmd_report` passes it through to `format_report`.
+
+4. **Tests added** (all passing):
+   - `test_week_key_basic` — verifies 2024-03-04 (Monday) → `2024-W10`
+   - `test_week_key_from_string` — verifies string input works
+   - `test_week_key_monday_start` — Monday and Sunday of the same week produce the same key
+   - `test_week_key_sunday_not_in_next_week` — Sunday stays in its own week, not bumped to the next
+   - `test_week_key_week_boundary` — Sunday of W10 and Monday of W11 are different keys
+   - `test_report_week_filter` — only expenses in the requested week appear
+   - `test_report_week_sunday_same_week_as_monday` — Monday + Sunday expenses both aggregate into W10
+
+The key correctness guarantee is that `isocalendar()` is the standard library's ISO 8601 implementation — Sunday is day 7 (end of the week), Monday is day 1 (start of the week), so there is no Sunday-start bug possible with this approach.

@@ -1,0 +1,13 @@
+53/53 green.
+
+---
+
+**What was done:**
+
+**`tally/cli.py`** — three targeted changes:
+1. **Top-level exception handler** in `main()`: wraps `args.func(args)` in `try/except (ValueError, OSError)` and `json.JSONDecodeError`, printing `error: <message>` to stderr and returning exit code 1. This covers bad dates, unknown currencies, corrupt store files, and unwritable output paths — all of which previously surfaced as raw Python tracebacks.
+2. **Amount validation** in `cmd_add`: raises `ValueError` before touching the store if the amount is ≤ 0 (zero or negative).
+3. **Month format validation** via `_validate_month()`: called at the top of `cmd_report`, `cmd_list`, and `cmd_budget`. Rejects anything that doesn't match `YYYY-MM` (e.g., `2024-3`, `24-03`) before loading data.
+
+**`tests/test_cli.py`** — 8 new tests, one per error path:
+- bad date, unknown currency, zero amount, negative amount, bad month in `report`, bad month in `list`, corrupt JSON store, unwritable export path.

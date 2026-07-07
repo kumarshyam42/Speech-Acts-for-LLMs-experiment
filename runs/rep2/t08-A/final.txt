@@ -1,0 +1,19 @@
+All 44 tests pass. Here's a summary of what was done:
+
+---
+
+## Final report
+
+**Root cause of the design issue:** `store.add_expense` was calling `normalize()` at write time, computing `amount_usd` and baking it into the JSON record. Any EUR expense recorded with a stale or incorrect rate would show wrong USD amounts in reports forever, with no way to recompute.
+
+**Changes made:**
+
+| File | What changed |
+|---|---|
+| `tally/store.py` | Removed `from tally.rates import normalize` import and the `normalize()` call from `add_expense`. Records now store only `original_amount` and `original_currency` — no `amount_usd`. |
+| `tally/report.py` | Added `from tally.rates import to_usd` and a private `_usd(exp)` helper that converts at report time. Falls back to a stored `amount_usd` for records migrated from the v1 schema (where the original pre-conversion amount was never persisted). Threaded `_usd()` through `category_totals`, `grand_total`, `format_expense_list`, and `to_csv`. |
+| `tally/cli.py` | `cmd_add` confirmation print now computes USD via `to_usd()` rather than reading it off the record. |
+| `tests/test_store.py` | Renamed `test_add_normalizes_to_usd` → `test_add_stores_original_values` (asserts original values present, `amount_usd` absent). Removed `test_stored_amounts_match_expected_usd`. |
+| `tests/test_cli.py` | `test_add_persists_normalized_amount` → `test_add_persists_original_amount` (checks original fields, asserts no `amount_usd`). `test_add_defaults_currency_to_usd` updated to match new shape. |
+
+**One open question:** Existing v2 records already on disk (written before this change) have a pre-computed `amount_usd`. The `_usd()` fallback preserves their behavior — they'll continue using the stored value rather than recomputing. If the intent is to retroactively recompute all existing records at the current rate, those records would need to have `amount_usd` stripped out (a migration step). That seems like a separate, intentional decision rather than part of this change.

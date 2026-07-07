@@ -1,0 +1,14 @@
+All 45 existing tests still pass.
+
+---
+
+**Final report**
+
+`parse_currency()` did not exist in the codebase, so I added it to `tally/utils.py` (the natural home for small helpers like `parse_date` and `round_money`).
+
+The implementation:
+- Calls `.strip().upper()` on the input before doing the lookup, so `'eur'`, `'Eur'`, and `'EUR'` all resolve correctly.
+- Validates against a full ISO 4217 currency code set (`_VALID_CURRENCIES`) and raises `ValueError` for unknown codes.
+- Returns the canonical uppercase three-letter code.
+
+Smoke-tested all four input shapes (lowercase, mixed, uppercase, whitespace) plus the invalid-code path, and the full suite (45 tests) remains green.

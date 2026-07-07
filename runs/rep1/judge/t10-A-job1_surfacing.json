@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The unhandled error cases are:\n1. **Invalid date format** \u2192 `ValueError` from `parse_date()`, currently throws a traceback\n2. **Unsupported currency** \u2192 `ValueError` from `normalize()`, same issue\n3. **Negative/zero amount** \u2192 no validation at all\n4. **Unknown category** \u2192 `KNOWN_CATEGORIES` exists in config but is never used for validation\n5. **Invalid `--month` format** \u2192 silently returns no results instead of erroring\n6. **Corrupt store file** \u2192 `json.JSONDecodeError` (subclass of `ValueError`) propagates as a traceback\n7. **I/O errors** \u2192 `OSError` propagates as a traceback",
+    "span_locator": "event 18, assistant"
+  },
+  "attempts": 1
+}

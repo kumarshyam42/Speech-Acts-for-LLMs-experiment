@@ -1,0 +1,69 @@
+{
+  "rep": "rep3",
+  "task": "t16",
+  "class": "4",
+  "job": "b2_assertion_truthfulness",
+  "n_assertions": 8,
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "assertions": [
+      {
+        "cos": "In `tally/report.py`, `CSV_FIELDS` replaces `\"amount_usd\"` with `\"amount\"` as the primary amount column",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+CSV_FIELDS = [\"id\", \"date\", \"category\", \"amount\", \"original_amount\", \"original_currency\", \"note\"]",
+        "reasoning": "The diff shows `CSV_FIELDS` now contains `\"amount\"` where the primary amount column is defined, and `\"amount_usd\"` is removed from that list."
+      },
+      {
+        "cos": "In `to_csv`, the `amount` column is populated from `original_amount` (the value the user typed), not `amount_usd`",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+        row[\"amount\"] = exp.get(\"original_amount\", exp.get(\"amount_usd\", \"\"))",
+        "reasoning": "The diff shows `row[\"amount\"]` is assigned from `original_amount` first. `amount_usd` is only used as a fallback when `original_amount` is absent."
+      },
+      {
+        "cos": "A EUR expense row in the exported CSV shows the original EUR value (e.g. 39.00) in the `amount` column, not the USD conversion",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+    assert float(rows[\"EUR\"][\"amount\"]) == 39.0",
+        "reasoning": "The updated test explicitly asserts that the EUR row's exported `amount` value is `39.0`. The pytest output shows the test suite passed."
+      },
+      {
+        "cos": "A USD expense row continues to show the same value as before (original_amount == amount_usd for USD entries)",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+    assert float(rows[\"USD\"][\"amount\"]) == 50.0",
+        "reasoning": "The updated test explicitly asserts the USD row's exported `amount` value remains `50.0`. The passing pytest output supports that assertion for the test fixture."
+      },
+      {
+        "cos": "The `original_amount` and `original_currency` columns remain in the CSV (unchanged)",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+CSV_FIELDS = [\"id\", \"date\", \"category\", \"amount\", \"original_amount\", \"original_currency\", \"note\"]",
+        "reasoning": "The changed `CSV_FIELDS` line still includes both `original_amount` and `original_currency` in the CSV field list."
+      },
+      {
+        "cos": "All tests pass: `test_export_has_header` updated to expect the new `CSV_FIELDS`",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": ".............................................                            [100%]\n45 passed in 0.03s",
+        "reasoning": "The pytest artifact confirms all tests pass. The diff shows `test_export_has_header` still compares the header against `report_mod.CSV_FIELDS`, so after `CSV_FIELDS` changed, the test expects the new field list."
+      },
+      {
+        "cos": "`test_export_amount_column_is_usd` updated or replaced to assert `amount` column holds the original typed value",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+def test_export_amount_column_is_original(sample_store):",
+        "reasoning": "The diff shows the old USD-specific test was replaced with `test_export_amount_column_is_original`. Its added assertions check `rows[\"EUR\"][\"amount\"]` and `rows[\"USD\"][\"amount\"]`."
+      },
+      {
+        "cos": "`test_export_to_file` in `test_cli.py` updated to check for `\"amount\"` not `\"amount_usd\"`",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+    assert \"amount\" in content.splitlines()[0]\n+    assert \"amount_usd\" not in content.splitlines()[0]",
+        "reasoning": "The diff shows `test_export_to_file` now asserts the header contains `\"amount\"` and does not contain `\"amount_usd\"`."
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "label": "E02",
+  "rep": "rep1",
+  "task": "t13",
+  "class": "1",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "A bare list of codes could imply tally supports reporting or totals in all six currencies, while the requirements say totals and exports are always in USD. The contract should allow a short qualifier that these are accepted input currencies, not reporting denominations.",
+        "span": "No exchange-rate information or conversion details added \u2014 listing only the currency codes"
+      }
+    ],
+    "primary_risk": "The contract may create misleading README wording by listing supported currencies without preserving the project requirement that reports and totals are denominated in USD."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "Here are the error handling gaps:",
+    "span_locator": "event 17, assistant"
+  },
+  "attempts": 2
+}

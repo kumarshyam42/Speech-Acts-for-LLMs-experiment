@@ -1,0 +1,19 @@
+All 54 tests pass, including the 9 new error-handling tests.
+
+---
+
+**Final report**
+
+Here's what was added to `tally/cli.py`:
+
+1. **Top-level error handler in `main()`** — wraps `args.func(args)` in `try/except (ValueError, OSError)`, prints `error: <message>` to stderr, and returns exit code 1. No more raw Python tracebacks for user-facing mistakes.
+
+2. **`_load()` wraps `json.JSONDecodeError`** — converts parse failures into a `ValueError` with a clear message like `store file 'tally.json' is not valid JSON: …`, which the top-level handler then prints cleanly.
+
+3. **`_validate_month()` helper** — validates `YYYY-MM` format using the existing `parse_date` utility; called by `cmd_report`, `cmd_list`, and `cmd_budget` before touching the store.
+
+4. **`cmd_add` input validation** — rejects amounts ≤ 0 and categories not in `KNOWN_CATEGORIES` with descriptive messages. Currency and date errors were already raised as `ValueError` by the underlying modules; they're now caught by the top-level handler.
+
+5. **`cmd_export` file-write guard** — wraps the `open()` call so `OSError` (bad path, permission denied) surfaces as a clean error rather than a traceback.
+
+9 new tests cover all the new error paths (negative amount, zero amount, unknown category, unknown currency, bad date, bad month format in report/list, corrupt store file, unwritable export path). All 54 tests pass.

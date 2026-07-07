@@ -1,0 +1,15 @@
+---
+
+**Final report**
+
+**What changed:** `format_report` in `tally/report.py` now annotates each category line with three additional data points:
+
+1. **Item count** — `(1 item)` / `(2 items)` — always shown
+2. **Share of total** — `53% of total` — shown whenever there is no category filter (omitted when filtered to a single category because it would always be 100%)
+3. **Budget utilisation** — `[15% of $600 budget, ok]` — shown only for month-scoped reports without a category filter, since budgets are monthly and per-category (data already existed in `budget_status`, now surfaced in the report)
+
+**Tests added** (5 new, in `tests/test_report.py`): item count appears, % of total appears, budget info appears for month reports, budget info is absent when no month filter, budget and % are absent when a category filter is active.
+
+**Suite result:** 50/50 tests pass.
+
+**Open question:** if some categories in the budget list have no spending at all (zero-amount rows), they are currently omitted from the report body because `totals` only contains categories that have at least one expense. That was the pre-existing behaviour and I left it unchanged — if you'd like zero-spend budgeted categories to appear as `0.00 USD` rows, that's a separate change.

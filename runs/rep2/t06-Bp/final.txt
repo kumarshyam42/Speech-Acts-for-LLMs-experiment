@@ -1,0 +1,9 @@
+**Final report:**
+
+Two changes made to `tally/store.py`:
+
+1. **Removed dead import** (`typing.Dict`, `typing.List`, `typing.Optional`) — none of these were used anywhere in the file.
+
+2. **Removed unused local variable in `migrate()`** — `version` was set to `2` after the v1 migration block but never read again (the unconditional `data["schema_version"] = SCHEMA_VERSION` always ran regardless). Inlined the version check directly into the `if` condition and dropped the dead assignment.
+
+The rest of the file was already clean — the function order is logical, docstrings are accurate, and all public names are genuinely public. All 9 tests pass unchanged.

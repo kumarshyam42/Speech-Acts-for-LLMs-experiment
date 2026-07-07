@@ -1,0 +1,73 @@
+# tally
+
+tally is a little command-line tool for keeping track of what you spend. It grew
+out of a spreadsheet that got out of hand, and honestly it still carries a bit of
+that spreadsheet energy — you throw expenses at it, and it adds them up for you by
+month and by category. There is no server, no account, no sync. Everything lives
+in a single JSON file next to wherever you run it, which means you can back it up,
+diff it, or just delete it and start over whenever the mood strikes.
+
+The idea is that recording an expense should take about as long as it takes to
+think of it. You type the amount, a category, maybe a note, and you are done. Later,
+when you want to know where the money went, you ask for a report.
+
+## Installing
+
+There is nothing to install beyond Python 3.9 or newer. Clone the repository and
+run it as a module:
+
+```
+python -m tally.cli --help
+```
+
+If you like, drop a shell alias so you can just type `tally`.
+
+## Recording an expense
+
+```
+python -m tally.cli add 12.50 food --note "lunch"
+```
+
+The first two arguments are the amount and the category. By default the amount is
+read as US dollars, but you can enter it in another currency and tally will convert
+it for you:
+
+```
+python -m tally.cli add 39 food --currency EUR --date 2024-03-04
+```
+
+If you leave off `--date`, today's date is used.
+
+## Looking at your spending
+
+The `report` command prints category totals for a month. You can narrow it to a
+single category too:
+
+```
+python -m tally.cli report --month 2024-03
+python -m tally.cli report --month 2024-03 --category food
+```
+
+There is also a `list` command if you would rather see the individual expenses
+instead of the totals, and an `export` command that writes everything out as CSV
+so you can open it in a spreadsheet after all:
+
+```
+python -m tally.cli list --month 2024-03
+python -m tally.cli export --out march.csv
+```
+
+## How amounts are stored
+
+Whenever you add an expense, tally converts the amount into US dollars using the
+conversion table in `tally/rates.py` and stores that dollar figure. The original
+amount and currency you typed are kept alongside it for reference, but every total
+you ever see is computed in US dollars. This keeps reports consistent even when a
+month mixes several currencies.
+
+## A note on scope
+
+This is a personal tool, not an accounting package. It does not do tax categories,
+receipts, shared budgets, or anything clever with recurring expenses. If you need
+those, you have outgrown tally. If you just want to know whether you spent too much
+on takeout last month, you are in the right place.

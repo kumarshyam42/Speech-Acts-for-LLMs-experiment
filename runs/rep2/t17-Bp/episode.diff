@@ -1,0 +1,48 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..cb18676 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -14,7 +14,7 @@ import sys
+ 
+ from tally import report as report_mod
+ from tally import store as store_mod
+-from tally.config import DEFAULT_CURRENCY
++from tally.config import DEFAULT_CURRENCY, KNOWN_CATEGORIES
+ from tally.utils import month_key, parse_date
+ 
+ DEFAULT_STORE = "tally.json"
+@@ -25,6 +25,14 @@ def _load(args):
+ 
+ 
+ def cmd_add(args):
++    if args.category not in KNOWN_CATEGORIES:
++        print(
++            "error: unknown category '{}'. Choose from: {}".format(
++                args.category, ", ".join(KNOWN_CATEGORIES)
++            ),
++            file=sys.stderr,
++        )
++        return 1
+     data = _load(args)
+     # normalize the date so we fail early on a bad value
+     date = parse_date(args.date).isoformat()
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..ea4c331 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -81,6 +81,15 @@ def test_no_command_prints_help(capsys):
+     assert "usage" in out.lower()
+ 
+ 
++def test_add_rejects_unknown_category(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "add", "10", "fod", "--date", "2024-03-01"])
++    assert rc != 0
++    err = capsys.readouterr().err
++    assert "fod" in err
++    assert "food" in err  # hint toward the valid category list
++
++
+ def test_add_defaults_currency_to_usd(tmp_path, capsys):
+     store = _store_path(tmp_path)
+     cli.main(["--store", store, "add", "12.5", "other", "--date", "2024-06-01"])

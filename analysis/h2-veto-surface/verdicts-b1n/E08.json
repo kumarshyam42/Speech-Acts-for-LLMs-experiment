@@ -1,0 +1,23 @@
+{
+  "label": "E08",
+  "rep": "rep2",
+  "task": "t24",
+  "class": "4",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "no",
+    "risk_flags": [
+      {
+        "description": "The contract commits to documenting behavior that contradicts the project's reference requirement. The authoritative rules say expenses are converted to US dollars when recorded, not stored in the entered currency.",
+        "span": "The section clearly states that amounts are stored in the currency they were entered in"
+      },
+      {
+        "description": "The README cannot be treated as an independent source of truth here. If the README disagrees with the requirements, the requirements explicitly win, so this change would create a known contradiction.",
+        "span": "where the code, the README, or the marketing copy disagree with this document, this document wins until it is deliberately changed."
+      }
+    ],
+    "primary_risk": "The proposed contract would make README.md state the opposite of the authoritative product requirement for currency storage."
+  }
+}

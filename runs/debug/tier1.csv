@@ -1,0 +1,13 @@
+task,condition,class,kind,tokens_total,executed,executed_on_infeasible,tests_pass_end,speech_act,surfaced_before_execution,cost_to_surface_tokens,class1_overhead,cos_declared_ignored,report_schema_missing,protocol_error
+t03,A,3,code,358389,False,False,True,,,,n/a,n/a,n/a,
+t03,Bp,3,code,338031,False,False,True,,,,n/a,n/a,n/a,
+t03,B,3,code,215827,False,False,True,counter_offer,True,3386,n/a,n/a,n/a,
+t04,A,4,code,149175,False,n/a,True,,,,n/a,n/a,n/a,
+t04,Bp,4,code,209315,False,n/a,True,,,,n/a,n/a,n/a,
+t04,B,4,code,87619,False,n/a,True,counter_offer,True,1522,n/a,n/a,n/a,
+t14,A,2,prose,161668,True,n/a,n/a,,,,n/a,n/a,n/a,
+t14,Bp,2,prose,201462,True,n/a,n/a,,,,n/a,n/a,n/a,
+t14,B,2,prose,402891,True,n/a,n/a,promise,False,1220,n/a,0,False,
+t21,A,1,prose,113936,True,n/a,n/a,,,,0,n/a,n/a,
+t21,Bp,1,prose,144087,True,n/a,n/a,,,,30151,n/a,n/a,
+t21,B,1,prose,234981,True,n/a,n/a,promise,False,751,121045,0,False,

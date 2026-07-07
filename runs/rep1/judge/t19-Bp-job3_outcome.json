@@ -1,0 +1,13 @@
+{
+  "task": "t19",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "+python-dateutil>=2.8",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

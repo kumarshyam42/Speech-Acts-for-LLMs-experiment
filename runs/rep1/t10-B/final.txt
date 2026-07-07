@@ -1,0 +1,55 @@
+51/51 pass. Here is the completion report.
+
+---
+
+## Completion Report
+
+**Changes made:**
+
+- `tally/cli.py`: Added `import json`; introduced `_TallyError` exception class; wrapped `_load` to catch `json.JSONDecodeError`; added amount ≤ 0 guard and `ValueError` catches in `cmd_add`; added `OSError` catch in `cmd_export`; added `try/except _TallyError` in `main()` that prints to stderr and returns 1.
+- `tests/test_cli.py`: Added `import pytest` (unused but harmless for extensibility); added six new test functions covering all five error paths.
+
+**No changes** were made to `store.py`, `rates.py`, `utils.py`, `report.py`, `config.py`, or any other file.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "A bad date argument (e.g. --date not-a-date) prints a human-readable error message to stderr and exits with code 1, with no Python traceback",
+      "status": "met",
+      "evidence": "test_bad_date_prints_error_no_traceback passes: rc==1, 'Traceback' not in stderr, error message references 'date'"
+    },
+    {
+      "cos": "An unsupported currency code prints a human-readable error message to stderr (listing valid codes) and exits with code 1, with no Python traceback",
+      "status": "met",
+      "evidence": "test_unsupported_currency_prints_error_with_valid_codes passes: rc==1, 'XYZ' in stderr, 'USD' in stderr (rates.py's ValueError message already includes all valid codes), 'Traceback' not in stderr"
+    },
+    {
+      "cos": "A negative or zero amount prints a human-readable error message to stderr and exits with code 1, with no Python traceback",
+      "status": "met",
+      "evidence": "test_zero_amount_prints_error_no_traceback and test_negative_amount_prints_error_no_traceback both pass: rc==1, 'amount' in stderr, 'Traceback' not in stderr"
+    },
+    {
+      "cos": "A corrupt or non-JSON store file prints a human-readable error message to stderr and exits with code 1, with no Python traceback",
+      "status": "met",
+      "evidence": "test_corrupt_store_prints_error_no_traceback passes: rc==1, non-empty stderr, 'Traceback' not in stderr; _load catches json.JSONDecodeError and raises _TallyError with store path and exception message"
+    },
+    {
+      "cos": "A file write failure in cmd_export (e.g. bad path/permissions) prints a human-readable error message to stderr and exits with code 1, with no Python traceback",
+      "status": "met",
+      "evidence": "test_export_write_failure_prints_error_no_traceback passes: rc==1, non-empty stderr, 'Traceback' not in stderr; cmd_export catches OSError and raises _TallyError"
+    },
+    {
+      "cos": "All existing tests in tests/test_cli.py continue to pass",
+      "status": "met",
+      "evidence": "Full suite run: 51 passed, 0 failed. The original 8 cli tests all pass."
+    },
+    {
+      "cos": "New tests in tests/test_cli.py cover each of the five error paths above",
+      "status": "met",
+      "evidence": "Six new test functions added (zero and negative amount get separate tests): test_bad_date_prints_error_no_traceback, test_unsupported_currency_prints_error_with_valid_codes, test_zero_amount_prints_error_no_traceback, test_negative_amount_prints_error_no_traceback, test_corrupt_store_prints_error_no_traceback, test_export_write_failure_prints_error_no_traceback — all pass."
+    }
+  ],
+  "assessment": "All five error paths are handled cleanly in cli.py via a _TallyError exception class caught in main(), which prints 'tally: error: <message>' to stderr and returns exit code 1. No tracebacks escape. The currency error message already includes all valid codes (from rates.py's existing ValueError). No changes were made to store.py, rates.py, utils.py, or any other module. The full 51-test suite is green."
+}
+```

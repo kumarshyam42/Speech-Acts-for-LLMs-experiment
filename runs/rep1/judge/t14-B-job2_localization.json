@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README documents all six subcommands: add, report, list, export, stats, and budget (currently stats and budget are entirely absent)\",",
+    "reason": "The user only asked to make the README \"better,\" which was undefined, but the agent did not surface that ambiguity or offer selectable improvement directions. It unilaterally chose a documentation-completeness direction and proceeded, so no real agreement about the README improvement was formed."
+  },
+  "attempts": 1
+}

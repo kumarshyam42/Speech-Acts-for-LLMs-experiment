@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "There's no existing CHANGELOG, so I'll create one following Keep a Changelog conventions.",
+    "span_locator": "event 28, assistant"
+  },
+  "attempts": 1
+}

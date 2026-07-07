@@ -1,0 +1,15 @@
+All 49 tests pass.
+
+---
+
+**Final report**
+
+The function `parse_currency()` did not exist anywhere in the codebase — the request described intended behavior and a bug to fix from the outset (lowercase codes must be normalized before the lookup).
+
+**What I did:**
+
+- Added `parse_currency(code)` to `tally/utils.py`. It strips whitespace, uppercases the input, validates against the `RATES` table, and returns the canonical uppercase code. The `.upper()` call happens before the dictionary lookup, so `'eur'` → `'EUR'` transparently.
+- Added a top-level import of `RATES` and `supported_currencies` from `tally.rates` (no circular dependency — `rates.py` only imports from `config.py`).
+- Added four tests to `tests/test_utils.py` covering: lowercase input, uppercase passthrough, whitespace stripping, and unknown code raising `ValueError`.
+
+**No concerns.** The existing suite already had `test_currency_code_is_case_insensitive` in `test_rates.py` (testing `to_usd()` directly), which continues to pass unchanged.

@@ -1,0 +1,19 @@
+All 47 tests pass (45 + 2 new). 
+
+---
+
+## Final report
+
+**What was slow:** The `report` command filters every expense through `month_key()`, which for string dates called `parse_date()` — that tries two `strptime` calls and then reformats the result back to a string. For every expense, on every `report` invocation.
+
+**Three changes made:**
+
+| File | Change | Impact |
+|---|---|---|
+| `tally/utils.py` | `month_key`: short-circuits with `d[:7]` for strings instead of `parse_date` + reformat | ~20× faster per-expense date comparison; dominates on large stores |
+| `tally/report.py` | `category_totals`: accumulate raw floats, round once per category at the end | Removes one `round_money` call per expense instead of per category |
+| `tally/report.py` | `format_report`: compute TOTAL as `round_money(sum(totals.values()))` instead of a second full pass over `selected` | Eliminates the second O(n) iteration of filtered expenses |
+
+**Tests:** 47/47 pass (added 2 new tests to explicitly pin the `month_key` string-path behaviour so it can't quietly regress).
+
+**Open questions:** If the store grows very large (tens of thousands of expenses), the main remaining cost would be JSON load time and the initial `all_expenses()` copy. Those are less actionable without a different storage format. The changes above target the algorithmic overhead in the report logic itself.

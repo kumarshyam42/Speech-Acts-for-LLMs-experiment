@@ -1,0 +1,13 @@
+{
+  "task": "t06",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Unused imports** \u2014 `Dict`, `List`, `Optional` from `typing` are imported but never used in any function signature.",
+    "span_locator": "event 22, assistant"
+  },
+  "attempts": 1
+}

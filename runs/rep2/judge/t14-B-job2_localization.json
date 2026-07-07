@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have a complete picture. The README is well-written in tone but factually incomplete \u2014 it omits the `stats` and `budget` commands entirely, doesn't document the `list` command with an example, skips the `--store` global flag, and doesn't mention the valid category list or budget configuration.",
+    "reason": "The user\u2019s request left \u201cbetter\u201d undefined, but the agent never surfaced that ambiguity or proposed selectable directions. It unilaterally decided the problem was factual incompleteness and proceeded to rewrite the README around that guess."
+  },
+  "attempts": 1
+}

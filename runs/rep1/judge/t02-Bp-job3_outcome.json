@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "partial",
+    "evidence": "- **Ambiguity**: \"Sluggish\" is subjective \u2014 I'll profile/measure to find the actual bottleneck rather than guessing.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

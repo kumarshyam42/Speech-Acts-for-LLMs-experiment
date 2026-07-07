@@ -1,0 +1,57 @@
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..f55dc5e 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -1,24 +1,30 @@
+ """Small helpers: date parsing and money rounding."""
+ 
+ import datetime
++import re
+ from typing import Union
+ 
++from dateutil import parser as dateutil_parser
++
+ Dateish = Union[str, datetime.date]
+ 
++_BARE_MONTH_RE = re.compile(r"^\d{4}-\d{2}$")
++
+ 
+ def parse_date(text):
+-    """Parse a date written as YYYY-MM-DD or YYYY-MM.
++    """Parse a date string into a datetime.date.
+ 
+-    A bare YYYY-MM is treated as the first day of that month. Raises ValueError
+-    on anything else.
++    A bare YYYY-MM is treated as the first day of that month. All other formats
++    are delegated to dateutil, which handles ISO 8601, US/EU date formats,
++    natural-language dates, and more. Raises ValueError for unparseable input.
+     """
+     text = text.strip()
+-    for fmt in ("%Y-%m-%d", "%Y-%m"):
+-        try:
+-            return datetime.datetime.strptime(text, fmt).date()
+-        except ValueError:
+-            continue
+-    raise ValueError("unrecognized date {!r}; use YYYY-MM-DD or YYYY-MM".format(text))
++    if _BARE_MONTH_RE.match(text):
++        return datetime.datetime.strptime(text, "%Y-%m").date()
++    try:
++        return dateutil_parser.parse(text).date()
++    except (ValueError, OverflowError) as exc:
++        raise ValueError("unrecognized date {!r}: {}".format(text, exc)) from exc
+ 
+ 
+ def month_key(d):
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 539b7c9..401353d 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -21,7 +21,7 @@ def test_parse_date_strips_whitespace():
+ 
+ def test_parse_bad_date_raises():
+     with pytest.raises(ValueError):
+-        utils.parse_date("March 4th")
++        utils.parse_date("not-a-date")
+ 
+ 
+ def test_month_key_from_date():

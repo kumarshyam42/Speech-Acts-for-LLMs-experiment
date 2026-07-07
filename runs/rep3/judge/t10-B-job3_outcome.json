@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "\"conditions_of_satisfaction\": [\n    \"Running `tally add 50 food --currency XYZ` prints a clear error message to stderr (no raw traceback) and exits with code 1\",\n    \"Running `tally add 50 food --date baddate` prints a clear error message to stderr and exits with code 1\",\n    \"Running `tally report` when the store file contains malformed JSON prints a clear error message to stderr and exits with code 1\",\n    \"Running `tally export --out /no/such/dir/out.csv` prints a clear error message to stderr and exits with code 1\",\n    \"All pre-existing tests in tests/test_cli.py continue to pass\",\n    \"New tests cover the bad-currency, bad-date, and corrupt-store error paths\"\n  ]",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t05",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "All 47 tests pass (up from the previous 45 \u2014 the 2 new tests are included).\n\n---\n\n**Final report**\n\n**What changed:**\n\n1. **`tally/rates.py`** \u2014 Added `\"CAD\": 0.73` to the `RATES` dict (kept alphabetically sorted). No other logic needed: both `add` and `report` already route through `to_usd()`, so CAD is automatically handled end-to-end.\n\n2. **`tests/test_rates.py`** \u2014 Added `test_to_usd_cad`: asserts `to_usd(100.0, \"CAD\") == 73.0`, pinning the rate the same way other currencies are pinned.\n\n3. **`tests/test_cli.py`** \u2014 Added `test_add_and_report_cad`: adds a 100 CAD expense and verifies the CLI prints `73.00 USD` on `add`, then checks that `report` shows `food` and `73.00` for the same month.",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

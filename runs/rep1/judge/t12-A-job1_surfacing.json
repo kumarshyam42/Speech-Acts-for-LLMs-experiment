@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The pricing page notes that `docs/faq.md` also references the same number. Let me read both files to update them consistently.",
+    "span_locator": "event 5, assistant"
+  },
+  "attempts": 1
+}

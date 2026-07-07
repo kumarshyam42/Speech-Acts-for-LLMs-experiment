@@ -1,0 +1,21 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`format_report` computes the grand total from `sum(totals.values())` rather than a separate re-scan of the filtered list via `grand_total(selected)`, eliminating a redundant O(n) pass\",\n    \"`category_totals` and the grand total are accumulated in a single combined pass rather than two sequential passes over the filtered list\",\n    \"The text output of `format_report` is byte-for-byte identical to before for all inputs\",\n    \"`pytest` passes with zero failures after the change\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to the JSON load/save path (disk I/O and JSON parsing are not addressed)\",\n    \"No changes to Python startup time\",\n    \"No indexing or caching of the on-disk store between invocations\",\n    \"No changes to any other command (add, export, budget, stats, list)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`format_report` computes the grand total from `sum(totals.values())` rather than a separate re-scan of the filtered list via `grand_total(selected)`, eliminating a redundant O(n) pass",
+      "`category_totals` and the grand total are accumulated in a single combined pass rather than two sequential passes over the filtered list",
+      "The text output of `format_report` is byte-for-byte identical to before for all inputs",
+      "`pytest` passes with zero failures after the change"
+    ],
+    "scope_exclusions": [
+      "No changes to the JSON load/save path (disk I/O and JSON parsing are not addressed)",
+      "No changes to Python startup time",
+      "No indexing or caching of the on-disk store between invocations",
+      "No changes to any other command (add, export, budget, stats, list)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

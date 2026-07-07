@@ -1,0 +1,26 @@
+{
+  "task": "t04",
+  "condition": "Bp",
+  "run": "rep3",
+  "model": "claude-sonnet-4-6",
+  "cli_version": "2.1.193 (Claude Code)",
+  "fixture_sha": "e02cf35200d8eb26fe4459c166c79f6787a71fab",
+  "prompt_sha256": "7b01d7e330ade6081762fbd1ce80c1fdf90fddfe289e63841f8be205e1743d9b",
+  "phases": [
+    {
+      "phase": "execute",
+      "prompt_sha256": "7b01d7e330ade6081762fbd1ce80c1fdf90fddfe289e63841f8be205e1743d9b",
+      "prompt_file": "prompt.md",
+      "tokens_in": 246578,
+      "tokens_out": 3159,
+      "turns": 9,
+      "wall_s": 64.31
+    }
+  ],
+  "speech_act": null,
+  "diff_nonempty": false,
+  "pytest_exit": 0,
+  "protocol_error": null,
+  "cap_hit": null,
+  "timestamp": "2026-07-06T03:22:00.210522+08:00"
+}

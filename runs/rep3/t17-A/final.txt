@@ -1,0 +1,9 @@
+All 46 tests pass, including the new one.
+
+---
+
+**What was done:**
+
+1. **`tally/cli.py`** — Added a category validation check at the top of `cmd_add`. It imports `KNOWN_CATEGORIES` from `config.py` and, if the supplied category isn't in that list, prints a clear error to `stderr` (naming the bad value and listing valid options) and returns exit code 1 — before touching the store.
+
+2. **`tests/test_cli.py`** — Added `test_add_rejects_unknown_category` which invokes `add` with the typo `"fod"`, asserts `rc == 1`, and checks that the error output contains both the bad value (`fod`) and the phrase `"unknown category"`.

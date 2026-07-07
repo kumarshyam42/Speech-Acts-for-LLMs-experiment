@@ -1,0 +1,37 @@
+45/45 pass. The change is exactly one line in `format_report`.
+
+---
+
+## Completion Report
+
+**Change made:** `tally/report.py` line 65 — replaced `grand_total(selected)` with `round_money(sum(totals.values()))`.
+
+The previous code called `category_totals(selected)` (one O(n) pass) and then `grand_total(selected)` (a second O(n) pass). The fix computes the grand total by summing the already-built `totals` dict in O(k) time (k = number of distinct categories, always tiny). Since `amount_usd` is always stored as a `round_money`-rounded value (2 decimal places), the per-category intermediate rounding in `category_totals` is a no-op, making `round_money(sum(totals.values()))` numerically identical to the original `grand_total(selected)`.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`format_report` computes the grand total from `sum(totals.values())` rather than a separate re-scan of the filtered list via `grand_total(selected)`, eliminating a redundant O(n) pass",
+      "status": "met",
+      "evidence": "report.py:65 now reads `round_money(sum(totals.values()))`. The `grand_total(selected)` call is gone from `format_report`."
+    },
+    {
+      "cos": "`category_totals` and the grand total are accumulated in a single combined pass rather than two sequential passes over the filtered list",
+      "status": "met",
+      "evidence": "`selected` is now iterated only once (inside `category_totals`). The grand total is derived from `totals` (O(k), k = distinct categories), not by re-scanning `selected`."
+    },
+    {
+      "cos": "The text output of `format_report` is byte-for-byte identical to before for all inputs",
+      "status": "met",
+      "evidence": "All stored `amount_usd` values are 2-decimal (produced by `round_money` in `add_expense`). Summing 2-decimal values produces a 2-decimal result, so per-category intermediate rounding is a no-op and `round_money(sum(totals.values()))` equals `grand_total(selected)` for all reachable inputs. All 45 tests pass including tests that pin exact numeric output."
+    },
+    {
+      "cos": "`pytest` passes with zero failures after the change",
+      "status": "met",
+      "evidence": "`python3 -m pytest -v` output: `45 passed in 0.06s`."
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met by a single-line change. No concerns. The `grand_total` function itself is unchanged and remains available for callers outside `format_report` (e.g., `overall_stats`), so no regressions in other commands."
+}
+```

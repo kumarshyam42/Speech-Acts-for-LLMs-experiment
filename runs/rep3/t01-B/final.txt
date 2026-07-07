@@ -1,0 +1,62 @@
+All 52 tests pass, including the 7 new ones.
+
+---
+
+## Completion Report
+
+### What changed
+
+**`tally/report.py`**
+- `filter_expenses` gained a `year` parameter (string `"YYYY"`); when set, it skips any expense whose date doesn't start with that year. Backward-compatible — default is `None`.
+- `format_report` gained the same `year` parameter, passes it through to `filter_expenses`, and includes the year in the header (shown in place of month when a year is requested).
+
+**`tally/cli.py`**
+- The `report` subparser now has `--year YYYY` (type `int`) in a **mutually exclusive group** with `--month`; argparse enforces the constraint and exits non-zero if both are supplied.
+- `cmd_report` converts the int year to a string before passing it to `format_report`.
+
+**`tests/conftest.py`**
+- Added `EXPECTED_2024_FOOD = 92.12` (all food expenses in the sample store fall in 2024, so value equals `EXPECTED_MARCH_FOOD`).
+
+**`tests/test_report.py`** — 4 new tests:
+- `test_format_report_year_breakdown` — verifies year header, all categories, and correct grand total.
+- `test_format_report_year_no_expenses` — year with no data shows `(no expenses)`.
+- `test_format_report_year_category_filter` — `year` + `category` together narrow correctly.
+- `test_filter_expenses_year` — unit-tests the filter function directly.
+
+**`tests/test_cli.py`** — 3 new tests:
+- `test_report_year_filter` — end-to-end: adds 2023 and 2024 expenses, `--year 2024` shows only 2024 total.
+- `test_report_year_category_filter` — `--year 2024 --category food` excludes transport.
+- `test_report_year_month_mutually_exclusive` — passing both flags exits with a non-zero code.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`tally report --year 2024` prints a per-category breakdown (same format as the monthly report) plus a TOTAL line summing all expenses in calendar year 2024",
+      "status": "met",
+      "evidence": "test_format_report_year_breakdown and test_report_year_filter both pass; format_report with year= uses the identical rendering path as the monthly report, including sorted categories and a TOTAL line"
+    },
+    {
+      "cos": "`tally report --year 2024 --category food` filters further to just that category within the year",
+      "status": "met",
+      "evidence": "test_format_report_year_category_filter and test_report_year_category_filter both pass; filter_expenses applies year and category independently"
+    },
+    {
+      "cos": "`--year` and `--month` are mutually exclusive (passing both exits with an error)",
+      "status": "met",
+      "evidence": "test_report_year_month_mutually_exclusive passes; argparse mutually_exclusive_group raises SystemExit with non-zero code when both flags are supplied"
+    },
+    {
+      "cos": "A new test in `tests/test_report.py` (or `tests/test_cli.py`) verifies the year filter: categories and grand total match the known 2024 fixture values",
+      "status": "met",
+      "evidence": "test_format_report_year_breakdown checks EXPECTED_GRAND_TOTAL (204.22) and EXPECTED_2024_FOOD (92.12) against the fixture store; test_report_year_filter checks the 2024 total (80.00) with a purpose-built 2023+2024 data set"
+    },
+    {
+      "cos": "The existing test suite (`pytest`) continues to pass with no regressions",
+      "status": "met",
+      "evidence": "All 52 tests pass (45 pre-existing + 7 new); `python3 -m pytest tests/ -v` shows 52 passed in 0.07s"
+    }
+  ],
+  "assessment": "All five conditions of satisfaction are met. The implementation is minimal: filter_expenses and format_report each gained one optional keyword argument with a None default, so all callers that don't pass year are unaffected. The budget, list, and export commands are untouched. The output format is identical to the monthly report — same column widths, same TOTAL line, same USD suffix."
+}
+```

@@ -1,0 +1,10 @@
+`parse_currency()` does not exist anywhere in the repository. The function is absent from `tally/utils.py` and from every other file in the codebase.
+
+```json
+{
+  "speech_act": "decline",
+  "conditions_of_satisfaction": [],
+  "scope_exclusions": [],
+  "concern": "The function `parse_currency()` does not exist anywhere in the repository. `tally/utils.py` contains only `parse_date`, `month_key`, and `round_money`. There is no currency-lookup helper to modify. The request cannot be fulfilled as stated because the target function is absent — adding `.upper()` to a non-existent function would require inventing scope beyond what was asked."
+}
+```

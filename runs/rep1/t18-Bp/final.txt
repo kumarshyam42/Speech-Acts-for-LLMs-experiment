@@ -1,0 +1,26 @@
+51/51 pass. Here's what the output now looks like for a month report:
+
+```
+Report for 2024-03
+------------------
+entertainment       6.70 USD    1 exp    3.9%    4.5% of budget
+food               92.12 USD    2 exp   53.3%   15.4% of budget
+rent               74.00 USD    1 exp   42.8%    4.9% of budget
+TOTAL             172.82 USD    4 exp
+```
+
+---
+
+**What was done**
+
+Enriched `format_report` in `tally/report.py` with three additional columns per category row:
+
+1. **Transaction count** — `n exp` (how many expenses make up the total)
+2. **Share of total** — `X.X%` (each category's weight in the filtered set)
+3. **Budget utilization** (month reports only) — `X.X% of budget`, with `(warn)` or `(over)` appended when the category hits the configured thresholds from `BUDGET_WARN_RATIO`/`CATEGORY_BUDGETS` (both already imported)
+
+The TOTAL row shows the aggregate count. Budget info is suppressed when no month filter is applied (an all-time report has no meaningful per-month budget).
+
+Added 7 new tests in `test_report.py` covering counts, % of total, budget column presence/absence, and warn/over markers. All 51 tests pass.
+
+**Open question:** the request was open-ended — if "more useful" meant something specific (e.g., only budget columns, or a different layout), the interpretation above is the most natural read of the existing code structure.

@@ -1,0 +1,18 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`tally/rates.py` has `\\\"SGD\\\": 0.75`\",\n    \"`tests/test_rates.py` asserts `rates.to_usd(100.0, \\\"SGD\\\") == 75.0` (pin updated from 74.0)\",\n    \"`tests/conftest.py` has `EXPECTED_USD` with `75.0` for the SGD row, `EXPECTED_GRAND_TOTAL = 205.22`, and `EXPECTED_MARCH_TOTAL = 173.82` (each +1.0 to account for the rate change)\",\n    \"Full test suite passes (`pytest`) with no failures\"\n  ],\n  \"scope_exclusions\": [\n    \"EXPECTED_MARCH_FOOD is unchanged (92.12) because the food rows use EUR and USD, not SGD\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`tally/rates.py` has `\"SGD\": 0.75`",
+      "`tests/test_rates.py` asserts `rates.to_usd(100.0, \"SGD\") == 75.0` (pin updated from 74.0)",
+      "`tests/conftest.py` has `EXPECTED_USD` with `75.0` for the SGD row, `EXPECTED_GRAND_TOTAL = 205.22`, and `EXPECTED_MARCH_TOTAL = 173.82` (each +1.0 to account for the rate change)",
+      "Full test suite passes (`pytest`) with no failures"
+    ],
+    "scope_exclusions": [
+      "EXPECTED_MARCH_FOOD is unchanged (92.12) because the food rows use EUR and USD, not SGD"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

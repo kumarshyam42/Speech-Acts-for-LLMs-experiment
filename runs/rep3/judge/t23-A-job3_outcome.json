@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "partial",
+    "evidence": "There was no CHANGELOG in the repository, so I created one at `CHANGELOG.md`",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

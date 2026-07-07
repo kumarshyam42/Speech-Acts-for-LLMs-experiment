@@ -1,0 +1,16 @@
+Done. Here's what changed and why:
+
+**Added (things in the code but missing from the docs):**
+- `stats` command — entirely absent; shows count/total/average/date range
+- `budget` command — mentioned only in the cli.py docstring; shows spending vs configured monthly budgets with ok/warn/over states
+- Full list of supported categories (from `config.py`)
+- Full list of supported currencies (from `rates.py`)
+- `--store` flag — documented with concrete examples
+- Shell alias example (was mentioned but never shown)
+
+**Clarified:**
+- `report` without `--month` works (shows all-time totals) — this wasn't stated
+- `export` without `--out` prints to stdout
+- Rates are fixed constants, not live quotes (already implied but worth saying plainly)
+
+**Preserved:** the informal, plain-spoken tone throughout — that voice is one of the README's strengths and shouldn't be smoothed out.

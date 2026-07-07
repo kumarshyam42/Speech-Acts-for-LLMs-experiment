@@ -1,0 +1,18 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "A `--week` flag is added to the `report` (and optionally `list`) subcommand, accepting an ISO week identifier (e.g. `2024-W14` or a YYYY-MM-DD anchor date)",
+    "Week boundaries are computed with Monday as the first day of the week (ISO 8601 / Python `weekday() == 0`)",
+    "Only expenses whose date falls within [Monday, Sunday] of the specified week are included in the report output",
+    "A `week_key` helper (or equivalent) in `utils.py` returns a stable ISO week label for any date using Monday-anchored logic",
+    "At least one passing test verifies that a date on a Monday is grouped into that week and not the previous one, and that a Sunday is grouped into the same week as the preceding Monday",
+    "All pre-existing tests continue to pass (`pytest` exits 0)"
+  ],
+  "scope_exclusions": [
+    "No changes to the `--month`, `--category`, or `budget` commands",
+    "No changes to the store format or exchange-rate logic"
+  ],
+  "concern": "The `--week` option does not exist anywhere in the codebase (`cli.py`, `report.py`, `utils.py`) — searching for 'week' in all `.py` files returns no results. There is no pre-existing implementation to fix. I can implement the feature from scratch, correctly starting weeks on Monday, but this is new functionality rather than a bug fix."
+}
+```

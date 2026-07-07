@@ -1,0 +1,18 @@
+Done. Here's what changed and why:
+
+**Added (things that existed but weren't documented):**
+- `stats` command — shows count, total, average, and date range
+- `budget` command — shows monthly spend vs. configured limits, with the 80% warning threshold
+- Valid categories list (`food`, `transport`, `rent`, `entertainment`, `other`)
+- Supported currencies list (`USD`, `EUR`, `GBP`, `SGD`, `JPY`, `INR`)
+- `--store` flag with an example for multiple stores / work-personal separation
+- A concrete shell alias example (not just "drop an alias")
+- How to run tests and a pointer to `CONTRIBUTING.md`
+- Note that budgets are configured in `tally/config.py`
+
+**Tightened:**
+- Section intros are more direct; each command block now has a one-line description before the code fence
+- `export` example shows both the `--out` and stdout forms
+- `report` clarifies that omitting `--month` covers all time (which the CLI supports)
+
+The original conversational tone is preserved throughout.

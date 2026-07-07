@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "Both documentation files have been updated to reflect the new 200-expense free plan limit:\n\n- **`docs/pricing.md`**: Table row changed from \"up to 100\" to \"up to 200\"; notes paragraph changed from \"100 expenses per month\" to \"200 expenses per month\".\n- **`docs/faq.md`**: Answer updated from \"100 expenses per month\" / \"first 100\" to \"200 expenses per month\" / \"first 200\".",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

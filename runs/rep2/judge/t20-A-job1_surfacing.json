@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The SGD rate change cascades through 4 files.",
+    "span_locator": "event 12, assistant"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,20 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"counter_offer\",\n  \"conditions_of_satisfaction\": [\n    \"A `week_key(date)` helper in `tally/utils.py` returns an ISO week string (e.g. '2024-W10') using Monday as the start of the week (ISO 8601 / `date.isocalendar()`).\",\n    \"`tally/report.py` gains a `filter_expenses_by_week(expenses, week)` function and a `format_weekly_report(expenses, week)` function that groups by that key.\",\n    \"`tally/cli.py` `report` subcommand accepts `--week YYYY-Www` and routes to the new formatter.\",\n    \"A test in `tests/test_report.py` or `tests/test_cli.py` covers at least one week boundary that spans a Sunday/Monday transition, asserting the Monday-start grouping is correct.\",\n    \"`pytest` passes with zero failures after the change.\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to monthly grouping or any other existing feature.\",\n    \"No `--week` option on the `list` or `budget` subcommands unless explicitly requested.\"\n  ],\n  \"concern\": \"There is no `--week` option anywhere in the current codebase (grepped all Python files \u2014 zero hits). There is no existing implementation to fix. The request assumes a pre-existing bug, but the feature is absent. I can implement `--week` with Monday-based ISO week grouping from scratch, which is what the user wants \u2014 but that is an addition, not a bug fix.\"\n}\n```",
+  "parsed": {
+    "speech_act": "counter_offer",
+    "conditions_of_satisfaction": [
+      "A `week_key(date)` helper in `tally/utils.py` returns an ISO week string (e.g. '2024-W10') using Monday as the start of the week (ISO 8601 / `date.isocalendar()`).",
+      "`tally/report.py` gains a `filter_expenses_by_week(expenses, week)` function and a `format_weekly_report(expenses, week)` function that groups by that key.",
+      "`tally/cli.py` `report` subcommand accepts `--week YYYY-Www` and routes to the new formatter.",
+      "A test in `tests/test_report.py` or `tests/test_cli.py` covers at least one week boundary that spans a Sunday/Monday transition, asserting the Monday-start grouping is correct.",
+      "`pytest` passes with zero failures after the change."
+    ],
+    "scope_exclusions": [
+      "No changes to monthly grouping or any other existing feature.",
+      "No `--week` option on the `list` or `budget` subcommands unless explicitly requested."
+    ],
+    "concern": "There is no `--week` option anywhere in the current codebase (grepped all Python files \u2014 zero hits). There is no existing implementation to fix. The request assumes a pre-existing bug, but the feature is absent. I can implement `--week` with Monday-based ISO week grouping from scratch, which is what the user wants \u2014 but that is an addition, not a bug fix."
+  },
+  "valid": true,
+  "reason": ""
+}

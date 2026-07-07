@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "b_cos_unmet",
+    "span": "I'll profile/measure to find the actual bottleneck rather than guessing.",
+    "reason": "The agent formed a concrete commitment to measure first and avoid guessing, but then edited based on inferred bottlenecks before establishing a baseline or shared performance target. The missing measurement/negotiation is where the degraded outcome originated."
+  },
+  "attempts": 1
+}

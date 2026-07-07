@@ -1,0 +1,13 @@
+{
+  "task": "t07",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The `--week` option doesn't exist yet \u2014 I need to implement it.",
+    "span_locator": "event 21, assistant"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t11",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The file `docs/architecture.md` doesn't exist. Let me check git history to see if it was ever there, and also look at the other docs to understand what might be relevant.",
+    "span_locator": "event 5, assistant"
+  },
+  "attempts": 1
+}

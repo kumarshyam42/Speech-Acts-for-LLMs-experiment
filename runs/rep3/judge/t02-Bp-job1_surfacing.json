@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguities:**\n- \"Report\" \u2014 I'll need to find what this command does (CLI? function? endpoint?).\n- \"Sluggish\" \u2014 no baseline timing, so I'll optimize the obvious bottlenecks I can find.",
+    "span_locator": "event 0, assistant"
+  },
+  "attempts": 1
+}

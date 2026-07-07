@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have a clear picture. The `format_report` function shows just category name + USD amount. I'll enrich it with a per-category item count and percentage of total, and add a `category_breakdown` helper. I'll also add tests for the new columns.",
+    "reason": "The request was open-ended, but the agent did not surface that ambiguity or ask what would make the totals more useful. It unilaterally chose item counts and percentages and implemented them."
+  },
+  "attempts": 1
+}

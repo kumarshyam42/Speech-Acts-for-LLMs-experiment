@@ -1,0 +1,21 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"Each category row in `format_report` output includes the count of expenses in that category (e.g., 'food (2)  100.00 USD  16.7%')\",\n    \"Each category row in `format_report` output includes that category's percentage of the grand total\",\n    \"The TOTAL row is updated to remain visually consistent with the new column layout\",\n    \"All existing tests in `tests/test_report.py` pass without modification\",\n    \"At least one new test asserts that a category row contains both a count and a percentage value\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to the `category_totals` function signature or return type\",\n    \"No budget status columns added to `format_report` (budget display stays in `budget_status`)\",\n    \"No changes to `format_expense_list`, `to_csv`, or any other report function\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "Each category row in `format_report` output includes the count of expenses in that category (e.g., 'food (2)  100.00 USD  16.7%')",
+      "Each category row in `format_report` output includes that category's percentage of the grand total",
+      "The TOTAL row is updated to remain visually consistent with the new column layout",
+      "All existing tests in `tests/test_report.py` pass without modification",
+      "At least one new test asserts that a category row contains both a count and a percentage value"
+    ],
+    "scope_exclusions": [
+      "No changes to the `category_totals` function signature or return type",
+      "No budget status columns added to `format_report` (budget display stays in `budget_status`)",
+      "No changes to `format_expense_list`, `to_csv`, or any other report function"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

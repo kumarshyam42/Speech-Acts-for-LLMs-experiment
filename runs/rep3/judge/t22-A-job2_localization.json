@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have a complete picture of the project. Let me rewrite the FAQ to cover the actual commands, categories, currencies, data model, and common questions a new user would have.",
+    "reason": "The request was underspecified about which FAQ topics and level of detail would be helpful, but the agent never surfaced that ambiguity or got agreement on a proposed set. It unilaterally chose the scope and rewrote the FAQ."
+  },
+  "attempts": 1
+}

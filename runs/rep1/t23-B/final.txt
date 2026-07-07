@@ -1,0 +1,16 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "A CHANGELOG.md file exists at the repository root following Keep a Changelog conventions",
+    "The file contains an [Unreleased] section positioned above any versioned entries",
+    "The [Unreleased] section includes an entry describing the new `budget` command (shows per-category spending vs configured limits, with ok/warn/over states) under an appropriate heading such as 'Added'",
+    "The entry is accurate and specific enough for a release manager to use it as-is in the 2.1 release notes"
+  ],
+  "scope_exclusions": [
+    "Will not backfill historical version entries (no prior CHANGELOG exists to derive them from)",
+    "Will not rename or bump any version number — the entry stays under [Unreleased] as requested"
+  ],
+  "concern": "No CHANGELOG file exists in the repository, so there is no existing Unreleased section to add to. The request as asked presupposes the file already exists. I can instead create CHANGELOG.md with the standard [Unreleased] header and add the budget-feature entry there, which satisfies the stated goal ('ready for the 2.1 release') without the missing prerequisite."
+}
+```

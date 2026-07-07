@@ -1,0 +1,10 @@
+# Harness venv dependencies.
+#
+# The harness scripts themselves (harness/*.py) are stdlib-only (Python 3.9+).
+# This venv exists to run the fixture's test suite: run_episodes.py invokes
+# `harness/venv/bin/python -m pytest` for the post-episode check.
+#
+# Only the top-level package is pinned (matches the original run's venv,
+# pytest 8.4.2); pip resolves the transitive deps (exceptiongroup, iniconfig,
+# packaging, pluggy, pygments, tomli, typing_extensions).
+pytest==8.4.2

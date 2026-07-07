@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "**Ambiguities:** \"More helpful\" is subjective \u2014 I'll aim for better coverage (more questions), clearer answers, and practical examples rather than just expanding existing entries. I'll read the current FAQ and explore the codebase to ground the additions in real behavior.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

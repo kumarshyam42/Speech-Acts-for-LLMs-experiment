@@ -1,0 +1,12 @@
+Done. Here's a summary of the changes made:
+
+---
+
+**Final report**
+
+Updated the free plan limit from 100 → 200 in two files, as required by the repo's R6 consistency rule (both docs must always agree on the published limit):
+
+- **`docs/pricing.md`** — updated the table row (`up to 100` → `up to 200`) and the prose note below it.
+- **`docs/faq.md`** — updated both mentions in the FAQ answer (`100 expenses per month` → `200 expenses per month`, and `first 100` → `first 200`).
+
+No code changes were needed — this limit exists only in marketing docs and is not enforced by the application logic.

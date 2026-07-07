@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The test in `test_rates.py` has a comment \"Changing the rate breaks this on purpose\" \u2014 it's an intentional regression pin, so it must be updated alongside the source.",
+    "span_locator": "event 5, assistant"
+  },
+  "attempts": 1
+}

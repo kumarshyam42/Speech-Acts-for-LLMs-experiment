@@ -1,0 +1,31 @@
+The README looks good. All conditions are met.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "README documents all 6 subcommands: add, report, list, export, stats, budget (currently stats and budget are absent)",
+      "status": "met",
+      "evidence": "stats is now described in 'Looking at your spending' (lines 68-74); budget gets its own section 'Checking your budget' (lines 76-87); add/report/list/export were already present and remain"
+    },
+    {
+      "cos": "README mentions the --store global flag for overriding the default store path",
+      "status": "met",
+      "evidence": "Lines 25-31 in the Installing section describe --store, note it works with every subcommand, and give a concrete example"
+    },
+    {
+      "cos": "The budget section notes that --month is required",
+      "status": "met",
+      "evidence": "Line 81: 'The --month flag is required' appears explicitly in the budget section"
+    },
+    {
+      "cos": "Existing prose tone and style is preserved",
+      "status": "met",
+      "evidence": "New paragraphs match the original casual second-person voice, sentence rhythm, and lack of bullet lists; no headers were restructured"
+    }
+  ],
+  "assessment": "All four conditions of satisfaction were met with no scope violations: docs/ files were untouched, no sections were added beyond the new 'Checking your budget' section (which covers a missing command), and the two previously undocumented commands are now fully covered. No open questions."
+}
+```

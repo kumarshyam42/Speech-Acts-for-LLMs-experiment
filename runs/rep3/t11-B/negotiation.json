@@ -1,0 +1,11 @@
+{
+  "raw": "The file `docs/architecture.md` does not exist in this repository. The `docs/` folder only contains `pricing.md`, `requirements.md`, and `faq.md`.\n\n```json\n{\n  \"speech_act\": \"decline\",\n  \"conditions_of_satisfaction\": [],\n  \"scope_exclusions\": [],\n  \"concern\": \"docs/architecture.md does not exist in this repository. The docs/ folder contains only pricing.md, requirements.md, and faq.md \u2014 there is no architecture.md file to update.\"\n}\n```",
+  "parsed": {
+    "speech_act": "decline",
+    "conditions_of_satisfaction": [],
+    "scope_exclusions": [],
+    "concern": "docs/architecture.md does not exist in this repository. The docs/ folder contains only pricing.md, requirements.md, and faq.md \u2014 there is no architecture.md file to update."
+  },
+  "valid": true,
+  "reason": ""
+}

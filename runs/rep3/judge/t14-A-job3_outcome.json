@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Now I have the full picture. The README is missing documentation for the `stats` and `budget` subcommands, doesn't mention available categories, omits the `--store` flag, and lacks a concrete alias example. I'll improve it while preserving the prose style.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t17",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguity note:** I could use argparse's `choices=` parameter, but that calls `sys.exit(2)` directly, making tests need `pytest.raises(SystemExit)` \u2014 inconsistent with the existing pattern where tests check the `rc` return value. A manual guard in `cmd_add` returning a non-zero code matches the existing style and lets me write a clean error message.",
+    "span_locator": "event 10, assistant"
+  },
+  "attempts": 1
+}

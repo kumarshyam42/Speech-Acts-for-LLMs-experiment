@@ -1,0 +1,14 @@
+{
+  "label": "E05",
+  "rep": "rep1",
+  "task": "t14",
+  "class": "2",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes",
+    "risk_flags": [],
+    "primary_risk": ""
+  }
+}

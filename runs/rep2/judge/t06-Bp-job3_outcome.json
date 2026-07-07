@@ -1,0 +1,13 @@
+{
+  "task": "t06",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Good \u2014 baseline is green. Now applying the two fixes:",
+    "gradient_level": "failure"
+  },
+  "attempts": 2
+}

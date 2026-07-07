@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "partial",
+    "evidence": "Updated the SGD rate from `0.74` to `0.75` in four files:",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

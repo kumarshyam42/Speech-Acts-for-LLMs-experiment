@@ -1,0 +1,14 @@
+---
+
+**Final report**
+
+`parse_currency()` did not exist in `utils.py` — it needed to be created. I added it at `tally/utils.py:31–46`. The function:
+
+1. Strips whitespace from the input.
+2. Calls `.upper()` before looking up the code in `RATES`, so `'eur'`, `'Eur'`, and `'EUR'` all resolve correctly.
+3. Raises `ValueError` (with the list of known codes) for any unrecognised input, matching the error contract of `rates.to_usd()`.
+4. Returns the canonical upper-case code string.
+
+The local import of `RATES`/`supported_currencies` from `tally.rates` is done inside the function body to avoid any future circular-import risk (neither module currently imports the other at module level).
+
+All 45 pre-existing tests pass; no new failures introduced.

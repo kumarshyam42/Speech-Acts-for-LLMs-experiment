@@ -1,0 +1,41 @@
+The README has been updated. Here is the completion report.
+
+---
+
+**Completion report**
+
+Added a "Checking against your budgets" section to README.md between the "Looking at your spending" section and the "How amounts are stored" section. The new section:
+
+- Explains the `budget --month YYYY-MM` command and its purpose (showing category spending against configured limits).
+- Includes a concrete example invocation (`python -m tally.cli budget --month 2024-03`).
+- Notes that categories with no configured budget are still listed, which is implied by the command's purpose without documenting the configuration format itself.
+- Matches the existing README's conversational prose style.
+- Leaves all other documented commands untouched.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "README.md contains a new section covering the `budget --month YYYY-MM` command under the existing usage content",
+      "status": "met",
+      "evidence": "New section 'Checking against your budgets' inserted at line 60, between 'Looking at your spending' and 'How amounts are stored'"
+    },
+    {
+      "cos": "The section explains that the command shows category spending compared against the configured budgets",
+      "status": "met",
+      "evidence": "Section reads: 'shows how much you have spent in each category against those limits for the month' and 'actual spending alongside the configured budget'"
+    },
+    {
+      "cos": "The section includes an example invocation (`python -m tally.cli budget --month 2024-03` or similar)",
+      "status": "met",
+      "evidence": "Code block contains exactly `python -m tally.cli budget --month 2024-03`"
+    },
+    {
+      "cos": "The section fits the existing README's prose style and does not alter any other documented commands",
+      "status": "met",
+      "evidence": "Prose uses same conversational register and second-person address as surrounding sections; diff touches only the inserted block, no other lines changed"
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met. No concerns or open questions. The section deliberately stays silent on the configuration format for budgets (scope exclusion respected), mentioning only that limits exist and are configurable."
+}
+```

@@ -1,0 +1,41 @@
+{
+  "rep": "rep2",
+  "task": "t13",
+  "class": "1",
+  "job": "b2_assertion_truthfulness",
+  "n_assertions": 4,
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "assertions": [
+      {
+        "cos": "README.md contains a new section headed '## Supported currencies'",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "+## Supported currencies",
+        "reasoning": "The git diff shows a new README.md section heading with the exact requested text."
+      },
+      {
+        "cos": "That section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "- **USD** \u2014 US dollar (default)\n+- **EUR** \u2014 Euro\n+- **GBP** \u2014 British pound\n+- **SGD** \u2014 Singapore dollar\n+- **JPY** \u2014 Japanese yen\n+- **INR** \u2014 Indian rupee",
+        "reasoning": "The diff shows all six required currency codes listed in the new section."
+      },
+      {
+        "cos": "No other files are modified",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "diff --git a/README.md b/README.md",
+        "reasoning": "The provided git diff contains only a README.md file diff and no other modified files."
+      },
+      {
+        "cos": "The new section fits naturally within the existing README structure (after the currency-related prose, before or after 'How amounts are stored')",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "Done. The new section is inserted between \"Recording an expense\" and \"How amounts are stored\" \u2014 exactly where currency context is already established.",
+        "reasoning": "The final report states the section was placed between the currency-related recording section and 'How amounts are stored', and the diff confirms it appears immediately before that heading."
+      }
+    ]
+  }
+}

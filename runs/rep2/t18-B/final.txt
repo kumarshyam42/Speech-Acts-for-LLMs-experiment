@@ -1,0 +1,16 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "Each category row in `format_report` output gains two new columns: (a) the category's percentage share of the grand total, and (b) a budget annotation showing '<spent> / <budget> USD [state]' for categories that appear in CATEGORY_BUDGETS, or blank for unbudgeted categories",
+    "All existing tests in tests/test_report.py pass without modification",
+    "At least one new test covers the enriched format (percentage present, budget annotation present for a budgeted category)"
+  ],
+  "scope_exclusions": [
+    "No changes to CSV export, `format_expense_list`, `budget_status`, or any other function — only `format_report` output is touched",
+    "No changes to CATEGORY_BUDGETS or BUDGET_WARN_RATIO constants",
+    "No UI or CLI plumbing changes — only the rendered string from `format_report`"
+  ],
+  "concern": "The request 'make them more useful' is open-ended. The two most actionable enrichments given the existing data are: percentage-of-total per category, and budget vs. spent with status for budgeted categories. I am committing to those two additions specifically. If a different kind of 'useful' (e.g. trend over months, item count per category) was intended, this counter-offer would not satisfy it."
+}
+```

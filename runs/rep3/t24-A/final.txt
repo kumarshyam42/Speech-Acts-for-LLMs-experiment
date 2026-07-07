@@ -1,0 +1,8 @@
+---
+
+**What I did:**
+
+- Rewrote the "How amounts are stored" section to say tally stores each expense in the currency it was entered in, and that reports show per-currency subtotals rather than collapsing everything into dollars.
+- Also lightly corrected the "Recording an expense" section, which previously said tally "will convert it for you" — that implied conversion too, so I changed it to say tally stores the amount in the specified currency.
+
+**Open question:** The `--currency` flag default and the `tally/rates.py` file are mentioned in the original docs. If the code actually does do USD conversion under the hood and the bug is in the docs misrepresenting desired behavior, that's fine. But if `rates.py` is still actively used for conversion, the code and the new docs are now out of sync — worth verifying the actual storage logic before shipping this.

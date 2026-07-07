@@ -1,0 +1,59 @@
+Everything looks correct. Here is the completion report:
+
+---
+
+## What was done
+
+**`tally/store.py`**
+- Replaced `from tally.rates import normalize` with `from tally.rates import to_usd`
+- `add_expense` now builds a `stored` dict without `amount_usd` and appends only that to `data["expenses"]`. It returns `{**stored, "amount_usd": to_usd(...)}` so the CLI's `cmd_add` display line (`"added #{id}: {amount_usd:.2f} USD ..."`) continues to work with no change to `cli.py`.
+- Updated module docstring to show the new schema (no `amount_usd` field).
+
+**`tally/report.py`**
+- Added `from tally.rates import to_usd`.
+- `category_totals`, `grand_total`, `format_expense_list`, and `to_csv` all now call `to_usd(exp["original_amount"], exp["original_currency"])` instead of reading `exp["amount_usd"]`.
+
+**`tests/test_store.py`**
+- Renamed `test_add_normalizes_to_usd` → `test_add_stores_original_and_defers_conversion`; added assertion that `data["expenses"][0]` has no `amount_usd` key.
+- `test_stored_amounts_match_expected_usd` now computes USD via `to_usd(original_amount, original_currency)` rather than reading `amount_usd` from the stored record.
+
+**`tests/test_cli.py`**
+- Renamed `test_add_persists_normalized_amount` → `test_add_persists_original_amount`; checks `original_amount`/`original_currency` on disk instead of `amount_usd`.
+- `test_add_defaults_currency_to_usd`: replaced `amount_usd == 12.5` assertion with `original_amount == 12.5` + `"amount_usd" not in record`.
+
+**`cli.py`** — unchanged.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "store.add_expense no longer calls normalize() / to_usd() at write time — the stored record omits a pre-computed amount_usd",
+      "status": "met",
+      "evidence": "store.py line 94: the dict appended to data['expenses'] ('stored') contains no amount_usd key. to_usd() is called only to build the return value dict, not the persisted record. Verified by test_add_stores_original_and_defers_conversion asserting 'amount_usd' not in data['expenses'][0]."
+    },
+    {
+      "cos": "The stored record retains original_amount and original_currency as the authoritative source",
+      "status": "met",
+      "evidence": "store.py lines 88-89 store original_amount and original_currency in every new record. All report functions read these fields exclusively when computing USD."
+    },
+    {
+      "cos": "All report.py functions (category_totals, grand_total, monthly_summary, overall_stats, format_expense_list, to_csv) compute USD by calling rates.to_usd(original_amount, original_currency) at report/export time",
+      "status": "met",
+      "evidence": "report.py lines 35, 42, 88, 102 — every USD computation calls to_usd(exp['original_amount'], exp['original_currency']). monthly_summary delegates to category_totals; overall_stats delegates to grand_total. to_csv explicitly sets row['amount_usd'] via to_usd before writing."
+    },
+    {
+      "cos": "The full pytest suite passes — tests that asserted eager amount_usd on the stored record are updated to match the new behavior, while totals/summary value assertions remain unchanged",
+      "status": "met",
+      "evidence": "pytest output: 45 passed in 0.04s. Updated tests: test_add_stores_original_and_defers_conversion, test_stored_amounts_match_expected_usd, test_add_persists_original_amount, test_add_defaults_currency_to_usd. Totals/summary tests (test_grand_total_multi_currency, test_monthly_summary_march, test_export_amount_column_is_usd, etc.) are untouched and pass."
+    },
+    {
+      "cos": "The observable USD values in report output (totals, category summaries, CSV export) are numerically identical to the current output for the same input data and rates",
+      "status": "met",
+      "evidence": "EXPECTED_GRAND_TOTAL (204.22), EXPECTED_MARCH_TOTAL (172.82), EXPECTED_MARCH_FOOD (92.12), and EXPECTED_USD ([42.12, 74.0, 50.0, 25.4, 6.7, 6.0]) are all pinned by passing tests — same constants as baseline."
+    }
+  ],
+  "assessment": "All five conditions of satisfaction are met. The key design decision: add_expense returns a dict that includes amount_usd (computed once for the CLI display line) but the record appended to data['expenses'] — and therefore written to disk — omits it. This keeps cli.py untouched while satisfying the storage requirement. Report functions now perform all USD conversions at report time. One open note: the migrate() function still writes amount_usd when upgrading v1 records; this is intentional — those fields are stale and ignored by report functions, consistent with the scope exclusion that no migration is written for previously-saved files."
+}
+```

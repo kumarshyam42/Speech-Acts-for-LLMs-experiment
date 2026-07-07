@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"concern\": \"\"",
+    "reason": "The agent formed a promise around guessed micro-optimizations without surfacing that \u201cfaster\u201d was undefined, unmeasured, and possibly not a real bottleneck. There was no shared performance target, store size, or agreement on whether any change was warranted before editing."
+  },
+  "attempts": 1
+}

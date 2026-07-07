@@ -1,0 +1,13 @@
+{
+  "task": "t06",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "I can see three concrete issues in `store.py`:",
+    "span_locator": "event 21, assistant"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "The `pricing.md` file itself called out the FAQ as a required paired update (requirement R6), so both files are now in sync.",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "**Ambiguities:** \"More useful\" is intentionally vague. I'll interpret it as: add transaction count per category, % share of the total, and (for month reports) a compact budget-utilization column",
+    "reason": "The agent recognized the request was open-ended but still unilaterally chose an interpretation and executed it without getting an agreed definition of \"more useful.\" The failure originated before implementation, at the missing negotiation of the ambiguous request."
+  },
+  "attempts": 1
+}

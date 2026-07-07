@@ -1,0 +1,23 @@
+I've thoroughly investigated the reported bug. Here's what I found:
+
+---
+
+**Final Report**
+
+**File `exporters.py` does not exist** in this repository. There is no file by that name anywhere in the codebase.
+
+**The CSV export is in `tally/report.py`**, in the `to_csv` function (line 91). It uses Python's standard `csv.DictWriter` with `fieldnames=CSV_FIELDS`, and the row dict is constructed as `{field: exp.get(field, "") for field in CSV_FIELDS}` — exactly the right set of keys, no extras.
+
+**There is no trailing comma bug** in the current code. I manually inspected the raw output:
+- No trailing commas before line endings
+- Lines end with `\r\n` (standard CSV `excel` dialect), not `,\r\n`
+- All 14 tests in the suite pass, including `test_export_has_header` (which would fail if there were an extra comma)
+
+**No changes were made.** Introducing a fabricated fix for a non-existent bug would be incorrect.
+
+**Open questions for the user:**
+- Was `exporters.py` perhaps planned but never created?
+- Is the bug description referring to a different project or branch?
+- Was the CSV export recently refactored from `exporters.py` into `report.py`, and the bug report predates that move?
+
+If you can point me to a reproduction case or a branch where the trailing comma is visible, I'm happy to dig further.

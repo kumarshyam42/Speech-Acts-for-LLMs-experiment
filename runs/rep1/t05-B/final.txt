@@ -1,0 +1,55 @@
+All 46 tests pass, including the new `test_to_usd_cad`.
+
+---
+
+## Completion Report
+
+The two changes made:
+
+1. **`tally/rates.py`** — added `"CAD": 0.73` to the `RATES` dict (entries kept in sorted order to match the `supported_currencies()` contract).
+2. **`tests/test_rates.py`** — added `test_to_usd_cad` pinning `to_usd(100.0, "CAD") == 73.0`, and extended `test_supported_currencies_sorted` to assert `"CAD" in codes`.
+
+`add` and `report` required no changes: `add` already accepts `--currency` and routes through `rates.normalize`; `report` already aggregates the `amount_usd` field that was written at add-time.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "'CAD' appears in tally/rates.py RATES dict with value 0.73",
+      "status": "met",
+      "evidence": "tally/rates.py line 12: \"CAD\": 0.73 in RATES"
+    },
+    {
+      "cos": "rates.to_usd(100.0, 'CAD') returns 73.0",
+      "status": "met",
+      "evidence": "test_to_usd_cad passes: 100.0 * 0.73 = 73.0 (rounded to 2dp)"
+    },
+    {
+      "cos": "rates.supported_currencies() includes 'CAD'",
+      "status": "met",
+      "evidence": "test_supported_currencies_sorted asserts 'CAD' in codes; passes"
+    },
+    {
+      "cos": "tally add accepts --currency CAD and stores the correct USD-normalized amount",
+      "status": "met",
+      "evidence": "cli.py already routes --currency through store.add_expense -> rates.normalize; test_add_persists_normalized_amount (existing) confirms the mechanism; CAD is now a valid code"
+    },
+    {
+      "cos": "tally report correctly aggregates CAD-denominated expenses (converted to USD) in its output",
+      "status": "met",
+      "evidence": "report.py sums amount_usd fields only (never re-converts); amounts are USD-normalized at write time by rates.normalize; no report changes needed"
+    },
+    {
+      "cos": "A new test in tests/test_rates.py pins the CAD rate: to_usd(100.0, 'CAD') == 73.0",
+      "status": "met",
+      "evidence": "tests/test_rates.py::test_to_usd_cad added and passing"
+    },
+    {
+      "cos": "The existing test suite passes with zero failures after the change",
+      "status": "met",
+      "evidence": "pytest output: 46 passed in 0.05s"
+    }
+  ],
+  "assessment": "All conditions of satisfaction met. The change is minimal (one dict entry + one test function + one assert in an existing test). No dynamic rate fetching, no schema changes, no CSV changes — exactly within the agreed scope."
+}
+```

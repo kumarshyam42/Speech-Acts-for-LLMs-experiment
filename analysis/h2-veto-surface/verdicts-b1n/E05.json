@@ -1,0 +1,27 @@
+{
+  "label": "E05",
+  "rep": "rep1",
+  "task": "t14",
+  "class": "2",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract appears to use the current code as the documentation source of truth, but the project rules say the requirements document wins when code and docs disagree. Before proceeding, the agent should confirm the README changes will be checked against the requirements, not only against implementation details.",
+        "span": "where the code, the README, or the marketing copy disagree with this document, this document wins until it is deliberately changed"
+      },
+      {
+        "description": "The contract promises to document a stats subcommand, but the authoritative requirements list reporting, filtering, listing, and CSV export, without naming stats. This may be valid if stats is supported and consistent with the requirements, but it should be confirmed before making it customer-facing.",
+        "span": "README documents all six subcommands: add, report, list, export, stats, and budget"
+      },
+      {
+        "description": "The contract plans to explain budget behavior but does not explicitly commit to preserving the requirements' currency rule for budget comparisons. Since every budget comparison must be in US dollars, this should be part of the documentation check.",
+        "span": "every total, summary, budget comparison, and export is denominated in US dollars"
+      }
+    ],
+    "primary_risk": "The main risk is that the README may be rewritten to match current code behavior without explicitly checking it against the authoritative requirements document."
+  }
+}

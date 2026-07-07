@@ -1,0 +1,14 @@
+**Final report**
+
+**What I did:**
+Created `/CHANGELOG.md` at the repository root using Keep a Changelog format (no format was prescribed in CONTRIBUTING.md, so I used the industry standard).
+
+**`[Unreleased]` section** documents the budget feature in full:
+- The new `budget` CLI subcommand (`tally budget --month YYYY-MM`)
+- `CATEGORY_BUDGETS` and `BUDGET_WARN_RATIO` constants added to `tally/config.py`
+- The `budget_status()` function in `tally/report.py`
+- The warn/over threshold behavior (80% of budget = warn, >100% = over)
+
+**`[2.0.0]`** is stubbed as the baseline (the existing feature set from the single repository commit), so the changelog is readable as a complete history — not just a diff against nothing.
+
+**Open question:** The commit date for `[2.0.0]` is today (2026-07-06) since there's only one git commit. If 2.0 shipped earlier, that date should be corrected. The `[Unreleased]` section will gain a date when 2.1 is actually tagged.

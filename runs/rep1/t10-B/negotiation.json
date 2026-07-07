@@ -1,0 +1,23 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"A bad date argument (e.g. --date not-a-date) prints a human-readable error message to stderr and exits with code 1, with no Python traceback\",\n    \"An unsupported currency code prints a human-readable error message to stderr (listing valid codes) and exits with code 1, with no Python traceback\",\n    \"A negative or zero amount prints a human-readable error message to stderr and exits with code 1, with no Python traceback\",\n    \"A corrupt or non-JSON store file prints a human-readable error message to stderr and exits with code 1, with no Python traceback\",\n    \"A file write failure in cmd_export (e.g. bad path/permissions) prints a human-readable error message to stderr and exits with code 1, with no Python traceback\",\n    \"All existing tests in tests/test_cli.py continue to pass\",\n    \"New tests in tests/test_cli.py cover each of the five error paths above\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to store.py, rates.py, utils.py, or any module other than cli.py and tests/test_cli.py\",\n    \"No new CLI flags or commands added\",\n    \"No changes to argparse error handling for missing required arguments (argparse already handles those cleanly)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "A bad date argument (e.g. --date not-a-date) prints a human-readable error message to stderr and exits with code 1, with no Python traceback",
+      "An unsupported currency code prints a human-readable error message to stderr (listing valid codes) and exits with code 1, with no Python traceback",
+      "A negative or zero amount prints a human-readable error message to stderr and exits with code 1, with no Python traceback",
+      "A corrupt or non-JSON store file prints a human-readable error message to stderr and exits with code 1, with no Python traceback",
+      "A file write failure in cmd_export (e.g. bad path/permissions) prints a human-readable error message to stderr and exits with code 1, with no Python traceback",
+      "All existing tests in tests/test_cli.py continue to pass",
+      "New tests in tests/test_cli.py cover each of the five error paths above"
+    ],
+    "scope_exclusions": [
+      "No changes to store.py, rates.py, utils.py, or any module other than cli.py and tests/test_cli.py",
+      "No new CLI flags or commands added",
+      "No changes to argparse error handling for missing required arguments (argparse already handles those cleanly)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

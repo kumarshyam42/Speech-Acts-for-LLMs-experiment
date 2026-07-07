@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"concern\": \"\"",
+    "reason": "The agent formed a plan around updating the rate and pinned test values, but never surfaced the R3 implication that this changes every historical SGD total. The empty concern field anchors that the hidden constraint/impact was not made part of the agreement before execution."
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": false,
+    "span": "",
+    "span_locator": ""
+  },
+  "attempts": 1
+}

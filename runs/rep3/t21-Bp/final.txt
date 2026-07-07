@@ -1,0 +1,3 @@
+Done. Here's what I did:
+
+Added a new "Checking against your budgets" section to `README.md` between "Looking at your spending" and "How amounts are stored". It explains that `budget --month YYYY-MM` shows per-category spending against configured limits, notes where those limits live (`tally/config.py`), gives a concrete usage example, and mentions that unlimted categories are omitted. No ambiguities — the command's behavior was confirmed by reading `tally/cli.py` before writing.

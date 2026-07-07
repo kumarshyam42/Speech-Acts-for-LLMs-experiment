@@ -1,0 +1,21 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`tally delete <id>` removes the expense with the given integer id from the store and prints a confirmation line (e.g. 'deleted #3')\",\n    \"`tally delete <id>` exits with a non-zero return code and prints an error message when the id does not exist in the store\",\n    \"A `delete_expense(data, expense_id)` function is added to `tally/store.py` that mutates the expenses list in place and returns the removed record (or raises/returns None for unknown id)\",\n    \"A test in `tests/test_cli.py` covers the happy-path (add then delete, verify the record is gone from the store) and the not-found error path\",\n    \"All existing tests continue to pass (`pytest` exits 0)\"\n  ],\n  \"scope_exclusions\": [\n    \"No interactive confirmation prompt before deletion\",\n    \"No undo/restore functionality\",\n    \"No bulk delete (multiple ids in one invocation)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`tally delete <id>` removes the expense with the given integer id from the store and prints a confirmation line (e.g. 'deleted #3')",
+      "`tally delete <id>` exits with a non-zero return code and prints an error message when the id does not exist in the store",
+      "A `delete_expense(data, expense_id)` function is added to `tally/store.py` that mutates the expenses list in place and returns the removed record (or raises/returns None for unknown id)",
+      "A test in `tests/test_cli.py` covers the happy-path (add then delete, verify the record is gone from the store) and the not-found error path",
+      "All existing tests continue to pass (`pytest` exits 0)"
+    ],
+    "scope_exclusions": [
+      "No interactive confirmation prompt before deletion",
+      "No undo/restore functionality",
+      "No bulk delete (multiple ids in one invocation)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

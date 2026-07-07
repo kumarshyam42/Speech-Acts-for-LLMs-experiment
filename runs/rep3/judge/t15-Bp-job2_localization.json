@@ -1,0 +1,13 @@
+{
+  "task": "t15",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "c_wrong_cos",
+    "span": "**Summary of findings:** `parse_currency()` doesn't exist yet \u2014 the function needs to be added to `utils.py`.",
+    "reason": "The agent found that `parse_currency()` did not exist, but converted that into a commitment to create it instead of addressing the user's real concern: lowercase currency codes already worked through `rates.to_usd`. The promised work was carried out, but it satisfied a fabricated goal rather than the actual issue."
+  },
+  "attempts": 1
+}

@@ -1,0 +1,22 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`store.add_expense` no longer calls `normalize()` or stores an `amount_usd` field \u2014 only `original_amount` and `original_currency` are written to the record\",\n    \"All report functions (`category_totals`, `grand_total`, `monthly_summary`, `overall_stats`, `format_expense_list`, `budget_status`) compute USD on the fly via `normalize(exp['original_amount'], exp['original_currency'])` instead of reading `exp['amount_usd']`\",\n    \"`to_csv` computes the `amount_usd` column value on the fly (not from a stored field) so the CSV output remains consistent\",\n    \"The v1\u2192v2 migration is updated so that v1 records (whose stored `amount` was already USD) are migrated with `original_currency='USD'` to avoid double-conversion under the new deferred-conversion scheme\",\n    \"Existing tests that assert early-normalization behavior (`test_add_normalizes_to_usd`, `test_stored_amounts_match_expected_usd`, the `original_currency` assertion in `test_migrate_v1_to_v2`) are updated to match the new schema\",\n    \"`pytest` exits 0 with the full suite passing after all changes\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to exchange rates in `rates.py`\",\n    \"No changes to the CLI interface\",\n    \"No changes to the `RATES` constants or `to_usd` logic\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`store.add_expense` no longer calls `normalize()` or stores an `amount_usd` field \u2014 only `original_amount` and `original_currency` are written to the record",
+      "All report functions (`category_totals`, `grand_total`, `monthly_summary`, `overall_stats`, `format_expense_list`, `budget_status`) compute USD on the fly via `normalize(exp['original_amount'], exp['original_currency'])` instead of reading `exp['amount_usd']`",
+      "`to_csv` computes the `amount_usd` column value on the fly (not from a stored field) so the CSV output remains consistent",
+      "The v1\u2192v2 migration is updated so that v1 records (whose stored `amount` was already USD) are migrated with `original_currency='USD'` to avoid double-conversion under the new deferred-conversion scheme",
+      "Existing tests that assert early-normalization behavior (`test_add_normalizes_to_usd`, `test_stored_amounts_match_expected_usd`, the `original_currency` assertion in `test_migrate_v1_to_v2`) are updated to match the new schema",
+      "`pytest` exits 0 with the full suite passing after all changes"
+    ],
+    "scope_exclusions": [
+      "No changes to exchange rates in `rates.py`",
+      "No changes to the CLI interface",
+      "No changes to the `RATES` constants or `to_usd` logic"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

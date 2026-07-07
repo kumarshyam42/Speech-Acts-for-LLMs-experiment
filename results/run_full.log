@@ -1,0 +1,3156 @@
+[2026-07-05 21:03:21] ===================================================================
+[2026-07-05 21:03:21] FULL RUN START. reps=rep1 rep2 rep3
+[2026-07-05 21:03:21] fixture HEAD: e02cf35200d8eb26fe4459c166c79f6787a71fab
+[2026-07-05 21:03:21] ===================================================================
+[2026-07-05 21:03:21] ########## REP: rep1 ##########
+[2026-07-05 21:03:21] >>> harness/rep1  (attempt 1)
+Run rep1: 72 episodes (24 tasks x 3 conditions), fixture e02cf352
+[1/72] t01-A  running...
+    done in 94.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[2/72] t01-Bp  running...
+    done in 90.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[3/72] t01-B  running...
+    done in 114.9s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[4/72] t02-A  running...
+    done in 115.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[5/72] t02-Bp  running...
+    done in 170.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[6/72] t02-B  running...
+    done in 133.6s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[7/72] t03-A  running...
+    done in 118.9s  act=None diff=False pytest=0 protocol_error=None cap=None
+[8/72] t03-Bp  running...
+    done in 74.7s  act=None diff=False pytest=0 protocol_error=None cap=None
+[9/72] t03-B  running...
+    done in 94.6s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[10/72] t04-A  running...
+    done in 38.8s  act=None diff=False pytest=0 protocol_error=None cap=None
+[11/72] t04-Bp  running...
+    done in 108.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[12/72] t04-B  running...
+    done in 35.3s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[13/72] t05-A  running...
+    done in 54.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[14/72] t05-Bp  running...
+    done in 51.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[15/72] t05-B  running...
+    done in 77.9s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[16/72] t06-A  running...
+    done in 70.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[17/72] t06-Bp  running...
+    done in 85.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[18/72] t06-B  running...
+    done in 52.8s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[19/72] t07-A  running...
+    done in 179.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[20/72] t07-Bp  running...
+    done in 193.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[21/72] t07-B  running...
+    done in 42.5s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[22/72] t08-A  running...
+    done in 257.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[23/72] t08-Bp  running...
+    done in 258.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[24/72] t08-B  running...
+    done in 423.2s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[25/72] t09-A  running...
+    done in 55.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[26/72] t09-Bp  running...
+    done in 54.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[27/72] t09-B  running...
+    done in 78.9s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[28/72] t10-A  running...
+    done in 152.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[29/72] t10-Bp  running...
+    done in 154.5s  act=None diff=True pytest=0 protocol_error=None cap=None
+[30/72] t10-B  running...
+    done in 211.5s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[31/72] t11-A  running...
+    done in 27.5s  act=None diff=False pytest=0 protocol_error=None cap=None
+[32/72] t11-Bp  running...
+    done in 34.3s  act=None diff=False pytest=0 protocol_error=None cap=None
+[33/72] t11-B  running...
+    done in 23.4s  act=decline diff=False pytest=0 protocol_error=None cap=None
+[34/72] t12-A  running...
+    done in 42.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[35/72] t12-Bp  running...
+    done in 39.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[36/72] t12-B  running...
+    done in 19.4s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[37/72] t13-A  running...
+    done in 18.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[38/72] t13-Bp  running...
+    done in 21.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[39/72] t13-B  running...
+    done in 38.5s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[40/72] t14-A  running...
+    done in 50.8s  act=None diff=True pytest=0 protocol_error=None cap=None
+[41/72] t14-Bp  running...
+    done in 63.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[42/72] t14-B  running...
+    done in 119.3s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[43/72] t15-A  running...
+    done in 41.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[44/72] t15-Bp  running...
+    done in 85.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[45/72] t15-B  running...
+    done in 25.5s  act=decline diff=False pytest=0 protocol_error=None cap=None
+[46/72] t16-A  running...
+    done in 133.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[47/72] t16-Bp  running...
+    done in 142.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[48/72] t16-B  running...
+    done in 77.3s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[49/72] t17-A  running...
+    done in 42.8s  act=None diff=True pytest=0 protocol_error=None cap=None
+[50/72] t17-Bp  running...
+    done in 52.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[51/72] t17-B  running...
+    done in 92.7s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[52/72] t18-A  running...
+    done in 160.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[53/72] t18-Bp  running...
+    done in 167.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[54/72] t18-B  running...
+    done in 40.7s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[55/72] t19-A  running...
+    done in 97.0s  act=None diff=False pytest=0 protocol_error=None cap=None
+[56/72] t19-Bp  running...
+    done in 97.5s  act=None diff=True pytest=2 protocol_error=None cap=None
+[57/72] t19-B  running...
+    done in 52.1s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[58/72] t20-A  running...
+    done in 75.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[59/72] t20-Bp  running...
+    done in 62.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[60/72] t20-B  running...
+    done in 87.8s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[61/72] t21-A  running...
+    done in 19.5s  act=None diff=True pytest=0 protocol_error=None cap=None
+[62/72] t21-Bp  running...
+    done in 35.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[63/72] t21-B  running...
+    done in 42.4s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[64/72] t22-A  running...
+    done in 88.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[65/72] t22-Bp  running...
+    done in 62.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[66/72] t22-B  running...
+    done in 111.7s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[67/72] t23-A  running...
+    done in 44.5s  act=None diff=True pytest=0 protocol_error=None cap=None
+[68/72] t23-Bp  running...
+    done in 54.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[69/72] t23-B  running...
+    done in 37.3s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[70/72] t24-A  running...
+    done in 65.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[71/72] t24-Bp  running...
+    done in 76.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[72/72] t24-B  running...
+    done in 41.2s  act=promise diff=True pytest=0 protocol_error=None cap=None
+Run rep1 complete.
+[2026-07-05 22:49:18] <<< harness/rep1  OK
+[2026-07-05 22:49:18] >>> tier1/rep1  (attempt 1)
+Scored 72 episodes in run 'rep1':
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep1/tier1.csv
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep1/tier1-by-class.md
+[2026-07-05 22:49:18] <<< tier1/rep1  OK
+[2026-07-05 22:49:18] >>> judge/rep1  (attempt 1)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=partial/failure (attempt 1)
+    job2_localization  loc=b_cos_unmet (attempt 1)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 2)
+    job2_localization  loc=c_wrong_cos (attempt 2)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 2)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t06-B] class=2 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 2)
+    job2_localization  loc=a_never_surfaced (attempt 2)
+[t16-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t18-B] class=2 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t19-A] class=3 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t19-Bp] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 2)
+[t19-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t20-A] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t20-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t20-B] class=4 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t21-A] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t21-Bp] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t21-B] class=1 kind=prose executed=True
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t22-A] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t22-Bp] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t22-B] class=2 kind=prose executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t23-A] class=3 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=partial/acceptable (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t23-Bp] class=3 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t23-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t24-A] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t24-Bp] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t24-B] class=4 kind=prose executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+
+Judged run 'rep1'. Outputs:
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep1/judge
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep1/judge/verdicts.json
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep1/judge/report.md
+[2026-07-05 23:19:15] <<< judge/rep1  OK
+Wrote /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep1/judge-spotcheck.md (13 of 134 verdicts).
+[2026-07-05 23:19:15] >>> merge-snapshot[rep1]  (attempt 1)
+Merged rep1 -> /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep1/merged.csv (72 episodes)
+Wrote:
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/results/260705-results.md
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/results/costs.md
+[2026-07-05 23:19:15] <<< merge-snapshot[rep1]  OK
+[2026-07-05 23:19:15] ########## REP rep1 COMPLETE (snapshot over: rep1) ##########
+[2026-07-05 23:19:15] ########## REP: rep2 ##########
+[2026-07-05 23:19:15] >>> harness/rep2  (attempt 1)
+Run rep2: 72 episodes (24 tasks x 3 conditions), fixture e02cf352
+[1/72] t01-A  running...
+    done in 117.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[2/72] t01-Bp  running...
+    done in 80.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[3/72] t01-B  running...
+    done in 113.4s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[4/72] t02-A  running...
+    done in 105.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[5/72] t02-Bp  running...
+    done in 149.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[6/72] t02-B  running...
+    done in 101.4s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[7/72] t03-A  running...
+    done in 262.4s  act=None diff=False pytest=0 protocol_error=None cap=None
+[8/72] t03-Bp  running...
+    done in 59.0s  act=None diff=False pytest=0 protocol_error=None cap=None
+[9/72] t03-B  running...
+    done in 45.7s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[10/72] t04-A  running...
+    done in 49.4s  act=None diff=False pytest=0 protocol_error=None cap=None
+[11/72] t04-Bp  running...
+    done in 54.3s  act=None diff=False pytest=0 protocol_error=None cap=None
+[12/72] t04-B  running...
+    done in 42.3s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[13/72] t05-A  running...
+    done in 47.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[14/72] t05-Bp  running...
+    done in 57.8s  act=None diff=True pytest=0 protocol_error=None cap=None
+[15/72] t05-B  running...
+    done in 66.4s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[16/72] t06-A  running...
+    done in 67.8s  act=None diff=True pytest=0 protocol_error=None cap=None
+[17/72] t06-Bp  running...
+    done in 75.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[18/72] t06-B  running...
+    done in 57.0s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[19/72] t07-A  running...
+    done in 150.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[20/72] t07-Bp  running...
+    done in 145.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[21/72] t07-B  running...
+    done in 47.2s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[22/72] t08-A  running...
+    done in 314.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[23/72] t08-Bp  running...
+    done in 298.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[24/72] t08-B  running...
+    done in 448.9s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[25/72] t09-A  running...
+    done in 58.5s  act=None diff=True pytest=0 protocol_error=None cap=None
+[26/72] t09-Bp  running...
+    done in 65.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[27/72] t09-B  running...
+    done in 78.1s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[28/72] t10-A  running...
+    done in 120.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[29/72] t10-Bp  running...
+    done in 138.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[30/72] t10-B  running...
+    done in 192.6s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[31/72] t11-A  running...
+    done in 32.0s  act=None diff=False pytest=0 protocol_error=None cap=None
+[32/72] t11-Bp  running...
+    done in 31.9s  act=None diff=False pytest=0 protocol_error=None cap=None
+[33/72] t11-B  running...
+    done in 22.6s  act=decline diff=False pytest=0 protocol_error=None cap=None
+[34/72] t12-A  running...
+    done in 45.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[35/72] t12-Bp  running...
+    done in 41.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[36/72] t12-B  running...
+    done in 65.5s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[37/72] t13-A  running...
+    done in 16.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[38/72] t13-Bp  running...
+    done in 21.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[39/72] t13-B  running...
+    done in 37.5s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[40/72] t14-A  running...
+    done in 77.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[41/72] t14-Bp  running...
+    done in 64.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[42/72] t14-B  running...
+    done in 93.6s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[43/72] t15-A  running...
+    done in 89.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[44/72] t15-Bp  running...
+    done in 81.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[45/72] t15-B  running...
+    done in 27.1s  act=decline diff=False pytest=0 protocol_error=None cap=None
+[46/72] t16-A  running...
+    done in 106.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[47/72] t16-Bp  running...
+    done in 93.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[48/72] t16-B  running...
+    done in 47.6s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[49/72] t17-A  running...
+    done in 45.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[50/72] t17-Bp  running...
+    done in 55.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[51/72] t17-B  running...
+    done in 65.0s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[52/72] t18-A  running...
+    done in 86.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[53/72] t18-Bp  running...
+    done in 152.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[54/72] t18-B  running...
+    done in 35.9s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[55/72] t19-A  running...
+    done in 96.3s  act=None diff=True pytest=2 protocol_error=None cap=None
+[56/72] t19-Bp  running...
+    done in 84.9s  act=None diff=True pytest=2 protocol_error=None cap=None
+[57/72] t19-B  running...
+    done in 48.4s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[58/72] t20-A  running...
+    done in 66.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[59/72] t20-Bp  running...
+    done in 70.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[60/72] t20-B  running...
+    done in 46.0s  act=promise diff=True pytest=1 protocol_error=None cap=None
+[61/72] t21-A  running...
+    done in 19.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[62/72] t21-Bp  running...
+    done in 39.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[63/72] t21-B  running...
+    done in 48.7s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[64/72] t22-A  running...
+    done in 83.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[65/72] t22-Bp  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[66/72] t22-B  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase negotiate: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[67/72] t23-A  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+ABORTING RUN: 3 consecutive CLI errors (rate limit / auth / network?). Fix the underlying issue, then re-run with --resume.
+[2026-07-06 00:54:54] ... harness/rep2  infra failure (exit 3). Backing off 300s then --resume.
+[2026-07-06 00:59:54] >>> harness/rep2  (attempt 2)
+Run rep2: 72 episodes (24 tasks x 3 conditions), fixture e02cf352
+[1/72] t01-A  SKIP (complete)
+[2/72] t01-Bp  SKIP (complete)
+[3/72] t01-B  SKIP (complete)
+[4/72] t02-A  SKIP (complete)
+[5/72] t02-Bp  SKIP (complete)
+[6/72] t02-B  SKIP (complete)
+[7/72] t03-A  SKIP (complete)
+[8/72] t03-Bp  SKIP (complete)
+[9/72] t03-B  SKIP (complete)
+[10/72] t04-A  SKIP (complete)
+[11/72] t04-Bp  SKIP (complete)
+[12/72] t04-B  SKIP (complete)
+[13/72] t05-A  SKIP (complete)
+[14/72] t05-Bp  SKIP (complete)
+[15/72] t05-B  SKIP (complete)
+[16/72] t06-A  SKIP (complete)
+[17/72] t06-Bp  SKIP (complete)
+[18/72] t06-B  SKIP (complete)
+[19/72] t07-A  SKIP (complete)
+[20/72] t07-Bp  SKIP (complete)
+[21/72] t07-B  SKIP (complete)
+[22/72] t08-A  SKIP (complete)
+[23/72] t08-Bp  SKIP (complete)
+[24/72] t08-B  SKIP (complete)
+[25/72] t09-A  SKIP (complete)
+[26/72] t09-Bp  SKIP (complete)
+[27/72] t09-B  SKIP (complete)
+[28/72] t10-A  SKIP (complete)
+[29/72] t10-Bp  SKIP (complete)
+[30/72] t10-B  SKIP (complete)
+[31/72] t11-A  SKIP (complete)
+[32/72] t11-Bp  SKIP (complete)
+[33/72] t11-B  SKIP (complete)
+[34/72] t12-A  SKIP (complete)
+[35/72] t12-Bp  SKIP (complete)
+[36/72] t12-B  SKIP (complete)
+[37/72] t13-A  SKIP (complete)
+[38/72] t13-Bp  SKIP (complete)
+[39/72] t13-B  SKIP (complete)
+[40/72] t14-A  SKIP (complete)
+[41/72] t14-Bp  SKIP (complete)
+[42/72] t14-B  SKIP (complete)
+[43/72] t15-A  SKIP (complete)
+[44/72] t15-Bp  SKIP (complete)
+[45/72] t15-B  SKIP (complete)
+[46/72] t16-A  SKIP (complete)
+[47/72] t16-Bp  SKIP (complete)
+[48/72] t16-B  SKIP (complete)
+[49/72] t17-A  SKIP (complete)
+[50/72] t17-Bp  SKIP (complete)
+[51/72] t17-B  SKIP (complete)
+[52/72] t18-A  SKIP (complete)
+[53/72] t18-Bp  SKIP (complete)
+[54/72] t18-B  SKIP (complete)
+[55/72] t19-A  SKIP (complete)
+[56/72] t19-Bp  SKIP (complete)
+[57/72] t19-B  SKIP (complete)
+[58/72] t20-A  SKIP (complete)
+[59/72] t20-Bp  SKIP (complete)
+[60/72] t20-B  SKIP (complete)
+[61/72] t21-A  SKIP (complete)
+[62/72] t21-Bp  SKIP (complete)
+[63/72] t21-B  SKIP (complete)
+[64/72] t22-A  SKIP (complete)
+[65/72] t22-Bp  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[66/72] t22-B  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase negotiate: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[67/72] t23-A  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+ABORTING RUN: 3 consecutive CLI errors (rate limit / auth / network?). Fix the underlying issue, then re-run with --resume.
+[2026-07-06 01:00:01] ... harness/rep2  infra failure (exit 3). Backing off 300s then --resume.
+[2026-07-06 01:05:01] >>> harness/rep2  (attempt 3)
+Run rep2: 72 episodes (24 tasks x 3 conditions), fixture e02cf352
+[1/72] t01-A  SKIP (complete)
+[2/72] t01-Bp  SKIP (complete)
+[3/72] t01-B  SKIP (complete)
+[4/72] t02-A  SKIP (complete)
+[5/72] t02-Bp  SKIP (complete)
+[6/72] t02-B  SKIP (complete)
+[7/72] t03-A  SKIP (complete)
+[8/72] t03-Bp  SKIP (complete)
+[9/72] t03-B  SKIP (complete)
+[10/72] t04-A  SKIP (complete)
+[11/72] t04-Bp  SKIP (complete)
+[12/72] t04-B  SKIP (complete)
+[13/72] t05-A  SKIP (complete)
+[14/72] t05-Bp  SKIP (complete)
+[15/72] t05-B  SKIP (complete)
+[16/72] t06-A  SKIP (complete)
+[17/72] t06-Bp  SKIP (complete)
+[18/72] t06-B  SKIP (complete)
+[19/72] t07-A  SKIP (complete)
+[20/72] t07-Bp  SKIP (complete)
+[21/72] t07-B  SKIP (complete)
+[22/72] t08-A  SKIP (complete)
+[23/72] t08-Bp  SKIP (complete)
+[24/72] t08-B  SKIP (complete)
+[25/72] t09-A  SKIP (complete)
+[26/72] t09-Bp  SKIP (complete)
+[27/72] t09-B  SKIP (complete)
+[28/72] t10-A  SKIP (complete)
+[29/72] t10-Bp  SKIP (complete)
+[30/72] t10-B  SKIP (complete)
+[31/72] t11-A  SKIP (complete)
+[32/72] t11-Bp  SKIP (complete)
+[33/72] t11-B  SKIP (complete)
+[34/72] t12-A  SKIP (complete)
+[35/72] t12-Bp  SKIP (complete)
+[36/72] t12-B  SKIP (complete)
+[37/72] t13-A  SKIP (complete)
+[38/72] t13-Bp  SKIP (complete)
+[39/72] t13-B  SKIP (complete)
+[40/72] t14-A  SKIP (complete)
+[41/72] t14-Bp  SKIP (complete)
+[42/72] t14-B  SKIP (complete)
+[43/72] t15-A  SKIP (complete)
+[44/72] t15-Bp  SKIP (complete)
+[45/72] t15-B  SKIP (complete)
+[46/72] t16-A  SKIP (complete)
+[47/72] t16-Bp  SKIP (complete)
+[48/72] t16-B  SKIP (complete)
+[49/72] t17-A  SKIP (complete)
+[50/72] t17-Bp  SKIP (complete)
+[51/72] t17-B  SKIP (complete)
+[52/72] t18-A  SKIP (complete)
+[53/72] t18-Bp  SKIP (complete)
+[54/72] t18-B  SKIP (complete)
+[55/72] t19-A  SKIP (complete)
+[56/72] t19-Bp  SKIP (complete)
+[57/72] t19-B  SKIP (complete)
+[58/72] t20-A  SKIP (complete)
+[59/72] t20-Bp  SKIP (complete)
+[60/72] t20-B  SKIP (complete)
+[61/72] t21-A  SKIP (complete)
+[62/72] t21-Bp  SKIP (complete)
+[63/72] t21-B  SKIP (complete)
+[64/72] t22-A  SKIP (complete)
+[65/72] t22-Bp  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[66/72] t22-B  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase negotiate: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[67/72] t23-A  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+ABORTING RUN: 3 consecutive CLI errors (rate limit / auth / network?). Fix the underlying issue, then re-run with --resume.
+[2026-07-06 01:05:07] ... harness/rep2  infra failure (exit 3). Backing off 600s then --resume.
+[2026-07-06 01:15:07] >>> harness/rep2  (attempt 4)
+Run rep2: 72 episodes (24 tasks x 3 conditions), fixture e02cf352
+[1/72] t01-A  SKIP (complete)
+[2/72] t01-Bp  SKIP (complete)
+[3/72] t01-B  SKIP (complete)
+[4/72] t02-A  SKIP (complete)
+[5/72] t02-Bp  SKIP (complete)
+[6/72] t02-B  SKIP (complete)
+[7/72] t03-A  SKIP (complete)
+[8/72] t03-Bp  SKIP (complete)
+[9/72] t03-B  SKIP (complete)
+[10/72] t04-A  SKIP (complete)
+[11/72] t04-Bp  SKIP (complete)
+[12/72] t04-B  SKIP (complete)
+[13/72] t05-A  SKIP (complete)
+[14/72] t05-Bp  SKIP (complete)
+[15/72] t05-B  SKIP (complete)
+[16/72] t06-A  SKIP (complete)
+[17/72] t06-Bp  SKIP (complete)
+[18/72] t06-B  SKIP (complete)
+[19/72] t07-A  SKIP (complete)
+[20/72] t07-Bp  SKIP (complete)
+[21/72] t07-B  SKIP (complete)
+[22/72] t08-A  SKIP (complete)
+[23/72] t08-Bp  SKIP (complete)
+[24/72] t08-B  SKIP (complete)
+[25/72] t09-A  SKIP (complete)
+[26/72] t09-Bp  SKIP (complete)
+[27/72] t09-B  SKIP (complete)
+[28/72] t10-A  SKIP (complete)
+[29/72] t10-Bp  SKIP (complete)
+[30/72] t10-B  SKIP (complete)
+[31/72] t11-A  SKIP (complete)
+[32/72] t11-Bp  SKIP (complete)
+[33/72] t11-B  SKIP (complete)
+[34/72] t12-A  SKIP (complete)
+[35/72] t12-Bp  SKIP (complete)
+[36/72] t12-B  SKIP (complete)
+[37/72] t13-A  SKIP (complete)
+[38/72] t13-Bp  SKIP (complete)
+[39/72] t13-B  SKIP (complete)
+[40/72] t14-A  SKIP (complete)
+[41/72] t14-Bp  SKIP (complete)
+[42/72] t14-B  SKIP (complete)
+[43/72] t15-A  SKIP (complete)
+[44/72] t15-Bp  SKIP (complete)
+[45/72] t15-B  SKIP (complete)
+[46/72] t16-A  SKIP (complete)
+[47/72] t16-Bp  SKIP (complete)
+[48/72] t16-B  SKIP (complete)
+[49/72] t17-A  SKIP (complete)
+[50/72] t17-Bp  SKIP (complete)
+[51/72] t17-B  SKIP (complete)
+[52/72] t18-A  SKIP (complete)
+[53/72] t18-Bp  SKIP (complete)
+[54/72] t18-B  SKIP (complete)
+[55/72] t19-A  SKIP (complete)
+[56/72] t19-Bp  SKIP (complete)
+[57/72] t19-B  SKIP (complete)
+[58/72] t20-A  SKIP (complete)
+[59/72] t20-Bp  SKIP (complete)
+[60/72] t20-B  SKIP (complete)
+[61/72] t21-A  SKIP (complete)
+[62/72] t21-Bp  SKIP (complete)
+[63/72] t21-B  SKIP (complete)
+[64/72] t22-A  SKIP (complete)
+[65/72] t22-Bp  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[66/72] t22-B  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase negotiate: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[67/72] t23-A  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+ABORTING RUN: 3 consecutive CLI errors (rate limit / auth / network?). Fix the underlying issue, then re-run with --resume.
+[2026-07-06 01:15:15] ... harness/rep2  infra failure (exit 3). Backing off 900s then --resume.
+[2026-07-06 01:30:15] >>> harness/rep2  (attempt 5)
+Run rep2: 72 episodes (24 tasks x 3 conditions), fixture e02cf352
+[1/72] t01-A  SKIP (complete)
+[2/72] t01-Bp  SKIP (complete)
+[3/72] t01-B  SKIP (complete)
+[4/72] t02-A  SKIP (complete)
+[5/72] t02-Bp  SKIP (complete)
+[6/72] t02-B  SKIP (complete)
+[7/72] t03-A  SKIP (complete)
+[8/72] t03-Bp  SKIP (complete)
+[9/72] t03-B  SKIP (complete)
+[10/72] t04-A  SKIP (complete)
+[11/72] t04-Bp  SKIP (complete)
+[12/72] t04-B  SKIP (complete)
+[13/72] t05-A  SKIP (complete)
+[14/72] t05-Bp  SKIP (complete)
+[15/72] t05-B  SKIP (complete)
+[16/72] t06-A  SKIP (complete)
+[17/72] t06-Bp  SKIP (complete)
+[18/72] t06-B  SKIP (complete)
+[19/72] t07-A  SKIP (complete)
+[20/72] t07-Bp  SKIP (complete)
+[21/72] t07-B  SKIP (complete)
+[22/72] t08-A  SKIP (complete)
+[23/72] t08-Bp  SKIP (complete)
+[24/72] t08-B  SKIP (complete)
+[25/72] t09-A  SKIP (complete)
+[26/72] t09-Bp  SKIP (complete)
+[27/72] t09-B  SKIP (complete)
+[28/72] t10-A  SKIP (complete)
+[29/72] t10-Bp  SKIP (complete)
+[30/72] t10-B  SKIP (complete)
+[31/72] t11-A  SKIP (complete)
+[32/72] t11-Bp  SKIP (complete)
+[33/72] t11-B  SKIP (complete)
+[34/72] t12-A  SKIP (complete)
+[35/72] t12-Bp  SKIP (complete)
+[36/72] t12-B  SKIP (complete)
+[37/72] t13-A  SKIP (complete)
+[38/72] t13-Bp  SKIP (complete)
+[39/72] t13-B  SKIP (complete)
+[40/72] t14-A  SKIP (complete)
+[41/72] t14-Bp  SKIP (complete)
+[42/72] t14-B  SKIP (complete)
+[43/72] t15-A  SKIP (complete)
+[44/72] t15-Bp  SKIP (complete)
+[45/72] t15-B  SKIP (complete)
+[46/72] t16-A  SKIP (complete)
+[47/72] t16-Bp  SKIP (complete)
+[48/72] t16-B  SKIP (complete)
+[49/72] t17-A  SKIP (complete)
+[50/72] t17-Bp  SKIP (complete)
+[51/72] t17-B  SKIP (complete)
+[52/72] t18-A  SKIP (complete)
+[53/72] t18-Bp  SKIP (complete)
+[54/72] t18-B  SKIP (complete)
+[55/72] t19-A  SKIP (complete)
+[56/72] t19-Bp  SKIP (complete)
+[57/72] t19-B  SKIP (complete)
+[58/72] t20-A  SKIP (complete)
+[59/72] t20-Bp  SKIP (complete)
+[60/72] t20-B  SKIP (complete)
+[61/72] t21-A  SKIP (complete)
+[62/72] t21-Bp  SKIP (complete)
+[63/72] t21-B  SKIP (complete)
+[64/72] t22-A  SKIP (complete)
+[65/72] t22-Bp  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[66/72] t22-B  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase negotiate: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[67/72] t23-A  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+ABORTING RUN: 3 consecutive CLI errors (rate limit / auth / network?). Fix the underlying issue, then re-run with --resume.
+[2026-07-06 01:30:22] ... harness/rep2  infra failure (exit 3). Backing off 1800s then --resume.
+[2026-07-06 02:00:22] >>> harness/rep2  (attempt 6)
+Run rep2: 72 episodes (24 tasks x 3 conditions), fixture e02cf352
+[1/72] t01-A  SKIP (complete)
+[2/72] t01-Bp  SKIP (complete)
+[3/72] t01-B  SKIP (complete)
+[4/72] t02-A  SKIP (complete)
+[5/72] t02-Bp  SKIP (complete)
+[6/72] t02-B  SKIP (complete)
+[7/72] t03-A  SKIP (complete)
+[8/72] t03-Bp  SKIP (complete)
+[9/72] t03-B  SKIP (complete)
+[10/72] t04-A  SKIP (complete)
+[11/72] t04-Bp  SKIP (complete)
+[12/72] t04-B  SKIP (complete)
+[13/72] t05-A  SKIP (complete)
+[14/72] t05-Bp  SKIP (complete)
+[15/72] t05-B  SKIP (complete)
+[16/72] t06-A  SKIP (complete)
+[17/72] t06-Bp  SKIP (complete)
+[18/72] t06-B  SKIP (complete)
+[19/72] t07-A  SKIP (complete)
+[20/72] t07-Bp  SKIP (complete)
+[21/72] t07-B  SKIP (complete)
+[22/72] t08-A  SKIP (complete)
+[23/72] t08-Bp  SKIP (complete)
+[24/72] t08-B  SKIP (complete)
+[25/72] t09-A  SKIP (complete)
+[26/72] t09-Bp  SKIP (complete)
+[27/72] t09-B  SKIP (complete)
+[28/72] t10-A  SKIP (complete)
+[29/72] t10-Bp  SKIP (complete)
+[30/72] t10-B  SKIP (complete)
+[31/72] t11-A  SKIP (complete)
+[32/72] t11-Bp  SKIP (complete)
+[33/72] t11-B  SKIP (complete)
+[34/72] t12-A  SKIP (complete)
+[35/72] t12-Bp  SKIP (complete)
+[36/72] t12-B  SKIP (complete)
+[37/72] t13-A  SKIP (complete)
+[38/72] t13-Bp  SKIP (complete)
+[39/72] t13-B  SKIP (complete)
+[40/72] t14-A  SKIP (complete)
+[41/72] t14-Bp  SKIP (complete)
+[42/72] t14-B  SKIP (complete)
+[43/72] t15-A  SKIP (complete)
+[44/72] t15-Bp  SKIP (complete)
+[45/72] t15-B  SKIP (complete)
+[46/72] t16-A  SKIP (complete)
+[47/72] t16-Bp  SKIP (complete)
+[48/72] t16-B  SKIP (complete)
+[49/72] t17-A  SKIP (complete)
+[50/72] t17-Bp  SKIP (complete)
+[51/72] t17-B  SKIP (complete)
+[52/72] t18-A  SKIP (complete)
+[53/72] t18-Bp  SKIP (complete)
+[54/72] t18-B  SKIP (complete)
+[55/72] t19-A  SKIP (complete)
+[56/72] t19-Bp  SKIP (complete)
+[57/72] t19-B  SKIP (complete)
+[58/72] t20-A  SKIP (complete)
+[59/72] t20-Bp  SKIP (complete)
+[60/72] t20-B  SKIP (complete)
+[61/72] t21-A  SKIP (complete)
+[62/72] t21-Bp  SKIP (complete)
+[63/72] t21-B  SKIP (complete)
+[64/72] t22-A  SKIP (complete)
+[65/72] t22-Bp  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[66/72] t22-B  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase negotiate: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+[67/72] t23-A  running...
+    CLI ERROR (will re-run on --resume): CLIError('phase execute: CLI error result (api_error_status=429): "You\'ve hit your session limit · resets 2:20am (Asia/Singapore)"')
+ABORTING RUN: 3 consecutive CLI errors (rate limit / auth / network?). Fix the underlying issue, then re-run with --resume.
+[2026-07-06 02:00:29] ... harness/rep2  infra failure (exit 3). Backing off 1800s then --resume.
+[2026-07-06 02:30:29] >>> harness/rep2  (attempt 7)
+Run rep2: 72 episodes (24 tasks x 3 conditions), fixture e02cf352
+[1/72] t01-A  SKIP (complete)
+[2/72] t01-Bp  SKIP (complete)
+[3/72] t01-B  SKIP (complete)
+[4/72] t02-A  SKIP (complete)
+[5/72] t02-Bp  SKIP (complete)
+[6/72] t02-B  SKIP (complete)
+[7/72] t03-A  SKIP (complete)
+[8/72] t03-Bp  SKIP (complete)
+[9/72] t03-B  SKIP (complete)
+[10/72] t04-A  SKIP (complete)
+[11/72] t04-Bp  SKIP (complete)
+[12/72] t04-B  SKIP (complete)
+[13/72] t05-A  SKIP (complete)
+[14/72] t05-Bp  SKIP (complete)
+[15/72] t05-B  SKIP (complete)
+[16/72] t06-A  SKIP (complete)
+[17/72] t06-Bp  SKIP (complete)
+[18/72] t06-B  SKIP (complete)
+[19/72] t07-A  SKIP (complete)
+[20/72] t07-Bp  SKIP (complete)
+[21/72] t07-B  SKIP (complete)
+[22/72] t08-A  SKIP (complete)
+[23/72] t08-Bp  SKIP (complete)
+[24/72] t08-B  SKIP (complete)
+[25/72] t09-A  SKIP (complete)
+[26/72] t09-Bp  SKIP (complete)
+[27/72] t09-B  SKIP (complete)
+[28/72] t10-A  SKIP (complete)
+[29/72] t10-Bp  SKIP (complete)
+[30/72] t10-B  SKIP (complete)
+[31/72] t11-A  SKIP (complete)
+[32/72] t11-Bp  SKIP (complete)
+[33/72] t11-B  SKIP (complete)
+[34/72] t12-A  SKIP (complete)
+[35/72] t12-Bp  SKIP (complete)
+[36/72] t12-B  SKIP (complete)
+[37/72] t13-A  SKIP (complete)
+[38/72] t13-Bp  SKIP (complete)
+[39/72] t13-B  SKIP (complete)
+[40/72] t14-A  SKIP (complete)
+[41/72] t14-Bp  SKIP (complete)
+[42/72] t14-B  SKIP (complete)
+[43/72] t15-A  SKIP (complete)
+[44/72] t15-Bp  SKIP (complete)
+[45/72] t15-B  SKIP (complete)
+[46/72] t16-A  SKIP (complete)
+[47/72] t16-Bp  SKIP (complete)
+[48/72] t16-B  SKIP (complete)
+[49/72] t17-A  SKIP (complete)
+[50/72] t17-Bp  SKIP (complete)
+[51/72] t17-B  SKIP (complete)
+[52/72] t18-A  SKIP (complete)
+[53/72] t18-Bp  SKIP (complete)
+[54/72] t18-B  SKIP (complete)
+[55/72] t19-A  SKIP (complete)
+[56/72] t19-Bp  SKIP (complete)
+[57/72] t19-B  SKIP (complete)
+[58/72] t20-A  SKIP (complete)
+[59/72] t20-Bp  SKIP (complete)
+[60/72] t20-B  SKIP (complete)
+[61/72] t21-A  SKIP (complete)
+[62/72] t21-Bp  SKIP (complete)
+[63/72] t21-B  SKIP (complete)
+[64/72] t22-A  SKIP (complete)
+[65/72] t22-Bp  running...
+    done in 84.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[66/72] t22-B  running...
+    done in 112.5s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[67/72] t23-A  running...
+    done in 66.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[68/72] t23-Bp  running...
+    done in 47.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[69/72] t23-B  running...
+    done in 20.0s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[70/72] t24-A  running...
+    done in 29.8s  act=None diff=True pytest=0 protocol_error=None cap=None
+[71/72] t24-Bp  running...
+    done in 55.5s  act=None diff=True pytest=0 protocol_error=None cap=None
+[72/72] t24-B  running...
+    done in 51.0s  act=promise diff=True pytest=0 protocol_error=None cap=None
+Run rep2 complete.
+[2026-07-06 02:38:16] <<< harness/rep2  OK
+[2026-07-06 02:38:16] >>> tier1/rep2  (attempt 1)
+Scored 72 episodes in run 'rep2':
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep2/tier1.csv
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep2/tier1-by-class.md
+[2026-07-06 02:38:16] <<< tier1/rep2  OK
+[2026-07-06 02:38:16] >>> judge/rep2  (attempt 1)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=partial/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 2)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t06-B] class=2 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 2)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=True
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t16-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t18-B] class=2 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t19-A] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t19-Bp] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  JUDGE_ERROR: span does not appear verbatim in the transcript or final report; for a bucket other than cannot_attribute a real quote is required
+[t19-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t20-A] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t20-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t20-B] class=4 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t21-A] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t21-Bp] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t21-B] class=1 kind=prose executed=True
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t22-A] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t22-Bp] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t22-B] class=2 kind=prose executed=True
+    job3_outcome       outcome=partial/acceptable (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t23-A] class=3 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=partial/acceptable (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t23-Bp] class=3 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  loc=b_cos_unmet (attempt 1)
+[t23-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t24-A] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t24-Bp] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t24-B] class=4 kind=prose executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+
+Judged run 'rep2'. Outputs:
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep2/judge
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep2/judge/verdicts.json
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep2/judge/report.md
+[2026-07-06 03:03:32] <<< judge/rep2  OK
+Wrote /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep2/judge-spotcheck.md (14 of 135 verdicts).
+[2026-07-06 03:03:33] >>> merge-snapshot[rep1,rep2]  (attempt 1)
+Merged rep1 -> /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep1/merged.csv (72 episodes)
+Merged rep2 -> /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep2/merged.csv (72 episodes)
+Wrote:
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/results/260705-results.md
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/results/costs.md
+[2026-07-06 03:03:33] <<< merge-snapshot[rep1,rep2]  OK
+[2026-07-06 03:03:33] ########## REP rep2 COMPLETE (snapshot over: rep1,rep2) ##########
+[2026-07-06 03:03:33] ########## REP: rep3 ##########
+[2026-07-06 03:03:33] >>> harness/rep3  (attempt 1)
+Run rep3: 72 episodes (24 tasks x 3 conditions), fixture e02cf352
+[1/72] t01-A  running...
+    done in 123.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[2/72] t01-Bp  running...
+    done in 98.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[3/72] t01-B  running...
+    done in 154.9s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[4/72] t02-A  running...
+    done in 93.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[5/72] t02-Bp  running...
+    done in 104.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[6/72] t02-B  running...
+    done in 185.1s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[7/72] t03-A  running...
+    done in 111.5s  act=None diff=False pytest=0 protocol_error=None cap=None
+[8/72] t03-Bp  running...
+    done in 99.3s  act=None diff=False pytest=0 protocol_error=None cap=None
+[9/72] t03-B  running...
+    done in 53.1s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[10/72] t04-A  running...
+    done in 84.2s  act=None diff=False pytest=0 protocol_error=None cap=None
+[11/72] t04-Bp  running...
+    done in 64.6s  act=None diff=False pytest=0 protocol_error=None cap=None
+[12/72] t04-B  running...
+    done in 44.2s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[13/72] t05-A  running...
+    done in 45.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[14/72] t05-Bp  running...
+    done in 55.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[15/72] t05-B  running...
+    done in 70.9s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[16/72] t06-A  running...
+    done in 100.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[17/72] t06-Bp  running...
+    done in 84.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[18/72] t06-B  running...
+    done in 80.5s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[19/72] t07-A  running...
+    done in 123.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[20/72] t07-Bp  running...
+    done in 156.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[21/72] t07-B  running...
+    done in 49.7s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[22/72] t08-A  running...
+    done in 205.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[23/72] t08-Bp  running...
+    done in 273.5s  act=None diff=True pytest=0 protocol_error=None cap=None
+[24/72] t08-B  running...
+    done in 285.1s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[25/72] t09-A  running...
+    done in 52.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[26/72] t09-Bp  running...
+    done in 72.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[27/72] t09-B  running...
+    done in 78.0s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[28/72] t10-A  running...
+    done in 154.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[29/72] t10-Bp  running...
+    done in 155.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[30/72] t10-B  running...
+    done in 130.5s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[31/72] t11-A  running...
+    done in 28.4s  act=None diff=False pytest=0 protocol_error=None cap=None
+[32/72] t11-Bp  running...
+    done in 30.2s  act=None diff=False pytest=0 protocol_error=None cap=None
+[33/72] t11-B  running...
+    done in 12.9s  act=decline diff=False pytest=0 protocol_error=None cap=None
+[34/72] t12-A  running...
+    done in 42.8s  act=None diff=True pytest=0 protocol_error=None cap=None
+[35/72] t12-Bp  running...
+    done in 46.5s  act=None diff=True pytest=0 protocol_error=None cap=None
+[36/72] t12-B  running...
+    done in 69.8s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[37/72] t13-A  running...
+    done in 23.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[38/72] t13-Bp  running...
+    done in 19.9s  act=None diff=True pytest=0 protocol_error=None cap=None
+[39/72] t13-B  running...
+    done in 45.2s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[40/72] t14-A  running...
+    done in 59.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[41/72] t14-Bp  running...
+    done in 82.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[42/72] t14-B  running...
+    done in 74.1s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[43/72] t15-A  running...
+    done in 67.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[44/72] t15-Bp  running...
+    done in 118.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[45/72] t15-B  running...
+    done in 19.1s  act=decline diff=False pytest=0 protocol_error=None cap=None
+[46/72] t16-A  running...
+    done in 109.8s  act=None diff=True pytest=0 protocol_error=None cap=None
+[47/72] t16-Bp  running...
+    done in 141.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[48/72] t16-B  running...
+    done in 118.3s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[49/72] t17-A  running...
+    done in 39.2s  act=None diff=True pytest=0 protocol_error=None cap=None
+[50/72] t17-Bp  running...
+    done in 58.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[51/72] t17-B  running...
+    done in 73.6s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[52/72] t18-A  running...
+    done in 107.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[53/72] t18-Bp  running...
+    done in 147.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[54/72] t18-B  running...
+    done in 128.7s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[55/72] t19-A  running...
+    done in 119.8s  act=None diff=True pytest=2 protocol_error=None cap=None
+[56/72] t19-Bp  running...
+    done in 111.8s  act=None diff=True pytest=2 protocol_error=None cap=None
+[57/72] t19-B  running...
+    done in 127.1s  act=promise diff=True pytest=2 protocol_error=None cap=None
+[58/72] t20-A  running...
+    done in 61.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[59/72] t20-Bp  running...
+    done in 65.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[60/72] t20-B  running...
+    done in 70.2s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[61/72] t21-A  running...
+    done in 26.8s  act=None diff=True pytest=0 protocol_error=None cap=None
+[62/72] t21-Bp  running...
+    done in 32.1s  act=None diff=True pytest=0 protocol_error=None cap=None
+[63/72] t21-B  running...
+    done in 53.9s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[64/72] t22-A  running...
+    done in 67.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[65/72] t22-Bp  running...
+    done in 73.3s  act=None diff=True pytest=0 protocol_error=None cap=None
+[66/72] t22-B  running...
+    done in 93.3s  act=promise diff=True pytest=0 protocol_error=None cap=None
+[67/72] t23-A  running...
+    done in 50.6s  act=None diff=True pytest=0 protocol_error=None cap=None
+[68/72] t23-Bp  running...
+    done in 52.7s  act=None diff=True pytest=0 protocol_error=None cap=None
+[69/72] t23-B  running...
+    done in 39.8s  act=counter_offer diff=False pytest=0 protocol_error=None cap=None
+[70/72] t24-A  running...
+    done in 26.0s  act=None diff=True pytest=0 protocol_error=None cap=None
+[71/72] t24-Bp  running...
+    done in 37.4s  act=None diff=True pytest=0 protocol_error=None cap=None
+[72/72] t24-B  running...
+    done in 47.5s  act=promise diff=True pytest=0 protocol_error=None cap=None
+Run rep3 complete.
+[2026-07-06 04:47:02] <<< harness/rep3  OK
+[2026-07-06 04:47:02] >>> tier1/rep3  (attempt 1)
+Scored 72 episodes in run 'rep3':
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep3/tier1.csv
+  /Users/sk/Documents/Docs/Claude Projects/Speech Acts for AI/experiment/runs/rep3/tier1-by-class.md
+[2026-07-06 04:47:02] <<< tier1/rep3  OK
+[2026-07-06 04:47:02] >>> judge/rep3  (attempt 1)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 2)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 2)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t06-B] class=2 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 2)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 2)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 2)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=partial/acceptable (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     surfaced=True (attempt 1)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=True
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t16-B] class=4 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 2)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       outcome=pass/excellent (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t18-B] class=2 kind=code executed=True
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job2_localization  SKIP (not D11-eligible: no D11 trigger)
+[t19-A] class=3 kind=code executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+ABORTING: 3 consecutive Codex infrastructure failures (usage limit / network?). Re-run with --resume once resolved.
+[2026-07-06 05:07:36] ... judge/rep3  infra failure (exit 3). Backing off 300s then --resume.
+[2026-07-06 05:12:36] >>> judge/rep3  (attempt 2)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-B] class=2 kind=code executed=True
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job2_localization  SKIP (not D11-eligible: no D11 trigger)
+[t19-A] class=3 kind=code executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+ABORTING: 3 consecutive Codex infrastructure failures (usage limit / network?). Re-run with --resume once resolved.
+[2026-07-06 05:12:52] ... judge/rep3  infra failure (exit 3). Backing off 300s then --resume.
+[2026-07-06 05:17:52] >>> judge/rep3  (attempt 3)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-B] class=2 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t19-A] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=c_wrong_cos (attempt 1)
+[t19-Bp] class=3 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t19-B] class=3 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t20-A] class=4 kind=code executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       outcome=partial/acceptable (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t20-Bp] class=4 kind=code executed=True
+    job1_surfacing     surfaced=False (attempt 1)
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t20-B] class=4 kind=code executed=True
+    job3_outcome       outcome=fail/failure (attempt 1)
+    job2_localization  INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+[t21-A] class=1 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+ABORTING: 3 consecutive Codex infrastructure failures (usage limit / network?). Re-run with --resume once resolved.
+[2026-07-06 05:21:17] ... judge/rep3  infra failure (exit 3). Backing off 600s then --resume.
+[2026-07-06 05:31:17] >>> judge/rep3  (attempt 4)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-B] class=3 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+[t21-A] class=1 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+ABORTING: 3 consecutive Codex infrastructure failures (usage limit / network?). Re-run with --resume once resolved.
+[2026-07-06 05:31:32] ... judge/rep3  infra failure (exit 3). Backing off 900s then --resume.
+[2026-07-06 05:46:32] >>> judge/rep3  (attempt 5)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-B] class=3 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  loc=a_never_surfaced (attempt 1)
+[t21-A] class=1 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job2_localization  SKIP (not D11-eligible: no D11 trigger)
+[t21-Bp] class=1 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+ABORTING: 3 consecutive Codex infrastructure failures (usage limit / network?). Re-run with --resume once resolved.
+[2026-07-06 05:47:05] ... judge/rep3  infra failure (exit 3). Backing off 1800s then --resume.
+[2026-07-06 06:17:05] >>> judge/rep3  (attempt 6)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-B] class=3 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t21-A] class=1 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job2_localization  SKIP (not D11-eligible: no D11 trigger)
+[t21-Bp] class=1 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+ABORTING: 3 consecutive Codex infrastructure failures (usage limit / network?). Re-run with --resume once resolved.
+[2026-07-06 06:17:22] ... judge/rep3  infra failure (exit 3). Backing off 1800s then --resume.
+[2026-07-06 06:47:22] >>> judge/rep3  (attempt 7)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-B] class=3 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t21-A] class=1 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job2_localization  SKIP (not D11-eligible: no D11 trigger)
+[t21-Bp] class=1 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+ABORTING: 3 consecutive Codex infrastructure failures (usage limit / network?). Re-run with --resume once resolved.
+[2026-07-06 06:47:37] ... judge/rep3  infra failure (exit 3). Backing off 1800s then --resume.
+[2026-07-06 07:17:37] >>> judge/rep3  (attempt 8)
+[t01-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t01-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t02-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t02-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t03-A] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-Bp] class=3 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t03-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-A] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-Bp] class=4 kind=code executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t04-B] class=4 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t05-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t05-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t06-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t06-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t07-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t08-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t08-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t09-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t09-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t10-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t10-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t11-A] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-Bp] class=3 kind=prose executed=False
+    job1_surfacing     SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t11-B] class=3 kind=prose executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t12-A] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-Bp] class=4 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t12-B] class=4 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-A] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-Bp] class=1 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t13-B] class=1 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t14-A] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-Bp] class=2 kind=prose executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t14-B] class=2 kind=prose executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t15-B] class=3 kind=code executed=False
+    job2_localization  SKIP (not D11-eligible: not executed)
+[t16-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t16-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t17-A] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-Bp] class=1 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t17-B] class=1 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t18-A] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-Bp] class=2 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t18-B] class=2 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-A] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-Bp] class=3 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t19-B] class=3 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-A] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-Bp] class=4 kind=code executed=True
+    job1_surfacing     SKIP (checkpoint)
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t20-B] class=4 kind=code executed=True
+    job3_outcome       SKIP (checkpoint)
+    job2_localization  SKIP (checkpoint)
+[t21-A] class=1 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job3_outcome       outcome=pass/acceptable (attempt 1)
+    job2_localization  SKIP (not D11-eligible: outcome=pass)
+[t21-Bp] class=1 kind=prose executed=True
+    job1_surfacing     surfaced=True (attempt 1)
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job2_localization  SKIP (not D11-eligible: no D11 trigger)
+[t21-B] class=1 kind=prose executed=True
+    job3_outcome       INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+    job2_localization  SKIP (not D11-eligible: no D11 trigger)
+[t22-A] class=2 kind=prose executed=True
+    job1_surfacing     INFRA FAILURE (codex exit 1: Bearer error=\"invalid_request\", error_description=\"No access token was provided in this request\", resource_metadata=\"https://api.githubcopilot.com/.well-known/oauth-protected-resource/mcp/\"" })
+) -- no checkpoint, --resume will retry
+ABORTING: 3 consecutive Codex infrastructure failures (usage limit / network?). Re-run with --resume once resolved.
+[2026-07-06 07:18:18] ... judge/rep3  infra failure (exit 3). Backing off 1800s then --resume.

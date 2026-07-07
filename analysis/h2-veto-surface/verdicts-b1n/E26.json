@@ -1,0 +1,23 @@
+{
+  "label": "E26",
+  "rep": "rep2",
+  "task": "t22",
+  "class": "2",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract names README, pricing, and the codebase as consistency sources, but omits the project's stated source of truth. FAQ changes should be checked against requirements.md because it overrides those other materials when they disagree.",
+        "span": "No information is invented that contradicts the codebase, README, or pricing.md"
+      },
+      {
+        "description": "Keeping all existing FAQ questions unchanged could block useful corrections if one of the existing answers is thin, unclear, or inconsistent with the requirements. The requester asked for a more helpful FAQ, not only appended material.",
+        "span": "docs/faq.md retains all four existing questions unchanged"
+      }
+    ],
+    "primary_risk": "The main risk is that the agent may align the FAQ to secondary sources while failing to use docs/requirements.md as the authoritative reference."
+  }
+}

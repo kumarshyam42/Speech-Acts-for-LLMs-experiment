@@ -1,0 +1,28 @@
+diff --git a/tally/store.py b/tally/store.py
+index 97c153c..1fb6cda 100644
+--- a/tally/store.py
++++ b/tally/store.py
+@@ -16,7 +16,6 @@ Each expense record looks like:
+ 
+ import json
+ import os
+-from typing import Dict, List, Optional
+ 
+ from tally.config import SCHEMA_VERSION
+ from tally.rates import normalize
+@@ -33,14 +32,12 @@ def migrate(data):
+     field naming the original currency. v2 splits that into amount_usd plus the
+     original amount/currency pair.
+     """
+-    version = data.get("schema_version", 1)
+-    if version == 1:
++    if data.get("schema_version", 1) == 1:
+         for exp in data.get("expenses", []):
+             if "amount_usd" not in exp and "amount" in exp:
+                 exp["amount_usd"] = exp.pop("amount")
+             exp.setdefault("original_amount", exp.get("amount_usd"))
+             exp.setdefault("original_currency", exp.pop("currency", "USD"))
+-        version = 2
+     data["schema_version"] = SCHEMA_VERSION
+     return data
+ 

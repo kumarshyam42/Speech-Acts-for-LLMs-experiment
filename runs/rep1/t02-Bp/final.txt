@@ -1,0 +1,15 @@
+45/45 passing.
+
+---
+
+**Final report**
+
+I found three compounding inefficiencies in the `report` hot path and fixed all three:
+
+**1. `month_key` slow path for string dates (`tally/utils.py:24-33`)** — the biggest win (19× on a micro-benchmark). For every expense in `filter_expenses`, the old code called `parse_date` which tried two `strptime` patterns, then formatted the resulting `datetime.date` back to "YYYY-MM". Since stored dates are always "YYYY-MM-DD" ISO strings, we can just slice `[:7]` — zero parsing needed. The `strptime` path is preserved as a fallback for other callers.
+
+**2. `category_totals` intermediate rounding (`tally/report.py:29-35`)** — 4.8× win on a micro-benchmark. `round_money` was called after *every accumulation step* (once per expense), creating n calls to Python's `round()`. Now we accumulate raw floats and round once per category at the end. One `round()` call per category instead of per expense.
+
+**3. `format_report` second scan of `selected` (`tally/report.py:65`)** — removed a full re-iteration. The grand total used to call `grand_total(selected)` which iterated all filtered expenses again. Since `category_totals` already aggregated everything, we derive the grand total from `sum(totals.values())` — O(categories) instead of O(n).
+
+All 45 tests pass unchanged.

@@ -1,0 +1,18 @@
+Done. Here's what changed and why:
+
+**Added:**
+- **Shell alias example** — the old README said "drop a shell alias" but didn't show how
+- **Category list** — users couldn't tell which categories were valid without reading source code
+- **Currency list** — same issue; now explicit
+- **`stats` command** — existed in the CLI but was entirely absent from the README
+- **`budget` command section** — mentioned in the CLI but never documented; now includes how to configure limits
+- **`--store` flag** — a meaningful UX feature (multiple expense files) that was invisible
+- **Testing instructions** — useful for contributors, consistent with CONTRIBUTING.md
+
+**Kept:**
+- The existing prose tone (casual, personal-tool feel)
+- All original content that was accurate
+- The "note on scope" section verbatim
+
+**Changed:**
+- Examples now use the `tally` alias form instead of `python -m tally.cli` for readability (the alias section comes first and establishes it)

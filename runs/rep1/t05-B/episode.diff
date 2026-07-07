@@ -1,0 +1,41 @@
+diff --git a/tally/rates.py b/tally/rates.py
+index fcdfecc..36e415c 100644
+--- a/tally/rates.py
++++ b/tally/rates.py
+@@ -9,12 +9,13 @@ from tally.config import DEFAULT_CURRENCY
+ 
+ # 1 unit of <currency> is worth RATES[<currency>] USD.
+ RATES = {
+-    "USD": 1.0,
++    "CAD": 0.73,
+     "EUR": 1.08,
+     "GBP": 1.27,
+-    "SGD": 0.74,
+-    "JPY": 0.0067,
+     "INR": 0.012,
++    "JPY": 0.0067,
++    "SGD": 0.74,
++    "USD": 1.0,
+ }
+ 
+ 
+diff --git a/tests/test_rates.py b/tests/test_rates.py
+index 50fdcd0..826857b 100644
+--- a/tests/test_rates.py
++++ b/tests/test_rates.py
+@@ -31,9 +31,15 @@ def test_unknown_currency_raises():
+         rates.to_usd(10.0, "XYZ")
+ 
+ 
++def test_to_usd_cad():
++    # Pins the CAD rate (0.73). Changing the rate breaks this on purpose.
++    assert rates.to_usd(100.0, "CAD") == 73.0
++
++
+ def test_supported_currencies_sorted():
+     codes = rates.supported_currencies()
+     assert codes == sorted(codes)
+     assert "USD" in codes
++    assert "CAD" in codes
+ 
+ 

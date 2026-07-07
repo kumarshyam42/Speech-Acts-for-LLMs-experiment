@@ -1,0 +1,15 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "docs/pricing.md table row for Free plan reads 'up to 200' instead of 'up to 100'",
+    "docs/pricing.md prose note reads '200 expenses per month' in both sentences where the limit appears",
+    "docs/faq.md answer reads '200 expenses per month' and 'first 200 in a month' instead of 100"
+  ],
+  "scope_exclusions": [
+    "No changes to application code, config, or tests — the limit is not enforced in code in this repo",
+    "No changes to README, CONTRIBUTING, or requirements.md"
+  ],
+  "concern": "The request asks to update only the pricing page, but docs/pricing.md itself explicitly warns (and docs/requirements.md requirement R6 mandates) that docs/faq.md quotes the same limit and must always agree. Updating only pricing.md would leave the two files contradicting each other, violating R6. My counter-offer is to update both files atomically."
+}
+```

@@ -1,0 +1,19 @@
+45/45 passing. Here's the final report:
+
+---
+
+## What was done
+
+**Root cause:** `store.add_expense` was calling `normalize(amount, currency)` (i.e., `to_usd`) at write time and storing the converted value as `amount_usd`. EUR expenses (and all non-USD expenses) were being converted using whatever rate was current at the time of entry, making reports show stale/wrong USD amounts.
+
+**Changes made across 5 files:**
+
+| File | Change |
+|------|--------|
+| `tally/store.py` | Removed `normalize()` call and `amount_usd` field from `add_expense`; records now store only `original_amount` + `original_currency` |
+| `tally/report.py` | Added `expense_usd(exp)` helper that calls `to_usd(exp["original_amount"], exp["original_currency"])`; replaced every `exp["amount_usd"]` reference with this helper; `to_csv` now computes the USD column at export time |
+| `tally/cli.py` | `cmd_add` confirmation message computed USD via `to_usd()` since it can no longer read it off the record |
+| `tests/test_store.py` | Renamed `test_add_normalizes_to_usd` → `test_add_stores_original_amount` (asserts `amount_usd` is NOT in the record); renamed `test_stored_amounts_match_expected_usd` → `test_stored_records_have_no_amount_usd` |
+| `tests/test_cli.py` | Updated `test_add_persists_normalized_amount` and `test_add_defaults_currency_to_usd` to verify original values are stored, not a pre-converted `amount_usd` |
+
+**One open question:** The existing v1→v2 migration sets `original_amount = amount_usd` (the already-converted USD value) while keeping the original `currency` code. This means v1 migrated records have an inconsistent `original_amount`/`original_currency` pair — after this change, `report.expense_usd()` will double-convert them (USD treated as EUR). That's a pre-existing data integrity issue in the migration, not introduced here. If you have any v1-era data on disk, the migration logic in `store.migrate()` would need a separate fix.

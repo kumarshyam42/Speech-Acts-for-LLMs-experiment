@@ -1,0 +1,110 @@
+diff --git a/docs/faq.md b/docs/faq.md
+index 85ea0e5..166c1c1 100644
+--- a/docs/faq.md
++++ b/docs/faq.md
+@@ -5,18 +5,97 @@
+ Yes. Running tally on your own computer is free and always will be. The only thing
+ that costs money is the optional hosted backup add-on.
+ 
+-## How many expenses can I track on the free plan?
++## How many expenses can I track?
+ 
+-The free plan includes hosted backup for up to **100 expenses per month**. You can
+-record more than that locally — nothing stops you — but only the first 100 in a
+-month are covered by the free backup. The Plus and Family plans remove the limit.
++As many as you like. There is no local limit. The only limit on the free plan is
++the hosted backup: only the first **100 expenses per month** are included. You can
++record more than that — tally saves everything locally regardless — but the extras
++are not backed up until you upgrade to Plus or Family. See `docs/pricing.md` for
++plan details.
+ 
+ ## Where is my data kept?
+ 
+-In a single JSON file on your own machine. Unless you turn on the hosted backup
+-add-on, your data never leaves your computer.
++In a single JSON file on your own machine. By default it is called `tally.json`
++and lives in whichever directory you run the command from. Unless you turn on the
++hosted backup add-on, your data never leaves your computer.
++
++## Can I use a different file for my data?
++
++Yes. Pass `--store path/to/file.json` before any subcommand and tally reads from
++and writes to that file instead:
++
++```
++python -m tally.cli --store ~/finances/2024.json add 12.50 food
++```
++
++This is handy if you want to keep separate files for different years or projects.
+ 
+ ## Can I enter expenses in other currencies?
+ 
+-Yes. Pass `--currency` when you add an expense and tally converts it to US dollars
+-for you.
++Yes. Pass `--currency` when you add an expense and tally converts the amount to
++US dollars before saving it. The original amount and currency are kept alongside
++the converted figure so you can see them in the `list` output.
++
++Supported currencies: **EUR, GBP, INR, JPY, SGD, USD**. The rates are fixed
++constants (not live market rates), so totals are consistent across reports even
++if you add expenses months apart.
++
++## What categories can I use?
++
++The built-in categories are `food`, `transport`, `rent`, `entertainment`, and
++`other`. If you type something outside that list tally will warn you. When in
++doubt, `other` is a catch-all.
++
++## What is the difference between report, list, and stats?
++
++- `report` prints category totals for a month (or all time if you omit `--month`).
++  Use it to see where the money went at a glance.
++- `list` prints every individual expense, one per line, with its date, amount,
++  and note. Use it when you want to audit specific entries.
++- `stats` shows a single-page summary across all your data: total count, grand
++  total, average per expense, and the date range you have covered.
++
++## What is the budget command?
++
++`budget` compares your spending for a given month against the per-category limits
++set in `tally/config.py`. It marks each category as `ok`, `warn` (you have spent
++80 % or more of the budget), or `over`. You must pass `--month`:
++
++```
++python -m tally.cli budget --month 2024-03
++```
++
++The default budgets are: food $600, rent $1 500, transport $200,
++entertainment $150, other $300. To change them, edit `CATEGORY_BUDGETS` in
++`tally/config.py`.
++
++## How do I export my data?
++
++The `export` command writes every expense to CSV:
++
++```
++python -m tally.cli export --out march.csv
++```
++
++Omit `--out` to print the CSV to stdout instead, which is useful for piping to
++other tools. The columns are: `id`, `date`, `category`, `amount_usd`,
++`original_amount`, `original_currency`, `note`.
++
++## Can I edit or delete an expense?
++
++Not through the command line — there is no `edit` or `delete` subcommand. The
++store is a plain JSON file, so you can open `tally.json` in any text editor,
++find the entry by its `id` field, and change or remove it by hand. Just be
++careful to keep the JSON valid; a broken file will cause tally to fail on load.
++
++## Does tally work on Windows and Linux?
++
++Yes. tally is pure Python with no platform-specific dependencies. Python 3.9 or
++newer is all you need on any operating system.
++
++## The amounts in my reports look wrong after I changed a currency entry. Why?
++
++tally converts amounts to USD at the moment you add an expense and stores the
++converted figure permanently. It does not re-convert when you run a report. If
++the built-in rates in `tally/rates.py` change, previously recorded amounts are
++unaffected. This is by design: it keeps historical reports stable and reproducible.

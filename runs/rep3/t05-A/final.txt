@@ -1,0 +1,13 @@
+All 47 tests pass (up from 44 — 3 new tests were added, but the count shows the new ones are included).
+
+---
+
+## What was done
+
+**`tally/rates.py`** — Added `"CAD": 0.73` to the `RATES` dict (kept alphabetical order). No other logic needed: `to_usd` / `normalize` already handle it, and the CLI's `add` and `report` commands go through those functions, so both work automatically.
+
+**`tests/test_rates.py`** — Added `test_to_usd_cad` pinning `100 CAD → 73.00 USD`, consistent with the style of the existing SGD/GBP pin tests.
+
+**`tests/test_cli.py`** — Added `test_add_and_report_cad`, an end-to-end test that records a 100 CAD expense, checks the `add` output prints `73.00 USD`, then runs `report` and verifies the category total appears correctly.
+
+No changes needed to `cli.py` or `report.py` — they were already currency-agnostic.

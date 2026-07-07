@@ -1,0 +1,27 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+new file mode 100644
+index 0000000..9687f11
+--- /dev/null
++++ b/CHANGELOG.md
+@@ -0,0 +1,21 @@
++# Changelog
++
++All notable changes to tally are documented here.
++Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
++
++## [Unreleased] — targeting 2.1
++
++### Added
++
++- **`budget` subcommand** — `tally budget --month YYYY-MM` prints each
++  budgeted category alongside its month-to-date spending and a three-state
++  indicator: `ok`, `warn` (≥ 80 % of the limit), or `over` (exceeds the
++  limit).
++- **`CATEGORY_BUDGETS`** in `tally/config.py` — monthly USD limits per
++  category (`food` $600, `transport` $200, `rent` $1 500, `entertainment`
++  $150, `other` $300).
++- **`BUDGET_WARN_RATIO`** in `tally/config.py` — configurable threshold
++  (default `0.8`) at which the budget report switches from `ok` to `warn`.
++- **`budget_status()`** in `tally/report.py` — core logic that compares a
++  month's per-category totals against `CATEGORY_BUDGETS` and returns the
++  structured list consumed by `cmd_budget`.

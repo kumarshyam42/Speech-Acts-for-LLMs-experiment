@@ -1,0 +1,22 @@
+All 45 tests pass. The change replaces the `month_key(exp["date"])` call — which invoked `strptime` on every expense — with a direct `exp["date"][:7]` string slice that has negligible cost.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "filter_expenses in tally/report.py no longer calls month_key (which invokes strptime via parse_date) for every expense when filtering by month — replaced with a direct [:7] string slice on the stored YYYY-MM-DD date field",
+      "status": "met",
+      "evidence": "Line 21 of tally/report.py now reads `exp[\"date\"][:7] != month`; the `month_key` import was also removed from the import line. Both edits confirmed via Edit tool."
+    },
+    {
+      "assertions": [],
+      "cos": "All existing pytest tests continue to pass (exit 0) after the change",
+      "status": "met",
+      "evidence": "pytest exited 0 with '45 passed in 0.05s'"
+    }
+  ],
+  "assessment": "The hot-path fix is complete and clean. `month_key` is no longer imported in report.py (it remains untouched in utils.py for any other callers). No other code paths were altered. No concerns or open questions."
+}
+```

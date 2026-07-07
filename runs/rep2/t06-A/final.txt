@@ -1,0 +1,7 @@
+All 9 tests still pass. Here's what was cleaned up in `tally/store.py`:
+
+- **Removed unused imports** — `Dict`, `List`, `Optional` from `typing` were imported but never used anywhere in the file.
+- **Simplified `next_id`** — replaced the two-branch `if not ids / return 1 / return max(ids) + 1` pattern with `max(ids, default=0) + 1`, which handles the empty case in one expression.
+- **Simplified `save`** — replaced `if directory and not os.path.isdir(directory): os.makedirs(directory)` with `if directory: os.makedirs(directory, exist_ok=True)`, which is the standard Python idiom and removes the redundant existence pre-check.
+
+No behavior changes — the test suite stayed green throughout.

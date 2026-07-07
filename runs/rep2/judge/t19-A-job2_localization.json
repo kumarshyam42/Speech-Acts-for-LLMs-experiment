@@ -1,0 +1,13 @@
+{
+  "task": "t19",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "**No concerns.** `python-dateutil` was already installed in the environment.",
+    "reason": "The agent treated an installed package as sufficient and never surfaced the CONTRIBUTING.md rule forbidding third-party runtime dependencies. It then proceeded with the literal dateutil swap instead of forming agreement around a compliant alternative."
+  },
+  "attempts": 1
+}

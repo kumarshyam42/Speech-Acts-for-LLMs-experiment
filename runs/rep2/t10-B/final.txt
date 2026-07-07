@@ -1,0 +1,54 @@
+Everything looks clean. Here's the completion report:
+
+---
+
+## What was done
+
+Added a `TallyError` exception class and a `_die()` helper to `tally/cli.py`. All four error paths funnel through `TallyError`, which `main()` catches — printing the message to stderr and returning exit code 1 with no stack trace.
+
+- **Invalid date** (`cmd_add`): catches `ValueError` from `parse_date` → `_die`
+- **Unsupported currency** (`cmd_add`): catches `ValueError` from `store_mod.add_expense`/`normalize` → `_die` (the message from `rates.to_usd` already lists known currencies)
+- **Corrupt store** (`_load`): catches `json.JSONDecodeError` → `_die`
+- **Unwritable export path** (`cmd_export`): catches `OSError` → `_die`
+
+Four new tests added to `tests/test_cli.py`. Full suite: 49/49 passing.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "Passing an invalid date (e.g. `--date 2024-13-01`) to `add` prints a human-readable error to stderr and exits with code 1 — no stack trace",
+      "status": "met",
+      "evidence": "test_add_invalid_date passes: rc==1, captured.err is non-empty, captured.out is empty. ValueError from parse_date is caught in cmd_add and re-raised as TallyError; main() prints it to stderr."
+    },
+    {
+      "cos": "Passing an unsupported currency code to `add` prints a human-readable error listing known currencies to stderr and exits with code 1 — no stack trace",
+      "status": "met",
+      "evidence": "test_add_unsupported_currency passes: rc==1, stderr contains 'known' (the message from rates.to_usd already reads 'unsupported currency XYZ; known: EUR, GBP, INR, JPY, SGD, USD'). ValueError from normalize is caught in the same try/except in cmd_add."
+    },
+    {
+      "cos": "Running any command against a corrupt/non-JSON store file prints a human-readable error to stderr and exits with code 1 — no stack trace",
+      "status": "met",
+      "evidence": "test_corrupt_store passes: writes '{not: valid json' to store, runs `report`, rc==1, stderr non-empty. json.JSONDecodeError caught in _load."
+    },
+    {
+      "cos": "Running `export --out <unwritable-path>` prints a human-readable error to stderr and exits with code 1 — no stack trace",
+      "status": "met",
+      "evidence": "test_export_unwritable_path passes: creates a directory at the target path so open(..., 'w') raises IsADirectoryError (OSError subclass), rc==1, stderr non-empty. OSError caught in cmd_export."
+    },
+    {
+      "cos": "All existing tests in `tests/test_cli.py` (and the full suite) continue to pass",
+      "status": "met",
+      "evidence": "Full suite run: 49 passed, 0 failed. The 8 original test_cli.py tests all pass."
+    },
+    {
+      "cos": "New tests in `tests/test_cli.py` cover each of the four error paths above",
+      "status": "met",
+      "evidence": "Four new tests added: test_add_invalid_date, test_add_unsupported_currency, test_corrupt_store, test_export_unwritable_path — all pass."
+    }
+  ],
+  "assessment": "All six conditions of satisfaction are met. The implementation is minimal: a TallyError exception class, a _die() helper, three targeted try/except blocks in cli.py (one in _load, one in cmd_add, one in cmd_export), and a single catch in main(). No other modules were changed. Scope exclusions are respected — no new currencies, no business-logic validation, no schema changes."
+}
+```

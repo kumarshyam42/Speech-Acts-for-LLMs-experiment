@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "`pricing.md` itself calls out that `docs/faq.md` quotes the same limit and must be updated together (requirement R6). I'll update both.",
+    "span_locator": "event 7, assistant"
+  },
+  "attempts": 1
+}

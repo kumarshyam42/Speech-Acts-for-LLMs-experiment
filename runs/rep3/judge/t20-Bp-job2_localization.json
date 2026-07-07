@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "No ambiguities \u2014 the arithmetic is deterministic (100 SGD \u00d7 0.75 = 75.00 USD; grand total and March total each go up by 1.00).",
+    "reason": "The agent treated the request as a straightforward rate-and-test update, even though the code and tests showed pinned rates. It never surfaced the R3 implication that changing SGD alters every historical SGD total, so no real agreement was formed around that hidden constraint."
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "Updated the free plan's monthly expense limit from 100 to 200 in both customer-facing documentation files, as required by R6 (the two files must always agree):",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

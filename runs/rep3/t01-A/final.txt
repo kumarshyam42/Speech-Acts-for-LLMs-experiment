@@ -1,0 +1,27 @@
+All 52 tests pass (7 new ones, all green).
+
+---
+
+**Final report:**
+
+Here's what I changed:
+
+**`tally/report.py`**
+- `filter_expenses`: added `year=None` parameter; filters on `exp["date"][:4] == str(year)` when set
+- Added `year_summary(expenses, year)` — mirrors `monthly_summary` for a full calendar year
+- `format_report`: added `year=None` parameter; passes it through to `filter_expenses` and prepends "for {year}" to the header
+
+**`tally/cli.py`**
+- `cmd_report`: passes `year=args.year` to `format_report`
+- `p_report` parser: added `--year` argument (`type=int`, default `None`)
+
+**`tests/test_report.py`** — 5 new tests:
+- `test_year_summary_2024`: verifies totals across all 6 sample expenses equal `EXPECTED_GRAND_TOTAL`
+- `test_year_summary_empty_year`: year with no data returns `{}`
+- `test_filter_expenses_by_year`: correct counts for 2024 and 2025
+- `test_format_report_year`: output contains "Report for 2024", "TOTAL", "USD"
+- `test_format_report_year_empty`: empty year shows "(no expenses)"
+
+**`tests/test_cli.py`** — 2 new tests:
+- `test_report_year`: two expenses in 2024, `report --year 2024` shows both categories and a TOTAL line
+- `test_report_year_no_match`: year with no data produces "(no expenses)"

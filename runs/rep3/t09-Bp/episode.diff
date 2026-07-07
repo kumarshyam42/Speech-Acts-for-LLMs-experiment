@@ -1,0 +1,118 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..726e5d4 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -86,6 +86,17 @@ def cmd_stats(args):
+     return 0
+ 
+ 
++def cmd_delete(args):
++    data = _load(args)
++    record = store_mod.delete_expense(data, args.id)
++    if record is None:
++        print("error: no expense with id {}".format(args.id), file=sys.stderr)
++        return 1
++    store_mod.save(args.store, data)
++    print("deleted #{id}: {amount_usd:.2f} USD  {category}  {date}".format(**record))
++    return 0
++
++
+ def cmd_budget(args):
+     data = _load(args)
+     rows = report_mod.budget_status(store_mod.all_expenses(data), month=args.month)
+@@ -131,6 +142,10 @@ def build_parser():
+     p_budget.add_argument("--month", required=True, help="YYYY-MM")
+     p_budget.set_defaults(func=cmd_budget)
+ 
++    p_delete = sub.add_parser("delete", help="remove an expense by id")
++    p_delete.add_argument("id", type=int, help="expense id to delete")
++    p_delete.set_defaults(func=cmd_delete)
++
+     return parser
+ 
+ 
+diff --git a/tally/store.py b/tally/store.py
+index 97c153c..126a4c1 100644
+--- a/tally/store.py
++++ b/tally/store.py
+@@ -98,5 +98,16 @@ def find_expense(data, expense_id):
+     return None
+ 
+ 
++def delete_expense(data, expense_id):
++    """Remove the expense with the given id from data in place.
++
++    Returns the deleted record, or None if no matching id was found.
++    """
++    for i, exp in enumerate(data["expenses"]):
++        if exp.get("id") == expense_id:
++            return data["expenses"].pop(i)
++    return None
++
++
+ def all_expenses(data):
+     return list(data["expenses"])
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..b7037d2 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -74,6 +74,32 @@ def test_list_command(tmp_path, capsys):
+     assert "dinner" in out and "food" in out
+ 
+ 
++def test_delete_existing_expense(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    cli.main(["--store", store, "add", "50", "food", "--date", "2024-03-15"])
++    capsys.readouterr()
++    rc = cli.main(["--store", store, "delete", "1"])
++    assert rc == 0
++    out = capsys.readouterr().out
++    assert "deleted #1" in out
++    import json
++    with open(store) as fh:
++        data = json.load(fh)
++    assert data["expenses"] == []
++
++
++def test_delete_missing_expense_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    cli.main(["--store", store, "add", "50", "food", "--date", "2024-03-15"])
++    capsys.readouterr()
++    rc = cli.main(["--store", store, "delete", "999"])
++    assert rc == 1
++    import json
++    with open(store) as fh:
++        data = json.load(fh)
++    assert len(data["expenses"]) == 1
++
++
+ def test_no_command_prints_help(capsys):
+     rc = cli.main([])
+     assert rc == 1
+diff --git a/tests/test_store.py b/tests/test_store.py
+index 0da945b..1507817 100644
+--- a/tests/test_store.py
++++ b/tests/test_store.py
+@@ -42,6 +42,22 @@ def test_find_expense(sample_store):
+     assert store_mod.find_expense(sample_store, 999) is None
+ 
+ 
++def test_delete_expense_removes_record(sample_store):
++    before = len(sample_store["expenses"])
++    deleted = store_mod.delete_expense(sample_store, 3)
++    assert deleted is not None
++    assert deleted["id"] == 3
++    assert len(sample_store["expenses"]) == before - 1
++    assert store_mod.find_expense(sample_store, 3) is None
++
++
++def test_delete_expense_missing_id_returns_none(sample_store):
++    before = len(sample_store["expenses"])
++    result = store_mod.delete_expense(sample_store, 999)
++    assert result is None
++    assert len(sample_store["expenses"]) == before
++
++
+ def test_next_id_on_empty():
+     assert store_mod.next_id(store_mod.empty_store()) == 1
+ 

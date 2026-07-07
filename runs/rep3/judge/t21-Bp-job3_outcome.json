@@ -1,0 +1,13 @@
+{
+  "task": "t21",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+`budget` command shows how much you have spent in each category for a given month\n+alongside the limit you set, so you can see at a glance where you are over or under:\n+\n+```\n+python -m tally.cli budget --month 2024-03\n+```",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

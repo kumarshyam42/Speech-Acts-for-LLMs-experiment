@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have a clear picture of the project. The current README is missing: the `stats` and `budget` commands entirely, the supported currencies, the available categories, a concrete alias example, the `--store` flag, and running the tests. Let me write an improved version.",
+    "reason": "The user asked for an undefined improvement, but the agent did not surface the ambiguity or negotiate a direction. It unilaterally chose a documentation-expansion rewrite and proceeded."
+  },
+  "attempts": 1
+}

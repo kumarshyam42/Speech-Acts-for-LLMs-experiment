@@ -1,0 +1,12 @@
+Done. Here's what changed and why:
+
+**Added:**
+- `stats` command — was fully implemented but never documented
+- `budget` command with explanation of where to edit limits (`config.py`)
+- `--store` flag section — the only global flag, and a useful one for managing separate data files
+- Explicit list of built-in categories (`food`, `transport`, `rent`, `entertainment`, `other`) — users can't invent categories, so they need to know what's available
+- `list --category` example — the flag existed but wasn't shown
+- A concrete alias example rather than "drop a shell alias"
+- Data file name (`tally.json`) mentioned upfront in the intro
+
+**Preserved:** The conversational, low-ceremony tone throughout.

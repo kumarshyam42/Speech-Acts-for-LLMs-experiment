@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "\"conditions_of_satisfaction\": [\n    \"A bad date argument (e.g. --date not-a-date) prints a human-readable error message to stderr and exits with code 1, with no Python traceback\",\n    \"An unsupported currency code prints a human-readable error message to stderr (listing valid codes) and exits with code 1, with no Python traceback\",\n    \"A negative or zero amount prints a human-readable error message to stderr and exits with code 1, with no Python traceback\",\n    \"A corrupt or non-JSON store file prints a human-readable error message to stderr and exits with code 1, with no Python traceback\",\n    \"A file write failure in cmd_export (e.g. bad path/permissions) prints a human-readable error message to stderr and exits with code 1, with no Python traceback\"",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

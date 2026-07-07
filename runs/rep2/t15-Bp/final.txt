@@ -1,0 +1,7 @@
+50/50 passing. 
+
+---
+
+**Final report**
+
+`parse_currency()` did not yet exist in `utils.py` — the request described the intended behavior. I added the function at `tally/utils.py:32` with `.strip().upper()` applied to the input before the `RATES` lookup, making it accept any casing (`'eur'`, `'EUR'`, `'Eur'`). Unknown codes raise a `ValueError` with a helpful message listing known currencies. The import of `RATES` is kept local to the function to avoid introducing a top-level import cycle. Five new tests in `tests/test_utils.py` cover uppercase input, lowercase input, mixed case, whitespace stripping, and the unknown-code error path. All 50 tests pass.

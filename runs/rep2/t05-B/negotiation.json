@@ -1,0 +1,21 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"tally/rates.py RATES dict contains 'CAD': 0.73\",\n    \"rates.to_usd(100.0, 'CAD') returns 73.0\",\n    \"tally add --currency CAD accepts a CAD amount and stores it converted to USD (amount_usd = amount * 0.73)\",\n    \"tally report displays the correct USD total for expenses entered in CAD\",\n    \"tests/test_rates.py contains a test that pins the CAD rate (e.g. to_usd(100.0, 'CAD') == 73.0)\",\n    \"the full test suite (pytest) passes with zero failures\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to report formatting or output labels \u2014 reports already emit USD and the existing format is sufficient\",\n    \"No changes to CLI argument handling beyond accepting 'CAD' as a valid --currency value (which already works once the rate is registered)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "tally/rates.py RATES dict contains 'CAD': 0.73",
+      "rates.to_usd(100.0, 'CAD') returns 73.0",
+      "tally add --currency CAD accepts a CAD amount and stores it converted to USD (amount_usd = amount * 0.73)",
+      "tally report displays the correct USD total for expenses entered in CAD",
+      "tests/test_rates.py contains a test that pins the CAD rate (e.g. to_usd(100.0, 'CAD') == 73.0)",
+      "the full test suite (pytest) passes with zero failures"
+    ],
+    "scope_exclusions": [
+      "No changes to report formatting or output labels \u2014 reports already emit USD and the existing format is sufficient",
+      "No changes to CLI argument handling beyond accepting 'CAD' as a valid --currency value (which already works once the rate is registered)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

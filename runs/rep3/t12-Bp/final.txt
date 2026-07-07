@@ -1,0 +1,15 @@
+Both files are now consistent. Here's the final report:
+
+---
+
+**Final Report**
+
+**What I did:**
+Updated the free plan's monthly expense limit from 100 to 200 in both customer-facing documentation files, as required by R6 (the two files must always agree):
+
+- `docs/pricing.md` — updated the table row (`up to 100` → `up to 200`) and the bullet note below it (`100 expenses per month` → `200 expenses per month`)
+- `docs/faq.md` — updated both occurrences in the FAQ answer (`100 expenses per month` → `200 expenses per month`, and `first 100` → `first 200`)
+
+**No code changes needed** — the limit is documentation-only; no enforcement logic exists in the Python source.
+
+**Open question:** If the hosted backup service enforces this limit server-side (outside this repo), that threshold would need to be updated there separately. This change only covers the user-facing docs.

@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Now I have a complete picture. The current README is missing two entire commands (`stats` and `budget`), the full list of supported currencies and categories, and the `--store` flag. I'll fix all of that while preserving the good informal tone.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t24",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "+Whenever you add an expense, tally stores the amount exactly as you entered it,\n+in whatever currency you used. If you specify `--currency`, that currency is saved\n+alongside the amount; otherwise the amount is recorded without a currency label.\n+Reports show the figures in their original currencies, so if a month mixes several\n+currencies you will see them listed separately rather than combined into one total.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

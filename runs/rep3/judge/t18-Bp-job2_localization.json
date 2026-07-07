@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "- \"More useful\" is vague \u2014 I'll add **item count**, **% of total spend**, and **budget utilization** (when a month is in scope), since that data is already available and is the most actionable context for each category line.",
+    "reason": "The agent recognized that the request was vague but immediately chose its own interpretation and implemented it, without asking the user to select or approve what \u201cmore useful\u201d should mean. The failure originated in the missing negotiation of the ambiguous requirement."
+  },
+  "attempts": 1
+}

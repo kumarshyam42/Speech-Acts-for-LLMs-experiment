@@ -1,0 +1,20 @@
+{
+  "raw": "The `budget` command exists and requires `--month YYYY-MM`. I have all the information needed to make a clean promise.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README.md contains a new section documenting the `budget --month YYYY-MM` command\",\n    \"The section explains that it shows category spending against configured budgets\",\n    \"The section includes a usage example in a code block (e.g., `python -m tally.cli budget --month 2024-03`)\",\n    \"The section is placed under the usage/looking-at-your-spending area alongside report, list, and export\",\n    \"No other files are modified\"\n  ],\n  \"scope_exclusions\": [\n    \"Does not document how to configure budgets (budget configuration format/file)\",\n    \"Does not modify CLI code or tests\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README.md contains a new section documenting the `budget --month YYYY-MM` command",
+      "The section explains that it shows category spending against configured budgets",
+      "The section includes a usage example in a code block (e.g., `python -m tally.cli budget --month 2024-03`)",
+      "The section is placed under the usage/looking-at-your-spending area alongside report, list, and export",
+      "No other files are modified"
+    ],
+    "scope_exclusions": [
+      "Does not document how to configure budgets (budget configuration format/file)",
+      "Does not modify CLI code or tests"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

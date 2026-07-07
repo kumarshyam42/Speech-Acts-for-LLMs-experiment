@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"concern\": \"\"",
+    "reason": "The agent never surfaced that \"faster\" was undefined or that there was no measured bottleneck to agree on. It proceeded straight to a guessed hot-path edit, so the failure originated in the missing negotiation rather than in execution."
+  },
+  "attempts": 1
+}

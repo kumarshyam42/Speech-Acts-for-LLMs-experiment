@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "**Top-level handler in `main()`** \u2014 wraps `args.func(args)` in `try/except (ValueError, OSError)`, prints `error: <message>` to stderr and returns `1`. Catches bad dates, unknown currencies, corrupt JSON, and file I/O errors in one place.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

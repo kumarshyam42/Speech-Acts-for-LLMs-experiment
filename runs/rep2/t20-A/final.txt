@@ -1,0 +1,16 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+Updated SGD rate from `0.74` to `0.75` across 4 files:
+
+| File | Change |
+|------|--------|
+| `tally/rates.py:15` | `"SGD": 0.74` → `"SGD": 0.75` |
+| `tests/test_rates.py:17-18` | Comment and assertion updated (`74.0` → `75.0`) |
+| `tests/conftest.py:21-23` | `EXPECTED_USD[1]` `74.0`→`75.0`, `EXPECTED_GRAND_TOTAL` `204.22`→`205.22`, `EXPECTED_MARCH_TOTAL` `172.82`→`173.82` |
+| `tests/test_cli.py:31` | Pinned normalized amount `74.0` → `75.0` |
+
+`EXPECTED_MARCH_FOOD` (`92.12`) was unaffected — the SGD row is categorized as "rent", not "food". Full suite: 45 passed.

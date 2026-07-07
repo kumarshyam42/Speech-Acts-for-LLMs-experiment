@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguities/concerns:** \"SGD rate\" could refer to a currency exchange rate stored in config, source code, test fixtures, or data files. I need to find all occurrences to avoid partial updates.",
+    "span_locator": "event 0, assistant"
+  },
+  "attempts": 1
+}

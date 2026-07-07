@@ -1,0 +1,35 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+new file mode 100644
+index 0000000..ac85d63
+--- /dev/null
++++ b/CHANGELOG.md
+@@ -0,0 +1,29 @@
++# Changelog
++
++All notable changes to tally are documented here.
++Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
++
++## [Unreleased]
++
++### Added
++- `budget` subcommand (`tally budget --month YYYY-MM`) — shows each configured
++  category's spending versus its monthly limit. Output includes the amount spent,
++  the budget cap, and a status of `ok`, `warn` (≥ 80 % of budget), or `over`
++  (limit exceeded). Budgets and the warn threshold are configured in
++  `tally/config.py` via `CATEGORY_BUDGETS` and `BUDGET_WARN_RATIO`.
++
++## [2.0.0] — 2026-07-06
++
++Initial public release.
++
++### Added
++- `add` subcommand — record an expense with amount, category, optional currency,
++  date, and note.
++- `report` subcommand — category totals for a month, filterable to a single
++  category.
++- `list` subcommand — individual expense rows for a month or category.
++- `export` subcommand — write all expenses to CSV (stdout or a file).
++- `stats` subcommand — overall count, total, average, and date span.
++- Multi-currency support: amounts are converted to USD at record time using the
++  fixed rate table in `tally/rates.py`; all reports are denominated in USD.
++- Single-file JSON store with schema versioning and forward migration support.

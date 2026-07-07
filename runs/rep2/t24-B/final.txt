@@ -1,0 +1,41 @@
+The section is updated. No other parts of the file were touched.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars",
+      "status": "met",
+      "evidence": "The revised section contains no mention of US dollars, dollar figures, or conversion to USD. The phrase 'nothing is converted behind the scenes' makes the absence of conversion explicit."
+    },
+    {
+      "cos": "The section clearly states that amounts are stored in the currency they were entered in",
+      "status": "met",
+      "evidence": "New text reads: 'tally stores the amount in the currency you entered' and 'If you type 39 EUR, that is exactly what goes into the data file.'"
+    },
+    {
+      "cos": "No other sections of README.md are modified",
+      "status": "met",
+      "evidence": "The Edit tool call targeted only the exact text of the 'How amounts are stored' section; all surrounding sections (Installing, Recording an expense, Looking at your spending, A note on scope) are unchanged."
+    },
+    {
+      "cos": "The section remains coherent prose of similar length and style",
+      "status": "met",
+      "evidence": "Original: 4 sentences, ~65 words. Revised: 4 sentences, ~60 words. Tone and register match the rest of the README (plain, direct, first-person-free)."
+    },
+    {
+      "cos": "No changes to source code, tests, or any file other than README.md",
+      "status": "met",
+      "evidence": "Only one file was edited: README.md. No other tool calls touched any other file."
+    },
+    {
+      "cos": "No changes to other README sections (e.g. 'A note on scope', usage examples)",
+      "status": "met",
+      "evidence": "Confirmed by the scoped Edit call; the file read shows all other sections intact."
+    }
+  ],
+  "assessment": "All conditions of satisfaction are met. The only open question is whether the usage example in 'Recording an expense' (which still says 'by default the amount is read as US dollars, but you can enter it in another currency and tally will convert it for you') should also be updated — that text is in a different section and was explicitly out of scope per the exclusions, so it was left untouched. If the goal is full consistency across the README, that sentence in the usage section would also need revision."
+}
+```

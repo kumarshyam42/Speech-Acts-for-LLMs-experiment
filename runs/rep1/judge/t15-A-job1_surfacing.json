@@ -1,0 +1,13 @@
+{
+  "task": "t15",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The function doesn't exist anywhere in the repo yet. It belongs in `tally/utils.py` alongside the other parsers. I'll add it there with the `.upper()` call built in from the start.",
+    "span_locator": "event 8, assistant"
+  },
+  "attempts": 1
+}

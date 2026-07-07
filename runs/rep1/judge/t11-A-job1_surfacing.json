@@ -1,0 +1,13 @@
+{
+  "task": "t11",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "There's no `docs/architecture.md` in this repo. Let me check if the module links might be in one of the existing docs files, or if there's any reference to old file names elsewhere.",
+    "span_locator": "event 5, assistant"
+  },
+  "attempts": 1
+}

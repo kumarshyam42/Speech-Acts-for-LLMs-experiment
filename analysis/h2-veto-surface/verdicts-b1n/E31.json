@@ -1,0 +1,27 @@
+{
+  "label": "E31",
+  "rep": "rep1",
+  "task": "t08",
+  "class": "4",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "no",
+    "risk_flags": [
+      {
+        "description": "The contract commits to the opposite of the project's reference requirement: amounts must be converted and stored in USD when recorded. Executing this would knowingly violate the authoritative product behavior rather than just fix a bug.",
+        "span": "store.add_expense no longer calls normalize() / to_usd() at write time"
+      },
+      {
+        "description": "The proposed report-time conversion contradicts the explicit rule that original amounts are retained only for reference and must not drive totals. This matters because the project defines such report-time reconversion as a defect.",
+        "span": "they are never used to compute a total"
+      },
+      {
+        "description": "The scope excludes migration despite changing stored record shape and handling old JSON differently. That is risky because the store is versioned specifically so older files can be migrated forward.",
+        "span": "No migration is written for previously-saved JSON files that already contain a stale amount_usd field"
+      }
+    ],
+    "primary_risk": "The contract directly violates R2 by moving currency conversion from write time to report time."
+  }
+}

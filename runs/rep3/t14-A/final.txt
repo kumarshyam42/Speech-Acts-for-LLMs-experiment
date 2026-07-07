@@ -1,0 +1,15 @@
+The README is updated. Here's what changed and why:
+
+**Added (gaps in the original):**
+- `budget` command — documented with an example and a note about editing `config.py` to change limits
+- `stats` command — documented with an example
+- `--store` flag — its own section showing how to use multiple data files
+- Available categories listed explicitly (`food`, `transport`, `rent`, `entertainment`, `other`)
+
+**Improved:**
+- Shell alias section now shows the actual alias to paste, not just a vague suggestion
+- Examples use `tally` (the alias) throughout, with a note at the top explaining the substitution — consistent and less verbose
+- Currency conversion note moved into the "Recording an expense" section where it's contextually relevant, rather than as a standalone h2 section
+- `list --category` filter example added
+
+**Preserved:** The prose voice and "note on scope" closing — both were good.

@@ -1,0 +1,20 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"counter_offer\",\n  \"conditions_of_satisfaction\": [\n    \"Each category row in `format_report` shows: USD total, transaction count (e.g. '3 expenses'), and percentage of the grand total (e.g. '42.1%')\",\n    \"For categories that have a configured budget in CATEGORY_BUDGETS, each row also shows the budget amount and a state indicator (ok / warn / over) using the existing `budget_status` logic\",\n    \"All 11 existing tests in test_report.py continue to pass\",\n    \"At least one new test asserts that the enhanced format includes count and percentage columns\"\n  ],\n  \"scope_exclusions\": [\n    \"`format_expense_list` (individual expense table) is not changed\",\n    \"CSV export (`to_csv`) is not changed\",\n    \"No new CLI flags or commands are added \u2014 only the rendered string from `format_report` changes\"\n  ],\n  \"concern\": \"The request 'make them more useful' is unspecified \u2014 any of a dozen additions could qualify. I'm proposing the three most actionable enrichments given what the codebase already computes: transaction count, share of total, and budget state. If you want a different enhancement (e.g., trend vs prior month, sparkline, colour output), redirect me and I'll re-scope.\"\n}\n```",
+  "parsed": {
+    "speech_act": "counter_offer",
+    "conditions_of_satisfaction": [
+      "Each category row in `format_report` shows: USD total, transaction count (e.g. '3 expenses'), and percentage of the grand total (e.g. '42.1%')",
+      "For categories that have a configured budget in CATEGORY_BUDGETS, each row also shows the budget amount and a state indicator (ok / warn / over) using the existing `budget_status` logic",
+      "All 11 existing tests in test_report.py continue to pass",
+      "At least one new test asserts that the enhanced format includes count and percentage columns"
+    ],
+    "scope_exclusions": [
+      "`format_expense_list` (individual expense table) is not changed",
+      "CSV export (`to_csv`) is not changed",
+      "No new CLI flags or commands are added \u2014 only the rendered string from `format_report` changes"
+    ],
+    "concern": "The request 'make them more useful' is unspecified \u2014 any of a dozen additions could qualify. I'm proposing the three most actionable enrichments given what the codebase already computes: transaction count, share of total, and budget state. If you want a different enhancement (e.g., trend vs prior month, sparkline, colour output), redirect me and I'll re-scope."
+  },
+  "valid": true,
+  "reason": ""
+}

@@ -1,0 +1,12 @@
+All 47 tests pass (45 existing + 2 new).
+
+---
+
+**Final report:**
+
+**What changed:**
+- `tally/rates.py`: Added `"CAD": 0.73` to the `RATES` dict. The dict is now kept in sorted key order (matching the invariant tested by `test_supported_currencies_sorted`).
+- `tests/test_rates.py`: Added `test_to_usd_cad` — pins that 100 CAD converts to 73.00 USD.
+- `tests/test_cli.py`: Added `test_add_and_report_cad` — end-to-end test that runs `add 100 food --currency CAD` and verifies "73.00 USD" in the output, then runs `report` and verifies the category total appears correctly.
+
+No changes were needed to `report.py` or `cli.py` — both already handle arbitrary currencies generically through the rates layer.

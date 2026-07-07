@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have everything I need. The changes required are:\n1. In `format_report`: compute counts per category, calculate percentages, update the row format\n2. Add a new test asserting count and percentage appear in category rows",
+    "reason": "The request 'more useful' was open-ended, but the agent never surfaced that ambiguity or asked the user to choose a direction. It unilaterally picked counts and percentages, so the failure originated before execution."
+  },
+  "attempts": 1
+}

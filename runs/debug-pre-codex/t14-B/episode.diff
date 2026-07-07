@@ -1,0 +1,64 @@
+diff --git a/README.md b/README.md
+index c6dbd2a..6f3adc5 100644
+--- a/README.md
++++ b/README.md
+@@ -57,6 +57,59 @@ python -m tally.cli list --month 2024-03
+ python -m tally.cli export --out march.csv
+ ```
+ 
++Leaving off `--out` writes the CSV to stdout, which is handy for piping.
++
++## Summary statistics
++
++The `stats` command gives you an all-time summary across every expense in the store:
++
++```
++python -m tally.cli stats
++```
++
++Output looks like:
++
++```
++expenses : 42
++total    : 1234.56 USD
++average  : 29.39 USD
++span     : 2024-01-03 .. 2024-12-31
++```
++
++If you have not recorded anything yet, it says so rather than printing zeros.
++
++## Checking budgets
++
++The `budget` command compares a month's spending against the per-category limits
++defined in `tally/config.py`. `--month` is required:
++
++```
++python -m tally.cli budget --month 2024-03
++```
++
++Output looks like:
++
++```
++Budget for 2024-03
++food              120.00 /   300.00 USD  ok
++transport          80.50 /   100.00 USD  warn
++entertainment     210.00 /   150.00 USD  over
++```
++
++Each line shows what you spent, the limit, and a state: `ok` if you are well
++under, `warn` if you are getting close, or `over` if you have exceeded it.
++
++## Using a different store file
++
++By default tally reads and writes `tally.json` in the current directory. Pass
++`--store` before the subcommand to point at a different file:
++
++```
++python -m tally.cli --store ~/finances/2024.json report --month 2024-03
++```
++
++This is useful for keeping separate files by year or by person.
++
+ ## How amounts are stored
+ 
+ Whenever you add an expense, tally converts the amount into US dollars using the

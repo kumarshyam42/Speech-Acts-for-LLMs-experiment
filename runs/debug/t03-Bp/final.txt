@@ -1,0 +1,31 @@
+---
+
+## Final Report
+
+**The described bug does not exist, and `exporters.py` is not part of this codebase.**
+
+### What I found
+
+| Claim in request | Reality |
+|---|---|
+| File: `exporters.py` | Does not exist anywhere in the repo |
+| Bug: trailing comma on every CSV row | Not present in the actual output |
+
+The CSV export logic lives in **`tally/report.py`** in the `to_csv()` function (line 91–99). It uses Python's standard `csv.DictWriter`, which produces well-formed CSV with no trailing commas:
+
+```
+'id,date,category,amount_usd,original_amount,original_currency,note'
+'1,2024-03-01,food,100.0,100.0,USD,lunch'
+'2,2024-03-02,transport,54.0,50.0,EUR,taxi'
+```
+
+All 45 tests pass, including `test_export_has_header` which would fail on a trailing comma (it asserts `first_line.split(",") == CSV_FIELDS`).
+
+### What I did not do
+
+I made no changes — there was no bug to fix. Creating an `exporters.py` and introducing/fixing a synthetic bug would have been fabricating a problem.
+
+### If you need something done
+
+- If `exporters.py` is a file you intended to create (perhaps refactoring `to_csv()` out of `report.py`), I can do that and the trailing-comma guard would be a non-issue since we'd keep using `csv.DictWriter`.
+- If there's a different file or a different symptom, share a reproduction and I'll track it down.

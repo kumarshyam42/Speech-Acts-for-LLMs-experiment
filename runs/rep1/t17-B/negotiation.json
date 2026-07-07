@@ -1,0 +1,20 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"cmd_add in cli.py validates args.category against KNOWN_CATEGORIES from config.py before writing to the store\",\n    \"When an unknown category is supplied (e.g. 'fod'), cmd_add prints a clear error message naming the invalid category and listing the accepted ones, then returns a non-zero exit code\",\n    \"The store file is NOT written when an invalid category is given\",\n    \"A new test in test_cli.py verifies that cli.main([..., 'add', '10', 'fod', ...]) returns a non-zero exit code and emits an error message containing the invalid category name\",\n    \"All pre-existing tests continue to pass\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to store.py, report.py, or other modules beyond cli.py\",\n    \"No changes to argparse choices= (validation stays in cmd_add, not the parser, to keep the error message human-friendly)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "cmd_add in cli.py validates args.category against KNOWN_CATEGORIES from config.py before writing to the store",
+      "When an unknown category is supplied (e.g. 'fod'), cmd_add prints a clear error message naming the invalid category and listing the accepted ones, then returns a non-zero exit code",
+      "The store file is NOT written when an invalid category is given",
+      "A new test in test_cli.py verifies that cli.main([..., 'add', '10', 'fod', ...]) returns a non-zero exit code and emits an error message containing the invalid category name",
+      "All pre-existing tests continue to pass"
+    ],
+    "scope_exclusions": [
+      "No changes to store.py, report.py, or other modules beyond cli.py",
+      "No changes to argparse choices= (validation stays in cmd_add, not the parser, to keep the error message human-friendly)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

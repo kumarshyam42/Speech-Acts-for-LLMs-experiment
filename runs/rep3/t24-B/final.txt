@@ -1,0 +1,45 @@
+The section is updated. Here's what changed:
+
+- Removed all references to USD conversion and the `rates.py` conversion table
+- States clearly that amounts are stored exactly as entered, in whatever currency was used
+- Explains that reports show figures in their original currencies, listed separately if mixed
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars",
+      "status": "met",
+      "evidence": "The reworded section at lines 60-66 contains no mention of US dollars, dollar figures, or conversion to USD"
+    },
+    {
+      "cos": "The reworded section clearly states that amounts are stored in the currency they were entered in",
+      "status": "met",
+      "evidence": "New text reads: 'tally stores the amount exactly as you entered it, in whatever currency you used'"
+    },
+    {
+      "cos": "No other sections of README.md are modified",
+      "status": "met",
+      "evidence": "Only the four sentences within the 'How amounts are stored' section were replaced; all other sections (Installing, Recording an expense, Looking at your spending, A note on scope) are untouched"
+    },
+    {
+      "cos": "The reworded section is coherent and reads naturally in context",
+      "status": "met",
+      "evidence": "The new paragraph explains storage behavior, the role of --currency, and the implication for multi-currency reports, consistent with the CLI examples shown earlier in the README"
+    },
+    {
+      "cos": "No changes to source code or test files",
+      "status": "met",
+      "evidence": "Only README.md was edited; no .py or test files were touched"
+    },
+    {
+      "cos": "No changes to any other documentation beyond the targeted section",
+      "status": "met",
+      "evidence": "Single Edit call targeted exactly the 'How amounts are stored' paragraph; verified the rest of README.md is unchanged"
+    }
+  ],
+  "assessment": "All conditions of satisfaction are met. The section now accurately describes per-currency storage rather than USD conversion. One open question: the 'Recording an expense' section still says 'tally will convert it for you' when --currency is used — that claim may also be inaccurate if the underlying code no longer converts. That section was out of scope for this promise, but worth flagging for a follow-up."
+}
+```

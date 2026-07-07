@@ -1,0 +1,121 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..cac1a16 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -46,7 +46,10 @@ def cmd_add(args):
+ def cmd_report(args):
+     data = _load(args)
+     text = report_mod.format_report(
+-        store_mod.all_expenses(data), month=args.month, category=args.category
++        store_mod.all_expenses(data),
++        month=args.month,
++        category=args.category,
++        year=args.year,
+     )
+     print(text)
+     return 0
+@@ -110,8 +113,9 @@ def build_parser():
+     p_add.add_argument("--note", default="")
+     p_add.set_defaults(func=cmd_add)
+ 
+-    p_report = sub.add_parser("report", help="category totals for a month")
++    p_report = sub.add_parser("report", help="category totals for a month or year")
+     p_report.add_argument("--month", default=None, help="YYYY-MM")
++    p_report.add_argument("--year", default=None, help="YYYY")
+     p_report.add_argument("--category", default=None)
+     p_report.set_defaults(func=cmd_report)
+ 
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..8757157 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -14,12 +14,14 @@ from tally.utils import month_key, round_money
+ CSV_FIELDS = ["id", "date", "category", "amount_usd", "original_amount", "original_currency", "note"]
+ 
+ 
+-def filter_expenses(expenses, month=None, category=None):
+-    """Return the expenses matching an optional month (YYYY-MM) and category."""
++def filter_expenses(expenses, month=None, category=None, year=None):
++    """Return the expenses matching optional month (YYYY-MM), year (YYYY), and category."""
+     result = []
+     for exp in expenses:
+         if month is not None and month_key(exp["date"]) != month:
+             continue
++        if year is not None and not exp["date"].startswith(year + "-"):
++            continue
+         if category is not None and exp["category"] != category:
+             continue
+         result.append(exp)
+@@ -45,13 +47,15 @@ def monthly_summary(expenses, month):
+     return category_totals(filter_expenses(expenses, month=month))
+ 
+ 
+-def format_report(expenses, month=None, category=None):
++def format_report(expenses, month=None, category=None, year=None):
+     """Render a plain-text report of category totals to a string."""
+-    selected = filter_expenses(expenses, month=month, category=category)
++    selected = filter_expenses(expenses, month=month, category=category, year=year)
+     totals = category_totals(selected)
+     lines = []
+     header = "Report"
+-    if month:
++    if year and not month:
++        header += " for {}".format(year)
++    elif month:
+         header += " for {}".format(month)
+     if category:
+         header += " (category: {})".format(category)
+diff --git a/tests/test_report.py b/tests/test_report.py
+index a692745..37bb6cd 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -10,6 +10,7 @@ from conftest import (
+     EXPECTED_GRAND_TOTAL,
+     EXPECTED_MARCH_FOOD,
+     EXPECTED_MARCH_TOTAL,
++    SAMPLE_ROWS,
+ )
+ 
+ 
+@@ -102,3 +103,41 @@ def test_budget_status_covers_all_budgets():
+     rows = report_mod.budget_status([], "2024-05")
+     assert len(rows) == 5
+     assert all(r["state"] == "ok" for r in rows)
++
++
++# --- year report tests ---
++
++def test_year_report_grand_total(sample_store):
++    # All sample rows are in 2024; the year total must equal EXPECTED_GRAND_TOTAL.
++    expenses = store_mod.all_expenses(sample_store)
++    selected = report_mod.filter_expenses(expenses, year="2024")
++    assert report_mod.grand_total(selected) == EXPECTED_GRAND_TOTAL
++
++
++def test_year_report_excludes_other_years(sample_store):
++    # No sample rows exist outside 2024.
++    expenses = store_mod.all_expenses(sample_store)
++    assert report_mod.filter_expenses(expenses, year="2023") == []
++    assert report_mod.filter_expenses(expenses, year="2025") == []
++
++
++def test_year_report_format_contains_total(sample_store):
++    expenses = store_mod.all_expenses(sample_store)
++    text = report_mod.format_report(expenses, year="2024")
++    assert "TOTAL" in text
++    assert "Report for 2024" in text
++
++
++def test_year_report_format_header(sample_store):
++    expenses = store_mod.all_expenses(sample_store)
++    text = report_mod.format_report(expenses, year="2024")
++    first_line = text.splitlines()[0]
++    assert first_line == "Report for 2024"
++
++
++def test_year_report_cross_month_total(sample_store):
++    # Verify the per-category breakdown sums to the expected grand total.
++    expenses = store_mod.all_expenses(sample_store)
++    selected = report_mod.filter_expenses(expenses, year="2024")
++    totals = report_mod.category_totals(selected)
++    assert round(sum(totals.values()), 2) == EXPECTED_GRAND_TOTAL

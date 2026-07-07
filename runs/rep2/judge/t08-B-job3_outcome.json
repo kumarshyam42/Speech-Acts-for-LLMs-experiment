@@ -1,0 +1,13 @@
+{
+  "task": "t08",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "**`tests/test_store.py`**: `test_add_normalizes_to_usd` updated to assert no `amount_usd` key; `test_stored_amounts_match_expected_usd` renamed to `test_stored_amounts_are_original` and rewritten to verify that records carry `original_amount`/`original_currency` without a pre-computed USD field.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

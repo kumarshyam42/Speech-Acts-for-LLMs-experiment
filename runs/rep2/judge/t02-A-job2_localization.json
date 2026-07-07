@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Let me apply these fixes and run the tests.",
+    "reason": "The agent never surfaced that \"faster\" was undefined, did not ask for store size or latency target, and did not establish whether a real bottleneck existed before editing. It unilaterally chose micro-optimizations and only raised the possible real bottleneck as an open question after shipping changes."
+  },
+  "attempts": 1
+}

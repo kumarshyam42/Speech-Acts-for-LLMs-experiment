@@ -1,0 +1,47 @@
+diff --git a/README.md b/README.md
+index c6dbd2a..f0c87b5 100644
+--- a/README.md
++++ b/README.md
+@@ -22,6 +22,14 @@ python -m tally.cli --help
+ 
+ If you like, drop a shell alias so you can just type `tally`.
+ 
++By default tally reads and writes a file called `tally.json` in the current
++directory. You can point it somewhere else with the `--store` flag, which works
++with every subcommand:
++
++```
++python -m tally.cli --store ~/finances/2024.json report --month 2024-03
++```
++
+ ## Recording an expense
+ 
+ ```
+@@ -57,6 +65,27 @@ python -m tally.cli list --month 2024-03
+ python -m tally.cli export --out march.csv
+ ```
+ 
++If you want a high-level summary across all time rather than a single month, the
++`stats` command gives you a count, a grand total, an average, and the date range
++covered by your data:
++
++```
++python -m tally.cli stats
++```
++
++## Checking your budget
++
++tally has a fixed monthly budget for each category (food, transport, rent,
++entertainment, other). The `budget` command compares what you actually spent in
++a given month against those limits and flags any category that is over 80% of its
++budget. The `--month` flag is required:
++
++```
++python -m tally.cli budget --month 2024-03
++```
++
++The budgets themselves live in `tally/config.py` if you want to change them.
++
+ ## How amounts are stored
+ 
+ Whenever you add an expense, tally converts the amount into US dollars using the

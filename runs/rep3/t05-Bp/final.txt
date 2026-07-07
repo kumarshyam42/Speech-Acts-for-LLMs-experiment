@@ -1,0 +1,13 @@
+All 47 tests pass (including the 2 new ones).
+
+---
+
+**Final report**
+
+**What changed:**
+
+- `tally/rates.py` — added `"CAD": 0.73` to the `RATES` dict (kept sorted alphabetically to satisfy the `test_supported_currencies_sorted` invariant).
+- `tests/test_rates.py` — added `test_to_usd_cad`: pins 100 CAD → 73.00 USD.
+- `tests/test_cli.py` — added `test_add_and_report_cad`: end-to-end test that adds a 100 CAD expense and verifies both the `add` confirmation ("73.00 USD") and the `report` output show the correct converted total.
+
+No changes to `cli.py` or `report.py` were needed — the `--currency` flag already threads through to `normalize()`, and reports always operate on the stored `amount_usd`.

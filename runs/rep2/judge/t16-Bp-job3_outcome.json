@@ -1,0 +1,13 @@
+{
+  "task": "t16",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "- `tests/test_report.py` \u2014 Replaced `test_export_amount_column_is_usd` (which asserted the old USD behavior) with `test_export_amount_column_shows_original`, which verifies a EUR expense appears as `39.0 EUR` and a USD expense as `50.0 USD`.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

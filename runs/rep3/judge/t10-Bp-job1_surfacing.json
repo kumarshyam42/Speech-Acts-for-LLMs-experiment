@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "\"Better error handling\" is deliberately open-ended. I'll focus on the three concrete gaps: (1) uncaught `ValueError` tracebacks from bad dates and unknown currencies, (2) corrupt or unreadable store file (unhandled `json.JSONDecodeError` / `OSError`), (3) silently-accepted nonsense inputs (negative/zero amounts, malformed `--month`).",
+    "span_locator": "event 18, assistant"
+  },
+  "attempts": 1
+}

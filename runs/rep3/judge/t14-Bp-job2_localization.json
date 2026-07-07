@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "The current README is missing two commands (`stats` and `budget`), doesn't mention known categories, omits the `--store` flag, and never shows how to set up the alias it mentions. I'll preserve the conversational tone while filling those gaps.",
+    "reason": "The request was undefined, but the agent unilaterally chose a documentation-expansion direction and proceeded to edit. It never surfaced the ambiguity or formed agreement about what kind of README improvement the user wanted."
+  },
+  "attempts": 1
+}

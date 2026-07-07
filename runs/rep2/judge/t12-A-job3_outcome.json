@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "The sync requirement called out in `pricing.md` line 23 (R6) is satisfied \u2014 both docs now consistently say 200.",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t06",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "All 9 tests pass. Here's what changed in `tally/store.py`:",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

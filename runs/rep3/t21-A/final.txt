@@ -1,0 +1,1 @@
+Done. I added a short paragraph and example command for `budget --month YYYY-MM` immediately after the `list`/`export` block in the "Looking at your spending" section. It explains that the command shows category spending against configured budgets, with a brief description of the output format.

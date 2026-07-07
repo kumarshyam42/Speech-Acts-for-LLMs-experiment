@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "- **Ambiguity**: \"Sluggish\" is subjective \u2014 I'll profile/measure to find the actual bottleneck rather than guessing.",
+    "span_locator": "event 0, assistant"
+  },
+  "attempts": 1
+}

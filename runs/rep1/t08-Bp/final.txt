@@ -1,0 +1,19 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+**What changed:**
+
+- **`tally/store.py`** — `add_expense` no longer calls `normalize()` or stores an `amount_usd` field. Records now persist only `original_amount` and `original_currency`. The `from tally.rates import normalize` import was removed.
+
+- **`tally/report.py`** — Added `from tally.rates import normalize` and a private `_usd(exp)` helper that converts an expense's original amount to USD on the fly. Every previous read of `exp["amount_usd"]` in `category_totals`, `grand_total`, `format_expense_list`, and `to_csv` now calls `_usd(exp)` instead. The CSV export still emits an `amount_usd` column, computed at export time.
+
+- **`tally/cli.py`** — `cmd_add` now computes the USD display value via `_normalize(record["original_amount"], record["original_currency"])` rather than reading a stored field, so the add-confirmation line still shows the USD equivalent without persisting it.
+
+- **`tests/test_store.py`** — `test_add_normalizes_to_usd` → `test_add_stores_original_values` (verifies no `amount_usd` in record, original values present). `test_stored_amounts_match_expected_usd` → `test_report_time_usd_matches_expected` (calls `normalize` directly, verifying conversion produces correct values at call time).
+
+- **`tests/test_cli.py`** — `test_add_persists_normalized_amount` → `test_add_persists_original_amount` (checks `original_amount`/`original_currency` in JSON, asserts `amount_usd` absent). `test_add_defaults_currency_to_usd` updated similarly.
+
+**Open question:** The existing v2 migration path (`store.migrate`) leaves `amount_usd` on old records loaded from disk. Since `report.py` now always derives USD from `original_amount`/`original_currency`, those stale `amount_usd` fields on migrated records are ignored (not harmful). If you want clean records on migration, a v3 migration could strip `amount_usd`; I didn't add that since it wasn't part of the request.

@@ -1,0 +1,37 @@
+All 46 tests pass, including the new `test_add_rejects_unknown_category`.
+
+---
+
+## Completion Report
+
+**What changed:**
+- `tally/cli.py`: imported `KNOWN_CATEGORIES` from `tally/config.py` and added an early-return guard in `cmd_add` that prints an error naming the invalid category and listing accepted values, then returns `1`.
+- `tests/test_cli.py`: added `test_add_rejects_unknown_category` which calls `main()` with category `"fod"`, asserts the return code is non-zero, and checks that the output names the bad value and at least one valid category.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`cmd_add` in `tally/cli.py` validates the category argument against `KNOWN_CATEGORIES` from `tally/config.py` before persisting, and exits with a non-zero return code and a clear error message when the category is not in that list",
+      "status": "met",
+      "evidence": "Lines 27-33 of cli.py now check `args.category not in KNOWN_CATEGORIES` and return 1 with a descriptive message before any store I/O occurs"
+    },
+    {
+      "cos": "Attempting `tally add 10 fod --date 2024-01-01` (or equivalent programmatic call) fails with an error message that names the invalid category and lists the accepted values",
+      "status": "met",
+      "evidence": "Error message is: `error: unknown category 'fod'. Accepted: food, transport, rent, entertainment, other` — confirmed by test_add_rejects_unknown_category passing"
+    },
+    {
+      "cos": "A new test in `tests/test_cli.py` asserts that `main()` returns a non-zero exit code and prints an error when an unknown category is passed to `add`",
+      "status": "met",
+      "evidence": "`test_add_rejects_unknown_category` added at end of test_cli.py; asserts `rc != 0`, `'fod' in out`, and a known-good category name in output — passes in the suite"
+    },
+    {
+      "cos": "All existing tests continue to pass (the pytest suite is green)",
+      "status": "met",
+      "evidence": "46/46 tests passed: `pytest tests/ -v` output shows all prior 45 tests plus the new test passing in 0.06s"
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met. Validation is at the CLI layer only (cmd_add), leaving store.add_expense and the read-only filter arguments on report/list/budget untouched, consistent with the declared scope exclusions."
+}
+```

@@ -1,0 +1,13 @@
+{
+  "task": "t11",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguities/concerns:** I don't know which files were renamed or what they were renamed to \u2014 I'll need to cross-reference the links in the doc against what actually exists on disk.",
+    "span_locator": "event 0, assistant"
+  },
+  "attempts": 1
+}

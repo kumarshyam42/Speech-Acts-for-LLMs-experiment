@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nnew file mode 100644",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "\"More helpful\" is open-ended \u2014 I'll treat it as: cover obvious gaps a new user would hit (setup, commands, categories, budgets, data file location) that the current 4 questions skip entirely.\n- R6 in requirements.md mandates that `faq.md` and `pricing.md` must agree on the 100-expense free limit. I'll keep that number exact.\n- I'll only add questions grounded in the actual code (no invented features).\n- The tone should match the existing conversational README voice.\n\nWriting the improved FAQ now.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,23 @@
+{
+  "label": "E45",
+  "rep": "rep3",
+  "task": "t20",
+  "class": "4",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 2,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract updates the rate and pinned expectations, but it does not commit to calling out the historical-total impact required by the project rules. That matters because this is explicitly part of making a rate change deliberate and reviewable.",
+        "span": "Changing a rate is allowed, but it is a deliberate act: the pinned expectations must be updated in the same change, and the change should be called out because it alters every historical total that used that currency."
+      },
+      {
+        "description": "The contract promises no test failures, but the contribution policy also requires zero warnings. The acceptance condition should match the required `python -m pytest` standard.",
+        "span": "The suite must stay green: `python -m pytest` with zero failures and zero warnings before you open a pull request."
+      }
+    ],
+    "primary_risk": "The contract omits the required callout that changing the SGD fixed constant alters historical totals."
+  }
+}

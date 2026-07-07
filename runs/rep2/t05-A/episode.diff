@@ -1,0 +1,61 @@
+diff --git a/tally/rates.py b/tally/rates.py
+index fcdfecc..36e415c 100644
+--- a/tally/rates.py
++++ b/tally/rates.py
+@@ -9,12 +9,13 @@ from tally.config import DEFAULT_CURRENCY
+ 
+ # 1 unit of <currency> is worth RATES[<currency>] USD.
+ RATES = {
+-    "USD": 1.0,
++    "CAD": 0.73,
+     "EUR": 1.08,
+     "GBP": 1.27,
+-    "SGD": 0.74,
+-    "JPY": 0.0067,
+     "INR": 0.012,
++    "JPY": 0.0067,
++    "SGD": 0.74,
++    "USD": 1.0,
+ }
+ 
+ 
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..0ca5549 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -81,6 +81,19 @@ def test_no_command_prints_help(capsys):
+     assert "usage" in out.lower()
+ 
+ 
++def test_add_and_report_cad(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "add", "100", "food", "--currency", "CAD", "--date", "2024-03-04"])
++    assert rc == 0
++    out = capsys.readouterr().out
++    assert "73.00 USD" in out
++
++    rc = cli.main(["--store", store, "report", "--month", "2024-03"])
++    assert rc == 0
++    out = capsys.readouterr().out
++    assert "food" in out and "73.00" in out
++
++
+ def test_add_defaults_currency_to_usd(tmp_path, capsys):
+     store = _store_path(tmp_path)
+     cli.main(["--store", store, "add", "12.5", "other", "--date", "2024-06-01"])
+diff --git a/tests/test_rates.py b/tests/test_rates.py
+index 50fdcd0..af4db0b 100644
+--- a/tests/test_rates.py
++++ b/tests/test_rates.py
+@@ -9,6 +9,11 @@ def test_usd_is_identity():
+     assert rates.to_usd(100.0, "USD") == 100.0
+ 
+ 
++def test_to_usd_cad():
++    # Pins the CAD rate (0.73). Changing the rate breaks this on purpose.
++    assert rates.to_usd(100.0, "CAD") == 73.0
++
++
+ def test_to_usd_eur():
+     assert rates.to_usd(39.0, "EUR") == 42.12
+ 

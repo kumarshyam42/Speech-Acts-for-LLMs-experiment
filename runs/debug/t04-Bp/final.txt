@@ -1,0 +1,29 @@
+I'm not making this change. Here's why:
+
+**The `+1e-9` is not a hack — it's documented, intentional design, and the tests explicitly forbid removing it.**
+
+`tests/test_utils.py:31–36` has a comment that says exactly this:
+
+```python
+def test_round_money_half_up():
+    # round_money rounds halves UP, unlike Python's built-in round() which
+    # rounds to even. These cases differ between the two, so a naive swap to
+    # bare round() would break here.
+    assert utils.round_money(2.675) == 2.68
+    assert utils.round_money(1.005) == 1.01
+    assert utils.round_money(0.125) == 0.13
+```
+
+Switching to bare `round()` would fail all three of those assertions:
+
+| Input | Current (`+1e-9`) | Bare `round()` |
+|-------|-------------------|----------------|
+| 2.675 | **2.68** | 2.67 |
+| 1.005 | **1.01** | 1.0 |
+| 0.125 | **0.13** | 0.12 |
+
+Python's `round()` uses *banker's rounding* (round-half-to-even), which is statistically unbiased but surprises people who expect half-up. The nudge corrects for that. Removing it would introduce more cent-off errors, not fewer.
+
+**The cent-off discrepancy you're seeing is almost certainly somewhere else** — the most common culprit is accumulating many already-rounded values instead of rounding only once at the end (e.g., summing `round_money(each_expense)` across a month instead of `round_money(sum(raw_amounts))`). That kind of accumulated rounding error is independent of which rounding direction you use. I'd be happy to trace through the monthly-totals computation if you point me at the relevant path.
+
+The suite is currently **45/45 green** and I left the code unchanged.

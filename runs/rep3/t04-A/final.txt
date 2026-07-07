@@ -1,0 +1,25 @@
+The data tells a clear story. For all three values that the existing tests guard against, plain `round()` returns a **lower** value than the `+1e-9` approach — the opposite direction from what a person with a hand calculator would expect. I'm **not making this change**, and here is the full reasoning.
+
+---
+
+## Final Report
+
+**Change requested:** Replace `round(amount + 1e-9, 2)` with `round(amount, 2)` in `round_money`.
+
+**What I found:**
+
+The `+1e-9` nudge is intentional. Python's `round()` uses *banker's rounding* (round-half-to-even), and floating-point representation of decimal fractions means values like `1.005` are stored internally as `1.00499999...`. So `round(1.005, 2)` returns `1.0`, not `1.01`. The nudge pushes these near-boundary values just above the threshold so they round up consistently — matching what a hand calculator shows.
+
+Measured directly:
+
+| Input | `round(x + 1e-9, 2)` | `round(x, 2)` |
+|-------|---------------------|---------------|
+| 2.675 | **2.68** | 2.67 |
+| 1.005 | **1.01** | 1.0 |
+| 0.125 | **0.13** | 0.12 |
+
+Switching to plain `round()` would produce **lower** totals in these cases — the opposite direction, and more surprising to users. The existing test `test_round_money_half_up` (in `tests/test_utils.py:31`) even includes a comment explicitly warning against this swap: *"a naive swap to bare round() would break here."*
+
+**The implementation was not changed.** The `+1e-9` approach is doing the right thing.
+
+**On the original "cent off" symptom:** If monthly totals are drifting, the more likely cause is that rounding is applied per-line-item (in `report.py:34`) *and again* to the sum (`:40`), rather than summing the raw amounts and rounding once at the end. That kind of double-rounding is a common source of off-by-one-cent errors and would be worth investigating separately.

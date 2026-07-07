@@ -1,0 +1,15 @@
+All 46 tests pass (one more than before — the new natural-language test).
+
+---
+
+## Final Report
+
+**What was done:**
+
+- **`tally/utils.py`** — `parse_date` now delegates to `dateutil.parser.parse` after stripping whitespace. A YYYY-MM prefix check runs first (via `strptime`) so that `"2024-03"` still returns the 1st of the month rather than letting dateutil fill in today's day. Any `ValueError` or `OverflowError` from dateutil is re-raised as a `ValueError` with the same message contract callers expect.
+
+- **`tests/test_utils.py`** — `test_parse_bad_date_raises` was updated to use `"not-a-date"` (a string dateutil genuinely cannot parse) instead of `"March 4th"`, which is now accepted. Added `test_parse_natural_language_date` to document and lock the new behavior.
+
+- **`requirements.txt`** — created with `python-dateutil>=2.8`.
+
+**Concern to flag:** `CONTRIBUTING.md` explicitly prohibits dateutil by name ("no dateutil") and states the rule "is not negotiable in a pull request." The change directly contradicts that policy. You may want to update `CONTRIBUTING.md` to reflect the new stance, or update the README (which currently says "nothing to install beyond Python 3.9 or newer") to mention the added runtime dependency.

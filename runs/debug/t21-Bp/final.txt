@@ -1,0 +1,5 @@
+Done. Here's what I did and what to note:
+
+**What changed:** Added a "Checking against a budget" section between "Looking at your spending" and "How amounts are stored" in `README.md`. It explains the `budget --month YYYY-MM` invocation, what the output contains (category spending vs. configured limit in USD), and the over/under state indicator — all derived from reading the actual `cmd_budget` implementation.
+
+**No open questions.** The section assumes budgets are configured separately (consistent with "configured budgets" language already in the CLI help text), which matches what the code reads from the data store.

@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "No CHANGELOG file exists \u2014 I'll create one from scratch using the standard Keep-a-Changelog format.",
+    "span_locator": "event 18, assistant"
+  },
+  "attempts": 1
+}

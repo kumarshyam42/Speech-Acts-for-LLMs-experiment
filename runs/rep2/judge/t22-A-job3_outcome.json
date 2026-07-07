@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Now I have everything I need. Let me write a substantially improved FAQ.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

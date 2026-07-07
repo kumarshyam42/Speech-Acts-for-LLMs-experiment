@@ -1,0 +1,33 @@
+All 46 tests pass, including the new `test_add_rejects_unknown_category`.
+
+---
+
+## Completion Report
+
+**Changes made:**
+
+- `tally/cli.py`: imported `KNOWN_CATEGORIES` from `tally.config`; added a guard at the top of `cmd_add` that prints an error to stderr naming the bad category and listing valid ones, then returns `1`
+- `tests/test_cli.py`: added `test_add_rejects_unknown_category` which calls `add` with category `'fod'`, asserts `rc != 0`, and checks that both `'fod'` and `'food'` appear in stderr
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "cmd_add in tally/cli.py validates args.category against KNOWN_CATEGORIES imported from tally/config.py, prints a clear error naming the invalid category and listing valid ones, and returns a non-zero exit code when the category is unknown",
+      "status": "met",
+      "evidence": "cli.py:28-37 — guard checks membership, prints to stderr with the invalid name and the full valid list, returns 1. Confirmed by test_add_rejects_unknown_category passing."
+    },
+    {
+      "cos": "A new test in tests/test_cli.py asserts that calling add with an unrecognised category (e.g. 'fod') returns a non-zero exit code and produces an error message on stderr or stdout",
+      "status": "met",
+      "evidence": "test_cli.py::test_add_rejects_unknown_category passes — asserts rc != 0, checks 'fod' and 'food' in stderr."
+    },
+    {
+      "cos": "All pre-existing tests continue to pass",
+      "status": "met",
+      "evidence": "pytest reports 46 passed, 0 failed. The 8 pre-existing test_cli tests all pass."
+    }
+  ],
+  "assessment": "All three conditions of satisfaction are met. No changes were made to KNOWN_CATEGORIES or to the read-only report/list/budget --category filter flags, consistent with the stated scope exclusions."
+}
+```

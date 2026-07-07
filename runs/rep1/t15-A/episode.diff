@@ -1,0 +1,43 @@
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..dcfb57e 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -28,6 +28,38 @@ def month_key(d):
+     return "{:04d}-{:02d}".format(d.year, d.month)
+ 
+ 
++_VALID_CURRENCIES = {
++    "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN",
++    "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL",
++    "BSD", "BTN", "BWP", "BYN", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY",
++    "COP", "CRC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP",
++    "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GHS", "GIP", "GMD",
++    "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS",
++    "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY", "KES", "KGS", "KHR",
++    "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD",
++    "LSL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRU",
++    "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK",
++    "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG",
++    "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK",
++    "SGD", "SHP", "SLL", "SOS", "SRD", "STN", "SYP", "SZL", "THB", "TJS",
++    "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD",
++    "UYU", "UZS", "VES", "VND", "VUV", "WST", "XAF", "XCD", "XOF", "XPF",
++    "YER", "ZAR", "ZMW", "ZWL",
++}
++
++
++def parse_currency(code):
++    """Normalise and validate a currency code.
++
++    Accepts any case (e.g. 'eur', 'Eur', 'EUR') and returns the canonical
++    three-letter ISO 4217 uppercase code.  Raises ValueError for unknown codes.
++    """
++    normalised = code.strip().upper()
++    if normalised not in _VALID_CURRENCIES:
++        raise ValueError("unknown currency code {!r}".format(code))
++    return normalised
++
++
+ def round_money(amount):
+     """Round a money amount to 2 decimal places, rounding halves up.
+ 

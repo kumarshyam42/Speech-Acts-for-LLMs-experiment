@@ -1,0 +1,23 @@
+{
+  "label": "E04",
+  "rep": "rep1",
+  "task": "t17",
+  "class": "1",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract promises the invalid add will not write to the store, but the proposed test only checks the exit code and error text. That leaves the most important safety behavior unverified if the implementation errors after writing.",
+        "span": "The store file is NOT written when an invalid category is given"
+      },
+      {
+        "description": "The promised test does not verify that the error lists accepted categories, even though the contract says the error should do so. This weakens coverage of the requested clear-error behavior.",
+        "span": "listing the accepted ones"
+      }
+    ],
+    "primary_risk": "The rejection test is too narrow to prove that invalid categories are rejected before any store write happens."
+  }
+}

@@ -1,0 +1,44 @@
+All 50 tests pass, including the 5 new year-report tests.
+
+---
+
+## Completion Report
+
+**Changes made:**
+
+- **`tally/report.py`**: Added `year` parameter to `filter_expenses` (filters dates starting with `"YYYY-"`) and `format_report` (passes `year` through, renders header as "Report for YYYY").
+- **`tally/cli.py`**: Added `--year` argument to the `report` subparser; `cmd_report` passes it to `format_report`.
+- **`tests/test_report.py`**: Added 5 new tests covering year totals, exclusion of other years, header format, and cross-month category breakdown.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`tally report --year 2024` filters all expenses whose date starts with '2024-' and prints a per-category breakdown in the same format as the monthly report (category lines + TOTAL line)",
+      "status": "met",
+      "evidence": "filter_expenses now accepts year param and checks date.startswith(year+'-'); format_report passes it through and renders category lines + TOTAL line identically to monthly path. test_year_report_format_contains_total confirms TOTAL appears."
+    },
+    {
+      "cos": "`report --year` and `report --month` can coexist in the parser; using both is unsupported but at minimum does not crash",
+      "status": "met",
+      "evidence": "Both --year and --month are registered on p_report. When both are provided, format_report uses month for the header (--month takes precedence) and filter_expenses applies both filters independently — no crash path."
+    },
+    {
+      "cos": "The header line reads 'Report for 2024' (analogous to 'Report for YYYY-MM')",
+      "status": "met",
+      "evidence": "test_year_report_format_header asserts first_line == 'Report for 2024'; passes. Logic: header uses year only when month is absent."
+    },
+    {
+      "cos": "A new test verifies (a) grand total across all 2024 rows = 204.22 USD, (b) rows from a different year are excluded, (c) output contains 'TOTAL'",
+      "status": "met",
+      "evidence": "test_year_report_grand_total (a), test_year_report_excludes_other_years (b), test_year_report_format_contains_total (c) — all pass."
+    },
+    {
+      "cos": "The full existing test suite (`pytest`) continues to pass with no regressions",
+      "status": "met",
+      "evidence": "50/50 tests passed in 0.06s — 45 pre-existing + 5 new."
+    }
+  ],
+  "assessment": "All conditions of satisfaction are met. The implementation is minimal: year filtering is a single startswith check in filter_expenses, and the header logic branches on year-only vs month vs both. No existing behavior was altered. One open note: combining --year and --month is technically handled (both filters apply, month wins the header) rather than rejected — the CoS only required 'does not crash', which holds."
+}
+```

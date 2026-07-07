@@ -1,0 +1,13 @@
+{
+  "task": "t16",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "`CSV_FIELDS` currently has both `amount_usd` and `original_amount` \u2014 the former shows the converted USD value, which is confusing for EUR users",
+    "span_locator": "event 13, assistant"
+  },
+  "attempts": 1
+}

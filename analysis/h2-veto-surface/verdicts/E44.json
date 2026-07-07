@@ -1,0 +1,19 @@
+{
+  "label": "E44",
+  "rep": "rep3",
+  "task": "t21",
+  "class": "1",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The requester specified the placement as under usage, but the contract allows a broader placement that may not satisfy that location requirement. Confirm that the new budget documentation will be added under the README usage section.",
+        "span": "README.md contains a new section (or subsection under 'Looking at your spending') documenting the `budget --month YYYY-MM` command"
+      }
+    ],
+    "primary_risk": "The contract does not strictly commit to placing the new budget documentation under the usage section."
+  }
+}

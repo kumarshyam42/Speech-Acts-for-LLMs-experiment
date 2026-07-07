@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Two clear performance issues:\n\n1. **`month_key` in `utils.py`** - for every expense, it calls `parse_date(text)` (which tries two `strptime` formats) then reformats the date. Since all stored dates are ISO \"YYYY-MM-DD\" strings, a simple slice suffices.\n2. **`format_report` in `report.py`** - iterates `selected` twice: once for `category_totals()`, again for `grand_total()`. We can sum from the already-computed `totals` dict.",
+    "reason": "The agent never surfaced that \u201cfaster\u201d was undefined or that there was no agreed latency target, store size, or evidence of meaningful slowness. It instead guessed two bottlenecks and proceeded directly to edit, so the failure originated before any shared definition of the performance problem was formed."
+  },
+  "attempts": 1
+}

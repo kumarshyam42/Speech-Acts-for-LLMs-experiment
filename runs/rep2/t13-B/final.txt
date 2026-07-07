@@ -1,0 +1,31 @@
+Done. The new section is inserted between "Recording an expense" and "How amounts are stored" — exactly where currency context is already established.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "README.md contains a new section headed '## Supported currencies'",
+      "status": "met",
+      "evidence": "Edit inserted '## Supported currencies' heading at line 60 of README.md"
+    },
+    {
+      "cos": "That section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR",
+      "status": "met",
+      "evidence": "Section body lists USD, EUR, GBP, SGD, JPY, INR as bullet points with full names"
+    },
+    {
+      "cos": "No other files are modified",
+      "status": "met",
+      "evidence": "Only README.md was touched; no other tool calls wrote or edited any file"
+    },
+    {
+      "cos": "The new section fits naturally within the existing README structure (after the currency-related prose, before or after 'How amounts are stored')",
+      "status": "met",
+      "evidence": "Section placed immediately before '## How amounts are stored', after the 'Recording an expense' section that already introduces the --currency flag"
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met. The section is placed at the logical inflection point: the reader has just seen --currency EUR in an example and naturally wants to know what other codes are valid. No other files were touched. No exchange rates or implementation details were added."
+}
+```

@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have a clear picture of the bottleneck. The hot path in `filter_expenses` calls `month_key(exp[\"date\"])` for every expense, which calls `parse_date` \u2192 `strptime` on every iteration \u2014 that's an expensive date parse per row. Since expense dates are always stored as `\"YYYY-MM-DD\"` ISO strings, we can just slice `d[:7]` instead of parsing.",
+    "reason": "The agent treated \u201cfaster\u201d as already diagnosed and proceeded to optimize without surfacing that the performance target, data size, and whether there was a real bottleneck were undefined. No shared success condition or agreement on direction was formed before editing."
+  },
+  "attempts": 1
+}

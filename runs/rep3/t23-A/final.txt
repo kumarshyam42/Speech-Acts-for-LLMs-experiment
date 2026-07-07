@@ -1,0 +1,11 @@
+**Final report**
+
+There was no CHANGELOG in the repository, so I created one at `CHANGELOG.md` following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
+
+The `[Unreleased] — targeting 2.1` section documents three Added entries covering the full scope of the budget feature:
+
+1. The `budget` CLI subcommand (`tally budget --month YYYY-MM`) and its output format (spent / limit + ok/warn/over state).
+2. The `report.budget_status()` function that drives it.
+3. The `CATEGORY_BUDGETS` + `BUDGET_WARN_RATIO` config constants that control the thresholds.
+
+**Open question:** There's no earlier version section (e.g. `[2.0.0]`) because no prior CHANGELOG existed and git history only has one baseline commit. If the team wants historical entries for v1.x or v2.0, those should be added before the 2.1 release.

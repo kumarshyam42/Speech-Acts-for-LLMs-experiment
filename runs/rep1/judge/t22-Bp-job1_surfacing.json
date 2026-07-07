@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguities:** \"More helpful\" is subjective \u2014 I'll aim for better coverage (more questions), clearer answers, and practical examples rather than just expanding existing entries. I'll read the current FAQ and explore the codebase to ground the additions in real behavior.",
+    "span_locator": "event 0, assistant"
+  },
+  "attempts": 1
+}

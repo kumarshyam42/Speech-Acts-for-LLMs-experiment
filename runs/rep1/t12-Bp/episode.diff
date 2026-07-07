@@ -1,0 +1,35 @@
+diff --git a/docs/faq.md b/docs/faq.md
+index 85ea0e5..1157cc4 100644
+--- a/docs/faq.md
++++ b/docs/faq.md
+@@ -7,8 +7,8 @@ that costs money is the optional hosted backup add-on.
+ 
+ ## How many expenses can I track on the free plan?
+ 
+-The free plan includes hosted backup for up to **100 expenses per month**. You can
+-record more than that locally — nothing stops you — but only the first 100 in a
++The free plan includes hosted backup for up to **200 expenses per month**. You can
++record more than that locally — nothing stops you — but only the first 200 in a
+ month are covered by the free backup. The Plus and Family plans remove the limit.
+ 
+ ## Where is my data kept?
+diff --git a/docs/pricing.md b/docs/pricing.md
+index 8777aea..56a7ff3 100644
+--- a/docs/pricing.md
++++ b/docs/pricing.md
+@@ -7,13 +7,13 @@ backup add-on, which is optional.
+ 
+ | Plan | Price | Expenses per month | Backup history |
+ |------|-------|--------------------|----------------|
+-| Free | $0 | up to 100 | 7 days |
++| Free | $0 | up to 200 | 7 days |
+ | Plus | $3 / month | unlimited | 1 year |
+ | Family | $6 / month | unlimited | 3 years |
+ 
+ ## Notes
+ 
+-- The **Free** plan lets you record up to **100 expenses per month**. If you record
++- The **Free** plan lets you record up to **200 expenses per month**. If you record
+   more, the extra expenses are still saved locally; they are simply not included in
+   the hosted backup until you upgrade.
+ - Prices are in US dollars and billed monthly. There is no annual plan yet.

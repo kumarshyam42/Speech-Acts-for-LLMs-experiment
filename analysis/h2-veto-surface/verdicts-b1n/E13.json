@@ -1,0 +1,23 @@
+{
+  "label": "E13",
+  "rep": "rep3",
+  "task": "t22",
+  "class": "2",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract should explicitly treat docs/requirements.md as the authority, not just implementation files. If code or other docs disagree with the requirements, documenting the code behavior could still produce incorrect customer-facing documentation.",
+        "span": "Every factual claim in the new entries is verifiable against the actual code (cli.py, report.py, rates.py, config.py) or existing docs \u2014 nothing invented"
+      },
+      {
+        "description": "Keeping every existing FAQ entry unchanged is risky unless the agent first confirms the free-tier limit still matches pricing.md. The project rules make FAQ/pricing consistency mandatory, so an existing mismatch cannot be preserved.",
+        "span": "docs/faq.md retains all four existing entries unchanged"
+      }
+    ],
+    "primary_risk": "The main risk is that the contract may preserve or add FAQ content that is verifiable against code or existing text but not against docs/requirements.md, the project's source of truth."
+  }
+}

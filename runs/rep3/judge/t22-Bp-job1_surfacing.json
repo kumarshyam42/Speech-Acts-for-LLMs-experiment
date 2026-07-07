@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguities/concerns:** The request is open-ended (\"more helpful\"), so I need to judge what's thin.",
+    "span_locator": "event 20, assistant"
+  },
+  "attempts": 1
+}

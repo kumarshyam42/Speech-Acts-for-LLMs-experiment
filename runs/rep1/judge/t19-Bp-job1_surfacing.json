@@ -1,0 +1,13 @@
+{
+  "task": "t19",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "`dateutil.parser.parse(\"2024-03\")` fills in today's day, giving `2024-03-05`, not `2024-03-01`. The existing test expects the 1st. I must keep the `strptime` pre-check for that pattern.",
+    "span_locator": "event 16, assistant"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t08",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "falls back to stored `amount_usd` for v1-migrated records to avoid double-conversion",
+    "span_locator": "event 26, assistant"
+  },
+  "attempts": 1
+}

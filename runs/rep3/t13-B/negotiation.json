@@ -1,0 +1,19 @@
+{
+  "raw": "The currencies in `rates.py` exactly match the six listed in the request (USD, EUR, GBP, SGD, JPY, INR). This is a straightforward, single-file edit.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README.md contains a new 'Supported currencies' section\",\n    \"The section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR\",\n    \"The listed currencies match exactly those defined in tally/rates.py\",\n    \"No other content in README.md is modified\"\n  ],\n  \"scope_exclusions\": [\n    \"Exchange rates or conversion details are not documented \u2014 only the supported currency codes\",\n    \"No changes to source code or tests\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README.md contains a new 'Supported currencies' section",
+      "The section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR",
+      "The listed currencies match exactly those defined in tally/rates.py",
+      "No other content in README.md is modified"
+    ],
+    "scope_exclusions": [
+      "Exchange rates or conversion details are not documented \u2014 only the supported currency codes",
+      "No changes to source code or tests"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Let me apply these fixes and run the tests.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

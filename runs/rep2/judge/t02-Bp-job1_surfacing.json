@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguities:** \"Sluggish\" is subjective \u2014 no baseline timing given. I'll profile what the report command actually does and target the most obvious bottlenecks.",
+    "span_locator": "event 0, assistant"
+  },
+  "attempts": 1
+}

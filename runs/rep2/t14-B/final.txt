@@ -1,0 +1,48 @@
+Done. Here is the completion report.
+
+---
+
+**What changed:** The README now has a dedicated section for each of the six subcommands (`add`, `report`, `list`, `export`, `stats`, `budget`), documents the `--store` flag, lists the valid `KNOWN_CATEGORIES`, shows example output for `report`, `list`, `stats`, and `budget`, explains where budgets are configured and how to change them, and preserves the original conversational tone throughout.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "The README documents all six subcommands: add, report, list, export, stats, and budget — each with at least one usage example",
+      "status": "met",
+      "evidence": "Each subcommand has its own ### heading with at least one code-block usage example. Verified in the written file."
+    },
+    {
+      "cos": "The --store global flag is documented",
+      "status": "met",
+      "evidence": "A 'Where your data lives' section explains --store with a concrete example before the subcommand list."
+    },
+    {
+      "cos": "The budget command section explains that budgets are configured in tally/config.py and shows what the output looks like",
+      "status": "met",
+      "evidence": "The ### budget section names tally/config.py and CATEGORY_BUDGETS, and includes a sample output block with ok/warn/over states."
+    },
+    {
+      "cos": "The stats command section is present and shows example output fields (count, total, average, date span)",
+      "status": "met",
+      "evidence": "### stats section includes a sample output block showing all four fields: expenses, total, average, span."
+    },
+    {
+      "cos": "The list command has its own usage example (currently only mentioned in passing)",
+      "status": "met",
+      "evidence": "### list is now a full section with two usage examples and a sample output table."
+    },
+    {
+      "cos": "The valid KNOWN_CATEGORIES are mentioned so users know what category values to use",
+      "status": "met",
+      "evidence": "A 'Categories' section lists all five values: food, transport, rent, entertainment, other."
+    },
+    {
+      "cos": "The existing prose style and tone (conversational, no jargon) is preserved throughout",
+      "status": "met",
+      "evidence": "New prose uses the same sentence rhythm and vocabulary as the original; no technical jargon introduced."
+    }
+  ],
+  "assessment": "All seven conditions of satisfaction are met. No source code, tests, or non-README files were modified. The installation section is unchanged. No badges, CI instructions, or contribution guidelines were added."
+}
+```

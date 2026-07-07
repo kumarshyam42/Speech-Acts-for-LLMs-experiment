@@ -1,0 +1,23 @@
+52/52 passing. Here's a summary of what was done:
+
+---
+
+## Final Report
+
+### Changes made
+
+**`tally/cli.py`**
+
+1. **Top-level error handler in `main()`** — wraps `args.func(args)` in `try/except (ValueError, OSError)`. Any unhandled `ValueError` (bad date, unsupported currency, invalid JSON) or `OSError` (permission denied, disk full) now prints `error: <message>` to stderr and returns exit code 1 instead of crashing with a traceback.
+
+2. **Month format validation** — added `_validate_month()` (enforces `YYYY-MM` with a regex) and called it at the top of `cmd_report`, `cmd_list`, and `cmd_budget`. Previously, a malformed month like `2024/03` silently returned empty results.
+
+3. **Amount validation in `cmd_add`** — rejects `amount <= 0` with a clear `ValueError`.
+
+4. **Category validation in `cmd_add`** — rejects categories not in `KNOWN_CATEGORIES` (the config list already existed but was never used). This surfaces typos like `"unicorns"` instead of silently storing them.
+
+5. **Friendly corrupt-store error** — `_load()` now catches `json.JSONDecodeError` and re-raises as a `ValueError` with a message that names the file, e.g. `error: store file 'tally.json' contains invalid JSON: ...`.
+
+**`tests/test_cli.py`**
+
+Added 7 new tests covering: bad date, unsupported currency, negative amount, unknown category, bad `--month` format on `report`, bad `--month` format on `list`, and a corrupt store file. All 52 tests pass.

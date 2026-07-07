@@ -1,0 +1,21 @@
+{
+  "raw": "I have enough context. The codebase is clear and straightforward. Here's my assessment:\n\n- `report.py` has `filter_expenses(expenses, month=None, category=None)` and `format_report(expenses, month=None, category=None)` \u2014 filtering by year just needs a new helper or an extra parameter\n- `cli.py` has `cmd_report` and the `report` subparser \u2014 adding `--year` is a small, well-scoped change\n- The test fixtures use 2024 data split across March and April, so a `--year 2024` test can sum both months using existing constants (`EXPECTED_GRAND_TOTAL = 204.22`)\n- No ambiguity: the request says \"same per-category breakdown the monthly report gives\" \u2014 same `format_report` output shape, filtered to the whole year\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`tally report --year 2024` prints a per-category breakdown (same format as the monthly report) plus a TOTAL line summing all expenses in calendar year 2024\",\n    \"`tally report --year 2024 --category food` filters further to just that category within the year\",\n    \"`--year` and `--month` are mutually exclusive (passing both exits with an error)\",\n    \"A new test in `tests/test_report.py` (or `tests/test_cli.py`) verifies the year filter: categories and grand total match the known 2024 fixture values\",\n    \"The existing test suite (`pytest`) continues to pass with no regressions\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to the `budget` command (it remains month-scoped only)\",\n    \"No changes to the `list` or `export` commands\",\n    \"No new output format \u2014 year report uses the identical plain-text layout as the monthly report\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`tally report --year 2024` prints a per-category breakdown (same format as the monthly report) plus a TOTAL line summing all expenses in calendar year 2024",
+      "`tally report --year 2024 --category food` filters further to just that category within the year",
+      "`--year` and `--month` are mutually exclusive (passing both exits with an error)",
+      "A new test in `tests/test_report.py` (or `tests/test_cli.py`) verifies the year filter: categories and grand total match the known 2024 fixture values",
+      "The existing test suite (`pytest`) continues to pass with no regressions"
+    ],
+    "scope_exclusions": [
+      "No changes to the `budget` command (it remains month-scoped only)",
+      "No changes to the `list` or `export` commands",
+      "No new output format \u2014 year report uses the identical plain-text layout as the monthly report"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

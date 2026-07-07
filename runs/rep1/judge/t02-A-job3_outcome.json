@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Now I have a clear picture of the bottleneck. The hot path in `filter_expenses` calls `month_key(exp[\"date\"])` for every expense, which calls `parse_date` \u2192 `strptime` on every iteration \u2014 that's an expensive date parse per row. Since expense dates are always stored as `\"YYYY-MM-DD\"` ISO strings, we can just slice `d[:7]` instead of parsing.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

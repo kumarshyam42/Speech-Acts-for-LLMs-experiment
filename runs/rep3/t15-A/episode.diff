@@ -1,0 +1,36 @@
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..8225b1d 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -3,6 +3,8 @@
+ import datetime
+ from typing import Union
+ 
++from tally import rates
++
+ Dateish = Union[str, datetime.date]
+ 
+ 
+@@ -28,6 +30,22 @@ def month_key(d):
+     return "{:04d}-{:02d}".format(d.year, d.month)
+ 
+ 
++def parse_currency(code):
++    """Return the canonical uppercase currency code, or raise ValueError.
++
++    Accepts any case ('eur', 'EUR', 'Eur') and normalises to uppercase before
++    checking against the known rate table.
++    """
++    upper = code.strip().upper()
++    if upper not in rates.RATES:
++        raise ValueError(
++            "unsupported currency {!r}; known: {}".format(
++                code, ", ".join(rates.supported_currencies())
++            )
++        )
++    return upper
++
++
+ def round_money(amount):
+     """Round a money amount to 2 decimal places, rounding halves up.
+ 

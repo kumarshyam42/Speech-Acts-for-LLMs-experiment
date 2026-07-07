@@ -1,0 +1,13 @@
+{
+  "task": "t19",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "`dateutil.parser.parse(\"2024-03\")` fills in the current day (today's day of month), not day 1. I need to handle this pattern before delegating to dateutil to preserve the existing contract.",
+    "span_locator": "event 17, assistant"
+  },
+  "attempts": 1
+}

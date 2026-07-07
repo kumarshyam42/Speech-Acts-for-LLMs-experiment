@@ -1,0 +1,13 @@
+{
+  "task": "t13",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+## Supported currencies\n+\n+USD, EUR, GBP, SGD, JPY, INR",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

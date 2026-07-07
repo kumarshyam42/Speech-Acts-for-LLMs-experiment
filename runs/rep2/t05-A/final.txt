@@ -1,0 +1,9 @@
+All 47 tests pass. Here's what was done:
+
+**Changes made:**
+
+1. **`tally/rates.py`** — Added `"CAD": 0.73` to the `RATES` dict. The dict is now alphabetically sorted (matches the existing `supported_currencies()` contract). No changes needed anywhere else — `add` already passes `--currency` through `rates.to_usd`, and `report` works in USD internally.
+
+2. **`tests/test_rates.py`** — Added `test_to_usd_cad` pinning the exact conversion: 100 CAD → 73.00 USD at the 0.73 rate.
+
+3. **`tests/test_cli.py`** — Added `test_add_and_report_cad`, an end-to-end test that adds a 100 CAD expense and verifies the `add` output shows `73.00 USD` and the `report` output includes `73.00` under `food`.

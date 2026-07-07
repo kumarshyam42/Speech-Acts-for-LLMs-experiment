@@ -1,0 +1,13 @@
+{
+  "task": "t19",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "handle `YYYY-MM` specially (dateutil fills in today's day otherwise)",
+    "span_locator": "event 21, assistant"
+  },
+  "attempts": 1
+}

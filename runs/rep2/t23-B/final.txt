@@ -1,0 +1,16 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "A CHANGELOG.md file is created at the repository root following Keep a Changelog format (keepachangelog.com)",
+    "The file contains an [Unreleased] section listing the budget feature under an appropriate subsection (e.g., Added)",
+    "The budget feature entry is drawn from the actual code/tests/docs in this repo (tally/config.py, tally/cli.py, tally/report.py, docs/requirements.md) — no invented content",
+    "The file contains a placeholder [2.1.0] section header below Unreleased, ready for release date stamping"
+  ],
+  "scope_exclusions": [
+    "No historical release entries will be fabricated — only [Unreleased] and a [2.1.0] stub are added",
+    "No changes to any other file"
+  ],
+  "concern": "No CHANGELOG file exists in this repository — there is nothing to add an entry to. I can create a CHANGELOG.md from scratch with the standard Keep a Changelog structure and add the budget feature under [Unreleased], but that is a creation, not an addition. I need to verify the exact budget feature description from the existing code/docs before writing the entry, which I've confirmed is feasible."
+}
+```

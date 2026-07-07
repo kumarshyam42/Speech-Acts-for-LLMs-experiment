@@ -1,0 +1,23 @@
+53/53 pass.
+
+---
+
+**Final report**
+
+The `--week` option didn't exist yet in the codebase — I implemented it correctly from scratch using ISO 8601 Monday-based weeks. Here's what changed:
+
+**`tally/utils.py`** — Added `week_key(d)` which uses `date.isocalendar()` to return an `"YYYY-WNN"` string. `isocalendar()` is Monday-based by the ISO 8601 standard, so this is correct by construction (unlike `strftime("%U")` which is Sunday-based).
+
+**`tally/report.py`** — Extended `filter_expenses()` and `format_report()` with an optional `week` parameter. When provided, only expenses whose `week_key` matches are included.
+
+**`tally/cli.py`** — Added `--week YYYY-WNN` argument to the `report` subcommand and threaded it through to `format_report`.
+
+**Tests added** (8 new tests, 53 total, all green):
+- `test_week_key_monday_is_start_of_week` — Monday is the first day, not Sunday
+- `test_week_key_sunday_is_end_of_week` — Sunday is the last day of the same week
+- `test_week_key_from_string` — accepts string date input
+- `test_week_key_iso_year_rollover` — handles Dec 30 belonging to the next ISO year
+- `test_filter_by_week` — basic weekly filter works
+- `test_filter_by_week_excludes_sunday_of_prev_week` — the key correctness property: a Friday in W09 does not appear in W10
+- `test_format_report_weekly` — output header includes the week label
+- `test_report_week_filter` (CLI) — end-to-end: only the W10 expense appears, not W11

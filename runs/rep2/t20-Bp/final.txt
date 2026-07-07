@@ -1,0 +1,16 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+Updated the SGD rate from 0.74 to 0.75 in 4 files:
+
+| File | Change |
+|------|--------|
+| `tally/rates.py` | `"SGD": 0.74` → `"SGD": 0.75` |
+| `tests/test_rates.py` | Pinned assertion `74.0` → `75.0`, comment updated |
+| `tests/conftest.py` | `EXPECTED_USD[1]` 74.0 → 75.0; `EXPECTED_GRAND_TOTAL` 204.22 → 205.22; `EXPECTED_MARCH_TOTAL` 172.82 → 173.82 |
+| `tests/test_cli.py` | Pinned assertion `74.0` → `75.0` |
+
+No open questions. Suite is clean (45/45).

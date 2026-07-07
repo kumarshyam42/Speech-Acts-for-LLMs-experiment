@@ -1,0 +1,9 @@
+`docs/architecture.md` does not exist in this repository. The repo only has these docs files:
+
+- `docs/faq.md`
+- `docs/pricing.md`
+- `docs/requirements.md`
+
+There's also a single commit (`e02cf35 Baseline: tally expense-tracker CLI, suite green`) with no prior history showing any renamed files, so there's no rename trail to follow.
+
+**Final report:** No action taken. `docs/architecture.md` is absent from the working tree and there is no git history showing it was ever present or renamed. The stale module links described in the request cannot be updated because the target file doesn't exist. You may want to verify the file path — the live architecture doc might be in the README, CONTRIBUTING.md, or possibly in a different branch.

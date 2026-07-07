@@ -1,0 +1,41 @@
+Done. The "How amounts are stored" section now says amounts are kept in the currency entered, with no mention of dollar conversion. No other sections were touched.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars",
+      "status": "met",
+      "evidence": "The reworded section (lines 60–64) contains no reference to US dollars or conversion; verified via the edit applied to README.md"
+    },
+    {
+      "cos": "The section instead states that amounts are stored in whatever currency they were entered in",
+      "status": "met",
+      "evidence": "New text reads: 'tally stores the amount in whatever currency you entered. The currency is saved alongside the figure … Reports display amounts as entered, using the currency you supplied.'"
+    },
+    {
+      "cos": "No other sections of the README are modified",
+      "status": "met",
+      "evidence": "The Edit tool targeted only the 'How amounts are stored' paragraph; all other sections (Installing, Recording an expense, Looking at your spending, A note on scope) are unchanged"
+    },
+    {
+      "cos": "The section remains coherent and readable",
+      "status": "met",
+      "evidence": "Three complete sentences, no broken references, consistent with the surrounding prose style"
+    },
+    {
+      "cos": "No changes to the actual code (tally/rates.py or any other source files)",
+      "status": "met",
+      "evidence": "Only README.md was edited; no source files were touched"
+    },
+    {
+      "cos": "No changes to other README sections (e.g. the 'add' command description at line 31-32 which also mentions dollar conversion)",
+      "status": "met",
+      "evidence": "Lines 31–33 still read 'By default the amount is read as US dollars, but you can enter it in another currency and tally will convert it for you' — left untouched per scope exclusion"
+    }
+  ],
+  "assessment": "All conditions of satisfaction are met. The only file changed is README.md, and only the 'How amounts are stored' paragraph was reworded. The line-31 dollar-conversion mention in the 'Recording an expense' section was intentionally left as-is per the declared scope exclusion. No open questions."
+}
+```

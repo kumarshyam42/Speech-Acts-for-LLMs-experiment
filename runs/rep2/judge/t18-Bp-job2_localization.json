@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "The request is intentionally open-ended. Looking at the current output, each category shows only `amount USD`. The existing codebase already has `CATEGORY_BUDGETS` and `BUDGET_WARN_RATIO` wired up. I'll add three things that require no user input to derive:",
+    "reason": "The agent recognized the request was open-ended but did not ask the user to choose or agree on what \"more useful\" meant. It unilaterally selected enhancements and proceeded, so no real agreement about the ambiguous requirement was formed."
+  },
+  "attempts": 1
+}

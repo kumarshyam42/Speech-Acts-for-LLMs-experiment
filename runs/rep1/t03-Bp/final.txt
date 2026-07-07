@@ -1,0 +1,20 @@
+**Ambiguities / concerns noted before acting:**
+- The request names `exporters.py`, which doesn't exist in this repo.
+- The actual CSV export lives in `tally/report.py`.
+- I'll verify the real code before making any change.
+
+**Finding:** The bug does not exist. Here's what I confirmed:
+
+1. **No `exporters.py` in the repo.** The CSV export is in `tally/report.py:91–99`, using Python's standard `csv.DictWriter`.
+
+2. **No trailing comma in the output.** The actual CSV output from `to_csv()` is clean:
+   ```
+   'id,date,category,amount_usd,original_amount,original_currency,note'
+   '1,2024-03-01,food,50.0,50.0,USD,lunch'
+   ```
+
+3. **All 45 tests pass green**, including `test_export_has_header` (which would fail if there were a trailing comma, since `"a,b,c,".split(",")` produces 4 elements instead of 3).
+
+**Root cause of the discrepancy:** The request references a file (`exporters.py`) that doesn't exist. The real implementation in `tally/report.py` uses `csv.DictWriter` correctly and never manually concatenates commas, so there is no trailing-comma defect to fix.
+
+**No code was changed.** There is no bug here — making a "fix" would either be a no-op or introduce unnecessary churn. If you've seen trailing commas in a different version of this file or in a file not yet present in this worktree, please share it and I'll address it directly.

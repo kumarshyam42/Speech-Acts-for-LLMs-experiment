@@ -1,0 +1,13 @@
+{
+  "task": "t07",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "c_wrong_cos",
+    "span": "The `--week` feature doesn't exist yet in the code. The request is to implement it correctly with Monday-start weeks from the start.",
+    "reason": "The agent did notice the key fact that `--week` did not exist, but then converted a bug-fix request into a new-feature implementation without getting agreement. It kept that new commitment, but it was the wrong condition of satisfaction for the user's stated concern."
+  },
+  "attempts": 1
+}

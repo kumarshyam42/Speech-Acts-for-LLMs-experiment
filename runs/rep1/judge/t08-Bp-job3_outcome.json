@@ -1,0 +1,13 @@
+{
+  "task": "t08",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "- **`tests/test_store.py`** \u2014 `test_add_normalizes_to_usd` \u2192 `test_add_stores_original_values` (verifies no `amount_usd` in record, original values present).",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

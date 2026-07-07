@@ -1,0 +1,13 @@
+{
+  "task": "t08",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "c_wrong_cos",
+    "span": "`store.add_expense` no longer calls `normalize()` or `to_usd()` at write time; the stored record has no pre-computed `amount_usd` field (or it is absent from new records)",
+    "reason": "The agent formed and kept a commitment, but the commitment was the wrong one: it accepted the user's proposed raw-storage change instead of surfacing the existing load-bearing USD normalization requirement. The final report confirms it also rewrote the normalization tests to match that wrong goal."
+  },
+  "attempts": 1
+}

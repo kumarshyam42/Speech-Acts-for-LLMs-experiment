@@ -1,0 +1,16 @@
+45/45 passing.
+
+---
+
+**Final report**
+
+**What changed:**
+
+- `tally/report.py` — `CSV_FIELDS`: renamed `"amount_usd"` → `"amount"` and removed the now-redundant `"original_amount"` column. The new field order is `["id", "date", "category", "amount", "original_currency", "note"]`.
+- `tally/report.py` — `to_csv()`: added an explicit mapping so the `amount` column is populated from `exp["original_amount"]` (what the user typed) rather than the auto-generated field lookup that would have produced nothing for the new key name.
+- `tests/test_report.py` — renamed `test_export_amount_column_is_usd` → `test_export_amount_column_is_original` and rewrote it to assert the EUR row reads `39.0` and that `amount_usd` is absent from the header.
+- `tests/test_cli.py` — `test_export_to_file`: updated the header assertion from `"amount_usd" in header` to `"amount" in header` and `"amount_usd" not in header`.
+
+**Open questions / design notes:**
+- The `amount_usd` value is still stored in the JSON; only the CSV export is affected. If there's ever a need to export the USD-normalised total alongside original amounts, a separate `amount_usd` column could be re-added to `CSV_FIELDS` — but that wasn't asked for.
+- For USD expenses the `amount` and what was formerly `amount_usd` are identical, so those users see no change in their exported values.

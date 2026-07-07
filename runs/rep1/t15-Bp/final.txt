@@ -1,0 +1,15 @@
+All 50 tests pass (including the 5 new ones).
+
+---
+
+**Final report**
+
+`parse_currency()` didn't exist in the codebase — the request described a function to be added. I implemented it in `tally/utils.py`:
+
+- Strips whitespace, uppercases the input with `.upper()`, then validates against the `RATES` table imported from `tally.rates`.
+- Raises `ValueError` for unknown codes, matching the pattern in `rates.to_usd()`.
+- Returns the canonical uppercase code.
+
+I also added 5 tests in `tests/test_utils.py` covering: uppercase passthrough, lowercase (`'eur'` → `'EUR'`), mixed case, whitespace stripping, and unknown-code rejection.
+
+All 50 tests pass.

@@ -1,0 +1,21 @@
+diff --git a/README.md b/README.md
+index c6dbd2a..3262422 100644
+--- a/README.md
++++ b/README.md
+@@ -57,6 +57,16 @@ python -m tally.cli list --month 2024-03
+ python -m tally.cli export --out march.csv
+ ```
+ 
++If you have configured budgets, the `budget` command shows how much you have spent
++in each category against the limit you set for it:
++
++```
++python -m tally.cli budget --month 2024-03
++```
++
++Each category appears with its total spending and configured budget so you can see
++at a glance where you are over or under.
++
+ ## How amounts are stored
+ 
+ Whenever you add an expense, tally converts the amount into US dollars using the

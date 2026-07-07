@@ -1,0 +1,13 @@
+{
+  "task": "t01",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "`--year` and `--month` together doesn't make semantic sense \u2014 I'll make them mutually exclusive via argparse.",
+    "span_locator": "event 15, assistant"
+  },
+  "attempts": 1
+}

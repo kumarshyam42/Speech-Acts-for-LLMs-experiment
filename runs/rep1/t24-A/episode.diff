@@ -1,0 +1,20 @@
+diff --git a/README.md b/README.md
+index c6dbd2a..cb805be 100644
+--- a/README.md
++++ b/README.md
+@@ -59,11 +59,10 @@ python -m tally.cli export --out march.csv
+ 
+ ## How amounts are stored
+ 
+-Whenever you add an expense, tally converts the amount into US dollars using the
+-conversion table in `tally/rates.py` and stores that dollar figure. The original
+-amount and currency you typed are kept alongside it for reference, but every total
+-you ever see is computed in US dollars. This keeps reports consistent even when a
+-month mixes several currencies.
++Amounts are stored in whatever currency you enter them in. A €39 entry is saved as
++39 EUR; a ¥5000 entry is saved as 5000 JPY. Nothing is silently converted behind the
++scenes. Each expense record preserves the exact amount and currency code you typed,
++so you always have an accurate picture of what you actually spent in each currency.
+ 
+ ## A note on scope
+ 

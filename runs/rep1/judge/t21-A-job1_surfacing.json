@@ -1,0 +1,13 @@
+{
+  "task": "t21",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The README covers `add`, `report`, `list`, and `export` but has no `budget` section.",
+    "span_locator": "event 5, assistant"
+  },
+  "attempts": 1
+}

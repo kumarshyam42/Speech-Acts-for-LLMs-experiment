@@ -1,0 +1,187 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..f229134 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -10,21 +10,47 @@ The default store lives at ./tally.json; override it with --store.
+ """
+ 
+ import argparse
++import json
+ import sys
+ 
+ from tally import report as report_mod
+ from tally import store as store_mod
+-from tally.config import DEFAULT_CURRENCY
++from tally.config import DEFAULT_CURRENCY, KNOWN_CATEGORIES
+ from tally.utils import month_key, parse_date
+ 
+ DEFAULT_STORE = "tally.json"
+ 
+ 
+ def _load(args):
+-    return store_mod.load(args.store)
++    try:
++        return store_mod.load(args.store)
++    except json.JSONDecodeError as exc:
++        raise ValueError(
++            "store file {!r} is not valid JSON: {}".format(args.store, exc)
++        ) from exc
++
++
++def _validate_month(month):
++    """Raise ValueError if month is not a valid YYYY-MM string."""
++    if month is None:
++        return
++    try:
++        parse_date(month)
++    except ValueError:
++        raise ValueError(
++            "invalid month {!r}; use YYYY-MM format".format(month)
++        )
+ 
+ 
+ def cmd_add(args):
++    if args.amount <= 0:
++        raise ValueError("amount must be greater than zero, got {!r}".format(args.amount))
++    if args.category not in KNOWN_CATEGORIES:
++        raise ValueError(
++            "unknown category {!r}; valid categories: {}".format(
++                args.category, ", ".join(KNOWN_CATEGORIES)
++            )
++        )
+     data = _load(args)
+     # normalize the date so we fail early on a bad value
+     date = parse_date(args.date).isoformat()
+@@ -44,6 +70,7 @@ def cmd_add(args):
+ 
+ 
+ def cmd_report(args):
++    _validate_month(args.month)
+     data = _load(args)
+     text = report_mod.format_report(
+         store_mod.all_expenses(data), month=args.month, category=args.category
+@@ -53,6 +80,7 @@ def cmd_report(args):
+ 
+ 
+ def cmd_list(args):
++    _validate_month(args.month)
+     data = _load(args)
+     rows = report_mod.filter_expenses(
+         store_mod.all_expenses(data), month=args.month, category=args.category
+@@ -65,8 +93,11 @@ def cmd_export(args):
+     data = _load(args)
+     csv_text = report_mod.to_csv(store_mod.all_expenses(data))
+     if args.out:
+-        with open(args.out, "w") as fh:
+-            fh.write(csv_text)
++        try:
++            with open(args.out, "w") as fh:
++                fh.write(csv_text)
++        except OSError as exc:
++            raise OSError("cannot write to {!r}: {}".format(args.out, exc)) from exc
+         print("wrote {}".format(args.out))
+     else:
+         sys.stdout.write(csv_text)
+@@ -87,6 +118,7 @@ def cmd_stats(args):
+ 
+ 
+ def cmd_budget(args):
++    _validate_month(args.month)
+     data = _load(args)
+     rows = report_mod.budget_status(store_mod.all_expenses(data), month=args.month)
+     print("Budget for {}".format(args.month))
+@@ -144,7 +176,11 @@ def main(argv=None):
+         import datetime
+ 
+         args.date = datetime.date.today().isoformat()
+-    return args.func(args)
++    try:
++        return args.func(args)
++    except (ValueError, OSError) as exc:
++        print("error: {}".format(exc), file=sys.stderr)
++        return 1
+ 
+ 
+ if __name__ == "__main__":
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..84348f0 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -88,3 +88,77 @@ def test_add_defaults_currency_to_usd(tmp_path, capsys):
+         data = json.load(fh)
+     assert data["expenses"][0]["original_currency"] == "USD"
+     assert data["expenses"][0]["amount_usd"] == 12.5
++
++
++# --- error handling ---
++
++def test_add_negative_amount_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "add", "-10", "food", "--date", "2024-03-01"])
++    assert rc == 1
++    assert "error" in capsys.readouterr().err.lower()
++
++
++def test_add_zero_amount_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "add", "0", "food", "--date", "2024-03-01"])
++    assert rc == 1
++    assert "error" in capsys.readouterr().err.lower()
++
++
++def test_add_unknown_category_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "add", "50", "holidays", "--date", "2024-03-01"])
++    assert rc == 1
++    err = capsys.readouterr().err
++    assert "error" in err.lower()
++    assert "holidays" in err
++
++
++def test_add_unknown_currency_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "add", "50", "food", "--currency", "XYZ", "--date", "2024-03-01"])
++    assert rc == 1
++    assert "error" in capsys.readouterr().err.lower()
++
++
++def test_add_bad_date_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "add", "50", "food", "--date", "not-a-date"])
++    assert rc == 1
++    assert "error" in capsys.readouterr().err.lower()
++
++
++def test_report_bad_month_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "report", "--month", "March-2024"])
++    assert rc == 1
++    assert "error" in capsys.readouterr().err.lower()
++
++
++def test_list_bad_month_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    rc = cli.main(["--store", store, "list", "--month", "2024/03"])
++    assert rc == 1
++    assert "error" in capsys.readouterr().err.lower()
++
++
++def test_corrupt_store_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    with open(store, "w") as fh:
++        fh.write("not valid json {{{{")
++    rc = cli.main(["--store", store, "report"])
++    assert rc == 1
++    err = capsys.readouterr().err
++    assert "error" in err.lower()
++    assert "not valid JSON" in err
++
++
++def test_export_unwritable_path_returns_error(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    cli.main(["--store", store, "add", "50", "food", "--date", "2024-03-15"])
++    capsys.readouterr()
++    bad_path = os.path.join(str(tmp_path), "nonexistent_dir", "out.csv")
++    rc = cli.main(["--store", store, "export", "--out", bad_path])
++    assert rc == 1
++    assert "error" in capsys.readouterr().err.lower()

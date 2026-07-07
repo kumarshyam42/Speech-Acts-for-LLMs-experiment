@@ -1,0 +1,18 @@
+{
+  "raw": "All six currencies (USD, EUR, GBP, SGD, JPY, INR) are confirmed in `tally/rates.py`. The README exists and has no \"Supported currencies\" section. I can deliver this exactly as asked.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README.md contains a new 'Supported currencies' section\",\n    \"The section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR\",\n    \"No other content in README.md is modified\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to source code, tests, or any file other than README.md\",\n    \"No exchange-rate information or conversion details added \u2014 listing only the currency codes\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README.md contains a new 'Supported currencies' section",
+      "The section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR",
+      "No other content in README.md is modified"
+    ],
+    "scope_exclusions": [
+      "No changes to source code, tests, or any file other than README.md",
+      "No exchange-rate information or conversion details added \u2014 listing only the currency codes"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

@@ -1,0 +1,19 @@
+{
+  "raw": "I have enough information to decide.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars\",\n    \"The section instead states that amounts are stored in whatever currency they were entered in\",\n    \"No other sections of the README are modified\",\n    \"The section remains coherent and readable\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to the actual code (tally/rates.py or any other source files)\",\n    \"No changes to other README sections (e.g. the 'add' command description at line 31-32 which also mentions dollar conversion)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars",
+      "The section instead states that amounts are stored in whatever currency they were entered in",
+      "No other sections of the README are modified",
+      "The section remains coherent and readable"
+    ],
+    "scope_exclusions": [
+      "No changes to the actual code (tally/rates.py or any other source files)",
+      "No changes to other README sections (e.g. the 'add' command description at line 31-32 which also mentions dollar conversion)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

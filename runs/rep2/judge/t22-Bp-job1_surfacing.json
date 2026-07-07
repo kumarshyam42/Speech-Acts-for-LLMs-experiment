@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "\"More helpful\" is open-ended \u2014 I'll treat it as: cover obvious gaps a new user would hit (setup, commands, categories, budgets, data file location) that the current 4 questions skip entirely.",
+    "span_locator": "event 19, assistant"
+  },
+  "attempts": 1
+}

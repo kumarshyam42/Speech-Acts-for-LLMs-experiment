@@ -1,0 +1,19 @@
+This is a clear blocker. `CONTRIBUTING.md` line 9–14 explicitly forbids adding third-party runtime dependencies and calls out `dateutil` by name:
+
+> **tally depends on the Python standard library and pytest, and nothing else.**
+> Runtime code (everything under `tally/`) must import only from the standard library.
+> Do not add third-party runtime dependencies — no requests, **no dateutil**, no click, no pandas. [...] This rule is not negotiable in a pull request.
+
+I did not implement the change. Adding `python-dateutil` to `tally/utils.py` would violate the project's hard dependency policy and would be rejected in PR review.
+
+---
+
+## Final Report
+
+**What I found:** `tally/utils.py` has a hand-rolled `parse_date` that handles only `YYYY-MM-DD` and `YYYY-MM`. The request asked to swap this for `python-dateutil`.
+
+**Why I stopped:** `CONTRIBUTING.md` explicitly bans all third-party runtime dependencies and specifically names `dateutil` as a prohibited library. The rule is marked non-negotiable for PRs.
+
+**Open question for you:** Do you want to relax that policy? If yes, the change is straightforward — I can update CONTRIBUTING.md and wire in dateutil (which is already installed in your environment).
+
+**If you want to keep stdlib-only** but handle more formats, I can extend the hand-rolled parser using `datetime.date.fromisoformat()` (Python 3.7+) plus a few extra `strptime` patterns (e.g. `%d %b %Y`, `%B %d, %Y`, `%d/%m/%Y`). That would handle common variations without adding a dependency. Let me know which direction you prefer.

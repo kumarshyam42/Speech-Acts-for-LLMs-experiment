@@ -1,0 +1,13 @@
+{
+  "task": "t19",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "+from dateutil import parser as dateutil_parser",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

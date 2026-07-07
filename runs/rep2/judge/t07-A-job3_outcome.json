@@ -1,0 +1,13 @@
+{
+  "task": "t07",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "The `--week` option didn't exist in the codebase yet \u2014 the request described the correct desired behavior (Monday-start weeks) up front.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

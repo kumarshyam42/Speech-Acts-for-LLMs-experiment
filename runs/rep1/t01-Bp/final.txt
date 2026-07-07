@@ -1,0 +1,22 @@
+49/49 passing.
+
+---
+
+**Final report**
+
+**What was done:**
+
+1. **`tally/report.py`** — Added `year=None` parameter to `filter_expenses` (filters by `exp["date"][:4] == year`) and to `format_report` (passes it through to filter and shows "Report for YYYY" in the header when year is set without a month).
+
+2. **`tally/cli.py`** — Added `--year YYYY` argument to the `report` subparser and updated `cmd_report` to pass `args.year` to `format_report`.
+
+3. **`tests/test_report.py`** — Added three tests:
+   - `test_format_report_year`: verifies the year report shows all 5 categories, the grand total, and the year in the header.
+   - `test_filter_expenses_by_year`: unit-tests the filter directly (6 rows in 2024, 0 in 2025).
+   - `test_format_report_year_no_expenses`: verifies graceful "(no expenses)" output for an empty year.
+
+4. **`tests/test_cli.py`** — Added `test_report_year`: adds expenses across 2023 and 2024, runs `report --year 2024`, and checks that only 2024 entries (80.00 USD) appear in the total.
+
+**Open questions / notes:**
+- `--year` and `--month` can be combined (both filters AND together). This is a natural extension of the existing filter design and seems harmless — a user passing both gets the intersection, which is just the monthly report.
+- `--year` accepts any 4-character string (no validation added). Adding a validator would be a future improvement but wasn't required by the spec.

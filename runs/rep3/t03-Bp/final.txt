@@ -1,0 +1,21 @@
+---
+
+## Final Report
+
+**The bug does not exist and `exporters.py` is not a file in this codebase.**
+
+Here's what I found:
+
+1. **`exporters.py` doesn't exist.** The only Python files in the project are under `tally/` (`cli.py`, `config.py`, `rates.py`, `report.py`, `store.py`, `utils.py`) and `tests/`.
+
+2. **CSV export lives in `report.py:91-99`.** The `to_csv` function uses Python's `csv.DictWriter` correctly — it writes exactly the 7 fields in `CSV_FIELDS`, comma-separated, with `\r\n` line terminators. No trailing comma.
+
+3. **Actual output is clean:**
+   ```
+   id,date,category,amount_usd,original_amount,original_currency,note\r\n
+   1,2024-03-01,food,10.0,10.0,USD,lunch\r\n
+   ```
+
+4. **All 14 tests pass**, including `test_export_has_header` and `test_export_amount_column_is_usd` which directly exercise the CSV path.
+
+**Open question:** The request may be based on a stale or incorrect filename. If there's a separate `exporters.py` that was planned but not yet committed, or if the bug was introduced in a different branch, I'd need access to that context to help further. Nothing to fix in the current working tree.

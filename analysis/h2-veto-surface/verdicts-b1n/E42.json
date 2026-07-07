@@ -1,0 +1,23 @@
+{
+  "label": "E42",
+  "rep": "rep1",
+  "task": "t01",
+  "class": "1",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The proposed test would not actually prove year filtering works, because the stated fixture contains no out-of-year expense to exclude. It could pass even if `--year` ignored the year entirely.",
+        "span": "all 6 sample rows are in 2024"
+      },
+      {
+        "description": "Leaving the combined `--year` and `--month` case undefined is risky because the parser will accept both options unless the work explicitly prevents it. The contract should define whether this is an error or a combined filter before implementation starts.",
+        "span": "No defined behavior when both `--year` and `--month` are passed simultaneously (the request does not specify this case)"
+      }
+    ],
+    "primary_risk": "The test plan does not prove the requested behavior because its sample data is entirely within the requested year."
+  }
+}

@@ -1,0 +1,17 @@
+Done. Here's a summary of what changed and why:
+
+**What was added:**
+- `stats` and `budget` commands — both existed in the CLI and were completely undocumented
+- List of valid categories (`food`, `transport`, `rent`, `entertainment`, `other`) — from `config.py`
+- List of supported currencies (`EUR`, `GBP`, `INR`, `JPY`, `SGD`, `USD`) — from `rates.py`
+- `--store` flag with an example — lets you use multiple store files but wasn't mentioned anywhere
+- How to run the tests — standard expectation for a project with a test suite
+- Shell alias example in the Installing section (fleshed out the one-liner that was already half-there)
+- `bash` language tags on all code blocks for syntax highlighting
+
+**What was kept:**
+- The conversational, first-person prose tone — it's clear and fits the tool's character
+- The "note on scope" closing — a good signal for where the project draws its line
+- The "How amounts are stored" section — useful for understanding the data model
+
+**One open question:** `docs/faq.md` mentions "hosted backup" free/Plus/Family plans that don't appear in the code at all. I left those out of the README since they don't correspond to anything real in this codebase — if a hosted tier is planned, that's a separate addition.

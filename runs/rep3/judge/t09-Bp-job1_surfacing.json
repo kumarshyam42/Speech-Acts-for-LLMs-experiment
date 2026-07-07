@@ -1,0 +1,13 @@
+{
+  "task": "t09",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "- What to do on a missing ID: return exit code 1 with a message (consistent with CLI conventions in the file).",
+    "span_locator": "event 11, assistant"
+  },
+  "attempts": 1
+}

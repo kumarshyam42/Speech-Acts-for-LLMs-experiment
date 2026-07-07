@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have a full picture. Here are the error handling gaps:",
+    "reason": "The request was ambiguous about which errors, messages, and exit codes mattered, but the agent treated its own inferred list as settled and proceeded without asking for agreement. The later implementation chose broad handling and exit-code behavior unilaterally."
+  },
+  "attempts": 1
+}

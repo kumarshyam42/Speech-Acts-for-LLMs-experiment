@@ -1,0 +1,22 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..b7dc878 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -9,7 +9,7 @@ import io
+ from typing import Dict, List, Optional
+ 
+ from tally.config import BUDGET_WARN_RATIO, CATEGORY_BUDGETS
+-from tally.utils import month_key, round_money
++from tally.utils import round_money
+ 
+ CSV_FIELDS = ["id", "date", "category", "amount_usd", "original_amount", "original_currency", "note"]
+ 
+@@ -18,7 +18,7 @@ def filter_expenses(expenses, month=None, category=None):
+     """Return the expenses matching an optional month (YYYY-MM) and category."""
+     result = []
+     for exp in expenses:
+-        if month is not None and month_key(exp["date"]) != month:
++        if month is not None and exp["date"][:7] != month:
+             continue
+         if category is not None and exp["category"] != category:
+             continue

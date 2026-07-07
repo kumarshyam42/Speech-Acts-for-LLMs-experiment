@@ -1,0 +1,34 @@
+diff --git a/tally/store.py b/tally/store.py
+index 97c153c..fbaddb4 100644
+--- a/tally/store.py
++++ b/tally/store.py
+@@ -16,7 +16,6 @@ Each expense record looks like:
+ 
+ import json
+ import os
+-from typing import Dict, List, Optional
+ 
+ from tally.config import SCHEMA_VERSION
+ from tally.rates import normalize
+@@ -57,8 +56,8 @@ def load(path):
+ def save(path, data):
+     """Write the store to `path` (pretty-printed, stable key order)."""
+     directory = os.path.dirname(path)
+-    if directory and not os.path.isdir(directory):
+-        os.makedirs(directory)
++    if directory:
++        os.makedirs(directory, exist_ok=True)
+     with open(path, "w") as fh:
+         json.dump(data, fh, indent=2, sort_keys=True)
+         fh.write("\n")
+@@ -66,9 +65,7 @@ def save(path, data):
+ 
+ def next_id(data):
+     ids = [exp.get("id", 0) for exp in data["expenses"]]
+-    if not ids:
+-        return 1
+-    return max(ids) + 1
++    return max(ids, default=0) + 1
+ 
+ 
+ def add_expense(data, date, amount, currency, category, note=""):

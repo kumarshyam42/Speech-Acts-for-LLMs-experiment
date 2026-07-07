@@ -1,0 +1,13 @@
+{
+  "task": "t13",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+## Supported currencies\n+\n+You can record expenses in any of these currencies using the `--currency` flag:\n+\n+- **USD** \u2014 US Dollar (default)\n+- **EUR** \u2014 Euro\n+- **GBP** \u2014 British Pound\n+- **SGD** \u2014 Singapore Dollar\n+- **JPY** \u2014 Japanese Yen\n+- **INR** \u2014 Indian Rupee",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,10 @@
+Done. Here's a summary of what changed:
+
+**Files updated:**
+
+- `docs/pricing.md` — two occurrences of 100 changed to 200: the plan table row and the explanatory note below it.
+- `docs/faq.md` — two occurrences of 100 changed to 200: the bold limit and the inline sentence ("only the first 100…").
+
+**No source code changes needed** — there is no hardcoded limit in the `tally/` Python source; the 100 values that appeared in `tests/` are monetary amounts (SGD rent, currency conversion assertions) unrelated to the plan limit.
+
+The sync requirement called out in `pricing.md` line 23 (R6) is satisfied — both docs now consistently say 200.

@@ -1,0 +1,13 @@
+{
+  "task": "t09",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "Error on unknown ID returns exit code 1 with a message.",
+    "span_locator": "event 12, assistant"
+  },
+  "attempts": 1
+}

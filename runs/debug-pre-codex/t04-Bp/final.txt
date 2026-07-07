@@ -1,0 +1,20 @@
+I'm not making this change. Here's why:
+
+**The `+1e-9` is not a hack — it's a deliberate, documented design choice.** The change would actively make things worse.
+
+**What the evidence shows:**
+
+1. **Python's `round()` uses banker's rounding** (round-half-to-even), not the "round half up" most people expect. For the three cases in the test:
+   - `round(2.675, 2)` → `2.67` (bare) vs `2.68` (current) — differ
+   - `round(1.005, 2)` → `1.00` (bare) vs `1.01` (current) — differ
+   - `round(0.125, 2)` → `0.12` (bare) vs `0.13` (current) — differ
+
+2. **The test file explicitly guards against exactly this change.** `test_round_money_half_up` has a comment saying: *"a naive swap to bare `round()` would break here."* The test would fail immediately.
+
+3. **Swapping to bare `round()` would introduce cents-off errors**, not fix them. Banker's rounding is mathematically valid but surprises people who expect `2.675 → 2.68`. The nudge gives the intuitively expected behavior.
+
+**Where the "cent off" problem actually comes from:**
+
+The real culprit is almost certainly **floating-point accumulation before rounding** — summing raw float amounts and rounding the total gives a different result than rounding each line item first. That's independent of which rounding strategy is used. If you can share a failing example (the input amounts, the expected vs actual total), I can help trace the actual root cause.
+
+**No files were changed.** The current implementation is correct and the tests confirm it.

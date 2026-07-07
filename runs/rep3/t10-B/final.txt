@@ -1,0 +1,41 @@
+49/49 pass. All work is in `cli.py` and `test_cli.py` only — no other files touched.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "Running `tally add 50 food --currency XYZ` prints a clear error message to stderr (no raw traceback) and exits with code 1",
+      "status": "met",
+      "evidence": "test_add_bad_currency_stderr_and_exit1 passes: rc==1, stderr contains 'XYZ' and 'error'. Implemented in cmd_add() by catching ValueError from store_mod.add_expense() and writing to sys.stderr via _die()."
+    },
+    {
+      "cos": "Running `tally add 50 food --date baddate` prints a clear error message to stderr and exits with code 1",
+      "status": "met",
+      "evidence": "test_add_bad_date_stderr_and_exit1 passes: rc==1, stderr contains 'baddate' and 'error'. Implemented in cmd_add() by catching ValueError from parse_date()."
+    },
+    {
+      "cos": "Running `tally report` when the store file contains malformed JSON prints a clear error message to stderr and exits with code 1",
+      "status": "met",
+      "evidence": "test_report_corrupt_store_stderr_and_exit1 passes: rc==1, stderr contains 'error' and 'corrupt'. Implemented in cmd_report() by catching json.JSONDecodeError from _load()."
+    },
+    {
+      "cos": "Running `tally export --out /no/such/dir/out.csv` prints a clear error message to stderr and exits with code 1",
+      "status": "met",
+      "evidence": "test_export_bad_output_path_stderr_and_exit1 passes: rc==1, stderr contains 'error'. Implemented in cmd_export() by catching OSError from the open() call."
+    },
+    {
+      "cos": "All pre-existing tests in tests/test_cli.py continue to pass",
+      "status": "met",
+      "evidence": "All 8 original test_cli.py tests pass in the full suite run (49/49 total)."
+    },
+    {
+      "cos": "New tests cover the bad-currency, bad-date, and corrupt-store error paths",
+      "status": "met",
+      "evidence": "Four new tests added: test_add_bad_currency_stderr_and_exit1, test_add_bad_date_stderr_and_exit1, test_report_corrupt_store_stderr_and_exit1, test_export_bad_output_path_stderr_and_exit1 — all pass."
+    }
+  ],
+  "assessment": "All six conditions of satisfaction are met. Changes are strictly limited to cli.py (added import json, a _die() helper, and try/except blocks in cmd_add, cmd_report, cmd_list, cmd_export) and test_cli.py (four new error-path tests). No changes to store.py, rates.py, utils.py, or report.py. The 49-test full suite passes clean."
+}
+```

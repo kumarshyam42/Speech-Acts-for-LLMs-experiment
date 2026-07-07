@@ -1,0 +1,13 @@
+{
+  "task": "t08",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "- **What changes:** `store.add_expense` currently eagerly calls `normalize(amount, currency)` and persists `amount_usd`. Moving conversion to report time means storing only `original_amount`/`original_currency`.",
+    "reason": "The agent had already seen the load-bearing normalization rule in tests and comments, but did not surface that the user's requested change conflicted with it. It proceeded with the literal request and rewrote the pinning tests, so no real agreement about the invariant-breaking tradeoff was formed."
+  },
+  "attempts": 1
+}

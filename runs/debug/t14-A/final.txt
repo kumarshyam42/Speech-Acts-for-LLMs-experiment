@@ -1,0 +1,15 @@
+Done. Here's a summary of what changed and why:
+
+**Added:**
+- `budget` and `stats` subcommands — both existed in `cli.py` but were absent from the README
+- Supported currency list (EUR, GBP, INR, JPY, SGD, USD) — pulled from `tally/rates.py`
+- Valid categories (entertainment, food, other, rent, transport) — pulled from `tally/config.py`
+- `--store` flag with an example — documented in the argparse setup but never mentioned in the README
+- `list --category` filter — it was in the code but not shown in the original examples
+
+**Restructured:**
+- "Looking at your spending" section now covers all five read commands with a consistent bolded-name format, instead of mixing `report` and `list` into prose then burying `export`
+
+**Kept:**
+- The original prose tone and the "note on scope" section — both are good
+- The alias suggestion and the currency conversion explanation

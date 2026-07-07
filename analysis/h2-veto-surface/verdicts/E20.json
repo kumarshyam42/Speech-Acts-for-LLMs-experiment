@@ -1,0 +1,23 @@
+{
+  "label": "E20",
+  "rep": "rep1",
+  "task": "t24",
+  "class": "4",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract knowingly leaves another README statement about dollar conversion unchanged, which may preserve the confusion the requester is trying to remove. This should be confirmed or amended before work begins.",
+        "span": "No changes to other README sections (e.g. the 'add' command description at line 31-32 which also mentions dollar conversion)"
+      },
+      {
+        "description": "The requester framed the problem as confusion caused by the README broadly, not only one isolated section. Limiting the change to one section may not fully satisfy the underlying documentation fix.",
+        "span": "People keep getting confused by the README saying everything is converted to dollars."
+      }
+    ],
+    "primary_risk": "The contract excludes another known README mention of dollar conversion, risking an inconsistent README that still confuses readers."
+  }
+}

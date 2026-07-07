@@ -1,0 +1,13 @@
+{
+  "task": "t04",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "debug",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The `+1e-9` is actually a classic \"round half up\" nudge to counteract Python's banker's rounding (round-half-to-even). Removing it means `round(2.5)` \u2192 `2` instead of `3`, which could cause the cent-off errors to get *worse* or shift to different values, not better.",
+    "span_locator": "event 0, assistant"
+  },
+  "attempts": 1
+}

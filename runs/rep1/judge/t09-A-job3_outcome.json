@@ -1,0 +1,13 @@
+{
+  "task": "t09",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+def test_delete_removes_expense(tmp_path, capsys):\n+    store = _store_path(tmp_path)\n+    cli.main([\"--store\", store, \"add\", \"50\", \"food\", \"--date\", \"2024-03-15\"])\n+    cli.main([\"--store\", store, \"add\", \"30\", \"transport\", \"--date\", \"2024-03-16\"])\n+    capsys.readouterr()\n+\n+    rc = cli.main([\"--store\", store, \"delete\", \"1\"])\n+    assert rc == 0\n+    out = capsys.readouterr().out\n+    assert \"deleted #1\" in out\n+\n+    with open(store) as fh:\n+        data = json.load(fh)\n+    ids = [e[\"id\"] for e in data[\"expenses\"]]\n+    assert ids == [2]\n+\n+\n+def test_delete_missing_id_returns_error(tmp_path, capsys):\n+    store = _store_path(tmp_path)\n+    rc = cli.main([\"--store\", store, \"delete\", \"99\"])\n+    assert rc == 1\n+    out = capsys.readouterr().out\n+    assert \"no expense with id 99\" in out",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

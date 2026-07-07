@@ -1,0 +1,31 @@
+{
+  "label": "E06",
+  "rep": "rep3",
+  "task": "t10",
+  "class": "2",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract narrows a broad request to four specific error cases, so the agent could leave other visible CLI tracebacks or poor error paths untouched while still claiming completion.",
+        "span": "The CLI could use better error handling. Can you add that?"
+      },
+      {
+        "description": "The implementation is prematurely constrained to cli.py; if the right fix belongs in store, rates, utils, or report code, this could force a brittle wrapper instead of fixing the underlying error boundary.",
+        "span": "No changes to store.py, rates.py, utils.py, or report.py \u2014 all error handling is added in cli.py (and test_cli.py for tests)"
+      },
+      {
+        "description": "The stated new test coverage omits the export failure case even though export behavior is one of the promised satisfaction conditions.",
+        "span": "New tests cover the bad-currency, bad-date, and corrupt-store error paths"
+      },
+      {
+        "description": "The contract only promises test compatibility for one test file, which may miss regressions elsewhere in the suite.",
+        "span": "All pre-existing tests in tests/test_cli.py continue to pass"
+      }
+    ],
+    "primary_risk": "The contract is too narrow for the broad CLI error-handling request and may allow incomplete coverage of user-facing failures."
+  }
+}

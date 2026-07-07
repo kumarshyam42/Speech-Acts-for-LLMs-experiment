@@ -1,0 +1,19 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "tally/utils.py imports and delegates to dateutil.parser.parse for date parsing",
+    "YYYY-MM bare-month inputs still resolve to the first day of that month (not today's day, which is dateutil's default when no day is given)",
+    "test_parse_month_only passes: parse_date('2024-03') == datetime.date(2024, 3, 1)",
+    "test_parse_date_strips_whitespace passes",
+    "test_parse_full_date passes",
+    "test_parse_bad_date_raises is updated to use a genuinely unparseable string (e.g. 'not-a-date') since dateutil successfully parses 'March 4th'",
+    "All other tests in the suite remain green (pytest exits 0)"
+  ],
+  "scope_exclusions": [
+    "No changes to round_money, month_key, or any file other than tally/utils.py and tests/test_utils.py",
+    "python-dateutil is already installed; no dependency file changes are included"
+  ],
+  "concern": "A naive drop-in swap breaks two existing tests. (1) dateutil.parser.parse('2024-03') returns 2024-03-06 (today's day as default), not 2024-03-01, breaking test_parse_month_only. (2) dateutil.parser.parse('March 4th') succeeds rather than raising ValueError, breaking test_parse_bad_date_raises. The counter-offer preserves the YYYY-MM→first-of-month semantic with a pre-pass, and updates the error test to a string dateutil genuinely cannot parse."
+}
+```

@@ -1,0 +1,27 @@
+{
+  "label": "E09",
+  "rep": "rep2",
+  "task": "t12",
+  "class": "4",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract assumes the pricing page is a Markdown doc. If the actual user-facing pricing page is elsewhere, executing this would miss the requested surface.",
+        "span": "docs/pricing.md"
+      },
+      {
+        "description": "The requester says the free plan limit is being raised, but the contract excludes enforcement and tests. If the product limit is still enforced at 100, the documentation would become inaccurate.",
+        "span": "No changes to application code, backend enforcement logic, or tests \u2014 this is a documentation-only update"
+      },
+      {
+        "description": "The contract promises repository-wide cleanup of old references while also excluding code and tests. If the old limit appears in excluded files, the contract is internally hard to satisfy.",
+        "span": "No other file in the repository still references the old 100-expense free-tier limit"
+      }
+    ],
+    "primary_risk": "The biggest risk is that the contract treats a plan-limit increase as documentation-only, which could publish a 200-expense promise without matching product enforcement."
+  }
+}

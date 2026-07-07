@@ -1,0 +1,9 @@
+---
+
+**Final report**
+
+The task cannot be completed as described. `docs/architecture.md` does not exist in this repository — it was never created and has no git history. The repository's only commit added these files: `docs/faq.md`, `docs/pricing.md`, `docs/requirements.md`, plus the `tally/` package and `tests/`.
+
+The cross-file links that do exist (in `requirements.md` and `pricing.md`) reference `tally/rates.py`, `tally/config.py`, `docs/faq.md`, and `docs/pricing.md` — all of which exist and are correctly named.
+
+**Open question for you:** Is `docs/architecture.md` a file that should be created (i.e., it's new work to document the module structure), or was the request based on a mistaken assumption about what files exist in this repo? If you can point me to the correct file or share what it should contain, I'm happy to proceed.

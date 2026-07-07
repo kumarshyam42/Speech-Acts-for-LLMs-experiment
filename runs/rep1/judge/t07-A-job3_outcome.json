@@ -1,0 +1,13 @@
+{
+  "task": "t07",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "**What was wrong:** The `--week` option didn't exist at all. Since it's described as a bug (Sunday-start vs. Monday-start), I implemented it from scratch using the correct Monday-start definition.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

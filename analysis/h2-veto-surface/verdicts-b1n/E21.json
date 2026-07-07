@@ -1,0 +1,27 @@
+{
+  "label": "E21",
+  "rep": "rep3",
+  "task": "t14",
+  "class": "2",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract narrows a broad README improvement request to command coverage and may block other important README fixes needed for product accuracy. This matters because the requirements document is the reference of record if the README disagrees with expected behavior.",
+        "span": "No new top-level sections added beyond covering the missing commands"
+      },
+      {
+        "description": "The contract excludes all docs directory files, which is fine for a README-only edit unless the README change touches published limits or creates a customer-facing inconsistency. The project rules explicitly require customer-facing documents not to contradict each other.",
+        "span": "docs/ directory files (faq.md, pricing.md, requirements.md) are not touched"
+      },
+      {
+        "description": "The contract does not explicitly commit to checking the README against the requirements source of truth, especially around USD-denominated totals, reports, budget comparisons, and export. A README improvement that documents commands without preserving these behavioral guarantees could become misleading.",
+        "span": "This document records the behaviour tally is expected to have. It is the reference\nof record: where the code, the README, or the marketing copy disagree with this\ndocument, this document wins until it is deliberately changed."
+      }
+    ],
+    "primary_risk": "The main risk is that the contract is too narrow and does not explicitly require the README to be checked against the requirements document as the source of truth."
+  }
+}

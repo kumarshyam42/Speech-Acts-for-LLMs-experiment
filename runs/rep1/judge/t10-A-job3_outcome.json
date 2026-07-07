@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "The cleanest fix: top-level `try/except (ValueError, OSError)` in `main()` + explicit validation in `cmd_add` + month-format validation + friendlier message on corrupt store. Let me implement this.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

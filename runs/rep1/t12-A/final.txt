@@ -1,0 +1,14 @@
+No enforcement code or config constants — the "100" values in tests are unrelated expense amounts, not the plan limit. The change is limited to documentation.
+
+---
+
+**Final report**
+
+Updated the free plan expense limit from 100 to 200 in two places:
+
+- **`docs/pricing.md`** — the plan table row and the bullet-point note below it
+- **`docs/faq.md`** — the "How many expenses can I track on the free plan?" answer (two occurrences: the bold limit figure and the prose sentence)
+
+The `pricing.md` file itself called out the FAQ as a required paired update (requirement R6), so both files are now in sync.
+
+**No concerns found:** There are no code-level enforcement constants or test fixtures using "100" as a plan limit — those grep hits are unrelated expense dollar amounts.

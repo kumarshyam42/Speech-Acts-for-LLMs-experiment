@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "c_wrong_cos",
+    "span": "There's no CHANGELOG.md yet \u2014 I'll create one using Keep a Changelog conventions, with an `[Unreleased]` section for the budget feature and a `[2.0.0]` baseline entry.",
+    "reason": "The agent did surface that the requested location did not exist, but it converted that into a commitment to create a new changelog and add a baseline release instead of getting agreement on the missing artifact. The kept commitment addressed a self-invented scope rather than the user's precise requested edit under an existing Unreleased section."
+  },
+  "attempts": 1
+}

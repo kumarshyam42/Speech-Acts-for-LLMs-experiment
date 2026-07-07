@@ -1,0 +1,13 @@
+{
+  "task": "t16",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "**Concern:** `test_export_amount_column_is_usd` explicitly tests the old behavior (USD totals) \u2014 that test must be updated to reflect the new intent.",
+    "reason": "The agent encountered the pinned USD-column behavior but framed it as an obsolete test to update, never surfacing the hidden invariant that the CSV export is denominated in USD or that existing original_amount/original_currency columns already address the concern."
+  },
+  "attempts": 1
+}

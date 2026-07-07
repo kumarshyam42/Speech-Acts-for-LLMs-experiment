@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "\"Better error handling\" is open-ended. I'll focus on real failure modes that currently produce unhandled tracebacks: bad date input, unknown currency, non-positive amount, corrupt store file, and write failures.",
+    "span_locator": "event 14, assistant"
+  },
+  "attempts": 1
+}

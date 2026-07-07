@@ -1,0 +1,13 @@
+{
+  "task": "t16",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "2. **`tests/test_report.py`** \u2014 `test_export_amount_column_is_usd` was explicitly guarding the old USD behavior (its comment even said \"Exporting original amounts breaks this\"). Replaced it with `test_export_amount_column_is_original`, which asserts that the EUR groceries row exports `39.0` (not the converted `~42.12`), and that `original_currency` confirms `EUR`.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

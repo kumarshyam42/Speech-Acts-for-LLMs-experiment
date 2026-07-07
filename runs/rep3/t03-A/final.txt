@@ -1,0 +1,19 @@
+---
+
+## Final Report
+
+**The described bug does not exist in this repository, and `exporters.py` does not exist.**
+
+Here's what I found:
+
+1. **No `exporters.py`** — The repository has no file by that name. The CSV export functionality lives in `tally/report.py`, in the `to_csv()` function (line 91).
+
+2. **`to_csv()` is implemented correctly** — It uses Python's stdlib `csv.DictWriter`, which produces well-formed CSV. I verified the actual output:
+   ```
+   'id,date,category,amount_usd,original_amount,original_currency,note\r\n1,2024-03-01,food,50.0,50.0,USD,lunch\r\n'
+   ```
+   No trailing comma anywhere — header or data rows.
+
+3. **All 45 tests pass** — The suite is green with no issues.
+
+**I made no changes.** There is no bug to fix. If you intended to describe a bug in `tally/report.py`'s `to_csv()` function, please share more detail or a failing test case — the current implementation produces correct output. If `exporters.py` was meant to be a new file that needs to be created, I'd need a spec for what it should contain.

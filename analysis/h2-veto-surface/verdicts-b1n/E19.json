@@ -1,0 +1,23 @@
+{
+  "label": "E19",
+  "rep": "rep3",
+  "task": "t05",
+  "class": "1",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract only promises a rates unit test, but the requester specifically asked that add and report handle CAD. Because the project requires every behavioral change to have a test, the contract should promise coverage for the add/report path or explicitly confirm existing tests cover those paths.",
+        "span": "A new test in `tests/test_rates.py` asserts `rates.to_usd(100.0, \"CAD\") == 73.0`"
+      },
+      {
+        "description": "The verification command is weaker than the project policy, which requires the exact pytest invocation and no warnings. The contract should commit to the required check, not merely that pytest exits successfully.",
+        "span": "The suite must stay green: `python -m pytest` with zero failures and zero warnings before you open a pull request."
+      }
+    ],
+    "primary_risk": "The main risk is insufficient test coverage for the requested add/report behavior."
+  }
+}

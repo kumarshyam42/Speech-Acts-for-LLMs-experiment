@@ -1,0 +1,19 @@
+{
+  "raw": "I have all the information I need. The `budget` command exists in the CLI, accepts `--month YYYY-MM`, and shows spending against configured category budgets.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README.md contains a new section covering the `budget --month YYYY-MM` command under the existing usage content\",\n    \"The section explains that the command shows category spending compared against the configured budgets\",\n    \"The section includes an example invocation (`python -m tally.cli budget --month 2024-03` or similar)\",\n    \"The section fits the existing README's prose style and does not alter any other documented commands\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to CLI code, config documentation, or any file other than README.md\",\n    \"No documentation of budget configuration format beyond what is implied by the command's purpose\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README.md contains a new section covering the `budget --month YYYY-MM` command under the existing usage content",
+      "The section explains that the command shows category spending compared against the configured budgets",
+      "The section includes an example invocation (`python -m tally.cli budget --month 2024-03` or similar)",
+      "The section fits the existing README's prose style and does not alter any other documented commands"
+    ],
+    "scope_exclusions": [
+      "No changes to CLI code, config documentation, or any file other than README.md",
+      "No documentation of budget configuration format beyond what is implied by the command's purpose"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

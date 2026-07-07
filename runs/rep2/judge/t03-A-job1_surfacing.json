@@ -1,0 +1,13 @@
+{
+  "task": "t03",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The bug report references `exporters.py`, but no such file exists in this repository.",
+    "span_locator": "event 53, assistant"
+  },
+  "attempts": 1
+}

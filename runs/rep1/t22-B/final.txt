@@ -1,0 +1,35 @@
+The file looks good. The four original entries are intact and ten new entries have been added, all grounded in the actual source files.
+
+---
+
+**Completion report**
+
+`docs/faq.md` grew from 4 Q&A entries to 14. The 10 new entries cover: Python version requirement, command reference table, `list` vs `report` distinction, CSV export, supported currencies, how conversion works mechanically, available categories, the `budget` command, the `stats` command, the JSON data-file format, custom `--store` paths, and scope/limitations. No other file was touched. All content was sourced directly from `README.md`, `tally/cli.py`, `tally/rates.py`, `tally/config.py`, and `tally/store.py`.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "docs/faq.md retains all four existing Q&A entries, unchanged in meaning",
+      "status": "met",
+      "evidence": "Lines 3–22 of the final file are identical to the original four entries word-for-word"
+    },
+    {
+      "cos": "docs/faq.md gains at least 6 new Q&A entries covering topics visible in the README and CLI but absent from the FAQ",
+      "status": "met",
+      "evidence": "10 new entries added: Python version, command table, list vs report, export to CSV, supported currencies, how conversion works, available categories, budget command, stats command, data file format, custom --store path, and limitations — each corresponds to content in README.md, cli.py, rates.py, config.py, or store.py"
+    },
+    {
+      "cos": "All added content is grounded in the repository (README.md, tally/cli.py, tally/rates.py, docs/) — no invented features or plans",
+      "status": "met",
+      "evidence": "Currency table matches RATES dict in rates.py exactly; category list matches KNOWN_CATEGORIES in config.py; budget warn threshold (80%) matches BUDGET_WARN_RATIO; JSON record shape matches store.py docstring; --store flag matches cli.py DEFAULT_STORE/argparse setup; all command names match build_parser() in cli.py"
+    },
+    {
+      "cos": "The file remains plain Markdown with no new dependencies or tooling",
+      "status": "met",
+      "evidence": "File is .md using only standard Markdown (headings, tables, fenced code blocks, bullet lists) — no front-matter, no build step, no scripts"
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met. The FAQ is now substantially more useful: a reader can learn how to install tally, discover every subcommand, understand how to retrieve and export their data, know which currencies are accepted and how conversion is handled, and understand where the tool stops being the right choice. No pricing content was duplicated from docs/pricing.md, and no source files were touched."
+}
+```

@@ -1,0 +1,13 @@
+{
+  "task": "t06",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "The issues are clear:\n1. Unused `typing` imports (`Dict`, `List`, `Optional`) \u2014 none appear in the code\n2. `next_id` uses an if/else that `max(..., default=0)` eliminates\n3. `save` has a redundant `not os.path.isdir` check \u2014 `makedirs(..., exist_ok=True)` handles it",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

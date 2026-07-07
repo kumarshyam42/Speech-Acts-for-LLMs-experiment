@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "-    assert rates.to_usd(100.0, \"SGD\") == 74.0\n+    # Pins the SGD rate (0.75). Changing the rate breaks this on purpose.\n+    assert rates.to_usd(100.0, \"SGD\") == 75.0",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t24",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "One open question: the code may or may not actually perform any conversion (e.g. `tally/rates.py` is referenced in the old text). If the code *does* convert amounts under the hood, the README now misrepresents it and the code itself would need to change \u2014 or the README needs to reflect actual behaviour. Worth verifying against the implementation before merging.",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

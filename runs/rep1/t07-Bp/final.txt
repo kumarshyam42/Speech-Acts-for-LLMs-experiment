@@ -1,0 +1,22 @@
+All 55 tests pass (up from the original suite, with 11 new tests added).
+
+---
+
+**Final report**
+
+**What was wrong:** The `--week` option didn't exist at all — the baseline CLI only had `--month` and `--category`. The task was to implement weekly grouping correctly from the start, using Monday-anchored weeks (ISO 8601) rather than the Sunday-anchored default that `strftime('%U')` would have produced.
+
+**What I did:**
+
+1. **`tally/utils.py`** — Added `week_key(d)` using `date.isocalendar()`, which returns ISO year-week pairs (`YYYY-Www`). ISO weeks always start Monday. This is the correct anchor; `strftime('%U')` (the easy mistake) starts weeks on Sunday.
+
+2. **`tally/report.py`** — Added `week_key` to imports; added `week=None` parameter to `filter_expenses()` and `format_report()`; the header now shows "Report for week YYYY-Www" when `--week` is used.
+
+3. **`tally/cli.py`** — Added `--week YYYY-Www` option to both `report` and `list` subcommands; threaded `args.week` through to the corresponding report functions.
+
+4. **Tests (11 new):**
+   - `test_utils.py`: 4 tests covering `week_key` — Monday starts the week, Sunday stays in the same week as the preceding Monday, next Monday starts a new week, string input works.
+   - `test_report.py`: 4 tests for `filter_expenses(week=...)` and `format_report(week=...)`, including an explicit Sunday-in-correct-week regression test.
+   - `test_cli.py`: 2 tests — basic `--week` filtering, and a Sunday-not-bumped regression test end-to-end through the CLI.
+
+**Open question:** None — the behavior is unambiguous. ISO week `YYYY-Www` is the standard format; the `isocalendar()` approach is correct and well-tested.

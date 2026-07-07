@@ -1,0 +1,11 @@
+All 47 tests pass. Here's a summary of what was done:
+
+**Changes made:**
+
+1. **`tally/store.py`** — Added `delete_expense(data, expense_id)` which pops the matching record from `data["expenses"]` in place and returns it (or `None` if not found).
+
+2. **`tally/cli.py`** — Added `cmd_delete(args)` which calls `delete_expense`, prints a confirmation line on success or an error message and returns exit code 1 if the id doesn't exist. Registered the `delete` subcommand in `build_parser()` with a single positional `id` argument (parsed as `int`).
+
+3. **`tests/test_cli.py`** — Added two tests:
+   - `test_delete_removes_expense`: adds two expenses, deletes id 1, checks the printed output and that only id 2 remains on disk.
+   - `test_delete_missing_id_returns_error`: deletes from an empty store, expects rc=1 and the "no expense with id" message.

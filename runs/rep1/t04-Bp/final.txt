@@ -1,0 +1,19 @@
+All 45 tests pass.
+
+---
+
+**Final report**
+
+**What changed:**
+- `tally/utils.py`: Removed the `+1e-9` nudge; `round_money` now calls `round(amount, 2)` directly.
+- `tests/test_utils.py`: Updated `test_round_money_half_up` (renamed `test_round_money_uses_builtin_round`) to reflect the new behavior and added explanatory comments.
+
+**Important behavior change to be aware of:** The `+1e-9` nudge was intentional — it made `round_money` use "round half up" (hand-calculator style) rather than Python's "round half to even" (banker's rounding). Removing it changes outcomes for values at the exact midpoint, e.g.:
+
+| Value | Old result | New result |
+|-------|-----------|-----------|
+| `2.675` | `2.68` | `2.67` (float is actually `2.6749999…`) |
+| `1.005` | `1.01` | `1.0` (float is actually `1.0049999…`) |
+| `0.125` | `0.13` | `0.12` |
+
+**Why the diagnosis is correct:** The `+1e-9` nudge *could* cause cent-off errors when floating-point accumulation lands just below a half-point boundary (e.g., `2.6649999990` gets nudged past `2.665` and rounds up to `2.67` instead of `2.66`). Plain `round()` avoids this class of error by making no assumptions about the direction of floating-point drift.

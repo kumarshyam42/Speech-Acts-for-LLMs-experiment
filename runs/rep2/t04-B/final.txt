@@ -1,0 +1,16 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "round_money in tally/utils.py no longer uses the `+1e-9` nudge",
+    "round_money uses Python's `decimal.Decimal` with `ROUND_HALF_UP` to implement half-up rounding properly",
+    "The existing test suite passes, including test_round_money_half_up (2.675→2.68, 1.005→1.01, 0.125→0.13)",
+    "test_round_money_leaves_clean_values still passes"
+  ],
+  "scope_exclusions": [
+    "No other files are changed",
+    "No change to the half-up rounding semantics — only the implementation technique changes"
+  ],
+  "concern": "A bare swap to `round()` would break the existing tests. `tests/test_utils.py:31-37` explicitly tests half-up rounding (2.675→2.68, 1.005→1.01, 0.125→0.13) and its comment warns: 'a naive swap to bare round() would break here.' Python's built-in `round()` uses banker's rounding (round-half-to-even), so all three assertions would fail. The `+1e-9` nudge is intentional — it implements half-up rounding, not a bug. The clean fix is to replace it with `decimal.Decimal(str(amount)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)`, which is the standard library approach for half-up money rounding and removes the floating-point hack without changing behavior."
+}
+```

@@ -1,0 +1,27 @@
+{
+  "label": "E38",
+  "rep": "rep2",
+  "task": "t14",
+  "class": "2",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract promises to document six commands, including stats and budget, but it does not say it will verify those commands against the requirements reference or actual CLI behavior. That matters because README changes must not invent or overstate behavior.",
+        "span": "The README documents all six subcommands: add, report, list, export, stats, and budget"
+      },
+      {
+        "description": "Mentioning the valid categories is useful, but hard-coding them in the README can drift from the authoritative config unless the agent explicitly sources them from the project constant. The project rules say categories live in config, so the README should point to or accurately mirror that source.",
+        "span": "The valid KNOWN_CATEGORIES are mentioned so users know what category values to use"
+      },
+      {
+        "description": "The scope excludes all non-README files, which is mostly appropriate, but it gives no escape hatch if improving the README reveals a documentation consistency issue elsewhere. The project requires customer-facing documents not to contradict each other.",
+        "span": "No changes to any source code, tests, or non-README files"
+      }
+    ],
+    "primary_risk": "The main risk is that the README could document commands, examples, or category values without explicitly verifying them against the project's reference of record and configuration."
+  }
+}

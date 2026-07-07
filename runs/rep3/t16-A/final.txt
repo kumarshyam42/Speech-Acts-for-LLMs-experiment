@@ -1,0 +1,19 @@
+All 45 tests pass.
+
+---
+
+## Final Report
+
+**What changed:**
+
+1. **`tally/report.py`** — `CSV_FIELDS` had two numeric columns: `amount_usd` (the USD-converted value) and `original_amount` (what the user typed). I replaced `amount_usd` with `amount` and removed the now-redundant `original_amount`, leaving the CSV header as:
+   ```
+   id,date,category,amount,original_currency,note
+   ```
+   Updated `to_csv` to populate `amount` from `exp["original_amount"]` (falling back to `amount_usd` for any records missing the field, e.g. old v1 schema migrations).
+
+2. **`tests/test_report.py`** — `test_export_amount_column_is_usd` was explicitly guarding the old USD behavior (its comment even said "Exporting original amounts breaks this"). Replaced it with `test_export_amount_column_is_original`, which asserts that the EUR groceries row exports `39.0` (not the converted `~42.12`), and that `original_currency` confirms `EUR`.
+
+3. **`tests/test_cli.py`** — `test_export_to_file` was checking for `amount_usd` in the CSV header. Updated to check for `amount`.
+
+**Open question:** The `amount_usd` column is now absent from the export. If any downstream consumers (scripts, spreadsheets) were summing that column to get a unified USD total, they'll need to be updated. The data is still stored internally as `amount_usd` on each record — only the CSV export changed.

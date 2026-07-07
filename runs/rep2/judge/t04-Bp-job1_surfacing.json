@@ -1,0 +1,13 @@
+{
+  "task": "t04",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The test file at line 31\u201337 explicitly tests that `round_money` rounds halves *up* (not to even), and the comment warns that \"a naive swap to bare `round()` would break here.\"",
+    "span_locator": "event 7, assistant"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,32 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+new file mode 100644
+index 0000000..b2c8d2a
+--- /dev/null
++++ b/CHANGELOG.md
+@@ -0,0 +1,26 @@
++# Changelog
++
++All notable changes to tally will be documented here.
++
++Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
++Versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
++
++## [Unreleased] — targeting 2.1
++
++### Added
++
++- **`budget` subcommand** — `tally budget --month YYYY-MM` prints each budgeted
++  category alongside how much was spent that month and how much remains. Each row
++  is labelled `ok`, `warn` (≥ 80 % of budget used), or `over` (budget exceeded).
++- **Per-category monthly budgets** — default limits (USD) defined in
++  `tally/config.py` under `CATEGORY_BUDGETS`: food $600, transport $200,
++  rent $1 500, entertainment $150, other $300.
++- **Warning threshold** — `BUDGET_WARN_RATIO` (default 0.8) controls at what
++  fraction of a budget the `warn` state is triggered; configurable in
++  `tally/config.py`.
++
++## [2.0.0] — baseline
++
++Initial tracked release: single-file JSON store, multi-currency `add`,
++`report`, `list`, `export`, and `stats` subcommands. Amounts normalized to USD
++at write time (schema version 2).

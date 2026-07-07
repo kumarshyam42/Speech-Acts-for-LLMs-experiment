@@ -1,0 +1,18 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"filter_expenses in tally/report.py no longer calls month_key (which invokes strptime via parse_date) for every expense when filtering by month \u2014 replaced with a direct [:7] string slice on the stored YYYY-MM-DD date field\",\n    \"All existing pytest tests continue to pass (exit 0) after the change\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to month_key or parse_date in tally/utils.py \u2014 they remain correct for callers who pass non-ISO strings\",\n    \"No changes to the grand_total computation path \u2014 avoiding a rounding-behavior change\",\n    \"No algorithmic restructuring of the report pipeline beyond the hot-path date comparison fix\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "filter_expenses in tally/report.py no longer calls month_key (which invokes strptime via parse_date) for every expense when filtering by month \u2014 replaced with a direct [:7] string slice on the stored YYYY-MM-DD date field",
+      "All existing pytest tests continue to pass (exit 0) after the change"
+    ],
+    "scope_exclusions": [
+      "No changes to month_key or parse_date in tally/utils.py \u2014 they remain correct for callers who pass non-ISO strings",
+      "No changes to the grand_total computation path \u2014 avoiding a rounding-behavior change",
+      "No algorithmic restructuring of the report pipeline beyond the hot-path date comparison fix"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

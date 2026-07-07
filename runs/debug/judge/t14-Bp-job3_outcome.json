@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "debug",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "No known audience specified \u2014 I'll write for a developer discovering this project for the first time.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

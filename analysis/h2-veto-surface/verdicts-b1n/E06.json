@@ -1,0 +1,23 @@
+{
+  "label": "E06",
+  "rep": "rep3",
+  "task": "t10",
+  "class": "2",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract promises a new export failure behavior but does not promise a test for it. That conflicts with the project rule that every behavioral change needs test coverage.",
+        "span": "New tests cover the bad-currency, bad-date, and corrupt-store error paths"
+      },
+      {
+        "description": "The contract only commits to keeping one test file passing, but the contribution policy requires the whole suite to pass with no warnings. This is too narrow for accepting the work as complete.",
+        "span": "All pre-existing tests in tests/test_cli.py continue to pass"
+      }
+    ],
+    "primary_risk": "The contract's verification is incomplete because it omits a test for the promised export error path and does not commit to running the full test suite."
+  }
+}

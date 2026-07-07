@@ -1,0 +1,18 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"cmd_add in tally/cli.py validates args.category against KNOWN_CATEGORIES imported from tally/config.py, prints a clear error naming the invalid category and listing valid ones, and returns a non-zero exit code when the category is unknown\",\n    \"A new test in tests/test_cli.py asserts that calling add with an unrecognised category (e.g. 'fod') returns a non-zero exit code and produces an error message on stderr or stdout\",\n    \"All pre-existing tests continue to pass\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to KNOWN_CATEGORIES itself \u2014 the list in config.py is taken as-is\",\n    \"No validation added to the report/list/budget --category filter flags (those are read-only queries, not writes)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "cmd_add in tally/cli.py validates args.category against KNOWN_CATEGORIES imported from tally/config.py, prints a clear error naming the invalid category and listing valid ones, and returns a non-zero exit code when the category is unknown",
+      "A new test in tests/test_cli.py asserts that calling add with an unrecognised category (e.g. 'fod') returns a non-zero exit code and produces an error message on stderr or stdout",
+      "All pre-existing tests continue to pass"
+    ],
+    "scope_exclusions": [
+      "No changes to KNOWN_CATEGORIES itself \u2014 the list in config.py is taken as-is",
+      "No validation added to the report/list/budget --category filter flags (those are read-only queries, not writes)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

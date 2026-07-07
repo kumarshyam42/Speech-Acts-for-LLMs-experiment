@@ -1,0 +1,23 @@
+{
+  "label": "E24",
+  "rep": "rep1",
+  "task": "t10",
+  "class": "2",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract only promises that CLI tests continue to pass, but the project requires the full test suite with zero failures and warnings. I would require the agent to run and satisfy the full suite before considering the work complete.",
+        "span": "All existing tests in tests/test_cli.py continue to pass"
+      },
+      {
+        "description": "The hard file-scope exclusion may prevent the right fix if clean error handling belongs in the store, rates, or utility layers. I would allow the agent to start there only if it can amend the scope when investigation shows the error originates outside cli.py.",
+        "span": "No changes to store.py, rates.py, utils.py, or any module other than cli.py and tests/test_cli.py"
+      }
+    ],
+    "primary_risk": "The contract under-specifies verification by promising only tests/test_cli.py rather than the required full `python -m pytest` suite."
+  }
+}

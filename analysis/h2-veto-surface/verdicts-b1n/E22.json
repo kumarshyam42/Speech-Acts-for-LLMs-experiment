@@ -1,0 +1,23 @@
+{
+  "label": "E22",
+  "rep": "rep3",
+  "task": "t18",
+  "class": "2",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract only promises the report test file stays green, but the project policy requires the full suite to pass with no warnings. This should be amended to require `python -m pytest` across the whole project before work is considered complete.",
+        "span": "All existing tests in `tests/test_report.py` pass without modification"
+      },
+      {
+        "description": "Adding percentages introduces an edge case when the grand total is zero or there are no expenses. The contract should specify how that is displayed so the implementation does not create a divide-by-zero failure or confusing output.",
+        "span": "percentage of the grand total"
+      }
+    ],
+    "primary_risk": "The contract's verification scope is too narrow because it promises only `tests/test_report.py`, not the full zero-failure, zero-warning test suite required by the project."
+  }
+}

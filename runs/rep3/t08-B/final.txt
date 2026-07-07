@@ -1,0 +1,50 @@
+All 45 tests pass. Here is the completion report.
+
+---
+
+## Summary
+
+- `store.add_expense` no longer calls `normalize()` or stores `amount_usd` — only `original_amount` and `original_currency` are written.
+- All report functions (`category_totals`, `grand_total`, `monthly_summary`, `overall_stats`, `format_expense_list`, `budget_status`) now compute USD on the fly via `normalize(exp['original_amount'], exp['original_currency'])`.
+- `to_csv` computes `amount_usd` on the fly for the CSV column.
+- The v1→v2 migration now sets `original_currency='USD'` (dropping the original `currency` field) so that deferred conversion doesn't double-convert values that were already stored in USD.
+- Tests updated: `test_add_normalizes_to_usd` → `test_add_stores_original_not_usd`, `test_stored_amounts_match_expected_usd` now uses `normalize()`, `test_migrate_v1_to_v2` now checks `original_amount`/`original_currency='USD'` with no `amount_usd` field.
+- `cli.py`'s `cmd_add` confirmation message also updated to compute USD on the fly.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`store.add_expense` no longer calls `normalize()` or stores an `amount_usd` field — only `original_amount` and `original_currency` are written to the record",
+      "status": "met",
+      "evidence": "store.py:74-88 — `normalize` import removed, `amount_usd` key absent from the record dict; `test_add_stores_original_not_usd` asserts `'amount_usd' not in record` and passes"
+    },
+    {
+      "cos": "All report functions (`category_totals`, `grand_total`, `monthly_summary`, `overall_stats`, `format_expense_list`, `budget_status`) compute USD on the fly via `normalize(exp['original_amount'], exp['original_currency'])` instead of reading `exp['amount_usd']`",
+      "status": "met",
+      "evidence": "report.py updated for every function listed; all test_report.py tests pass with correct totals (EXPECTED_GRAND_TOTAL=204.22, EXPECTED_MARCH_FOOD=92.12)"
+    },
+    {
+      "cos": "`to_csv` computes the `amount_usd` column value on the fly (not from a stored field) so the CSV output remains consistent",
+      "status": "met",
+      "evidence": "report.py:91-100 — `row['amount_usd'] = normalize(...)` set explicitly; `test_export_amount_column_is_usd` passes, summing CSV column equals EXPECTED_GRAND_TOTAL"
+    },
+    {
+      "cos": "The v1→v2 migration is updated so that v1 records (whose stored `amount` was already USD) are migrated with `original_currency='USD'` to avoid double-conversion under the new deferred-conversion scheme",
+      "status": "met",
+      "evidence": "store.py:30-45 — migration pops `amount`/`amount_usd`/`currency`, sets `original_currency='USD'`; `test_migrate_v1_to_v2` passes asserting `original_currency == 'USD'` and `'amount_usd' not in exp`"
+    },
+    {
+      "cos": "Existing tests that assert early-normalization behavior (`test_add_normalizes_to_usd`, `test_stored_amounts_match_expected_usd`, the `original_currency` assertion in `test_migrate_v1_to_v2`) are updated to match the new schema",
+      "status": "met",
+      "evidence": "`test_add_normalizes_to_usd` renamed to `test_add_stores_original_not_usd` and inverted; `test_stored_amounts_match_expected_usd` now uses `normalize()` to compute expected values; `test_migrate_v1_to_v2` now asserts `original_currency == 'USD'` and `'amount_usd' not in exp`; all pass"
+    },
+    {
+      "cos": "`pytest` exits 0 with the full suite passing after all changes",
+      "status": "met",
+      "evidence": "45 passed in 0.04s — exit code 0"
+    }
+  ],
+  "assessment": "All six conditions of satisfaction are met. One item not explicitly in the promise but required for a green suite: `cli.py`'s `cmd_add` confirmation print used `{amount_usd:.2f}` from the record dict, which broke 7 CLI tests. Fixed by importing `normalize` in cli.py and computing the display value on the fly — consistent with the deferred-conversion intent and covered by the promise's spirit ('no changes to CLI interface' means behavior/flags, not internal plumbing). No changes to rates.py, RATES constants, or CLI user-facing interface were made."
+}
+```

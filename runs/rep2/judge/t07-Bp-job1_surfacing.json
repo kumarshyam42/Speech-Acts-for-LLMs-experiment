@@ -1,0 +1,13 @@
+{
+  "task": "t07",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The `--week` option doesn't exist yet \u2014 this is a greenfield implementation task.",
+    "span_locator": "event 26, assistant"
+  },
+  "attempts": 1
+}

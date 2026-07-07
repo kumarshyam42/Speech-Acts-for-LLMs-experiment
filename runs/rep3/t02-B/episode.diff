@@ -1,0 +1,13 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..26b88e5 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -62,7 +62,7 @@ def format_report(expenses, month=None, category=None):
+     else:
+         for cat in sorted(totals):
+             lines.append("{:<14} {:>10.2f} USD".format(cat, totals[cat]))
+-        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", grand_total(selected)))
++        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", round_money(sum(totals.values()))))
+     return "\n".join(lines)
+ 
+ 

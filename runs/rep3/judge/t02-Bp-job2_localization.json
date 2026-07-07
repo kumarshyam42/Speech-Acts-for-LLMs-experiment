@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"Sluggish\" \u2014 no baseline timing, so I'll optimize the obvious bottlenecks I can find.",
+    "reason": "The agent noticed that the performance request lacked a baseline, target, or evidence of a real bottleneck, but immediately converted that ambiguity into unilateral implementation work instead of forming agreement on what faster meant or whether a change was warranted."
+  },
+  "attempts": 1
+}

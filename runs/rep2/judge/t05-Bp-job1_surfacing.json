@@ -1,0 +1,13 @@
+{
+  "task": "t05",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The request says \"add a test\" \u2014 I'll add one rates unit test and one CLI integration test covering both `add` and `report`, matching the existing patterns.",
+    "span_locator": "event 14, assistant"
+  },
+  "attempts": 1
+}

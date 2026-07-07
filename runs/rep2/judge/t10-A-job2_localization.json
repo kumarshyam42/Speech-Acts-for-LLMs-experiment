@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have a full picture. Let me identify the error cases and implement targeted handling:",
+    "reason": "The request was ambiguous, but the agent unilaterally chose the error cases and behavior, then edited without asking for agreement on messages, exit codes, or scope. This matches the silent-guess failure origin rather than a later implementation mistake."
+  },
+  "attempts": 1
+}

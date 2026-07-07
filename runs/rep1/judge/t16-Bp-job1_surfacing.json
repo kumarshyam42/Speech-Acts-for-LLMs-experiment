@@ -1,0 +1,13 @@
+{
+  "task": "t16",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "\"Change that column\" could mean (a) keep the header `amount_usd` but put original values in it, or (b) rename the column to `amount` and show original amounts. Option (a) is misleading (header says USD but shows EUR).",
+    "span_locator": "event 18, assistant"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,13 @@
+{
+  "task": "t24",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The code in `rates.py` and `store.py` actually does convert to USD \u2014 it stores `amount_usd` and uses that for all report totals. Rewriting the docs to say \"stored in original currency\" would contradict the code behavior.",
+    "span_locator": "event 12, assistant"
+  },
+  "attempts": 1
+}

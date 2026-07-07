@@ -1,0 +1,13 @@
+{
+  "task": "t09",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "All 47 tests pass (the 2 new ones plus all 45 pre-existing).\n\n---\n\n## Completion Report\n\n### Changes made\n\n- **`tally/store.py`** \u2014 added `delete_expense(data, expense_id)` that pops the matching record from `data['expenses']` in-place and returns it (or `None` if not found).\n- **`tally/cli.py`** \u2014 added `cmd_delete` handler (prints `deleted #<id>`, returns 1 with a stderr message on missing id) and a `delete` subparser with a positional `id: int` argument.\n- **`tests/test_cli.py`** \u2014 added `test_delete_happy_path` (add \u2192 delete \u2192 verify store empty of that id) and `test_delete_nonexistent_id` (rc != 0).",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

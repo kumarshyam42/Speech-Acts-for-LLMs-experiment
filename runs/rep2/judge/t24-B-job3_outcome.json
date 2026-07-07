@@ -1,0 +1,13 @@
+{
+  "task": "t24",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "+Whenever you add an expense, tally stores the amount in the currency you entered \u2014\n+nothing is converted behind the scenes. If you type `39 EUR`, that is exactly what\n+goes into the data file. Reports show amounts in their original currencies, so if a\n+month mixes several currencies you will see each one listed separately.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,200 @@
+diff --git a/docs/faq.md b/docs/faq.md
+index 85ea0e5..3ca95b5 100644
+--- a/docs/faq.md
++++ b/docs/faq.md
+@@ -1,22 +1,182 @@
+ # tally — Frequently Asked Questions
+ 
+-## Is tally really free?
++## Getting started
+ 
+-Yes. Running tally on your own computer is free and always will be. The only thing
+-that costs money is the optional hosted backup add-on.
++### Do I need to install anything?
+ 
+-## How many expenses can I track on the free plan?
++No. tally requires Python 3.9 or newer and nothing else. Clone the repository and
++run it directly as a module:
+ 
+-The free plan includes hosted backup for up to **100 expenses per month**. You can
+-record more than that locally — nothing stops you — but only the first 100 in a
+-month are covered by the free backup. The Plus and Family plans remove the limit.
++```
++python -m tally.cli --help
++```
+ 
+-## Where is my data kept?
++If you want to type `tally` instead of the full command, add a shell alias:
+ 
+-In a single JSON file on your own machine. Unless you turn on the hosted backup
+-add-on, your data never leaves your computer.
++```sh
++alias tally="python -m tally.cli"
++```
+ 
+-## Can I enter expenses in other currencies?
++### Does it work on Linux, macOS, and Windows?
+ 
+-Yes. Pass `--currency` when you add an expense and tally converts it to US dollars
+-for you.
++Yes. It is pure Python with no platform-specific dependencies.
++
++---
++
++## Recording expenses
++
++### How do I add an expense?
++
++```
++python -m tally.cli add 12.50 food --note "lunch"
++```
++
++The two required arguments are the amount and the category. The note is optional.
++tally prints a confirmation line with the assigned ID and the stored dollar amount.
++
++### What date format does tally expect?
++
++`YYYY-MM-DD`, for example `2024-03-15`. If you omit `--date`, today's date is
++used automatically.
++
++### What categories are available?
++
++The built-in categories are **food**, **transport**, **rent**, **entertainment**,
++and **other**. Adding an expense under an unrecognized category name will be
++rejected. To add a category, edit `KNOWN_CATEGORIES` in `tally/config.py`.
++
++### Can I enter expenses in other currencies?
++
++Yes. Pass `--currency` with a supported currency code and tally converts the
++amount to US dollars for you:
++
++```
++python -m tally.cli add 39 food --currency EUR --date 2024-03-04
++```
++
++Supported currencies: **EUR**, **GBP**, **INR**, **JPY**, **SGD**, **USD**.
++Currency codes are case-insensitive. Using an unsupported code raises an error
++immediately rather than silently storing a wrong number.
++
++### How does currency conversion work?
++
++tally converts the amount to US dollars the moment you record the expense, using
++the fixed rates in `tally/rates.py`, and stores the dollar figure. The original
++amount and currency you typed are preserved for reference but are never used to
++compute a total. Every report, budget check, and CSV export is denominated in US
++dollars.
++
++The rates are intentional constants, not live exchange rates. If you change a
++rate in `rates.py`, every historical total that used that currency will change
++accordingly.
++
++---
++
++## Viewing your data
++
++### How do I see where my money went?
++
++```
++python -m tally.cli report --month 2024-03
++```
++
++This prints category totals for the month. Add `--category food` to narrow it to
++a single category.
++
++### How do I see individual expenses instead of totals?
++
++```
++python -m tally.cli list --month 2024-03
++python -m tally.cli list --month 2024-03 --category food
++```
++
++### How do I get overall lifetime statistics?
++
++```
++python -m tally.cli stats
++```
++
++This prints the total number of expenses, the combined total in USD, the
++average per expense, and the date range they cover.
++
++### Can I export my data?
++
++Yes. The `export` command writes everything to CSV in US dollars:
++
++```
++python -m tally.cli export --out march.csv
++```
++
++Omit `--out` to write to standard output instead.
++
++---
++
++## Budgets
++
++### How do I set a budget?
++
++Monthly budget limits per category live in `CATEGORY_BUDGETS` inside
++`tally/config.py`. Edit them to match your own targets.
++
++### How do I check my spending against a budget?
++
++```
++python -m tally.cli budget --month 2024-03
++```
++
++The output shows each category's spending against its limit. A warning indicator
++appears once spending crosses 80 % of the limit.
++
++---
++
++## Data and privacy
++
++### Where is my data stored?
++
++In a single JSON file called `tally.json` in whatever directory you run the
++command from. Unless you turn on the optional hosted backup add-on, your data
++never leaves your machine.
++
++### Can I change where the data file lives?
++
++Yes. Pass `--store` with a path of your choice:
++
++```
++python -m tally.cli --store ~/finances/expenses.json add 12.50 food
++```
++
++You can also put your alias in a wrapper script that always passes the right
++`--store` path.
++
++### Can I back up or diff my data?
++
++Yes. The store is plain JSON, so any file-backup tool, `git`, or a plain `cp`
++works. The `export` command also gives you a CSV snapshot you can open in a
++spreadsheet.
++
++---
++
++## Plans and pricing
++
++### Is tally really free?
++
++Yes. Running tally on your own computer is free and always will be. The only
++thing that costs money is the optional hosted backup add-on.
++
++### How many expenses can I track on the free plan?
++
++Locally, there is no limit — you can record as many expenses as you like. The
++free plan for the hosted backup add-on covers up to **100 expenses per month**.
++If you record more, the extras are still saved locally; they are simply not
++included in the hosted backup until you upgrade.
++
++The Plus and Family plans remove the limit. See `docs/pricing.md` for the full
++comparison.
++
++### How long is backup history kept?
++
++| Plan | Backup history |
++|------|----------------|
++| Free | 7 days |
++| Plus | 1 year |
++| Family | 3 years |

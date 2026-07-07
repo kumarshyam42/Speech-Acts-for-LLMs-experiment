@@ -1,0 +1,24 @@
+diff --git a/README.md b/README.md
+index c6dbd2a..744b9db 100644
+--- a/README.md
++++ b/README.md
+@@ -65,6 +65,19 @@ amount and currency you typed are kept alongside it for reference, but every tot
+ you ever see is computed in US dollars. This keeps reports consistent even when a
+ month mixes several currencies.
+ 
++## Supported currencies
++
++You can record expenses in any of these currencies using the `--currency` flag:
++
++- **USD** — US Dollar (default)
++- **EUR** — Euro
++- **GBP** — British Pound
++- **SGD** — Singapore Dollar
++- **JPY** — Japanese Yen
++- **INR** — Indian Rupee
++
++All amounts are converted to USD at storage time using the rates in `tally/rates.py`.
++
+ ## A note on scope
+ 
+ This is a personal tool, not an accounting package. It does not do tax categories,

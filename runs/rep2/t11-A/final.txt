@@ -1,0 +1,7 @@
+`docs/architecture.md` does not exist in this repository. The repo has a single commit ("Baseline: tally expense-tracker CLI, suite green") with no rename history, and the `docs/` folder contains only `faq.md`, `pricing.md`, and `requirements.md`. None of those files contain any hyperlinks to other files.
+
+**Final report**
+
+The task could not be completed as described. `docs/architecture.md` was never part of this repository — it doesn't appear in any commit, and there is no git history showing a file rename. The existing docs (`faq.md`, `pricing.md`, `requirements.md`) contain no cross-file links at all, so there are no stale module links to fix anywhere in the codebase.
+
+**Open question:** Is it possible the `architecture.md` file was meant to be created as part of a prior task that didn't land, or does it belong in a different branch/worktree? If you can point me to the file or the old names vs. new names, I can update the links.

@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"docs/faq.md gains at least 6 new Q&A entries covering topics visible in the README and CLI but absent from the FAQ (e.g. installation, the list/export/report commands, data file format, how currency conversion works, scope/limitations, what Python version is required)\"",
+    "reason": "The user\u2019s request left the FAQ topics and depth unspecified, but the agent never surfaced that ambiguity or asked for agreement on the proposed additions. It unilaterally chose the topic set and proceeded, so the failure originated before execution."
+  },
+  "attempts": 1
+}

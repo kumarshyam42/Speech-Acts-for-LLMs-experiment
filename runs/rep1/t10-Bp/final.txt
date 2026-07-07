@@ -1,0 +1,21 @@
+All 53 tests pass (8 new, 45 original).
+
+---
+
+**Final report**
+
+**What I added to `tally/cli.py`:**
+
+1. **Top-level exception handler in `main()`** — wraps `args.func(args)` in try/except for `ValueError`, `json.JSONDecodeError`, and `OSError`. All three print `error: <message>` to stderr and return exit code 1 instead of showing a Python traceback. This covers bad dates, unsupported currencies, corrupt store files, and file I/O failures in a single place.
+
+2. **Amount validation in `cmd_add`** — raises `ValueError` if `amount <= 0`.
+
+3. **Category validation in `cmd_add`** — raises `ValueError` for categories not in `KNOWN_CATEGORIES`, with a hint listing valid choices.
+
+4. **Month format validation** via `_validate_month()` — called in `cmd_report`, `cmd_list`, and `cmd_budget`. Rejects anything that doesn't match `YYYY-MM` (e.g. `"march-2024"` or `"2024-03-15"`) so a bad month produces an error rather than silently returning no results.
+
+5. Imported `json`, `re`, and `KNOWN_CATEGORIES` at the top.
+
+**What I added to `tests/test_cli.py`:** 8 new tests covering every new error path — bad date, unknown currency, negative amount, zero amount, unknown category, corrupt store, bad month format, and unwritable export path.
+
+All 53 tests pass.

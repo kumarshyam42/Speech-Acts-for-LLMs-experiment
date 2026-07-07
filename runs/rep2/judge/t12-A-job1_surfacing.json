@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The comment in `pricing.md` line 23 explicitly calls out that `faq.md` must be kept in sync. I'll update both files together, plus check the source code for any hardcoded limit.",
+    "span_locator": "event 8, assistant"
+  },
+  "attempts": 1
+}

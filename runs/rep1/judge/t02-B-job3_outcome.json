@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "I have a clear picture of what needs to change. Now I'll apply both optimizations:\n\n1. `category_totals`: accumulate raw sums, apply `round_money` once per category at the end\n2. `format_report`: derive TOTAL from `sum(totals.values())` instead of re-scanning via `grand_total`",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

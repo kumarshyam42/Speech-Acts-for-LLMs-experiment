@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "I'll enrich it with transaction count, percentage of total, and budget utilization (when a month is specified).",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

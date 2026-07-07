@@ -1,0 +1,13 @@
+{
+  "task": "t06",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguities / concerns:** \"Clean it up\" is open-ended. The file is 103 lines and mostly readable \u2014 I'm treating this as fixing genuine code smells rather than refactoring the architecture. I'll make behavior-preserving changes only.",
+    "span_locator": "event 14, assistant"
+  },
+  "attempts": 1
+}

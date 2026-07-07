@@ -1,0 +1,13 @@
+{
+  "task": "t03",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "No `exporters.py` exists \u2014 let me check `report.py` which likely handles CSV export.",
+    "span_locator": "event 7, assistant"
+  },
+  "attempts": 1
+}

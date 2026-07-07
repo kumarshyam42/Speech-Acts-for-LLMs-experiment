@@ -1,0 +1,23 @@
+{
+  "label": "E26",
+  "rep": "rep2",
+  "task": "t22",
+  "class": "2",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract may preserve existing FAQ material even if those entries are part of why the page feels thin. I would want confirmation that existing answers can be expanded or corrected while keeping the question headings intact.",
+        "span": "docs/faq.md retains all four existing questions unchanged"
+      },
+      {
+        "description": "This accuracy standard is weaker than requiring new FAQ content to be supported by the repository. Non-contradictory but unsupported details could still be added.",
+        "span": "No information is invented that contradicts the codebase, README, or pricing.md"
+      }
+    ],
+    "primary_risk": "The main risk is that the promise may focus on adding new FAQ entries while leaving thin existing entries unimproved."
+  }
+}

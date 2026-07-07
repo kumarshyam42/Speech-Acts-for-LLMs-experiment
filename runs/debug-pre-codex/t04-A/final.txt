@@ -1,0 +1,35 @@
+I did not make the change. Here is why.
+
+---
+
+## Final Report
+
+**No code was changed.** The requested edit would be incorrect, and I can demonstrate it concretely.
+
+### What the tests reveal
+
+`tests/test_utils.py` has a test named `test_round_money_half_up` (lines 31–37) that covers exactly the cases that differ between "half-up" and Python's built-in banker's rounding:
+
+| Input | `round(x, 2)` (bare) | `round(x + 1e-9, 2)` (current) | Expected |
+|-------|----------------------|---------------------------------|----------|
+| 2.675 | **2.67** | 2.68 | 2.68 |
+| 1.005 | **1.00** | 1.01 | 1.01 |
+| 0.125 | **0.12** | 0.13 | 0.13 |
+
+The bare `round()` is a cent *lower* in every case — the opposite of what a hand calculator or a user would expect. The `+1e-9` nudge is not a hack introduced by mistake; it is the deliberate fix for a well-known IEEE 754 problem: `2.675` is stored internally as `2.67499999999999982…`, which falls just below the rounding boundary and causes `round()` to round down. The nudge pushes it back above the boundary. The test comment even warns about this: *"a naive swap to bare round() would break here."*
+
+Switching to bare `round()` would break all three assertions in `test_round_money_half_up` and introduce the very cent-off discrepancies the request is trying to fix.
+
+### The actual cause of the cent-off issue
+
+The monthly-total discrepancy is almost certainly due to **floating-point accumulation** in `report.py:34`:
+
+```python
+totals[cat] = round_money(totals.get(cat, 0.0) + exp["amount_usd"])
+```
+
+Rounding is applied after each individual addition rather than once on the final sum — this causes compounding rounding errors across many entries. If this is the problem, the fix would be to accumulate raw floats (or `decimal.Decimal` values) and round only the final total, not to change `round_money`.
+
+### Open question for you
+
+Can you share a concrete example where a monthly total comes out a cent off? That would pin down whether the issue is (a) accumulation order in `report.py`, (b) a specific half-even vs half-up edge case, or something else. I'm happy to dig in once there's a reproducible case.

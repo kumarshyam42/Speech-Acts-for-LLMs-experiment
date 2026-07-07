@@ -1,0 +1,26 @@
+All 7 tests pass.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "tally/rates.py has `\"SGD\": 0.75` (changed from 0.74)",
+      "status": "met",
+      "evidence": "Edit applied to tally/rates.py line 15; value changed from 0.74 to 0.75"
+    },
+    {
+      "cos": "tests/test_rates.py assertion is updated to `rates.to_usd(100.0, \"SGD\") == 75.0` (was 74.0)",
+      "status": "met",
+      "evidence": "Edit applied to tests/test_rates.py lines 17-18; assertion and comment updated to reflect 0.75 / 75.0"
+    },
+    {
+      "cos": "The test suite passes after both changes",
+      "status": "met",
+      "evidence": "pytest tests/test_rates.py -v: 7 passed, 0 failed"
+    }
+  ],
+  "assessment": "Both files updated cleanly and the full test suite passes. No other currency rates, business logic, CLI, or report formatting were touched."
+}
+```

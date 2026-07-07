@@ -1,0 +1,19 @@
+{
+  "raw": "All six currencies (USD, EUR, GBP, SGD, JPY, INR) are confirmed in `rates.py`. The README has a clear structure and the addition is straightforward.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README.md contains a new section headed '## Supported currencies'\",\n    \"That section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR\",\n    \"No other files are modified\",\n    \"The new section fits naturally within the existing README structure (after the currency-related prose, before or after 'How amounts are stored')\"\n  ],\n  \"scope_exclusions\": [\n    \"Will not update docs/pricing.md, docs/faq.md, or any other file\",\n    \"Will not add exchange rates or other technical details beyond the currency codes\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README.md contains a new section headed '## Supported currencies'",
+      "That section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR",
+      "No other files are modified",
+      "The new section fits naturally within the existing README structure (after the currency-related prose, before or after 'How amounts are stored')"
+    ],
+    "scope_exclusions": [
+      "Will not update docs/pricing.md, docs/faq.md, or any other file",
+      "Will not add exchange rates or other technical details beyond the currency codes"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

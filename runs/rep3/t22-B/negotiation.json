@@ -1,0 +1,19 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"docs/faq.md retains all four existing entries unchanged\",\n    \"At least five new Q&A entries are added covering CLI usage topics absent from the current FAQ: the budget command, the stats command, the list command, the export command, and the --store flag for changing the data file location\",\n    \"Every factual claim in the new entries is verifiable against the actual code (cli.py, report.py, rates.py, config.py) or existing docs \u2014 nothing invented\",\n    \"No pricing or plan details are added beyond what pricing.md already documents\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to README.md, pricing.md, or any source file\",\n    \"No new hosted-backup or account-management Q&As (feature not implemented in the codebase)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "docs/faq.md retains all four existing entries unchanged",
+      "At least five new Q&A entries are added covering CLI usage topics absent from the current FAQ: the budget command, the stats command, the list command, the export command, and the --store flag for changing the data file location",
+      "Every factual claim in the new entries is verifiable against the actual code (cli.py, report.py, rates.py, config.py) or existing docs \u2014 nothing invented",
+      "No pricing or plan details are added beyond what pricing.md already documents"
+    ],
+    "scope_exclusions": [
+      "No changes to README.md, pricing.md, or any source file",
+      "No new hosted-backup or account-management Q&As (feature not implemented in the codebase)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

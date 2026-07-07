@@ -1,0 +1,14 @@
+Done. Here's a summary of what changed and why:
+
+**What was there:** 4 questions covering pricing, data location, and currencies — nothing about how to actually use the tool.
+
+**What was added:**
+
+- **Getting Started** — how to install/run, what an alias looks like, and a table of all 6 subcommands (`add`, `report`, `list`, `budget`, `stats`, `export`).
+- **Recording Expenses** — how to add an expense with a note, how to back-date, what the valid categories are, and a clear note that editing/deleting means opening `tally.json` directly since there's no delete command.
+- **Viewing Your Data** — `report` vs `list` distinction, the `budget` command with the actual budget figures from `config.py`, `stats` for lifetime overviews, and `export` for spreadsheet workflows.
+- **Currencies** — which 6 currencies are supported (pulled from `rates.py`), the fact that rates are fixed constants and don't update automatically, and the consequence of changing a rate.
+- **Your Data File** — how to use `--store` to point at a different file (e.g., separating personal/business expenses), and a short backup note.
+- **Plans & Pricing** — kept the existing 3 questions, added a Plus vs Family comparison, and split the "where is data kept" question so it answers cleanly without needing to understand plans first.
+
+All numbers (100 expense limit, budget figures, currency codes) are sourced directly from the code and match `docs/pricing.md`, consistent with requirement R6.

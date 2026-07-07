@@ -1,0 +1,13 @@
+{
+  "task": "t11",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "There's no `docs/architecture.md` in this repo. Let me check what's in the docs folder and the git log for any renames.",
+    "span_locator": "event 5, assistant"
+  },
+  "attempts": 1
+}

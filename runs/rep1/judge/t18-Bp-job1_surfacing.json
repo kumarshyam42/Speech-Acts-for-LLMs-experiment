@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "\"More useful\" is intentionally vague. I'll interpret it as: add transaction count per category, % share of the total, and (for month reports) a compact budget-utilization column \u2014 since `CATEGORY_BUDGETS` is already imported in `report.py`.",
+    "span_locator": "event 17, assistant"
+  },
+  "attempts": 1
+}

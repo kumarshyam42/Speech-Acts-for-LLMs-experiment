@@ -1,0 +1,223 @@
+diff --git a/docs/faq.md b/docs/faq.md
+index 85ea0e5..291b351 100644
+--- a/docs/faq.md
++++ b/docs/faq.md
+@@ -1,22 +1,205 @@
+ # tally — Frequently Asked Questions
+ 
+-## Is tally really free?
++## Getting started
+ 
+-Yes. Running tally on your own computer is free and always will be. The only thing
+-that costs money is the optional hosted backup add-on.
++### Do I need to install anything?
+ 
+-## How many expenses can I track on the free plan?
++No. tally requires Python 3.9 or newer and nothing else. Clone the repository
++and run it as a module:
+ 
+-The free plan includes hosted backup for up to **100 expenses per month**. You can
+-record more than that locally — nothing stops you — but only the first 100 in a
+-month are covered by the free backup. The Plus and Family plans remove the limit.
++```
++python -m tally.cli --help
++```
+ 
+-## Where is my data kept?
++If you want to type just `tally`, add a shell alias:
+ 
+-In a single JSON file on your own machine. Unless you turn on the hosted backup
+-add-on, your data never leaves your computer.
++```
++alias tally="python -m tally.cli"
++```
+ 
+-## Can I enter expenses in other currencies?
++### Where does tally store my data?
+ 
+-Yes. Pass `--currency` when you add an expense and tally converts it to US dollars
+-for you.
++In a file called `tally.json` in whatever directory you run the command from.
++tally creates it on the first `add`. You can point it at a different file —
++including one on a shared drive or in a synced folder — with `--store`:
++
++```
++tally --store ~/Dropbox/expenses.json add 12.50 food
++```
++
++Pass `--store` before the subcommand; it applies to every subcommand.
++
++### Is tally free?
++
++Yes. The command-line tool is free and has no usage limits. The only thing that
++costs money is the optional hosted backup add-on (see *Plans* below).
++
++---
++
++## Recording expenses
++
++### How do I add an expense?
++
++```
++tally add <amount> <category>
++tally add 12.50 food --note "lunch"
++tally add 39 food --currency EUR --date 2024-03-04
++```
++
++`amount` and `category` are required. `--note`, `--currency`, and `--date` are
++optional. If you omit `--date`, today's date is used.
++
++### What categories can I use?
++
++The built-in categories are:
++
++- `food`
++- `transport`
++- `rent`
++- `entertainment`
++- `other`
++
++Anything outside this list is rejected. To add a custom category, edit
++`KNOWN_CATEGORIES` in `tally/config.py`.
++
++### Can I back-date an expense?
++
++Yes. Pass `--date` in `YYYY-MM-DD` format:
++
++```
++tally add 55 transport --date 2024-02-14
++```
++
++### Can I enter an amount in a foreign currency?
++
++Yes. Pass `--currency` with the currency code, and tally converts it to US
++dollars before saving:
++
++```
++tally add 3500 food --currency JPY
++```
++
++Supported currencies: **EUR, GBP, INR, JPY, SGD, USD**.
++
++The conversion uses fixed rates baked into `tally/rates.py`. Rates are not
++fetched live; they are stable constants you can audit in that file.
++
++### How does currency conversion work exactly?
++
++When you record an expense, the amount is converted to US dollars immediately
++and the dollar figure is what gets stored. The original amount and currency you
++typed are also kept for reference. Every total, report, and export you ever see
++is in US dollars. tally never re-converts at report time, which keeps numbers
++consistent across months that mix currencies.
++
++### What if I recorded something wrong?
++
++Open `tally.json` in any text editor and correct or delete the entry. The file
++is plain JSON — one object per expense. Be careful to keep the JSON valid (no
++trailing commas, matching braces).
++
++---
++
++## Viewing your spending
++
++### How do I see spending for a month?
++
++```
++tally report --month 2024-03
++```
++
++This prints category totals for March 2024. Omit `--month` to see totals across
++all recorded months.
++
++### How do I filter to one category?
++
++```
++tally report --month 2024-03 --category food
++```
++
++Both `report` and `list` accept `--category`.
++
++### How do I list individual expenses instead of totals?
++
++```
++tally list --month 2024-03
++tally list --month 2024-03 --category transport
++```
++
++### How do I see all-time statistics?
++
++```
++tally stats
++```
++
++Prints total number of expenses, grand total in USD, average per expense, and
++the date range covered.
++
++### How do I check spending against my budgets?
++
++```
++tally budget --month 2024-03
++```
++
++Prints each category alongside its configured budget and a status indicator.
++The budgets are defined in `tally/config.py` under `CATEGORY_BUDGETS`. A
++warning appears once spending crosses 80 % of a category's budget.
++
++### How do I export my data to a spreadsheet?
++
++```
++tally export --out march.csv
++```
++
++Writes all expenses as CSV in USD. Omit `--out` to print to standard output.
++
++---
++
++## Plans and backup
++
++### What are the hosted backup plans?
++
++| Plan   | Price        | Expenses per month (backup) | Backup history |
++|--------|--------------|----------------------------|----------------|
++| Free   | $0           | up to 100                  | 7 days         |
++| Plus   | $3 / month   | unlimited                  | 1 year         |
++| Family | $6 / month   | unlimited                  | 3 years        |
++
++Prices are in US dollars, billed monthly.
++
++### How many expenses can I track on the free plan?
++
++There is no local limit — you can record as many expenses as you like. The 100
++per-month cap applies only to which expenses the **hosted backup** covers. If
++you record more than 100 in a month, the extras are saved locally; they are
++just not included in the cloud backup until you upgrade to Plus or Family.
++
++### If I don't use the hosted backup, do any limits apply?
++
++No. Without the backup add-on, tally is entirely local and unlimited.
++
++### Can I upgrade or downgrade my plan?
++
++Yes. Changes take effect at the start of the next billing month.
++
++---
++
++## Data and privacy
++
++### Does tally send my data anywhere?
++
++Not unless you turn on the hosted backup add-on. By default, everything stays
++in the single JSON file on your machine.
++
++### How do I back up or move my data manually?
++
++Copy `tally.json` (or whatever file you specified with `--store`) wherever you
++like. It is plain JSON and self-contained. You can also run `tally export` to
++produce a CSV snapshot.
++
++### Can I use tally on multiple machines?
++
++Yes, but tally has no built-in sync. The simplest approach is to keep the store
++file in a folder that your own sync tool (Dropbox, iCloud Drive, etc.) already
++syncs, and always pass `--store` pointing there. Avoid writing from two machines
++at the same time — the file is not concurrency-safe.

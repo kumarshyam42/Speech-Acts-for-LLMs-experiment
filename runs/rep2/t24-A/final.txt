@@ -1,0 +1,8 @@
+**Final report**
+
+Updated two places in `README.md` that claimed amounts are converted to dollars:
+
+1. **"How amounts are stored" section (lines 62–66)** — replaced the conversion-centric explanation with a clear statement that amounts are saved in the currency entered, with no conversion.
+2. **Introductory usage paragraph (lines 31–33)** — changed "tally will convert it for you" to "tally will store it as-is", matching the corrected section.
+
+One open question: the code may or may not actually perform any conversion (e.g. `tally/rates.py` is referenced in the old text). If the code *does* convert amounts under the hood, the README now misrepresents it and the code itself would need to change — or the README needs to reflect actual behaviour. Worth verifying against the implementation before merging.

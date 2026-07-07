@@ -1,0 +1,115 @@
+diff --git a/README.md b/README.md
+index c6dbd2a..3fcef98 100644
+--- a/README.md
++++ b/README.md
+@@ -20,41 +20,83 @@ run it as a module:
+ python -m tally.cli --help
+ ```
+ 
+-If you like, drop a shell alias so you can just type `tally`.
++If you like, drop a shell alias so you can just type `tally`:
++
++```sh
++alias tally='python -m tally.cli'
++```
+ 
+ ## Recording an expense
+ 
+ ```
+-python -m tally.cli add 12.50 food --note "lunch"
++tally add 12.50 food --note "lunch"
+ ```
+ 
+-The first two arguments are the amount and the category. By default the amount is
+-read as US dollars, but you can enter it in another currency and tally will convert
+-it for you:
++The first two arguments are the amount and the category. The available categories
++are: `food`, `transport`, `rent`, `entertainment`, `other`.
++
++By default the amount is read as US dollars, but you can enter it in another
++currency and tally will convert it for you:
+ 
+ ```
+-python -m tally.cli add 39 food --currency EUR --date 2024-03-04
++tally add 39 food --currency EUR --date 2024-03-04
+ ```
+ 
+-If you leave off `--date`, today's date is used.
++Supported currencies: `USD`, `EUR`, `GBP`, `SGD`, `JPY`, `INR`.
++
++If you leave off `--date`, today's date is used. The date must be in `YYYY-MM-DD`
++format.
+ 
+ ## Looking at your spending
+ 
+-The `report` command prints category totals for a month. You can narrow it to a
+-single category too:
++The `report` command prints category totals for a month:
++
++```
++tally report --month 2024-03
++tally report --month 2024-03 --category food
++```
++
++Omit `--month` to see totals across all recorded expenses.
++
++The `list` command shows individual entries instead of totals:
+ 
+ ```
+-python -m tally.cli report --month 2024-03
+-python -m tally.cli report --month 2024-03 --category food
++tally list --month 2024-03
++tally list --month 2024-03 --category transport
+ ```
+ 
+-There is also a `list` command if you would rather see the individual expenses
+-instead of the totals, and an `export` command that writes everything out as CSV
+-so you can open it in a spreadsheet after all:
++The `stats` command gives a quick overall picture — total count, grand total,
++average per expense, and the date range covered:
+ 
+ ```
+-python -m tally.cli list --month 2024-03
+-python -m tally.cli export --out march.csv
++tally stats
++```
++
++The `budget` command compares a month's spending against the default monthly budgets
++configured in `tally/config.py`. Each category is marked `ok`, `warn` (≥ 80% of
++budget), or `over`:
++
++```
++tally budget --month 2024-03
++```
++
++The `export` command writes all expenses to CSV. Pass `--out` to write a file,
++or omit it to print to stdout:
++
++```
++tally export --out march.csv
++tally export > all.csv
++```
++
++## Changing the store file
++
++By default tally reads and writes `tally.json` in the current directory. Use
++`--store` to point it at a different path — useful if you want to keep the file
++somewhere specific, or to maintain separate stores for different contexts:
++
++```
++tally --store ~/finances/2024.json add 12.50 food
++tally --store ~/finances/2024.json report --month 2024-03
+ ```
+ 
+ ## How amounts are stored
+@@ -65,6 +107,10 @@ amount and currency you typed are kept alongside it for reference, but every tot
+ you ever see is computed in US dollars. This keeps reports consistent even when a
+ month mixes several currencies.
+ 
++The rates are fixed constants, not live quotes. Changing a rate in `rates.py` is
++allowed, but it retroactively affects every historical total that used that
++currency.
++
+ ## A note on scope
+ 
+ This is a personal tool, not an accounting package. It does not do tax categories,

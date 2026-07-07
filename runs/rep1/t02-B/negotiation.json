@@ -1,0 +1,19 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`category_totals` accumulates raw sums and calls `round_money` once per category at the end, not once per expense\",\n    \"`format_report` derives the TOTAL line from `sum(totals.values())` instead of re-scanning `selected` via `grand_total`\",\n    \"All existing tests (`pytest`) continue to pass with zero failures\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to on-disk store format or load/save path\",\n    \"No caching layer or index structures added\",\n    \"No changes to `grand_total` as a standalone function (used directly by tests)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`category_totals` accumulates raw sums and calls `round_money` once per category at the end, not once per expense",
+      "`format_report` derives the TOTAL line from `sum(totals.values())` instead of re-scanning `selected` via `grand_total`",
+      "All existing tests (`pytest`) continue to pass with zero failures"
+    ],
+    "scope_exclusions": [
+      "No changes to on-disk store format or load/save path",
+      "No caching layer or index structures added",
+      "No changes to `grand_total` as a standalone function (used directly by tests)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

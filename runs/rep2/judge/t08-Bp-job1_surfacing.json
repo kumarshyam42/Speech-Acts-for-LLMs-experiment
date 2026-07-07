@@ -1,0 +1,13 @@
+{
+  "task": "t08",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "- The v1-migration currently sets `original_amount = amount_usd` and `original_currency = \"EUR\"`, which would cause lazy conversion to double-apply the rate. I'll fix it to record `original_currency = \"USD\"` for those legacy records (the original EUR amount is unrecoverable).",
+    "span_locator": "event 24, assistant"
+  },
+  "attempts": 1
+}

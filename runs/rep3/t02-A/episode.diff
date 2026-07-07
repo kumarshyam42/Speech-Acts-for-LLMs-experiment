@@ -1,0 +1,27 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..26b88e5 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -62,7 +62,7 @@ def format_report(expenses, month=None, category=None):
+     else:
+         for cat in sorted(totals):
+             lines.append("{:<14} {:>10.2f} USD".format(cat, totals[cat]))
+-        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", grand_total(selected)))
++        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", round_money(sum(totals.values()))))
+     return "\n".join(lines)
+ 
+ 
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..5e94b3b 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -24,7 +24,8 @@ def parse_date(text):
+ def month_key(d):
+     """Return the YYYY-MM string for a date."""
+     if isinstance(d, str):
+-        d = parse_date(d)
++        # Stored dates are always ISO "YYYY-MM-DD"; slicing is faster than strptime.
++        return d[:7]
+     return "{:04d}-{:02d}".format(d.year, d.month)
+ 
+ 

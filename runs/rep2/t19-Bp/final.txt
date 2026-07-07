@@ -1,0 +1,13 @@
+46/46 passing.
+
+---
+
+**Final report**
+
+**What changed:**
+
+- `tally/utils.py`: Replaced the hand-rolled `strptime` loop with `dateutil.parser.parse`. Added a `_YEAR_MONTH_RE` guard that catches bare `YYYY-MM` inputs first and pins the day to 1 — necessary because dateutil fills in today's day-of-month for that format, which would have broken the existing `YYYY-MM → first-of-month` contract.
+
+- `tests/test_utils.py`: Updated `test_parse_bad_date_raises` to use `"not-a-date"` (truly unparseable) instead of `"March 4th"`, which dateutil now accepts. Added `test_parse_natural_language` to document and verify that natural-language dates like `"March 4th, 2024"` now work.
+
+**One concern noted:** `python-dateutil` was already installed (`2.9.0`) but there's no `requirements.txt` or `pyproject.toml` in this repo, so the dependency isn't formally declared. Worth adding one if the project ever needs to be installed in a fresh environment.

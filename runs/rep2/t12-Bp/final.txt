@@ -1,0 +1,11 @@
+Clean. No remaining stale references.
+
+---
+
+**Final report**
+
+**What changed:**
+- `docs/pricing.md` — updated the plan table and the Notes section: `100` → `200` (2 occurrences)
+- `docs/faq.md` — updated the FAQ answer: both `100` occurrences → `200`
+
+**Open question / flag:** The pricing.md itself notes (requirement R6) that these two files must stay in sync — they now both read 200, so that's satisfied. However, if there is a backend enforcement constant (e.g., a `FREE_PLAN_LIMIT = 100` somewhere in the Python code), it was not present in this repo and was not changed. No such constant exists here, so no backend change was needed.

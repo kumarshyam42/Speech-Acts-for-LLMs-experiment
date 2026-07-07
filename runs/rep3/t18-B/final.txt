@@ -1,0 +1,43 @@
+The output looks clean and correct. The TOTAL row aligns with the amount column consistently.
+
+---
+
+## Completion Report
+
+**Changes made:**
+
+- `tally/report.py`: Updated the `else` branch of `format_report` to compute per-category expense counts and percentages of the grand total. Category rows now render as `{cat} ({count})  {amount:.2f} USD  {pct:.1f}%`. The TOTAL row uses the same 20-char label column to stay aligned.
+- `tests/test_report.py`: Added `test_format_report_category_row_has_count_and_percentage` which asserts `"food (2)"` and `"%"` appear in the March report.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "Each category row in `format_report` output includes the count of expenses in that category (e.g., 'food (2)  100.00 USD  16.7%')",
+      "status": "met",
+      "evidence": "format_report now renders 'food (2)                  92.12 USD   53.3%' for March — verified by running the reporter against the sample fixture and inspecting stdout"
+    },
+    {
+      "cos": "Each category row in `format_report` output includes that category's percentage of the grand total",
+      "status": "met",
+      "evidence": "pct = totals[cat] / total_usd * 100 is computed and formatted as {:5.1f}% on every category line; verified in the printed sample output"
+    },
+    {
+      "cos": "The TOTAL row is updated to remain visually consistent with the new column layout",
+      "status": "met",
+      "evidence": "TOTAL row uses the same 20-char label field width as category rows, so the amount column aligns; verified in printed output"
+    },
+    {
+      "cos": "All existing tests in `tests/test_report.py` pass without modification",
+      "status": "met",
+      "evidence": "pytest reported 14 pre-existing tests all PASSED (15 total with the new one); no existing test was changed"
+    },
+    {
+      "cos": "At least one new test asserts that a category row contains both a count and a percentage value",
+      "status": "met",
+      "evidence": "`test_format_report_category_row_has_count_and_percentage` asserts 'food (2)' in text and '%' in text; PASSED in the suite run"
+    }
+  ],
+  "assessment": "All five conditions of satisfaction are met. No scope exclusions were violated: `category_totals` signature/return type is unchanged, no budget columns were added, and `format_expense_list`, `to_csv`, and other report functions are untouched."
+}
+```

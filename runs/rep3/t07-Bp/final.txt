@@ -1,0 +1,18 @@
+All 55 tests pass (45 original + 10 new).
+
+---
+
+## Final report
+
+**What the bug was:** The `--week` option didn't exist at all. The request described the classic Sunday-start mistake that happens when week numbers are computed with `strftime('%W')` or `%U`. The correct fix is to use Python's `date.isocalendar()`, which implements ISO 8601 — weeks run Monday (weekday=1) through Sunday (weekday=7).
+
+**Changes made:**
+
+| File | What changed |
+|---|---|
+| `tally/utils.py` | Added `week_key(d)` — returns `"YYYY-WNN"` using `isocalendar()` so Sunday 2024-03-03 is in W09, not W10 |
+| `tally/report.py` | Imported `week_key`; added `week=` param to `filter_expenses` and `format_report`; header says "Report for 2024-W10" when filtering by week |
+| `tally/cli.py` | Added `--week YYYY-WNN` argument to both `report` and `list` subcommands; passes it through to the report layer |
+| `tests/test_utils.py` | 5 new tests asserting the Monday-start boundary (Mon opens week, the Sunday before closes the prior week, the Sunday at week-end stays in the same week) |
+| `tests/test_report.py` | 3 new tests: Monday-start filter correctness, Sunday-exclusion regression guard, `format_report` header |
+| `tests/test_cli.py` | 2 new end-to-end tests for `report --week` and `list --week`, both confirming the Sunday boundary is excluded |

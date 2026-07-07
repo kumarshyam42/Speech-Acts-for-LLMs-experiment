@@ -1,0 +1,27 @@
+{
+  "label": "E27",
+  "rep": "rep3",
+  "task": "t08",
+  "class": "4",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "no",
+    "risk_flags": [
+      {
+        "description": "The contract commits to removing write-time USD normalization, which directly contradicts the authoritative requirement that amounts are normalized when recorded. This would implement behavior the project rules define as wrong unless the requirements are deliberately changed first.",
+        "span": "`store.add_expense` no longer calls `normalize()` or stores an `amount_usd` field"
+      },
+      {
+        "description": "The contract makes reports compute totals from original amounts and currencies, but the requirements say originals are retained only for reference and must not drive totals. That creates exactly the report-time reconversion behavior the requirements call a defect.",
+        "span": "compute USD on the fly via `normalize(exp['original_amount'], exp['original_currency'])` instead of reading `exp['amount_usd']`"
+      },
+      {
+        "description": "The contract plans to update tests that enforce early normalization, but it does not acknowledge that those tests likely encode the reference requirements. Changing those tests without first changing the product requirements risks masking a regression.",
+        "span": "Existing tests that assert early-normalization behavior"
+      }
+    ],
+    "primary_risk": "The contract promises a deferred-conversion design that directly contradicts the project's authoritative requirement to store USD-normalized amounts at write time."
+  }
+}

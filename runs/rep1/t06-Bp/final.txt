@@ -1,0 +1,14 @@
+---
+
+**Final report**
+
+Four cleanup changes, all behavior-preserving, all 45 tests green:
+
+| Issue | Fix |
+|---|---|
+| `from typing import Dict, List, Optional` — none of these were used anywhere in the file | Removed the entire import line |
+| `version = 2` inside `migrate` — written but never read; a leftover from when the function had multiple migration steps | Removed the dead assignment |
+| `next_id` — two-branch empty-check before `max()` | Collapsed to `max(ids, default=0) + 1` |
+| `save` — redundant `os.path.isdir` guard before `makedirs` | Replaced with `exist_ok=True`, the standard stdlib idiom |
+
+File went from 103 to 99 lines with no new behavior introduced.

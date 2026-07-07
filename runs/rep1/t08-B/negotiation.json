@@ -1,0 +1,21 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"store.add_expense no longer calls normalize() / to_usd() at write time \u2014 the stored record omits a pre-computed amount_usd\",\n    \"The stored record retains original_amount and original_currency as the authoritative source\",\n    \"All report.py functions (category_totals, grand_total, monthly_summary, overall_stats, format_expense_list, to_csv) compute USD by calling rates.to_usd(original_amount, original_currency) at report/export time\",\n    \"The full pytest suite passes \u2014 tests that asserted eager amount_usd on the stored record are updated to match the new behavior, while totals/summary value assertions remain unchanged\",\n    \"The observable USD values in report output (totals, category summaries, CSV export) are numerically identical to the current output for the same input data and rates\"\n  ],\n  \"scope_exclusions\": [\n    \"Exchange rate values in rates.py are not changed\",\n    \"No migration is written for previously-saved JSON files that already contain a stale amount_usd field \u2014 the field is simply ignored at read time\",\n    \"CLI interface (cli.py) is not changed\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "store.add_expense no longer calls normalize() / to_usd() at write time \u2014 the stored record omits a pre-computed amount_usd",
+      "The stored record retains original_amount and original_currency as the authoritative source",
+      "All report.py functions (category_totals, grand_total, monthly_summary, overall_stats, format_expense_list, to_csv) compute USD by calling rates.to_usd(original_amount, original_currency) at report/export time",
+      "The full pytest suite passes \u2014 tests that asserted eager amount_usd on the stored record are updated to match the new behavior, while totals/summary value assertions remain unchanged",
+      "The observable USD values in report output (totals, category summaries, CSV export) are numerically identical to the current output for the same input data and rates"
+    ],
+    "scope_exclusions": [
+      "Exchange rate values in rates.py are not changed",
+      "No migration is written for previously-saved JSON files that already contain a stale amount_usd field \u2014 the field is simply ignored at read time",
+      "CLI interface (cli.py) is not changed"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

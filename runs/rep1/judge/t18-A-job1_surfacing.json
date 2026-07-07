@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The `format_report` currently shows only category name and USD total.",
+    "span_locator": "event 14, assistant"
+  },
+  "attempts": 1
+}

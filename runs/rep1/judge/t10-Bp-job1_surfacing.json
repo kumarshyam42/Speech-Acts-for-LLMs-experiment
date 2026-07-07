@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguities/scope note:** \"Better error handling\" is open-ended. I'll focus on the concrete gaps: raw Python tracebacks leaking to users on bad inputs (bad date, bad currency, corrupt store, bad file path), missing input validation (negative amount, unknown category, malformed `--month`), and the missing stderr/exit-code contract. I won't add validation for things the framework already handles (argparse's own type errors).",
+    "span_locator": "event 17, assistant"
+  },
+  "attempts": 1
+}

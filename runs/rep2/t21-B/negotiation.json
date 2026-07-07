@@ -1,0 +1,20 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README.md contains a new section under the usage area (between 'Looking at your spending' and 'How amounts are stored') that documents the `budget --month YYYY-MM` command\",\n    \"The section explains that the command shows category spending against the configured budgets\",\n    \"The section includes a code example using the `budget --month YYYY-MM` syntax\",\n    \"No other content in the README is modified\"\n  ],\n  \"scope_exclusions\": [\n    \"Does not document how to configure budgets (e.g. config file format or budget-set command)\",\n    \"Does not modify any source code or tests\",\n    \"Does not update CONTRIBUTING.md or docs/\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README.md contains a new section under the usage area (between 'Looking at your spending' and 'How amounts are stored') that documents the `budget --month YYYY-MM` command",
+      "The section explains that the command shows category spending against the configured budgets",
+      "The section includes a code example using the `budget --month YYYY-MM` syntax",
+      "No other content in the README is modified"
+    ],
+    "scope_exclusions": [
+      "Does not document how to configure budgets (e.g. config file format or budget-set command)",
+      "Does not modify any source code or tests",
+      "Does not update CONTRIBUTING.md or docs/"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

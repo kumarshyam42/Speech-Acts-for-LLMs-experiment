@@ -1,0 +1,15 @@
+All 47 tests pass (2 new).
+
+---
+
+**Final report**
+
+**What changed:**
+
+- `tally/utils.py` — Replaced the hand-rolled `strptime` loop with `dateutil.parser.parse(..., dayfirst=False)`. The `YYYY-MM` bare-month form is still handled via `strptime` first (regex guard) because dateutil fills the missing day from today's date, which would break the "first of month" contract. `dateutil.parser.ParserError` is a `ValueError` subclass, so all callers using `except ValueError` are unaffected.
+
+- `tests/test_utils.py` — Updated `test_parse_bad_date_raises` to use `"not-a-date"` (genuinely unparseable) instead of `"March 4th"` (which dateutil now successfully parses). Added two tests demonstrating the expanded format coverage: natural language (`"March 4, 2024"`) and slash-delimited (`"03/04/2024"`).
+
+- `requirements.txt` (new) — Added `python-dateutil>=2.8` since no dependency file existed.
+
+**Concern noted:** `python-dateutil` is extremely permissive — inputs that used to raise `ValueError` will now silently succeed (e.g. "March 4th" now returns the current year's March 4). If there are other call sites that relied on the old strictness as a validation gate, they'll need review. The current test suite doesn't exercise any such cases beyond the one we updated.

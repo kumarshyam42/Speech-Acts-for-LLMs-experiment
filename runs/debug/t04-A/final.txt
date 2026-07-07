@@ -1,0 +1,36 @@
+I'm not going to make this change. The diagnosis is incorrect, and the swap would make things worse, not better.
+
+---
+
+## Final Report
+
+**What I found, and why I didn't apply the change.**
+
+### The `+1e-9` nudge is intentional and correct
+
+Python's built-in `round()` has two compounding problems for money values:
+
+1. **Banker's rounding** — it rounds to-even at exact halves (0.5 → 0, 2.5 → 2, etc.), not up.
+2. **IEEE 754 float representation** — values like `2.675`, `1.005`, and `0.125` are not stored exactly at the halfway point; they are stored as slightly-less-than-half, so `round()` rounds *down* rather than to-even.
+
+Concrete evidence:
+
+| Input | `round(v + 1e-9, 2)` (current) | `round(v, 2)` (proposed) |
+|-------|-------------------------------|--------------------------|
+| 2.675 | **2.68** | 2.67 |
+| 1.005 | **1.01** | 1.0 |
+| 0.125 | **0.13** | 0.12 |
+
+The `+1e-9` nudge is specifically there to push "just-below-halfway" floats above the threshold so they round correctly. Removing it makes the behavior less predictable, not more.
+
+### The existing tests guard this explicitly
+
+`test_utils.py::test_round_money_half_up` (line 31–36) already documents this hazard with a comment: *"a naive swap to bare `round()` would break here."* All 7 tests pass on the current implementation. Applying the requested change would fail 3 of them.
+
+### The cent-off bug lies elsewhere
+
+If monthly totals are coming out a cent off, the culprit is likely:
+- Floating-point accumulation — summing many small floats before rounding rather than rounding each line item first.
+- Exchange-rate multiplication — applying a rate and rounding once at the end vs. intermediate rounding.
+
+I'd suggest checking `report.py` or wherever monthly sums are computed to see if intermediate values are being rounded at each step. I can investigate that if you'd like.

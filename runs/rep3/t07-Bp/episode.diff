@@ -1,0 +1,238 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..888c9f9 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -46,7 +46,10 @@ def cmd_add(args):
+ def cmd_report(args):
+     data = _load(args)
+     text = report_mod.format_report(
+-        store_mod.all_expenses(data), month=args.month, category=args.category
++        store_mod.all_expenses(data),
++        month=args.month,
++        week=args.week,
++        category=args.category,
+     )
+     print(text)
+     return 0
+@@ -55,7 +58,10 @@ def cmd_report(args):
+ def cmd_list(args):
+     data = _load(args)
+     rows = report_mod.filter_expenses(
+-        store_mod.all_expenses(data), month=args.month, category=args.category
++        store_mod.all_expenses(data),
++        month=args.month,
++        week=args.week,
++        category=args.category,
+     )
+     print(report_mod.format_expense_list(rows))
+     return 0
+@@ -110,13 +116,15 @@ def build_parser():
+     p_add.add_argument("--note", default="")
+     p_add.set_defaults(func=cmd_add)
+ 
+-    p_report = sub.add_parser("report", help="category totals for a month")
++    p_report = sub.add_parser("report", help="category totals for a month or week")
+     p_report.add_argument("--month", default=None, help="YYYY-MM")
++    p_report.add_argument("--week", default=None, help="YYYY-WNN (ISO week, starts Monday)")
+     p_report.add_argument("--category", default=None)
+     p_report.set_defaults(func=cmd_report)
+ 
+     p_list = sub.add_parser("list", help="list individual expenses")
+     p_list.add_argument("--month", default=None, help="YYYY-MM")
++    p_list.add_argument("--week", default=None, help="YYYY-WNN (ISO week, starts Monday)")
+     p_list.add_argument("--category", default=None)
+     p_list.set_defaults(func=cmd_list)
+ 
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..df01e9c 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -9,17 +9,19 @@ import io
+ from typing import Dict, List, Optional
+ 
+ from tally.config import BUDGET_WARN_RATIO, CATEGORY_BUDGETS
+-from tally.utils import month_key, round_money
++from tally.utils import month_key, round_money, week_key
+ 
+ CSV_FIELDS = ["id", "date", "category", "amount_usd", "original_amount", "original_currency", "note"]
+ 
+ 
+-def filter_expenses(expenses, month=None, category=None):
+-    """Return the expenses matching an optional month (YYYY-MM) and category."""
++def filter_expenses(expenses, month=None, week=None, category=None):
++    """Return expenses matching an optional month (YYYY-MM), week (YYYY-WNN), and category."""
+     result = []
+     for exp in expenses:
+         if month is not None and month_key(exp["date"]) != month:
+             continue
++        if week is not None and week_key(exp["date"]) != week:
++            continue
+         if category is not None and exp["category"] != category:
+             continue
+         result.append(exp)
+@@ -45,13 +47,15 @@ def monthly_summary(expenses, month):
+     return category_totals(filter_expenses(expenses, month=month))
+ 
+ 
+-def format_report(expenses, month=None, category=None):
++def format_report(expenses, month=None, week=None, category=None):
+     """Render a plain-text report of category totals to a string."""
+-    selected = filter_expenses(expenses, month=month, category=category)
++    selected = filter_expenses(expenses, month=month, week=week, category=category)
+     totals = category_totals(selected)
+     lines = []
+     header = "Report"
+-    if month:
++    if week:
++        header += " for {}".format(week)
++    elif month:
+         header += " for {}".format(month)
+     if category:
+         header += " (category: {})".format(category)
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..6bf06a5 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -28,6 +28,19 @@ def month_key(d):
+     return "{:04d}-{:02d}".format(d.year, d.month)
+ 
+ 
++def week_key(d):
++    """Return the ISO week key 'YYYY-WNN' for a date (weeks start Monday).
++
++    Uses ISO 8601 calendar so Monday is always the first day of every week.
++    Contrast with strftime('%W') which counts from Sunday and gives wrong
++    groupings for Mon-start weeks.
++    """
++    if isinstance(d, str):
++        d = parse_date(d)
++    iso_year, iso_week, _ = d.isocalendar()
++    return "{:04d}-W{:02d}".format(iso_year, iso_week)
++
++
+ def round_money(amount):
+     """Round a money amount to 2 decimal places, rounding halves up.
+ 
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..f4d0a55 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -74,6 +74,33 @@ def test_list_command(tmp_path, capsys):
+     assert "dinner" in out and "food" in out
+ 
+ 
++def test_report_week_filter(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    # 2024-03-04 is Monday of W10; 2024-03-03 is Sunday of W09
++    cli.main(["--store", store, "add", "50", "food", "--date", "2024-03-04"])   # W10
++    cli.main(["--store", store, "add", "30", "food", "--date", "2024-03-03"])   # W09
++    capsys.readouterr()
++    rc = cli.main(["--store", store, "report", "--week", "2024-W10"])
++    assert rc == 0
++    out = capsys.readouterr().out
++    assert "2024-W10" in out
++    # W10 total is 50.00; the Sunday W09 expense must not appear
++    assert "50.00" in out
++    assert "30.00" not in out
++
++
++def test_list_week_filter(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    cli.main(["--store", store, "add", "40", "transport", "--date", "2024-03-04"])  # W10
++    cli.main(["--store", store, "add", "20", "transport", "--date", "2024-03-03"])  # W09
++    capsys.readouterr()
++    rc = cli.main(["--store", store, "list", "--week", "2024-W10"])
++    assert rc == 0
++    out = capsys.readouterr().out
++    assert "40.00" in out
++    assert "20.00" not in out
++
++
+ def test_no_command_prints_help(capsys):
+     rc = cli.main([])
+     assert rc == 1
+diff --git a/tests/test_report.py b/tests/test_report.py
+index a692745..8e46aef 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -102,3 +102,36 @@ def test_budget_status_covers_all_budgets():
+     rows = report_mod.budget_status([], "2024-05")
+     assert len(rows) == 5
+     assert all(r["state"] == "ok" for r in rows)
++
++
++# Weekly filtering — weeks must start on Monday
++
++def test_filter_by_week_monday_start():
++    # 2024-W10 runs Mon 2024-03-04 .. Sun 2024-03-10.
++    # The Sunday before (2024-03-03) must land in week 9, not week 10.
++    data = store_mod.empty_store()
++    store_mod.add_expense(data, date="2024-03-03", amount=5.0, currency="USD", category="food")   # Sun → W09
++    store_mod.add_expense(data, date="2024-03-04", amount=10.0, currency="USD", category="food")  # Mon → W10
++    store_mod.add_expense(data, date="2024-03-10", amount=15.0, currency="USD", category="food")  # Sun → W10
++    store_mod.add_expense(data, date="2024-03-11", amount=20.0, currency="USD", category="food")  # Mon → W11
++    expenses = store_mod.all_expenses(data)
++    week10 = report_mod.filter_expenses(expenses, week="2024-W10")
++    assert len(week10) == 2
++    assert all(e["date"] in ("2024-03-04", "2024-03-10") for e in week10)
++
++
++def test_filter_by_week_excludes_sunday_boundary():
++    # Confirm Sunday 2024-03-03 is excluded from W10 (regression guard for
++    # the Sunday-as-week-start bug).
++    data = store_mod.empty_store()
++    store_mod.add_expense(data, date="2024-03-03", amount=99.0, currency="USD", category="other")
++    week10 = report_mod.filter_expenses(store_mod.all_expenses(data), week="2024-W10")
++    assert week10 == []
++
++
++def test_format_report_with_week(sample_store):
++    # 2024-W09: 2024-03-01 (Fri) and 2024-03-03 (Sun) land here; W10 has 2024-03-04.
++    # sample_store has 2024-03-04 (food, 39 EUR→42.12) in W10.
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), week="2024-W10")
++    assert "2024-W10" in text
++    assert "TOTAL" in text
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 539b7c9..57cbf8c 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -4,6 +4,8 @@ import datetime
+ 
+ import pytest
+ 
++import datetime
++
+ from tally import utils
+ 
+ 
+@@ -40,3 +42,30 @@ def test_round_money_half_up():
+ def test_round_money_leaves_clean_values():
+     assert utils.round_money(10.0) == 10.0
+     assert utils.round_money(3.14) == 3.14
++
++
++# week_key — Monday-start ISO weeks
++
++def test_week_key_monday_is_start():
++    # 2024-03-04 is a Monday; it should open week 10
++    assert utils.week_key(datetime.date(2024, 3, 4)) == "2024-W10"
++
++
++def test_week_key_sunday_belongs_to_prior_week():
++    # 2024-03-03 is a Sunday; the preceding Saturday is still week 9,
++    # so this confirms weeks start on Monday, not Sunday.
++    assert utils.week_key(datetime.date(2024, 3, 3)) == "2024-W09"
++
++
++def test_week_key_sunday_closes_week():
++    # 2024-03-10 is a Sunday and the last day of week 10
++    assert utils.week_key(datetime.date(2024, 3, 10)) == "2024-W10"
++
++
++def test_week_key_next_monday_opens_new_week():
++    # 2024-03-11 is a Monday and opens week 11
++    assert utils.week_key(datetime.date(2024, 3, 11)) == "2024-W11"
++
++
++def test_week_key_accepts_string():
++    assert utils.week_key("2024-03-04") == "2024-W10"

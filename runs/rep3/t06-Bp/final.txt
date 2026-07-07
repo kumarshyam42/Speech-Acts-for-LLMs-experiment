@@ -1,0 +1,16 @@
+All 9 tests pass.
+
+---
+
+**Final report**
+
+Four focused, behavior-preserving cleanups to `tally/store.py`:
+
+| Issue | Fix |
+|---|---|
+| Unused `Dict`, `List`, `Optional` imports | Removed the `from typing import ...` line entirely |
+| Dead `version = 2` assignment in `migrate` | Removed — `data["schema_version"] = SCHEMA_VERSION` always ran unconditionally below it anyway |
+| `next_id` two-step list + conditional | Collapsed to `max(generator, default=0) + 1` — same result, one expression |
+| `save` guards `makedirs` with `os.path.isdir` | Replaced with `makedirs(..., exist_ok=True)` — the idiomatic stdlib pattern |
+
+The file went from 103 to 98 lines. No logic changed; all 9 store tests pass.

@@ -1,0 +1,66 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..5849b73 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -11,7 +11,7 @@ from typing import Dict, List, Optional
+ from tally.config import BUDGET_WARN_RATIO, CATEGORY_BUDGETS
+ from tally.utils import month_key, round_money
+ 
+-CSV_FIELDS = ["id", "date", "category", "amount_usd", "original_amount", "original_currency", "note"]
++CSV_FIELDS = ["id", "date", "category", "amount", "original_currency", "note"]
+ 
+ 
+ def filter_expenses(expenses, month=None, category=None):
+@@ -89,12 +89,13 @@ def format_expense_list(expenses):
+ 
+ 
+ def to_csv(expenses):
+-    """Serialize expenses to CSV text. The amount column is amount_usd."""
++    """Serialize expenses to CSV text. The amount column shows the original typed amount."""
+     buffer = io.StringIO()
+     writer = csv.DictWriter(buffer, fieldnames=CSV_FIELDS)
+     writer.writeheader()
+     for exp in expenses:
+         row = {field: exp.get(field, "") for field in CSV_FIELDS}
++        row["amount"] = exp.get("original_amount", "")
+         writer.writerow(row)
+     return buffer.getvalue()
+ 
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..8678875 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -51,7 +51,8 @@ def test_export_to_file(tmp_path, capsys):
+     assert rc == 0
+     with open(out_path) as fh:
+         content = fh.read()
+-    assert "amount_usd" in content.splitlines()[0]
++    assert "amount" in content.splitlines()[0]
++    assert "amount_usd" not in content.splitlines()[0]
+ 
+ 
+ def test_budget_command(tmp_path, capsys):
+diff --git a/tests/test_report.py b/tests/test_report.py
+index a692745..42f766d 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -73,12 +73,14 @@ def test_export_has_header(sample_store):
+     assert first_line.split(",") == report_mod.CSV_FIELDS
+ 
+ 
+-def test_export_amount_column_is_usd(sample_store):
+-    # The exported "amount_usd" column must carry the normalized USD amount,
+-    # not the original typed amount. Exporting original amounts breaks this.
++def test_export_amount_column_is_original(sample_store):
++    # The exported "amount" column must carry what the user originally typed,
++    # not the USD-normalised value. A EUR expense of 39.0 should read 39.0.
+     reader = csv.DictReader(io.StringIO(report_mod.to_csv(store_mod.all_expenses(sample_store))))
+-    total = sum(float(row["amount_usd"]) for row in reader)
+-    assert round(total, 2) == EXPECTED_GRAND_TOTAL
++    rows = list(reader)
++    eur_row = next(r for r in rows if r["original_currency"] == "EUR")
++    assert float(eur_row["amount"]) == 39.0
++    assert "amount_usd" not in rows[0]
+ 
+ 
+ def test_budget_status_states():

@@ -1,0 +1,13 @@
+{
+  "task": "t04",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "For all three values that the existing tests guard against, plain `round()` returns a **lower** value than the `+1e-9` approach \u2014 the opposite direction from what a person with a hand calculator would expect.",
+    "span_locator": "event 15, assistant"
+  },
+  "attempts": 1
+}

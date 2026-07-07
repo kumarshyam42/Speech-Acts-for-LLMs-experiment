@@ -1,0 +1,226 @@
+{
+  "run": "debug",
+  "verdicts": [
+    {
+      "task": "t03",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "There's no `exporters.py` in this repo. Let me check `report.py` which likely contains the CSV export logic.",
+        "span_locator": "event 7, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t03",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "No `exporters.py` exists yet. Let me check the report.py file, which is the most likely candidate for CSV export logic.",
+        "span_locator": "event 7, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t04",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "I'm not going to make this change. The diagnosis is incorrect, and the swap would make things worse, not better.",
+        "span_locator": "event 14, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t04",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The `+1e-9` is actually a classic \"round half up\" nudge to counteract Python's banker's rounding (round-half-to-even). Removing it means `round(2.5)` \u2192 `2` instead of `3`, which could cause the cent-off errors to get *worse* or shift to different values, not better.",
+        "span_locator": "event 0, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The README is missing the `stats` and `budget` subcommands, the `--store` flag, the list of supported currencies, and the categories.",
+        "span_locator": "event 16, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "A",
+      "job": "job2_localization",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have a full picture. The README is missing the `stats` and `budget` subcommands, the `--store` flag, the list of supported currencies, and the categories. Let me write an improved version.",
+        "reason": "The request left \"better\" undefined, but the agent never surfaced that ambiguity or negotiated a direction. It silently chose a documentation-completeness rewrite and executed it."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "Now I have a full picture. The README is missing the `stats` and `budget` subcommands, the `--store` flag, the list of supported currencies, and the categories. Let me write an improved version.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "\"Better\" is open-ended \u2014 I'll read the current README and the codebase, then improve for clarity, completeness, and accuracy.",
+        "span_locator": "event 0, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "Bp",
+      "job": "job2_localization",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "\"Better\" is open-ended \u2014 I'll read the current README and the codebase, then improve for clarity, completeness, and accuracy.",
+        "reason": "The agent recognized that the request was undefined but immediately chose its own direction instead of asking the user to agree on what kind of README improvement was wanted. The collaboration failed at forming an agreed direction before editing."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "No known audience specified \u2014 I'll write for a developer discovering this project for the first time.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "B",
+      "job": "job2_localization",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "localization": "a_never_surfaced",
+        "span": "Now I have a clear picture of what's missing. I'll update the README to add `stats`, `budget`, `--store`, the valid categories, and the `CATEGORY_BUDGETS` config reference \u2014 all in the existing prose voice.",
+        "reason": "The request was ambiguous, but the agent unilaterally decided what \u201cbetter\u201d meant and proceeded without surfacing options or asking for direction. No real agreement was formed about the README improvement shape before editing."
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t14",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "outcome": "fail",
+        "evidence": "Now I have a clear picture of what's missing. I'll update the README to add `stats`, `budget`, `--store`, the valid categories, and the `CATEGORY_BUDGETS` config reference \u2014 all in the existing prose voice.",
+        "gradient_level": "failure"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "A",
+      "job": "job1_surfacing",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": true,
+        "span": "The README currently documents `add`, `report`, `list`, and `export` but has no mention of `budget`.",
+        "span_locator": "event 5, assistant"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "A",
+      "job": "job3_outcome",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+The `budget` command shows how much you have spent in each category for a month\n+alongside the limits you have configured, so you can see at a glance where you\n+are over or under:\n+\n+```\n+python -m tally.cli budget --month 2024-03\n+```",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "Bp",
+      "job": "job1_surfacing",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "surfaced_before_execution": false,
+        "span": "",
+        "span_locator": ""
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "Bp",
+      "job": "job3_outcome",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+python -m tally.cli budget --month 2024-03\n+```\n+\n+The output lists each budgeted category with its actual spending and its configured\n+limit, both in US dollars, and marks whether you are within budget or have gone over.",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    },
+    {
+      "task": "t21",
+      "condition": "B",
+      "job": "job3_outcome",
+      "run": "debug",
+      "status": "ok",
+      "verdict": {
+        "outcome": "pass",
+        "evidence": "+The `budget` command shows how much you spent in each category for a given month\n+alongside the budget you have configured for that category:\n+\n+```\n+python -m tally.cli budget --month 2024-03\n+```",
+        "gradient_level": "acceptable"
+      },
+      "attempts": 1
+    }
+  ]
+}

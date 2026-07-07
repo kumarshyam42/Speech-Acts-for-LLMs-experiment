@@ -1,0 +1,39 @@
+All 47 tests pass, including the 2 new delete tests.
+
+---
+
+## Completion Report
+
+**Changes made:**
+
+- `tally/store.py`: Added `delete_expense(data, expense_id)` — iterates expenses, pops the matching record by ID, returns it (or `None` if not found).
+- `tally/cli.py`: Added `cmd_delete(args)` handler and registered `delete` subcommand with a positional integer `id` argument. Prints `deleted #<id>` on success; prints an error and returns exit code 1 on missing ID.
+- `tests/test_cli.py`: Added `test_delete_existing_expense` (verifies removal from store + "deleted" in output + rc=0) and `test_delete_nonexistent_expense` (verifies rc≠0 + error message).
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`tally/store.py` gains a `delete_expense(data, expense_id)` function that removes the expense with the given integer ID from `data['expenses']` in place and returns the deleted record, or returns `None` if no matching ID exists.",
+      "status": "met",
+      "evidence": "Function added at store.py:102-112; iterates expenses list, pops and returns the matching record or returns None. Confirmed by test suite passing."
+    },
+    {
+      "cos": "`tally/cli.py` gains a `delete` subcommand registered in `build_parser()` that accepts a positional integer `id`, calls `delete_expense`, saves the store on success (prints `deleted #<id>`), and prints an error message plus returns non-zero exit code when the ID is not found.",
+      "status": "met",
+      "evidence": "`cmd_delete` added at cli.py:27-36; `delete` subcommand registered in `build_parser()` with `type=int` positional `id`. Success path prints 'deleted #<id>' and returns 0; missing-ID path prints error and returns 1."
+    },
+    {
+      "cos": "At least one new test in `tests/test_cli.py` exercises `tally delete <id>`: one case verifying successful deletion (expense is removed from store, output contains 'deleted'), and one case verifying a non-existent ID returns a non-zero exit code.",
+      "status": "met",
+      "evidence": "`test_delete_existing_expense` checks store is empty after deletion and output contains 'deleted'. `test_delete_nonexistent_expense` checks rc != 0 and output contains error/no expense message. Both pass."
+    },
+    {
+      "cos": "The full existing test suite (`pytest`) passes with no regressions after the changes.",
+      "status": "met",
+      "evidence": "`python3 -m pytest -v` reports 47 passed, 0 failed, 0 errors."
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met. The implementation is minimal and follows the existing patterns in the codebase (same structure as cmd_add, same argparse registration style). No schema changes, no soft-delete, no confirmation prompt — exactly as scoped."
+}
+```

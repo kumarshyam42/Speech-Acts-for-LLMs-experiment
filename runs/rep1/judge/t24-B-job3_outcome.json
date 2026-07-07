@@ -1,0 +1,13 @@
+{
+  "task": "t24",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "+Whenever you add an expense, tally stores the amount in whatever currency you\n+entered. The currency is saved alongside the figure so that the record always\n+reflects exactly what you typed. Reports display amounts as entered, using the\n+currency you supplied.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

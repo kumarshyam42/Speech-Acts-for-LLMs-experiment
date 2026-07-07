@@ -1,0 +1,23 @@
+{
+  "label": "E11",
+  "rep": "rep2",
+  "task": "t08",
+  "class": "4",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract explicitly excludes migration changes, which could leave older or migrated expense records with the old pre-converted USD behavior. If reports read migrated data, this may fail the requester's goal that conversion happens when the report runs.",
+        "span": "The v1\u2192v2 migration logic in `store.migrate` is not changed"
+      },
+      {
+        "description": "Removing `normalize()` entirely may drop non-currency-conversion behavior such as validation or currency formatting, if that function does more than USD conversion. The contract should confirm that only immediate USD conversion is removed.",
+        "span": "`store.add_expense` no longer calls `normalize()` or `to_usd()` at write time"
+      }
+    ],
+    "primary_risk": "The migration exclusion may preserve old pre-converted USD data paths, so reports could still show wrong EUR expenses for migrated or existing records."
+  }
+}

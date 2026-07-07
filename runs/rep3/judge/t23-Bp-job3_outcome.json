@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "partial",
+    "evidence": "No CHANGELOG file exists yet \u2014 I'll need to create one.",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,15 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [
+    "The `to_csv` function in `tally/report.py` produces CSV rows with no trailing comma",
+    "The existing test suite (`pytest`) passes with zero failures after the change",
+    "Manual spot-check of exported CSV output confirms rows end after the final field value"
+  ],
+  "scope_exclusions": [
+    "No changes to any file other than `tally/report.py`",
+    "No changes to test files, CLI, or configuration"
+  ],
+  "concern": "There is no `exporters.py` in this repository. The only CSV export code lives in `tally/report.py` (the `to_csv` function, lines 91-99). I can investigate and fix the trailing-comma bug there instead."
+}
+```

@@ -1,0 +1,21 @@
+All 49 tests pass, including the 4 new ones.
+
+---
+
+**Final report**
+
+**What changed:** `format_report` in `tally/report.py` was enriched with three additional columns per category row:
+
+1. **Transaction count** — `2 items` / `1 item` (singular/plural), shown on every category row and on the TOTAL row.
+2. **Share of period total** — `XX.X%`, so you can see at a glance which categories dominate the spend.
+3. **Budget utilisation** — `budget: 600.00 (15.4% used)`, shown only when a month filter is active (since an unscoped total has no natural budget period). Categories with no defined budget silently omit this column.
+
+A private helper `_category_stats` was added to accumulate both totals and counts in one pass; the public `category_totals` function is untouched (callers like `monthly_summary` continue to work without change).
+
+**Tests added** (all green, 49/49):
+- `test_format_report_shows_item_count` — verifies "4 items" on TOTAL and "2 items" on the food row for March.
+- `test_format_report_shows_percentage` — verifies `%` appears in the output.
+- `test_format_report_shows_budget_when_month` — verifies `budget:` appears when a month is given.
+- `test_format_report_no_budget_without_month` — verifies `budget:` is absent when no month filter is applied.
+
+**Open question:** The CLI `budget` subcommand (`budget_status`) renders its own table separately from `format_report`. If the goal is a single unified view, those two could be merged — but that's a larger CLI change and wasn't in scope here.

@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "No CHANGELOG exists yet.",
+    "span_locator": "event 3, assistant"
+  },
+  "attempts": 1
+}

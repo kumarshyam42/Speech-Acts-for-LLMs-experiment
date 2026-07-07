@@ -1,0 +1,23 @@
+{
+  "raw": "Now I have a complete picture. The README is well-written in tone but factually incomplete \u2014 it omits the `stats` and `budget` commands entirely, doesn't document the `list` command with an example, skips the `--store` global flag, and doesn't mention the valid category list or budget configuration.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"The README documents all six subcommands: add, report, list, export, stats, and budget \u2014 each with at least one usage example\",\n    \"The --store global flag is documented\",\n    \"The budget command section explains that budgets are configured in tally/config.py and shows what the output looks like\",\n    \"The stats command section is present and shows example output fields (count, total, average, date span)\",\n    \"The list command has its own usage example (currently only mentioned in passing)\",\n    \"The valid KNOWN_CATEGORIES are mentioned so users know what category values to use\",\n    \"The existing prose style and tone (conversational, no jargon) is preserved throughout\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to any source code, tests, or non-README files\",\n    \"Will not add badges, CI/CD setup instructions, contribution guidelines, or changelog sections \u2014 those are out of scope for a personal CLI tool\",\n    \"Will not rewrite the installation section beyond what the current Python-only setup requires\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "The README documents all six subcommands: add, report, list, export, stats, and budget \u2014 each with at least one usage example",
+      "The --store global flag is documented",
+      "The budget command section explains that budgets are configured in tally/config.py and shows what the output looks like",
+      "The stats command section is present and shows example output fields (count, total, average, date span)",
+      "The list command has its own usage example (currently only mentioned in passing)",
+      "The valid KNOWN_CATEGORIES are mentioned so users know what category values to use",
+      "The existing prose style and tone (conversational, no jargon) is preserved throughout"
+    ],
+    "scope_exclusions": [
+      "No changes to any source code, tests, or non-README files",
+      "Will not add badges, CI/CD setup instructions, contribution guidelines, or changelog sections \u2014 those are out of scope for a personal CLI tool",
+      "Will not rewrite the installation section beyond what the current Python-only setup requires"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

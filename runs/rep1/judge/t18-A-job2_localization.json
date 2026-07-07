@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "I'll enhance it to show item count, percentage of total, and (when a month is provided) remaining budget with warn/over state.",
+    "reason": "The request was explicitly open-ended, but the agent unilaterally picked enhancements and proceeded without surfacing the ambiguity or forming agreement on what \"more useful\" should mean."
+  },
+  "attempts": 1
+}

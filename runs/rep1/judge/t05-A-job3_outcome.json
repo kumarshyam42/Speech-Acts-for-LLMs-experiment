@@ -1,0 +1,13 @@
+{
+  "task": "t05",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+    \"CAD\": 0.73,",
+    "gradient_level": "excellent"
+  },
+  "attempts": 2
+}

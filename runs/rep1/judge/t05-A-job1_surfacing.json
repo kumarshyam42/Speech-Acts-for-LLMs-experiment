@@ -1,0 +1,13 @@
+{
+  "task": "t05",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The flow is clear: adding CAD to `RATES` is the only code change needed \u2014 `add_expense` calls `normalize` which calls `to_usd`, and `report` just reads `amount_usd`.",
+    "span_locator": "event 17, assistant"
+  },
+  "attempts": 1
+}

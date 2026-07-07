@@ -1,0 +1,100 @@
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..9b5736b 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -46,9 +46,16 @@ def monthly_summary(expenses, month):
+ 
+ 
+ def format_report(expenses, month=None, category=None):
+-    """Render a plain-text report of category totals to a string."""
++    """Render a plain-text report of category totals to a string.
++
++    Each category row shows item count, USD total, and share of the period
++    total. When a month filter is active, budgeted categories also show the
++    remaining budget and a warn/OVER flag.
++    """
+     selected = filter_expenses(expenses, month=month, category=category)
+     totals = category_totals(selected)
++    total = grand_total(selected)
++
+     lines = []
+     header = "Report"
+     if month:
+@@ -57,12 +64,42 @@ def format_report(expenses, month=None, category=None):
+         header += " (category: {})".format(category)
+     lines.append(header)
+     lines.append("-" * len(header))
++
+     if not totals:
+         lines.append("(no expenses)")
+     else:
++        counts = {}
++        for exp in selected:
++            cat = exp["category"]
++            counts[cat] = counts.get(cat, 0) + 1
++
+         for cat in sorted(totals):
+-            lines.append("{:<14} {:>10.2f} USD".format(cat, totals[cat]))
+-        lines.append("{:<14} {:>10.2f} USD".format("TOTAL", grand_total(selected)))
++            amt = totals[cat]
++            n = counts.get(cat, 0)
++            pct = (amt / total * 100) if total else 0.0
++            item_label = "item " if n == 1 else "items"
++            line = "{:<14}  {:>2} {}  {:>10.2f} USD  {:>5.1f}%".format(
++                cat, n, item_label, amt, pct
++            )
++            if month and cat in CATEGORY_BUDGETS:
++                budget = CATEGORY_BUDGETS[cat]
++                remaining = round_money(budget - amt)
++                ratio = (amt / budget) if budget else 0.0
++                if amt > budget:
++                    flag = "  OVER"
++                elif ratio >= BUDGET_WARN_RATIO:
++                    flag = "  warn"
++                else:
++                    flag = ""
++                line += "  {:>10.2f} left{}".format(remaining, flag)
++            lines.append(line)
++
++        n_total = len(selected)
++        item_label = "item " if n_total == 1 else "items"
++        lines.append("{:<14}  {:>2} {}  {:>10.2f} USD".format(
++            "TOTAL", n_total, item_label, total
++        ))
++
+     return "\n".join(lines)
+ 
+ 
+diff --git a/tests/test_report.py b/tests/test_report.py
+index a692745..31d7353 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -52,6 +52,28 @@ def test_format_report_empty():
+     assert "(no expenses)" in text
+ 
+ 
++def test_format_report_shows_item_count(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    # food has 2 expenses in March; rent and entertainment each have 1
++    assert "2 items" in text
++    assert "1 item " in text  # trailing space distinguishes "item " from "items"
++
++
++def test_format_report_shows_percentage(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    assert "%" in text
++
++
++def test_format_report_shows_budget_remaining_when_month_given(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store), month="2024-03")
++    assert "left" in text
++
++
++def test_format_report_omits_budget_without_month(sample_store):
++    text = report_mod.format_report(store_mod.all_expenses(sample_store))
++    assert "left" not in text
++
++
+ def test_format_expense_list(sample_store):
+     text = report_mod.format_expense_list(store_mod.all_expenses(sample_store))
+     assert "groceries" in text

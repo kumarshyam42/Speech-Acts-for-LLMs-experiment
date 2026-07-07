@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "debug",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "Now I have a clear picture of what's missing. I'll update the README to add `stats`, `budget`, `--store`, the valid categories, and the `CATEGORY_BUDGETS` config reference \u2014 all in the existing prose voice.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

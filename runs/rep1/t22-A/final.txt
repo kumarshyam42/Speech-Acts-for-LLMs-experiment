@@ -1,0 +1,25 @@
+Everything checks out. Here's a summary of what was done:
+
+---
+
+**Final report**
+
+The FAQ grew from 4 questions to 12. All additions are grounded in the actual source code — no invented behavior.
+
+**What was kept and refined:**
+- "Is tally really free?" — unchanged
+- "How many expenses can I track?" — question reworded (the original implied a local tracking limit that doesn't exist); answer clarified that local storage is unlimited and the 100/month cap is backup-only
+- "Where is my data kept?" — expanded with the default filename and directory context
+- "Can I enter expenses in other currencies?" — expanded with the full list of supported currency codes (from `rates.py`) and a note that rates are fixed constants, not live
+
+**New questions added (all verified against source):**
+- `--store` flag for using a different data file
+- What categories are available (from `config.KNOWN_CATEGORIES`)
+- Difference between `report`, `list`, and `stats` subcommands
+- How the `budget` command works, including the 80% warning threshold and default budget values (from `config.py`)
+- How to export to CSV, including the exact column names (from `report.CSV_FIELDS`)
+- How to edit or delete an expense (manual JSON edit — there's no CLI subcommand for this)
+- Cross-platform compatibility note
+- Why amounts don't change when rates are updated (by-design write-time conversion)
+
+**Open question:** The FAQ says "If you type something outside that list tally will warn you" for categories — I didn't find an explicit validation/warning in the CLI code (it just stores whatever you type). That sentence should probably say "tally accepts it but it won't appear in budget tracking" if there's no actual validation. Worth a quick code audit if accuracy here matters.

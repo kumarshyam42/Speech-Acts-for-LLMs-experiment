@@ -1,0 +1,13 @@
+{
+  "task": "t16",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "c_wrong_cos",
+    "span": "`tally/report.py:14` \u2014 `CSV_FIELDS` now lists `\"amount\"` instead of `\"amount_usd\"`",
+    "reason": "The agent formed and kept a commitment to rename and repurpose the CSV amount column, but that was the wrong target because the USD-denominated export invariant should have been preserved. The failure originated in the chosen conditions of satisfaction, not in a later mechanical implementation error."
+  },
+  "attempts": 2
+}

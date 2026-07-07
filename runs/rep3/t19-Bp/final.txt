@@ -1,0 +1,13 @@
+All 46 tests pass (one more than before — the new natural-language test).
+
+---
+
+**Final report**
+
+**What changed:**
+
+- `tally/utils.py` — replaced the hand-rolled `strptime` loop with `dateutil.parser.parse`. The YYYY-MM case is still handled first via a single `strptime` call so bare months consistently land on day 1 (dateutil would otherwise fill the missing day from today). Any `ParserError`/`ValueError`/`OverflowError` from dateutil is re-raised as `ValueError` to keep the public contract unchanged.
+
+- `tests/test_utils.py` — updated `test_parse_bad_date_raises` to use `"not-a-date"` (genuinely unparseable) instead of `"March 4th"` (which dateutil now accepts). Added `test_parse_natural_language_date` to document and lock in the wider format support.
+
+**Open concern — no dependency file:** The project has no `requirements.txt` or `pyproject.toml`, so `python-dateutil` isn't formally declared as a dependency (though it's already installed). If a fresh environment is ever set up, `pip install python-dateutil` would need to be added to whatever dependency spec exists. Worth adding before this goes to CI.

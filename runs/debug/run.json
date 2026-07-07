@@ -1,0 +1,24 @@
+{
+  "run": "debug",
+  "tasks": [
+    "t03",
+    "t14",
+    "t21",
+    "t04"
+  ],
+  "conditions": [
+    "A",
+    "Bp",
+    "B"
+  ],
+  "model": "claude-sonnet-4-6",
+  "max_turns": 50,
+  "timeout_s": 900,
+  "fixture_sha": "e02cf35200d8eb26fe4459c166c79f6787a71fab",
+  "cli_version": "2.1.193 (Claude Code)",
+  "started": "2026-07-05T11:35:26.801045+08:00",
+  "resumed_at": [
+    "2026-07-05T11:39:41.408312+08:00",
+    "2026-07-05T16:26:56.867027+08:00"
+  ]
+}

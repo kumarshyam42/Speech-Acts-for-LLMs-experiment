@@ -1,0 +1,19 @@
+{
+  "label": "E25",
+  "rep": "rep2",
+  "task": "t05",
+  "class": "1",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The only explicit new test is for the rate conversion helper, not for the requested add/report behavior. That could leave the main user-facing paths untested even though the request specifically calls them out.",
+        "span": "tests/test_rates.py contains a test that pins the CAD rate (e.g. to_usd(100.0, 'CAD') == 73.0)"
+      }
+    ],
+    "primary_risk": "The contract may satisfy the CAD rate while failing to add test coverage for the requested add and report workflows."
+  }
+}

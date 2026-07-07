@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "Updated the free plan limit from 100 \u2192 200 in two files, as required by the repo's R6 consistency rule (both docs must always agree on the published limit):",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

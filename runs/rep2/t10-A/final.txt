@@ -1,0 +1,15 @@
+All 53 tests pass (8 new + 45 existing).
+
+---
+
+**Final report**
+
+**What changed:** `tally/cli.py` and `tests/test_cli.py`
+
+`cli.py` — four targeted additions:
+1. **Top-level handler in `main()`** — wraps `args.func(args)` in `try/except (ValueError, OSError)`, prints `error: <message>` to stderr and returns `1`. Catches bad dates, unknown currencies, corrupt JSON, and file I/O errors in one place.
+2. **Amount validation in `cmd_add`** — raises `ValueError` for `amount <= 0`.
+3. **Category validation in `cmd_add`** — raises `ValueError` if category isn't in `KNOWN_CATEGORIES` (which already exists in `config.py` but was never used by the CLI).
+4. **`_validate_month` helper** — validates YYYY-MM format (using existing `parse_date`); called from `cmd_report`, `cmd_list`, and `cmd_budget` so a malformed `--month` errors immediately instead of silently returning empty results.
+
+`test_cli.py` — 8 new tests covering: invalid date, invalid currency, negative amount, zero amount, unknown category, corrupt store, and malformed `--month` in both `report` and `list`.

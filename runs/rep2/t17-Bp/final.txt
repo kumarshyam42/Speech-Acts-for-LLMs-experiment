@@ -1,0 +1,11 @@
+46/46 passing.
+
+---
+
+**What I did:**
+
+- **`tally/cli.py`** — Added an import of `KNOWN_CATEGORIES` from `tally.config`, then added a guard at the top of `cmd_add` that checks `args.category` against that list. On a bad category it prints a clear error to stderr (naming the invalid value and listing valid choices) and returns `1`, without touching the store.
+
+- **`tests/test_cli.py`** — Added `test_add_rejects_unknown_category`: passes `'fod'` as the category, asserts the return code is non-zero, and asserts the error output contains both the bad value (`fod`) and a hint toward the correct option (`food`).
+
+No ambiguities surfaced — the implementation is a simple guard at the command handler, consistent with the existing error-return style throughout the CLI.

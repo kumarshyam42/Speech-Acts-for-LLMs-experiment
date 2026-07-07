@@ -1,0 +1,19 @@
+{
+  "raw": "I have enough information to make a clear promise.\n\n```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"README.md contains a new section (or subsection under the existing usage section) documenting the `budget --month YYYY-MM` command\",\n    \"The section explains that `budget` shows category spending against the configured budgets\",\n    \"The section includes a usage example in a code block, e.g. `python -m tally.cli budget --month 2024-03`\",\n    \"No other content in README.md is changed\"\n  ],\n  \"scope_exclusions\": [\n    \"Does not modify any source code, tests, or other documentation files\",\n    \"Does not document the warn/over threshold behaviour or internals of config.py \u2014 only the user-facing command and its purpose\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "README.md contains a new section (or subsection under the existing usage section) documenting the `budget --month YYYY-MM` command",
+      "The section explains that `budget` shows category spending against the configured budgets",
+      "The section includes a usage example in a code block, e.g. `python -m tally.cli budget --month 2024-03`",
+      "No other content in README.md is changed"
+    ],
+    "scope_exclusions": [
+      "Does not modify any source code, tests, or other documentation files",
+      "Does not document the warn/over threshold behaviour or internals of config.py \u2014 only the user-facing command and its purpose"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

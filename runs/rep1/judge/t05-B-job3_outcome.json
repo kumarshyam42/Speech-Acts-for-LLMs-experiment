@@ -1,0 +1,13 @@
+{
+  "task": "t05",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+    \"CAD\": 0.73,\n     \"EUR\": 1.08,\n     \"GBP\": 1.27,\n-    \"SGD\": 0.74,\n-    \"JPY\": 0.0067,\n     \"INR\": 0.012,\n+    \"JPY\": 0.0067,\n+    \"SGD\": 0.74,\n+    \"USD\": 1.0,\n }\n \n \ndiff --git a/tests/test_rates.py b/tests/test_rates.py\nindex 50fdcd0..826857b 100644\n--- a/tests/test_rates.py\n+++ b/tests/test_rates.py\n@@ -31,9 +31,15 @@ def test_unknown_currency_raises():\n         rates.to_usd(10.0, \"XYZ\")\n \n \n+def test_to_usd_cad():\n+    # Pins the CAD rate (0.73). Changing the rate breaks this on purpose.\n+    assert rates.to_usd(100.0, \"CAD\") == 73.0",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

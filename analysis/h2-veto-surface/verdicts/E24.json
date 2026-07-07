@@ -1,0 +1,27 @@
+{
+  "label": "E24",
+  "rep": "rep1",
+  "task": "t10",
+  "class": "2",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The request is broad, but the contract narrows the work to five specific cases without confirming those are the requester\u2019s intended or complete priorities. This could leave other important CLI error paths unimproved.",
+        "span": "The CLI could use better error handling. Can you add that?"
+      },
+      {
+        "description": "The contract forbids changes outside two files, which may prevent a proper fix if the bad error behavior originates in store, rates, or utility logic. That could force shallow handling in the CLI instead of addressing the real boundary.",
+        "span": "No changes to store.py, rates.py, utils.py, or any module other than cli.py and tests/test_cli.py"
+      },
+      {
+        "description": "The testing promise is limited to one test file, so regressions elsewhere in the project could be missed. For a CLI behavior change, the requester may reasonably expect the full relevant test suite to remain green.",
+        "span": "All existing tests in tests/test_cli.py continue to pass"
+      }
+    ],
+    "primary_risk": "The contract turns a broad request for better CLI error handling into five unconfirmed cases, so it may deliver a narrower improvement than the requester expects."
+  }
+}

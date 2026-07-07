@@ -1,0 +1,19 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"docs/pricing.md table row for Free plan reads 'up to 200' under 'Expenses per month'\",\n    \"docs/pricing.md notes paragraph reads '200 expenses per month' (not 100)\",\n    \"docs/faq.md answer to 'How many expenses can I track on the free plan?' reads '200 expenses per month' and 'only the first 200 in a month' consistently\",\n    \"No other file in the repository still references the old 100-expense free-tier limit\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to application code, backend enforcement logic, or tests \u2014 this is a documentation-only update\",\n    \"No changes to Plus or Family plan details\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "docs/pricing.md table row for Free plan reads 'up to 200' under 'Expenses per month'",
+      "docs/pricing.md notes paragraph reads '200 expenses per month' (not 100)",
+      "docs/faq.md answer to 'How many expenses can I track on the free plan?' reads '200 expenses per month' and 'only the first 200 in a month' consistently",
+      "No other file in the repository still references the old 100-expense free-tier limit"
+    ],
+    "scope_exclusions": [
+      "No changes to application code, backend enforcement logic, or tests \u2014 this is a documentation-only update",
+      "No changes to Plus or Family plan details"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

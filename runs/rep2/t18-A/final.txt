@@ -1,0 +1,30 @@
+All 49 tests pass (6 new, 43 existing).
+
+---
+
+**Final report**
+
+The category totals in `format_report` previously showed only a dollar amount per row:
+
+```
+entertainment      6.70 USD
+food              92.12 USD
+TOTAL            172.82 USD
+```
+
+Each row now also shows the **item count** and **percentage of the grand total**:
+
+```
+entertainment      6.70 USD    1 item    3.9%
+food              92.12 USD    2 items  53.3%
+rent              74.00 USD    1 item   42.8%
+TOTAL            172.82 USD    4 items
+```
+
+**Changes made:**
+
+- `tally/report.py` — added `category_breakdown()`, a new helper that returns `{category: {total_usd, count}}` per category. Updated `format_report()` to use this instead of `category_totals()`, adding the count and percentage columns. `category_totals()` and `monthly_summary()` are unchanged.
+
+- `tests/test_report.py` — added four new tests: `test_format_report_shows_item_count`, `test_format_report_shows_percentage`, `test_category_breakdown_counts`, and `test_category_breakdown_keys`. All 49 tests pass.
+
+No open questions.

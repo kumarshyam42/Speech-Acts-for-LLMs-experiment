@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "debug",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "\"Better\" is open-ended \u2014 I'll read the current README and the codebase, then improve for clarity, completeness, and accuracy.",
+    "span_locator": "event 0, assistant"
+  },
+  "attempts": 1
+}

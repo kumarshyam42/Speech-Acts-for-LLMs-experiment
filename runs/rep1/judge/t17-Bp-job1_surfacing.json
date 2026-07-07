@@ -1,0 +1,13 @@
+{
+  "task": "t17",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "Validation could go in `cmd_add` (CLI boundary) or in `store.add_expense` (programmatic boundary). I'll put it in `cmd_add` since the request is specifically about the CLI command, keeping store.py a thin persistence layer.",
+    "span_locator": "event 13, assistant"
+  },
+  "attempts": 1
+}

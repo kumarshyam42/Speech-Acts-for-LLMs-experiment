@@ -1,0 +1,13 @@
+{
+  "task": "t01",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "`--year` and `--month` can coexist (both filters apply \u2014 uncommon but not harmful). I won't make them mutually exclusive since the code naturally handles it.",
+    "span_locator": "event 15, assistant"
+  },
+  "attempts": 1
+}

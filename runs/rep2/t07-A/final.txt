@@ -1,0 +1,23 @@
+All 55 tests pass (45 original + 10 new).
+
+---
+
+**Final report**
+
+The `--week` option didn't exist in the codebase yet — the request described the correct desired behavior (Monday-start weeks) up front.
+
+**What I did:**
+
+1. **`tally/utils.py`** — Added `week_key(d)` using Python's `date.isocalendar()`, which implements ISO 8601 week numbering (weeks start Monday, the ISO year may differ from the calendar year near year-end boundaries). Returns strings like `"2024-W10"`.
+
+2. **`tally/report.py`** — Added `week` parameter to `filter_expenses` and `format_report`. Filtering compares `week_key(exp["date"])` against the requested week string.
+
+3. **`tally/cli.py`** — Added `--week YYYY-WNN` argument to both the `report` and `list` subcommands, threaded through to the respective module calls.
+
+4. **Tests** — Added 10 new tests covering:
+   - `week_key` for a Monday (start of week), Sunday (end of week), next Monday (new week), year-boundary case (`2024-12-30 → 2025-W01`), and string input
+   - `filter_expenses` correctly including/excluding dates on week boundaries
+   - `format_report` emitting the week label in the header
+   - CLI `report --week` and `list --week` end-to-end
+
+The critical correctness property — that `2024-03-01` (Friday, week 9) and `2024-03-04` (Monday, week 10) land in different weeks — is explicitly tested.

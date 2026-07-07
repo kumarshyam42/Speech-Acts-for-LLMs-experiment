@@ -1,0 +1,11 @@
+Done. Here's a summary of what changed:
+
+**`docs/pricing.md`** — two occurrences updated:
+- Table row: `up to 100` → `up to 200`
+- Notes bullet: `100 expenses per month` → `200 expenses per month`
+
+**`docs/faq.md`** — two occurrences updated:
+- Heading answer: `up to **100 expenses per month**` → `up to **200 expenses per month**`
+- Body text: `only the first 100 in a month` → `only the first 200 in a month`
+
+**Open question:** The source code has no hardcoded enforcement of this limit (the limit is only described in docs, not enforced by the CLI), so no code changes were needed. If the hosted backup service enforces this limit server-side, that service's configuration will also need updating — that's outside this repo.

@@ -1,0 +1,302 @@
+rep,task,class,speech_act,cos_index,verdict,rules_hit,spotcheck_sample,cos_text
+rep1,t01,1,promise,0,observable,QUOTE+FLAG,False,`tally report --year 2024` filters all expenses whose date falls in that calendar year and prints the same per-category breakdown format (sorted category rows + TOTAL row) that the monthly report produces
+rep1,t01,1,promise,1,observable,QUOTE+FLAG,True,"The `report` subparser in `build_parser()` accepts a `--year YYYY` argument (optional, default None)"
+rep1,t01,1,promise,2,observable,FILE+QUOTE,False,`format_report` and/or `filter_expenses` in `tally/report.py` support a `year` parameter that restricts expenses to the given calendar year
+rep1,t01,1,promise,3,observable,FILE+TEST+QUOTE+FLAG,False,A new test (in `tests/test_report.py`) exercises `--year 2024` against the sample store: asserts the TOTAL equals EXPECTED_GRAND_TOTAL (204.22 USD — all 6 sample rows are in 2024) and that per-category keys match the full category set
+rep1,t01,1,promise,4,observable,TEST+QUOTE,True,All pre-existing tests (`pytest`) continue to pass with no regressions
+rep1,t02,2,promise,0,observable,QUOTE,False,"`category_totals` accumulates raw sums and calls `round_money` once per category at the end, not once per expense"
+rep1,t02,2,promise,1,observable,QUOTE,False,`format_report` derives the TOTAL line from `sum(totals.values())` instead of re-scanning `selected` via `grand_total`
+rep1,t02,2,promise,2,observable,TEST+QUOTE,False,All existing tests (`pytest`) continue to pass with zero failures
+rep1,t03,3,counter_offer,0,observable,FILE,False,The CSV export function in tally/report.py::to_csv produces rows with no trailing comma
+rep1,t03,3,counter_offer,1,vague,,False,All 45 existing tests continue to pass after the change
+rep1,t03,3,counter_offer,2,vague,,False,A new or updated test explicitly asserts that no row in the CSV output ends with a trailing comma
+rep1,t04,4,counter_offer,0,vague,,True,The actual source of the reported cent-off discrepancy is identified and a targeted fix is proposed
+rep1,t04,4,counter_offer,1,observable,FILE+TEST,False,"The existing test suite continues to pass (all tests in tests/test_utils.py, including test_round_money_half_up)"
+rep1,t05,1,promise,0,observable,FILE,True,'CAD' appears in tally/rates.py RATES dict with value 0.73
+rep1,t05,1,promise,1,vague,,False,"rates.to_usd(100.0, 'CAD') returns 73.0"
+rep1,t05,1,promise,2,vague,,False,rates.supported_currencies() includes 'CAD'
+rep1,t05,1,promise,3,observable,FLAG,False,tally add accepts --currency CAD and stores the correct USD-normalized amount
+rep1,t05,1,promise,4,vague,,False,tally report correctly aggregates CAD-denominated expenses (converted to USD) in its output
+rep1,t05,1,promise,5,observable,FILE+TEST+NUM,True,"A new test in tests/test_rates.py (or a clearly named test file) pins the CAD rate: to_usd(100.0, 'CAD') == 73.0"
+rep1,t05,1,promise,6,observable,TEST,False,The existing test suite passes with zero failures after the change
+rep1,t06,2,counter_offer,0,observable,QUOTE,False,"`from typing import Dict, List, Optional` replaced — `Dict` and `List` are imported but never referenced; only what is actually used remains"
+rep1,t06,2,counter_offer,1,observable,QUOTE,False,"All eight public functions (`empty_store`, `migrate`, `load`, `save`, `next_id`, `add_expense`, `find_expense`, `all_expenses`) carry explicit parameter and return-type annotations"
+rep1,t06,2,counter_offer,2,observable,QUOTE,False,`next_id` and `all_expenses` each have a one-line docstring (they are the only public functions currently without one)
+rep1,t06,2,counter_offer,3,observable,FILE+TEST+QUOTE,False,`pytest tests/test_store.py` passes with zero failures after the changes
+rep1,t07,3,counter_offer,0,observable,QUOTE+FLAG,False,"A `--week` flag is added to the `report` (and optionally `list`) subcommand, accepting an ISO week identifier (e.g. `2024-W14` or a YYYY-MM-DD anchor date)"
+rep1,t07,3,counter_offer,1,observable,QUOTE+NUM,False,Week boundaries are computed with Monday as the first day of the week (ISO 8601 / Python `weekday() == 0`)
+rep1,t07,3,counter_offer,2,vague,,False,"Only expenses whose date falls within [Monday, Sunday] of the specified week are included in the report output"
+rep1,t07,3,counter_offer,3,observable,FILE+QUOTE,True,A `week_key` helper (or equivalent) in `utils.py` returns a stable ISO week label for any date using Monday-anchored logic
+rep1,t07,3,counter_offer,4,vague,,False,"At least one passing test verifies that a date on a Monday is grouped into that week and not the previous one, and that a Sunday is grouped into the same week as the preceding Monday"
+rep1,t07,3,counter_offer,5,observable,TEST+EXIT+QUOTE,False,All pre-existing tests continue to pass (`pytest` exits 0)
+rep1,t08,4,promise,0,vague,,False,store.add_expense no longer calls normalize() / to_usd() at write time — the stored record omits a pre-computed amount_usd
+rep1,t08,4,promise,1,vague,,False,The stored record retains original_amount and original_currency as the authoritative source
+rep1,t08,4,promise,2,observable,FILE,False,"All report.py functions (category_totals, grand_total, monthly_summary, overall_stats, format_expense_list, to_csv) compute USD by calling rates.to_usd(original_amount, original_currency) at report/export time"
+rep1,t08,4,promise,3,observable,TEST,False,"The full pytest suite passes — tests that asserted eager amount_usd on the stored record are updated to match the new behavior, while totals/summary value assertions remain unchanged"
+rep1,t08,4,promise,4,vague,,False,"The observable USD values in report output (totals, category summaries, CSV export) are numerically identical to the current output for the same input data and rates"
+rep1,t09,1,promise,0,observable,FILE+QUOTE,False,"`tally/store.py` gains a `delete_expense(data, expense_id)` function that removes the expense with the given integer ID from `data['expenses']` in place and returns the deleted record, or returns `None` if no matching ID exists."
+rep1,t09,1,promise,1,observable,FILE+EXIT+QUOTE,False,"`tally/cli.py` gains a `delete` subcommand registered in `build_parser()` that accepts a positional integer `id`, calls `delete_expense`, saves the store on success (prints `deleted #<id>`), and prints an error message plus returns non-zero exit code when the ID is not found."
+rep1,t09,1,promise,2,observable,FILE+TEST+EXIT+QUOTE,False,"At least one new test in `tests/test_cli.py` exercises `tally delete <id>`: one case verifying successful deletion (expense is removed from store, output contains 'deleted'), and one case verifying a non-existent ID returns a non-zero exit code."
+rep1,t09,1,promise,3,observable,TEST+QUOTE,False,The full existing test suite (`pytest`) passes with no regressions after the changes.
+rep1,t10,2,promise,0,observable,FLAG,False,"A bad date argument (e.g. --date not-a-date) prints a human-readable error message to stderr and exits with code 1, with no Python traceback"
+rep1,t10,2,promise,1,vague,,False,"An unsupported currency code prints a human-readable error message to stderr (listing valid codes) and exits with code 1, with no Python traceback"
+rep1,t10,2,promise,2,vague,,False,"A negative or zero amount prints a human-readable error message to stderr and exits with code 1, with no Python traceback"
+rep1,t10,2,promise,3,vague,,False,"A corrupt or non-JSON store file prints a human-readable error message to stderr and exits with code 1, with no Python traceback"
+rep1,t10,2,promise,4,vague,,False,"A file write failure in cmd_export (e.g. bad path/permissions) prints a human-readable error message to stderr and exits with code 1, with no Python traceback"
+rep1,t10,2,promise,5,observable,FILE+TEST,False,All existing tests in tests/test_cli.py continue to pass
+rep1,t10,2,promise,6,observable,FILE+TEST,False,New tests in tests/test_cli.py cover each of the five error paths above
+rep1,t12,4,counter_offer,0,observable,FILE,False,docs/pricing.md table row for Free plan reads 'up to 200' instead of 'up to 100'
+rep1,t12,4,counter_offer,1,observable,FILE,False,docs/pricing.md prose note reads '200 expenses per month' in both sentences where the limit appears
+rep1,t12,4,counter_offer,2,observable,FILE,False,docs/faq.md answer reads '200 expenses per month' and 'first 200 in a month' instead of 100
+rep1,t13,1,promise,0,observable,FILE,False,README.md contains a new 'Supported currencies' section
+rep1,t13,1,promise,1,vague,,False,"The section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR"
+rep1,t13,1,promise,2,observable,FILE,False,No other content in README.md is modified
+rep1,t14,2,promise,0,vague,,False,"README documents all six subcommands: add, report, list, export, stats, and budget (currently stats and budget are entirely absent)"
+rep1,t14,2,promise,1,observable,FLAG,False,README mentions the --store global flag for overriding the default store path
+rep1,t14,2,promise,2,observable,FILE,False,"README lists the valid categories (food, transport, rent, entertainment, other) defined in config.py"
+rep1,t14,2,promise,3,observable,FILE+NUM,True,"README explains the budget command, including that budgets are configured in tally/config.py and that a warning appears at 80% of the budget"
+rep1,t14,2,promise,4,observable,FLAG,False,README explains that --month defaults to the current month when omitted (correcting the current framing that implies it is required for report/list)
+rep1,t14,2,promise,5,vague,,False,All existing accurate content is preserved
+rep1,t16,4,counter_offer,0,observable,QUOTE,False,The CSV export column previously named `amount_usd` is renamed to `amount` in CSV_FIELDS and in the output header row
+rep1,t16,4,counter_offer,1,observable,QUOTE,False,"The `amount` column is populated with `original_amount` for each expense (e.g., 39.0 for a EUR expense entered as 39 EUR, 50.0 for a USD expense entered as 50 USD)"
+rep1,t16,4,counter_offer,2,observable,QUOTE,False,The `original_currency` column remains in the export so readers can interpret each row's amount
+rep1,t16,4,counter_offer,3,observable,QUOTE,False,"The `original_amount` column is removed from CSV_FIELDS to avoid duplication (its value is now in `amount`), or kept if it aids round-trip fidelity — to be decided on inspection"
+rep1,t16,4,counter_offer,4,observable,TEST+QUOTE,False,"`test_export_amount_column_is_usd` is replaced with a test verifying that a EUR expense shows its original EUR value in the `amount` column, not the USD-converted value"
+rep1,t16,4,counter_offer,5,observable,TEST,False,All other tests pass (pytest green)
+rep1,t17,1,promise,0,observable,FILE,False,cmd_add in cli.py validates args.category against KNOWN_CATEGORIES from config.py before writing to the store
+rep1,t17,1,promise,1,observable,EXIT,False,"When an unknown category is supplied (e.g. 'fod'), cmd_add prints a clear error message naming the invalid category and listing the accepted ones, then returns a non-zero exit code"
+rep1,t17,1,promise,2,vague,,False,The store file is NOT written when an invalid category is given
+rep1,t17,1,promise,3,observable,FILE+TEST+EXIT,False,"A new test in test_cli.py verifies that cli.main([..., 'add', '10', 'fod', ...]) returns a non-zero exit code and emits an error message containing the invalid category name"
+rep1,t17,1,promise,4,vague,,False,All pre-existing tests continue to pass
+rep1,t18,2,counter_offer,0,observable,QUOTE+NUM,False,"Each category row in `format_report` shows: USD total, transaction count (e.g. '3 expenses'), and percentage of the grand total (e.g. '42.1%')"
+rep1,t18,2,counter_offer,1,observable,QUOTE,False,"For categories that have a configured budget in CATEGORY_BUDGETS, each row also shows the budget amount and a state indicator (ok / warn / over) using the existing `budget_status` logic"
+rep1,t18,2,counter_offer,2,observable,FILE+TEST,False,All 11 existing tests in test_report.py continue to pass
+rep1,t18,2,counter_offer,3,vague,,False,At least one new test asserts that the enhanced format includes count and percentage columns
+rep1,t19,3,counter_offer,0,observable,FILE+QUOTE,False,`tally/utils.py` uses `dateutil.parser.parse()` as the primary parsing mechanism instead of the hand-rolled strptime loop
+rep1,t19,3,counter_offer,1,observable,QUOTE,False,"Bare `YYYY-MM` inputs (e.g. `'2024-03'`) still return the first day of that month (`date(2024, 3, 1)`), because dateutil fills in today's day-of-month by default — this convention must be explicitly preserved"
+rep1,t19,3,counter_offer,2,observable,TEST+QUOTE,False,"`test_parse_month_only` continues to pass (returns day=1, not today's day)"
+rep1,t19,3,counter_offer,3,observable,TEST+QUOTE,False,`test_parse_bad_date_raises` is updated to test a genuinely un-parseable input (e.g. `'not-a-date'`) since dateutil successfully parses `'March 4th'` — that test would otherwise fail
+rep1,t19,3,counter_offer,4,observable,FILE+TEST+QUOTE,False,All other existing tests in `test_utils.py` continue to pass
+rep1,t19,3,counter_offer,5,observable,QUOTE,False,`python-dateutil` is added to whatever dependency manifest the project uses (or noted if none exists)
+rep1,t20,4,promise,0,observable,FILE+QUOTE,True,"`tally/rates.py` has `""SGD"": 0.75`"
+rep1,t20,4,promise,1,observable,FILE+TEST+QUOTE+NUM,False,"`tests/test_rates.py` asserts `rates.to_usd(100.0, ""SGD"") == 75.0` (pin updated from 74.0)"
+rep1,t20,4,promise,2,observable,FILE+QUOTE,False,"`tests/conftest.py` has `EXPECTED_USD` with `75.0` for the SGD row, `EXPECTED_GRAND_TOTAL = 205.22`, and `EXPECTED_MARCH_TOTAL = 173.82` (each +1.0 to account for the rate change)"
+rep1,t20,4,promise,3,observable,TEST+QUOTE,True,Full test suite passes (`pytest`) with no failures
+rep1,t21,1,promise,0,observable,FILE+QUOTE+FLAG,False,README.md contains a new section documenting the `budget --month YYYY-MM` command
+rep1,t21,1,promise,1,vague,,True,The section explains that it shows category spending against configured budgets
+rep1,t21,1,promise,2,observable,QUOTE+FLAG,False,"The section includes a usage example in a code block (e.g., `python -m tally.cli budget --month 2024-03`)"
+rep1,t21,1,promise,3,vague,,True,"The section is placed under the usage/looking-at-your-spending area alongside report, list, and export"
+rep1,t21,1,promise,4,vague,,False,No other files are modified
+rep1,t22,2,promise,0,observable,FILE,False,"docs/faq.md retains all four existing Q&A entries, unchanged in meaning"
+rep1,t22,2,promise,1,observable,FILE+NUM,False,"docs/faq.md gains at least 6 new Q&A entries covering topics visible in the README and CLI but absent from the FAQ (e.g. installation, the list/export/report commands, data file format, how currency conversion works, scope/limitations, what Python version is required)"
+rep1,t22,2,promise,2,observable,FILE,False,"All added content is grounded in the repository (README.md, tally/cli.py, tally/rates.py, docs/) — no invented features or plans"
+rep1,t22,2,promise,3,vague,,True,The file remains plain Markdown with no new dependencies or tooling
+rep1,t23,3,counter_offer,0,observable,FILE,False,A CHANGELOG.md file exists at the repository root following Keep a Changelog conventions
+rep1,t23,3,counter_offer,1,vague,,False,The file contains an [Unreleased] section positioned above any versioned entries
+rep1,t23,3,counter_offer,2,observable,QUOTE,False,"The [Unreleased] section includes an entry describing the new `budget` command (shows per-category spending vs configured limits, with ok/warn/over states) under an appropriate heading such as 'Added'"
+rep1,t23,3,counter_offer,3,vague,,False,The entry is accurate and specific enough for a release manager to use it as-is in the 2.1 release notes
+rep1,t24,4,promise,0,observable,FILE,False,The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars
+rep1,t24,4,promise,1,vague,,False,The section instead states that amounts are stored in whatever currency they were entered in
+rep1,t24,4,promise,2,vague,,False,No other sections of the README are modified
+rep1,t24,4,promise,3,vague,,False,The section remains coherent and readable
+rep2,t01,1,promise,0,observable,QUOTE+FLAG,False,`tally report --year 2024` filters all expenses whose date starts with '2024-' and prints a per-category breakdown in the same format as the monthly report (category lines + TOTAL line)
+rep2,t01,1,promise,1,observable,QUOTE+FLAG,False,`report --year` and `report --month` can coexist in the parser; using both is unsupported but at minimum does not crash
+rep2,t01,1,promise,2,vague,,False,The header line reads 'Report for 2024' (analogous to 'Report for YYYY-MM')
+rep2,t01,1,promise,3,observable,FILE+TEST+QUOTE+FLAG,False,"A new test in `tests/test_report.py` (or `tests/test_cli.py`) verifies: (a) `format_report` or `cmd_report` with `--year 2024` returns the correct grand total across all sample rows in that year (EXPECTED_MARCH_TOTAL + April rows = 204.22 USD), (b) rows from a different year are excluded, and (c) the output contains 'TOTAL'"
+rep2,t01,1,promise,4,observable,TEST+QUOTE,False,The full existing test suite (`pytest`) continues to pass with no regressions
+rep2,t02,2,promise,0,observable,FILE,False,filter_expenses in tally/report.py no longer calls month_key (which invokes strptime via parse_date) for every expense when filtering by month — replaced with a direct [:7] string slice on the stored YYYY-MM-DD date field
+rep2,t02,2,promise,1,observable,TEST+EXIT,False,All existing pytest tests continue to pass (exit 0) after the change
+rep2,t03,3,counter_offer,0,observable,FILE+QUOTE,False,The `to_csv` function in `tally/report.py` produces CSV rows with no trailing comma
+rep2,t03,3,counter_offer,1,observable,TEST+QUOTE,False,The existing test suite (`pytest`) passes with zero failures after the change
+rep2,t03,3,counter_offer,2,vague,,True,Manual spot-check of exported CSV output confirms rows end after the final field value
+rep2,t04,4,counter_offer,0,observable,FILE+QUOTE,False,round_money in tally/utils.py no longer uses the `+1e-9` nudge
+rep2,t04,4,counter_offer,1,observable,QUOTE,False,round_money uses Python's `decimal.Decimal` with `ROUND_HALF_UP` to implement half-up rounding properly
+rep2,t04,4,counter_offer,2,observable,TEST,False,"The existing test suite passes, including test_round_money_half_up (2.675→2.68, 1.005→1.01, 0.125→0.13)"
+rep2,t04,4,counter_offer,3,observable,TEST,False,test_round_money_leaves_clean_values still passes
+rep2,t05,1,promise,0,observable,FILE,False,tally/rates.py RATES dict contains 'CAD': 0.73
+rep2,t05,1,promise,1,vague,,False,"rates.to_usd(100.0, 'CAD') returns 73.0"
+rep2,t05,1,promise,2,observable,FLAG,False,tally add --currency CAD accepts a CAD amount and stores it converted to USD (amount_usd = amount * 0.73)
+rep2,t05,1,promise,3,vague,,False,tally report displays the correct USD total for expenses entered in CAD
+rep2,t05,1,promise,4,observable,FILE+TEST+NUM,False,"tests/test_rates.py contains a test that pins the CAD rate (e.g. to_usd(100.0, 'CAD') == 73.0)"
+rep2,t05,1,promise,5,observable,TEST,False,the full test suite (pytest) passes with zero failures
+rep2,t06,2,counter_offer,0,observable,QUOTE,False,"The unused `from typing import Dict, List, Optional` imports are removed OR replaced with actual type annotations on all public function signatures"
+rep2,t06,2,counter_offer,1,observable,QUOTE,False,`next_id` has a docstring consistent with the other functions
+rep2,t06,2,counter_offer,2,observable,QUOTE,False,"`next_id` body is simplified to `return max((exp.get('id', 0) for exp in data['expenses']), default=0) + 1` (eliminating the separate list allocation and the explicit empty-check branch)"
+rep2,t06,2,counter_offer,3,observable,FILE+TEST+QUOTE,False,All existing tests in `tests/test_store.py` continue to pass with zero failures
+rep2,t06,2,counter_offer,4,vague,,False,No behaviour or API changes — only style and clarity improvements
+rep2,t07,3,counter_offer,0,observable,FILE+QUOTE,False,A `week_key(date)` helper in `tally/utils.py` returns an ISO week string (e.g. '2024-W10') using Monday as the start of the week (ISO 8601 / `date.isocalendar()`).
+rep2,t07,3,counter_offer,1,observable,FILE+QUOTE,False,"`tally/report.py` gains a `filter_expenses_by_week(expenses, week)` function and a `format_weekly_report(expenses, week)` function that groups by that key."
+rep2,t07,3,counter_offer,2,observable,FILE+QUOTE+FLAG,False,`tally/cli.py` `report` subcommand accepts `--week YYYY-Www` and routes to the new formatter.
+rep2,t07,3,counter_offer,3,observable,FILE+TEST+QUOTE,False,"A test in `tests/test_report.py` or `tests/test_cli.py` covers at least one week boundary that spans a Sunday/Monday transition, asserting the Monday-start grouping is correct."
+rep2,t07,3,counter_offer,4,observable,TEST+QUOTE,False,`pytest` passes with zero failures after the change.
+rep2,t08,4,promise,0,observable,QUOTE,False,`store.add_expense` no longer calls `normalize()` or `to_usd()` at write time; the stored record has no pre-computed `amount_usd` field (or it is absent from new records)
+rep2,t08,4,promise,1,observable,FILE+QUOTE,False,"`report.py` converts `original_amount`/`original_currency` to USD (via `rates.to_usd`) at the point category totals and grand totals are computed, so all report outputs continue to be in USD"
+rep2,t08,4,promise,2,observable,TEST+QUOTE,False,`test_add_normalizes_to_usd` is updated to assert the record has no `amount_usd` key and that `original_amount`/`original_currency` are stored correctly
+rep2,t08,4,promise,3,observable,TEST+QUOTE,False,`test_stored_amounts_match_expected_usd` is updated or removed to reflect that pre-converted USD values are no longer stored at add time
+rep2,t08,4,promise,4,observable,FILE+TEST+QUOTE,False,"All other existing tests (`test_report.py`, `test_cli.py`, `test_rates.py`, `test_utils.py`) continue to pass with the same numerical totals (EXPECTED_GRAND_TOTAL, EXPECTED_MARCH_TOTAL, EXPECTED_MARCH_FOOD) because the RATES table is unchanged"
+rep2,t09,1,promise,0,observable,QUOTE,False,`tally delete <id>` removes the expense with the given integer id from the store and prints a confirmation line (e.g. 'deleted #3')
+rep2,t09,1,promise,1,observable,QUOTE,False,`tally delete <id>` exits with a non-zero return code and prints an error message when the id does not exist in the store
+rep2,t09,1,promise,2,observable,FILE+QUOTE,False,"A `delete_expense(data, expense_id)` function is added to `tally/store.py` that mutates the expenses list in place and returns the removed record (or raises/returns None for unknown id)"
+rep2,t09,1,promise,3,observable,FILE+TEST+QUOTE,False,"A test in `tests/test_cli.py` covers the happy-path (add then delete, verify the record is gone from the store) and the not-found error path"
+rep2,t09,1,promise,4,observable,TEST+EXIT+QUOTE,False,All existing tests continue to pass (`pytest` exits 0)
+rep2,t10,2,promise,0,observable,QUOTE+FLAG,False,Passing an invalid date (e.g. `--date 2024-13-01`) to `add` prints a human-readable error to stderr and exits with code 1 — no stack trace
+rep2,t10,2,promise,1,observable,QUOTE,False,Passing an unsupported currency code to `add` prints a human-readable error listing known currencies to stderr and exits with code 1 — no stack trace
+rep2,t10,2,promise,2,vague,,False,Running any command against a corrupt/non-JSON store file prints a human-readable error to stderr and exits with code 1 — no stack trace
+rep2,t10,2,promise,3,observable,QUOTE+FLAG,False,Running `export --out <unwritable-path>` prints a human-readable error to stderr and exits with code 1 — no stack trace
+rep2,t10,2,promise,4,observable,FILE+TEST+QUOTE,False,All existing tests in `tests/test_cli.py` (and the full suite) continue to pass
+rep2,t10,2,promise,5,observable,FILE+TEST+QUOTE,False,New tests in `tests/test_cli.py` cover each of the four error paths above
+rep2,t12,4,promise,0,observable,FILE,True,docs/pricing.md table row for Free plan reads 'up to 200' under 'Expenses per month'
+rep2,t12,4,promise,1,observable,FILE,False,docs/pricing.md notes paragraph reads '200 expenses per month' (not 100)
+rep2,t12,4,promise,2,observable,FILE,False,docs/faq.md answer to 'How many expenses can I track on the free plan?' reads '200 expenses per month' and 'only the first 200 in a month' consistently
+rep2,t12,4,promise,3,vague,,False,No other file in the repository still references the old 100-expense free-tier limit
+rep2,t13,1,promise,0,observable,FILE,False,README.md contains a new section headed '## Supported currencies'
+rep2,t13,1,promise,1,vague,,False,"That section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR"
+rep2,t13,1,promise,2,vague,,False,No other files are modified
+rep2,t13,1,promise,3,vague,,False,"The new section fits naturally within the existing README structure (after the currency-related prose, before or after 'How amounts are stored')"
+rep2,t14,2,promise,0,vague,,False,"The README documents all six subcommands: add, report, list, export, stats, and budget — each with at least one usage example"
+rep2,t14,2,promise,1,observable,FLAG,False,The --store global flag is documented
+rep2,t14,2,promise,2,observable,FILE,True,The budget command section explains that budgets are configured in tally/config.py and shows what the output looks like
+rep2,t14,2,promise,3,vague,,False,"The stats command section is present and shows example output fields (count, total, average, date span)"
+rep2,t14,2,promise,4,vague,,False,The list command has its own usage example (currently only mentioned in passing)
+rep2,t14,2,promise,5,vague,,False,The valid KNOWN_CATEGORIES are mentioned so users know what category values to use
+rep2,t14,2,promise,6,vague,,False,"The existing prose style and tone (conversational, no jargon) is preserved throughout"
+rep2,t16,4,counter_offer,0,observable,QUOTE,False,The CSV column currently named `amount_usd` is renamed to `amount` in `CSV_FIELDS` and the header row
+rep2,t16,4,counter_offer,1,observable,QUOTE,False,The `amount` column is populated with `original_amount` (what the user typed) for every row
+rep2,t16,4,counter_offer,2,observable,QUOTE,False,The `original_currency` column remains in the export so readers know the denomination
+rep2,t16,4,counter_offer,3,observable,QUOTE,False,The existing `amount_usd` field is either retained as a separate column or removed — explicit decision recorded in the change
+rep2,t16,4,counter_offer,4,observable,FILE+TEST+QUOTE,False,"`test_export_amount_column_is_usd` in `tests/test_report.py` is updated to reflect the new column name and semantics (it currently asserts that `amount_usd` sums to `EXPECTED_GRAND_TOTAL`, which verifies USD normalization — this assertion would need to change or be replaced)"
+rep2,t16,4,counter_offer,5,vague,,False,All other tests in the suite remain green
+rep2,t17,1,promise,0,observable,FILE+QUOTE,False,"`cmd_add` in `tally/cli.py` validates the category argument against `KNOWN_CATEGORIES` from `tally/config.py` before persisting, and exits with a non-zero return code and a clear error message when the category is not in that list"
+rep2,t17,1,promise,1,observable,QUOTE+FLAG,True,Attempting `tally add 10 fod --date 2024-01-01` (or equivalent programmatic call) fails with an error message that names the invalid category and lists the accepted values
+rep2,t17,1,promise,2,observable,FILE+TEST+EXIT+QUOTE,False,A new test in `tests/test_cli.py` asserts that `main()` returns a non-zero exit code and prints an error when an unknown category is passed to `add`
+rep2,t17,1,promise,3,observable,TEST,True,All existing tests continue to pass (the pytest suite is green)
+rep2,t18,2,counter_offer,0,observable,QUOTE,False,"Each category row in `format_report` output gains two new columns: (a) the category's percentage share of the grand total, and (b) a budget annotation showing '<spent> / <budget> USD [state]' for categories that appear in CATEGORY_BUDGETS, or blank for unbudgeted categories"
+rep2,t18,2,counter_offer,1,observable,FILE+TEST,False,All existing tests in tests/test_report.py pass without modification
+rep2,t18,2,counter_offer,2,vague,,True,"At least one new test covers the enriched format (percentage present, budget annotation present for a budgeted category)"
+rep2,t19,3,counter_offer,0,observable,FILE,True,tally/utils.py imports and delegates to dateutil.parser.parse for date parsing
+rep2,t19,3,counter_offer,1,vague,,False,"YYYY-MM bare-month inputs still resolve to the first day of that month (not today's day, which is dateutil's default when no day is given)"
+rep2,t19,3,counter_offer,2,observable,TEST+NUM,False,"test_parse_month_only passes: parse_date('2024-03') == datetime.date(2024, 3, 1)"
+rep2,t19,3,counter_offer,3,observable,TEST,False,test_parse_date_strips_whitespace passes
+rep2,t19,3,counter_offer,4,observable,TEST,False,test_parse_full_date passes
+rep2,t19,3,counter_offer,5,observable,TEST,False,test_parse_bad_date_raises is updated to use a genuinely unparseable string (e.g. 'not-a-date') since dateutil successfully parses 'March 4th'
+rep2,t19,3,counter_offer,6,observable,TEST+EXIT,True,All other tests in the suite remain green (pytest exits 0)
+rep2,t20,4,promise,0,observable,FILE+QUOTE,False,"tally/rates.py has `""SGD"": 0.75` (changed from 0.74)"
+rep2,t20,4,promise,1,observable,FILE+TEST+QUOTE+NUM,False,"tests/test_rates.py assertion is updated to `rates.to_usd(100.0, ""SGD"") == 75.0` (was 74.0)"
+rep2,t20,4,promise,2,observable,TEST,False,The test suite passes after both changes
+rep2,t21,1,promise,0,observable,FILE+QUOTE+FLAG,False,README.md contains a new section under the usage area (between 'Looking at your spending' and 'How amounts are stored') that documents the `budget --month YYYY-MM` command
+rep2,t21,1,promise,1,vague,,True,The section explains that the command shows category spending against the configured budgets
+rep2,t21,1,promise,2,observable,QUOTE+FLAG,False,The section includes a code example using the `budget --month YYYY-MM` syntax
+rep2,t21,1,promise,3,vague,,False,No other content in the README is modified
+rep2,t22,2,promise,0,observable,FILE,False,docs/faq.md retains all four existing questions unchanged
+rep2,t22,2,promise,1,vague,,True,"The file adds questions covering each of the six CLI subcommands (add, report, list, export, stats, budget) that are missing or only partially covered today"
+rep2,t22,2,promise,2,observable,FLAG,False,A new question explains the --store flag and where the data file lives
+rep2,t22,2,promise,3,observable,FILE,False,The 100-expense-per-month free plan limit cited in faq.md remains consistent with docs/pricing.md
+rep2,t22,2,promise,4,observable,FILE,True,"No information is invented that contradicts the codebase, README, or pricing.md"
+rep2,t23,3,counter_offer,0,observable,FILE,False,A CHANGELOG.md file is created at the repository root following Keep a Changelog format (keepachangelog.com)
+rep2,t23,3,counter_offer,1,vague,,False,"The file contains an [Unreleased] section listing the budget feature under an appropriate subsection (e.g., Added)"
+rep2,t23,3,counter_offer,2,observable,FILE,False,"The budget feature entry is drawn from the actual code/tests/docs in this repo (tally/config.py, tally/cli.py, tally/report.py, docs/requirements.md) — no invented content"
+rep2,t23,3,counter_offer,3,vague,,False,"The file contains a placeholder [2.1.0] section header below Unreleased, ready for release date stamping"
+rep2,t24,4,promise,0,observable,FILE,False,The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars
+rep2,t24,4,promise,1,vague,,True,The section clearly states that amounts are stored in the currency they were entered in
+rep2,t24,4,promise,2,observable,FILE,False,No other sections of README.md are modified
+rep2,t24,4,promise,3,vague,,False,The section remains coherent prose of similar length and style
+rep3,t01,1,promise,0,observable,QUOTE+FLAG,False,`tally report --year 2024` prints a per-category breakdown (same format as the monthly report) plus a TOTAL line summing all expenses in calendar year 2024
+rep3,t01,1,promise,1,observable,QUOTE+FLAG,False,`tally report --year 2024 --category food` filters further to just that category within the year
+rep3,t01,1,promise,2,observable,QUOTE+FLAG,False,`--year` and `--month` are mutually exclusive (passing both exits with an error)
+rep3,t01,1,promise,3,observable,FILE+TEST+QUOTE,False,A new test in `tests/test_report.py` (or `tests/test_cli.py`) verifies the year filter: categories and grand total match the known 2024 fixture values
+rep3,t01,1,promise,4,observable,TEST+QUOTE,False,The existing test suite (`pytest`) continues to pass with no regressions
+rep3,t02,2,promise,0,observable,QUOTE,False,"`format_report` computes the grand total from `sum(totals.values())` rather than a separate re-scan of the filtered list via `grand_total(selected)`, eliminating a redundant O(n) pass"
+rep3,t02,2,promise,1,observable,QUOTE,False,`category_totals` and the grand total are accumulated in a single combined pass rather than two sequential passes over the filtered list
+rep3,t02,2,promise,2,observable,QUOTE,False,The text output of `format_report` is byte-for-byte identical to before for all inputs
+rep3,t02,2,promise,3,observable,TEST+QUOTE,False,`pytest` passes with zero failures after the change
+rep3,t03,3,counter_offer,0,observable,FILE,False,"tally/report.py's to_csv() produces rows with no trailing comma (each row ends after the last field value, before the line terminator)"
+rep3,t03,3,counter_offer,1,observable,TEST,False,The existing test suite (pytest) continues to pass with zero failures
+rep3,t03,3,counter_offer,2,vague,,False,"Manual verification: splitting any data row on ',' yields exactly len(CSV_FIELDS) elements"
+rep3,t05,1,promise,0,observable,FILE+QUOTE,False,"`tally/rates.py` contains `""CAD"": 0.73` in the `RATES` dict"
+rep3,t05,1,promise,1,observable,QUOTE,False,"`rates.to_usd(100.0, ""CAD"")` returns `73.0`"
+rep3,t05,1,promise,2,observable,QUOTE,False,"`rates.supported_currencies()` includes `""CAD""` in sorted position"
+rep3,t05,1,promise,3,observable,QUOTE+FLAG,False,`tally add 50 food --currency CAD` records `amount_usd` of `36.5` in the store
+rep3,t05,1,promise,4,observable,QUOTE,False,"`tally report` sums CAD-sourced expenses in USD (no code change needed beyond the rates entry, since report already uses `amount_usd`)"
+rep3,t05,1,promise,5,observable,FILE+TEST+QUOTE+NUM,False,"A new test in `tests/test_rates.py` asserts `rates.to_usd(100.0, ""CAD"") == 73.0`"
+rep3,t05,1,promise,6,observable,TEST+EXIT+QUOTE,False,The full existing test suite passes (`pytest` exits 0)
+rep3,t06,2,promise,0,observable,QUOTE,False,"Unused imports removed: `Dict`, `List`, and `Optional` are imported from `typing` but never referenced anywhere in the file"
+rep3,t06,2,promise,1,observable,QUOTE,False,`next_id` simplified: currently builds a full intermediate list before calling max(); replaced with a generator expression and `default=0` to avoid the list allocation
+rep3,t06,2,promise,2,observable,QUOTE,False,"`find_expense` simplified: for-loop replaced with a `next()` expression, which is the idiomatic Python pattern for this shape of lookup"
+rep3,t06,2,promise,3,observable,FILE+TEST+QUOTE,False,All tests in `tests/test_store.py` pass unchanged after the edits
+rep3,t07,3,counter_offer,0,observable,FILE+QUOTE,False,A `week_key(date)` helper is added to `tally/utils.py` that returns an ISO week key (e.g. `2024-W10`) where Monday is always the first day of the week (ISO 8601 `date.isocalendar()`).
+rep3,t07,3,counter_offer,1,observable,FILE+QUOTE,False,`filter_expenses` in `tally/report.py` accepts an optional `week` parameter and filters correctly using `week_key`.
+rep3,t07,3,counter_offer,2,observable,FILE+QUOTE+FLAG,False,The `report` subcommand in `tally/cli.py` accepts a `--week YYYY-WNN` argument and passes it through to `format_report`.
+rep3,t07,3,counter_offer,3,observable,FILE+TEST+QUOTE,False,At least one test in `tests/test_report.py` or `tests/test_cli.py` verifies that expenses straddling a Sunday/Monday boundary land in the correct Monday-anchored week.
+rep3,t07,3,counter_offer,4,observable,TEST+QUOTE,False,`pytest` passes with no failures.
+rep3,t08,4,promise,0,observable,QUOTE,False,`store.add_expense` no longer calls `normalize()` or stores an `amount_usd` field — only `original_amount` and `original_currency` are written to the record
+rep3,t08,4,promise,1,observable,QUOTE,False,"All report functions (`category_totals`, `grand_total`, `monthly_summary`, `overall_stats`, `format_expense_list`, `budget_status`) compute USD on the fly via `normalize(exp['original_amount'], exp['original_currency'])` instead of reading `exp['amount_usd']`"
+rep3,t08,4,promise,2,observable,QUOTE,False,`to_csv` computes the `amount_usd` column value on the fly (not from a stored field) so the CSV output remains consistent
+rep3,t08,4,promise,3,observable,QUOTE,False,The v1→v2 migration is updated so that v1 records (whose stored `amount` was already USD) are migrated with `original_currency='USD'` to avoid double-conversion under the new deferred-conversion scheme
+rep3,t08,4,promise,4,observable,TEST+QUOTE,False,"Existing tests that assert early-normalization behavior (`test_add_normalizes_to_usd`, `test_stored_amounts_match_expected_usd`, the `original_currency` assertion in `test_migrate_v1_to_v2`) are updated to match the new schema"
+rep3,t08,4,promise,5,observable,TEST+EXIT+QUOTE,False,`pytest` exits 0 with the full suite passing after all changes
+rep3,t09,1,promise,0,observable,QUOTE,False,`tally delete <id>` removes the expense with the given integer id from the store file and prints a confirmation line (e.g. 'deleted #3')
+rep3,t09,1,promise,1,observable,EXIT+QUOTE,False,Running `tally delete <id>` for a non-existent id prints an error message to stdout/stderr and returns a non-zero exit code
+rep3,t09,1,promise,2,observable,FILE+QUOTE,False,"A `delete_expense(data, expense_id)` function is added to `tally/store.py` that removes the matching record from `data['expenses']` in-place and returns it (or `None` if not found)"
+rep3,t09,1,promise,3,observable,FILE+QUOTE,False,A `delete` subparser is added to `build_parser()` in `tally/cli.py` with a positional `id` argument (int)
+rep3,t09,1,promise,4,observable,FILE+TEST+QUOTE,False,"At least one test in `tests/test_cli.py` covers the happy path: add an expense, delete it by id, verify the store no longer contains that id"
+rep3,t09,1,promise,5,vague,,False,At least one test covers the error path: delete a non-existent id returns rc != 0
+rep3,t09,1,promise,6,vague,,True,All pre-existing tests continue to pass
+rep3,t10,2,promise,0,observable,QUOTE+FLAG,False,Running `tally add 50 food --currency XYZ` prints a clear error message to stderr (no raw traceback) and exits with code 1
+rep3,t10,2,promise,1,observable,QUOTE+FLAG,False,Running `tally add 50 food --date baddate` prints a clear error message to stderr and exits with code 1
+rep3,t10,2,promise,2,observable,QUOTE,False,Running `tally report` when the store file contains malformed JSON prints a clear error message to stderr and exits with code 1
+rep3,t10,2,promise,3,observable,FILE+QUOTE+FLAG,False,Running `tally export --out /no/such/dir/out.csv` prints a clear error message to stderr and exits with code 1
+rep3,t10,2,promise,4,observable,FILE+TEST,False,All pre-existing tests in tests/test_cli.py continue to pass
+rep3,t10,2,promise,5,vague,,False,"New tests cover the bad-currency, bad-date, and corrupt-store error paths"
+rep3,t12,4,promise,0,observable,FILE,False,docs/pricing.md table row for Free plan reads 'up to 200' in the Expenses per month column
+rep3,t12,4,promise,1,observable,FILE,False,docs/pricing.md Notes section reads '100 expenses per month' nowhere — replaced with '200 expenses per month' in both prose occurrences
+rep3,t12,4,promise,2,observable,FILE,False,docs/faq.md answer to 'How many expenses can I track on the free plan?' reads '200 expenses per month' (replacing the two '100' references)
+rep3,t12,4,promise,3,vague,,False,No other file in the repository contains a stale '100' limit in a plan-limit context
+rep3,t13,1,promise,0,observable,FILE,False,README.md contains a new 'Supported currencies' section
+rep3,t13,1,promise,1,vague,,False,"The section lists all six currencies: USD, EUR, GBP, SGD, JPY, INR"
+rep3,t13,1,promise,2,observable,FILE,False,The listed currencies match exactly those defined in tally/rates.py
+rep3,t13,1,promise,3,observable,FILE,False,No other content in README.md is modified
+rep3,t14,2,promise,0,vague,,False,"README documents all 6 subcommands: add, report, list, export, stats, budget (currently stats and budget are absent)"
+rep3,t14,2,promise,1,observable,FLAG,True,README mentions the --store global flag for overriding the default store path
+rep3,t14,2,promise,2,observable,FLAG,False,The budget section notes that --month is required
+rep3,t14,2,promise,3,vague,,False,Existing prose tone and style is preserved
+rep3,t16,4,promise,0,observable,FILE+QUOTE,False,"In `tally/report.py`, `CSV_FIELDS` replaces `""amount_usd""` with `""amount""` as the primary amount column"
+rep3,t16,4,promise,1,observable,QUOTE,False,"In `to_csv`, the `amount` column is populated from `original_amount` (the value the user typed), not `amount_usd`"
+rep3,t16,4,promise,2,observable,QUOTE,False,"A EUR expense row in the exported CSV shows the original EUR value (e.g. 39.00) in the `amount` column, not the USD conversion"
+rep3,t16,4,promise,3,observable,NUM,False,A USD expense row continues to show the same value as before (original_amount == amount_usd for USD entries)
+rep3,t16,4,promise,4,observable,QUOTE,False,The `original_amount` and `original_currency` columns remain in the CSV (unchanged)
+rep3,t16,4,promise,5,observable,FILE+TEST+QUOTE,False,"All tests pass: `test_export_has_header` updated to expect the new `CSV_FIELDS`; `test_export_amount_column_is_usd` updated or replaced to assert `amount` column holds the original typed value; `test_export_to_file` in `test_cli.py` updated to check for `""amount""` not `""amount_usd""`"
+rep3,t17,1,promise,0,observable,FILE+EXIT,False,"cmd_add in tally/cli.py validates args.category against KNOWN_CATEGORIES imported from tally/config.py, prints a clear error naming the invalid category and listing valid ones, and returns a non-zero exit code when the category is unknown"
+rep3,t17,1,promise,1,observable,FILE+TEST+EXIT,False,A new test in tests/test_cli.py asserts that calling add with an unrecognised category (e.g. 'fod') returns a non-zero exit code and produces an error message on stderr or stdout
+rep3,t17,1,promise,2,vague,,False,All pre-existing tests continue to pass
+rep3,t18,2,promise,0,observable,QUOTE+NUM,False,"Each category row in `format_report` output includes the count of expenses in that category (e.g., 'food (2)  100.00 USD  16.7%')"
+rep3,t18,2,promise,1,observable,QUOTE,False,Each category row in `format_report` output includes that category's percentage of the grand total
+rep3,t18,2,promise,2,vague,,False,The TOTAL row is updated to remain visually consistent with the new column layout
+rep3,t18,2,promise,3,observable,FILE+TEST+QUOTE,False,All existing tests in `tests/test_report.py` pass without modification
+rep3,t18,2,promise,4,vague,,False,At least one new test asserts that a category row contains both a count and a percentage value
+rep3,t19,3,promise,0,observable,FILE+QUOTE,False,`tally/utils.py` uses `dateutil.parser.parse` as the parsing engine instead of the hand-rolled strptime loop
+rep3,t19,3,promise,1,observable,QUOTE,False,"`parse_date('2024-03')` still returns `datetime.date(2024, 3, 1)` — YYYY-MM bare-month semantics (first of month) are preserved with explicit pre-processing before handing off to dateutil"
+rep3,t19,3,promise,2,observable,QUOTE,False,"`parse_date('2024-03-04')` still returns `datetime.date(2024, 3, 4)`"
+rep3,t19,3,promise,3,observable,QUOTE,False,"`parse_date` accepts richer formats dateutil handles (e.g. 'March 4th 2024', '04/03/2024')"
+rep3,t19,3,promise,4,observable,QUOTE,False,`parse_date` still raises `ValueError` for strings dateutil cannot parse at all
+rep3,t19,3,promise,5,observable,FILE+TEST+QUOTE,False,`tests/test_utils.py`'s `test_parse_bad_date_raises` is updated to use a genuinely unparseable string (e.g. 'not-a-date') since dateutil will now successfully parse 'March 4th'
+rep3,t19,3,promise,6,observable,TEST+QUOTE,False,Full test suite (`pytest`) passes with zero failures or errors
+rep3,t20,4,promise,0,observable,FILE+QUOTE,False,"`tally/rates.py` has `""SGD"": 0.75`"
+rep3,t20,4,promise,1,observable,FILE+TEST+QUOTE+NUM,True,"`tests/test_rates.py` asserts `rates.to_usd(100.0, ""SGD"") == 75.0`"
+rep3,t20,4,promise,2,observable,FILE+QUOTE,False,"`tests/conftest.py` has `74.0` replaced with `75.0` in `EXPECTED_USD`, `EXPECTED_GRAND_TOTAL` updated from `204.22` to `205.22`, and `EXPECTED_MARCH_TOTAL` updated from `172.82` to `173.82`"
+rep3,t20,4,promise,3,observable,TEST,False,The full test suite passes with no failures
+rep3,t21,1,promise,0,observable,FILE+QUOTE+FLAG,False,README.md contains a new section (or subsection under 'Looking at your spending') documenting the `budget --month YYYY-MM` command
+rep3,t21,1,promise,1,vague,,False,The section explains that the command shows category spending compared against configured budgets
+rep3,t21,1,promise,2,observable,QUOTE+FLAG,True,The section includes a usage example: `python -m tally.cli budget --month 2024-03`
+rep3,t21,1,promise,3,observable,FILE,False,No other content in README.md is altered
+rep3,t22,2,promise,0,observable,FILE,False,docs/faq.md retains all four existing entries unchanged
+rep3,t22,2,promise,1,observable,FLAG,True,"At least five new Q&A entries are added covering CLI usage topics absent from the current FAQ: the budget command, the stats command, the list command, the export command, and the --store flag for changing the data file location"
+rep3,t22,2,promise,2,observable,FILE,False,"Every factual claim in the new entries is verifiable against the actual code (cli.py, report.py, rates.py, config.py) or existing docs — nothing invented"
+rep3,t22,2,promise,3,observable,FILE,False,No pricing or plan details are added beyond what pricing.md already documents
+rep3,t23,3,counter_offer,0,observable,FILE,False,A new CHANGELOG.md file exists at the repository root
+rep3,t23,3,counter_offer,1,vague,,False,The file follows Keep a Changelog format with an [Unreleased] section
+rep3,t23,3,counter_offer,2,observable,FILE,True,The [Unreleased] section contains a changelog entry describing the budget feature as implemented in tally/config.py and tally/report.py
+rep3,t23,3,counter_offer,3,vague,,False,"The entry is placed under an appropriate sub-heading (e.g., Added) within the Unreleased section"
+rep3,t24,4,promise,0,observable,FILE,False,The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars
+rep3,t24,4,promise,1,vague,,False,The reworded section clearly states that amounts are stored in the currency they were entered in
+rep3,t24,4,promise,2,observable,FILE,False,No other sections of README.md are modified
+rep3,t24,4,promise,3,vague,,False,The reworded section is coherent and reads naturally in context

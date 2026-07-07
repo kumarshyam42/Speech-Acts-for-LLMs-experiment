@@ -1,0 +1,75 @@
+diff --git a/docs/faq.md b/docs/faq.md
+index 85ea0e5..a5ec457 100644
+--- a/docs/faq.md
++++ b/docs/faq.md
+@@ -20,3 +20,70 @@ add-on, your data never leaves your computer.
+ 
+ Yes. Pass `--currency` when you add an expense and tally converts it to US dollars
+ for you.
++
++## How do I see a breakdown of my spending by category?
++
++Use the `report` subcommand. Without arguments it covers all recorded expenses;
++pass `--month YYYY-MM` to narrow it to a single month, or `--category CATEGORY`
++to show only one category:
++
++```
++tally report --month 2026-06
++tally report --month 2026-06 --category food
++```
++
++## How do I list individual expenses (not totals)?
++
++Use the `list` subcommand. It accepts the same `--month` and `--category` filters
++as `report` but prints one line per expense instead of aggregated totals. When an
++expense was entered in a non-USD currency, the original amount and currency appear
++in parentheses:
++
++```
++tally list --month 2026-06
++tally list --category transport
++```
++
++## How do I check my spending against a budget?
++
++Use `tally budget --month YYYY-MM`. The command compares each category's spending
++for the month against the limits defined in `config.py`. Each row shows the
++amount spent, the budget ceiling, and a state:
++
++- **ok** — under 80 % of the budget
++- **warn** — at or above 80 % but not over the limit
++- **over** — spending exceeded the budget
++
++The default monthly ceilings (in USD) are: food $600, transport $200, rent $1500,
++entertainment $150, and other $300. The `--month` flag is required.
++
++## How do I get summary statistics across all my expenses?
++
++Run `tally stats`. It prints the total expense count, the total amount in USD, the
++per-expense average, and the date range (earliest to latest expense). It covers all
++recorded expenses regardless of month or category — there are no filters.
++
++## How do I export my data to a spreadsheet?
++
++Use `tally export`. By default it writes CSV to standard output; pass `--out FILE`
++to save it to a file instead:
++
++```
++tally export --out expenses.csv
++```
++
++The CSV columns are: `id`, `date`, `category`, `amount_usd`, `original_amount`,
++`original_currency`, and `note`. All monetary values are in USD.
++
++## Can I keep my data file somewhere other than the current directory?
++
++Yes. The `--store` flag (placed before the subcommand) tells tally which JSON file
++to read from and write to:
++
++```
++tally --store ~/finances/tally.json add 12.50 food
++tally --store ~/finances/tally.json report --month 2026-06
++```
++
++The flag applies to every subcommand. The default is `tally.json` in whichever
++directory you run the command from.

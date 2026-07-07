@@ -1,0 +1,13 @@
+{
+  "task": "t17",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguities/considerations:**\n- Validation should go in `cmd_add` (CLI boundary), not deep in `store.py`, since this is a user-input guard\n- Error should go to stderr and return non-zero (consistent with CLI conventions)\n- The test should verify both the rejection (non-zero exit) and the error message clarity",
+    "span_locator": "event 10, assistant"
+  },
+  "attempts": 1
+}

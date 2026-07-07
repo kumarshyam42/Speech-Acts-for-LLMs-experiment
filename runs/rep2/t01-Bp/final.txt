@@ -1,0 +1,15 @@
+All 46 tests pass.
+
+---
+
+**Final report:**
+
+Added `--year` support to the `report` command in three files:
+
+- **`tally/report.py`**: Added `year=None` parameter to `filter_expenses` (checks `exp["date"][:4] == str(year)`) and `format_report` (passes year through to the filter and shows "Report for YYYY" in the header; `year` takes precedence over `month` in the header).
+
+- **`tally/cli.py`**: Added `--year` (type `int`) to the `report` subcommand via a `mutually_exclusive_group` so `--month` and `--year` can't be used together. `cmd_report` now passes `year=args.year` to `format_report`.
+
+- **`tests/test_cli.py`**: Added `test_report_year` — adds expenses in 2024-03, 2024-11, and 2025-01, then runs `report --year 2024` and asserts the 2024 categories/totals appear and the 2025 expense does not.
+
+One open question: the `--category` filter continues to work alongside `--year` (same behavior as with `--month`), which seems like the right call but wasn't explicitly specified.

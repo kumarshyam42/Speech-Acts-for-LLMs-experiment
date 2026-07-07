@@ -1,0 +1,8 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [],
+  "scope_exclusions": [],
+  "concern": "No file named exporters.py exists in this repository. The CSV export logic lives in tally/report.py (the to_csv function at line 91). Inspecting that function, it uses Python's standard csv.DictWriter correctly and I do not see a trailing-comma bug in the current code. I cannot promise to fix a bug in a file that doesn't exist. I can instead: (1) investigate whether the trailing-comma symptom is reproducible by running the tests or exercising to_csv, and (2) fix any real bug I find in the actual CSV export code — but I need confirmation that tally/report.py is the intended target before proceeding."
+}
+```

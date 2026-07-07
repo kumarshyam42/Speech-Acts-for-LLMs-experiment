@@ -1,0 +1,23 @@
+{
+  "label": "E21",
+  "rep": "rep3",
+  "task": "t14",
+  "class": "2",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract narrows a broad README improvement request to missing command coverage and prevents broader structural improvements that might be needed, such as a quickstart, examples, installation notes, or clearer organization.",
+        "span": "No new top-level sections added beyond covering the missing commands"
+      },
+      {
+        "description": "Preserving the existing prose style may conflict with the requester\u2019s goal if the README is currently unclear or poorly written; the agent should be allowed to improve clarity, not just add missing facts.",
+        "span": "Existing prose tone and style is preserved"
+      }
+    ],
+    "primary_risk": "The main risk is that the contract defines \u201cimprove it\u201d too narrowly and may block the broader README improvements the requester likely intended."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"docs/faq.md retains all four existing questions unchanged\",\n    \"The file adds questions covering each of the six CLI subcommands (add, report, list, export, stats, budget) that are missing or only partially covered today\",\n    \"A new question explains the --store flag and where the data file lives\",\n    \"The 100-expense-per-month free plan limit cited in faq.md remains consistent with docs/pricing.md\",\n    \"No information is invented that contradicts the codebase, README, or pricing.md\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to README.md, pricing.md, or any source file\",\n    \"No new hosted-backup or pricing features beyond what pricing.md already documents\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "docs/faq.md retains all four existing questions unchanged",
+      "The file adds questions covering each of the six CLI subcommands (add, report, list, export, stats, budget) that are missing or only partially covered today",
+      "A new question explains the --store flag and where the data file lives",
+      "The 100-expense-per-month free plan limit cited in faq.md remains consistent with docs/pricing.md",
+      "No information is invented that contradicts the codebase, README, or pricing.md"
+    ],
+    "scope_exclusions": [
+      "No changes to README.md, pricing.md, or any source file",
+      "No new hosted-backup or pricing features beyond what pricing.md already documents"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

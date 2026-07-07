@@ -1,0 +1,5 @@
+Done. Here's a summary of what was done and the concern flagged:
+
+**What changed:** Rewrote the "How amounts are stored" section in `README.md` to lead with "amounts are stored in whatever currency you enter them in" rather than "tally converts everything to US dollars." The original amount and currency are described as the primary stored data, with USD conversion mentioned as secondary — something that happens at report time for aggregation purposes.
+
+**Concern flagged:** The code (`store.py`, `report.py`) does convert to USD and all report totals are emitted in USD — the old README was factually accurate. The new wording is also accurate (original amounts and currency are stored in `original_amount`/`original_currency` fields), but it shifts emphasis. If the intent was to actually change the storage behavior so totals are shown in original currency rather than USD, that would require code changes in `report.py` and `tally/rates.py` — not just a doc update. The README now correctly describes what the code does, but in a way that highlights what users actually see stored rather than the internal USD normalization.

@@ -1,0 +1,15 @@
+All 46 tests pass, including the new `test_report_year`.
+
+---
+
+**Final report**
+
+**What changed:**
+
+- **`tally/utils.py`** — added `year_key(d)` which returns the `YYYY` string for a date, parallel to the existing `month_key`.
+
+- **`tally/report.py`** — imported `year_key`; added `year=None` parameter to both `filter_expenses` (filters by year before the month/category checks) and `format_report` (passes `year` through and includes it in the header as "Report for 2024").
+
+- **`tally/cli.py`** — added `--year YYYY` argument to the `report` subparser; passed `args.year` into `format_report`.
+
+- **`tests/test_cli.py`** — added `test_report_year`: adds two 2024 expenses (food $50, transport $30) and one 2025 expense (food $20), runs `report --year 2024`, and asserts the output labels the year, shows both 2024 categories, includes a TOTAL, and the total is 80.00 (the 2025 expense is excluded).

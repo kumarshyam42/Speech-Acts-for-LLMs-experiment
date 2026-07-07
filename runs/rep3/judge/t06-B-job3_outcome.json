@@ -1,0 +1,13 @@
+{
+  "task": "t06",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "I'll read the files first, then apply the three targeted changes.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

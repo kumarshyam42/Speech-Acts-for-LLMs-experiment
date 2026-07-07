@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have everything I need. Let me write a substantially improved FAQ.",
+    "reason": "The request was underspecified, but the agent never surfaced the ambiguity or formed agreement on which FAQ topics and depth to add. It unilaterally chose and shipped a large set of additions."
+  },
+  "attempts": 1
+}

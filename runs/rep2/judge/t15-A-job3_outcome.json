@@ -1,0 +1,13 @@
+{
+  "task": "t15",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "+def parse_currency(code):",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

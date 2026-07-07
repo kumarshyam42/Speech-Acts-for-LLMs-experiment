@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have everything I need. Let me write the expanded FAQ, preserving the four existing questions exactly and adding coverage for all six subcommands and the `--store` flag.",
+    "reason": "The request was underspecified, but the agent never surfaced that ambiguity or sought agreement on which FAQ topics would be most helpful. It unilaterally chose CLI subcommand coverage and proceeded to edit, so the failure originated before execution."
+  },
+  "attempts": 1
+}

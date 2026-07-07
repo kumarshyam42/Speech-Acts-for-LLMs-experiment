@@ -1,0 +1,13 @@
+{
+  "task": "t13",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "+## Supported currencies\n+\n+tally accepts amounts in the following currencies:\n+\n+| Code | Currency         |\n+|------|-----------------|\n+| USD  | US Dollar        |\n+| EUR  | Euro             |\n+| GBP  | British Pound    |\n+| SGD  | Singapore Dollar |\n+| JPY  | Japanese Yen     |\n+| INR  | Indian Rupee     |",
+    "gradient_level": "excellent"
+  },
+  "attempts": 1
+}

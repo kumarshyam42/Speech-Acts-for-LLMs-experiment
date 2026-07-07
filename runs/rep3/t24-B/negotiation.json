@@ -1,0 +1,19 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars\",\n    \"The reworded section clearly states that amounts are stored in the currency they were entered in\",\n    \"No other sections of README.md are modified\",\n    \"The reworded section is coherent and reads naturally in context\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to source code or test files\",\n    \"No changes to any other documentation beyond the targeted section\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "The 'How amounts are stored' section in README.md no longer states that amounts are converted to US dollars",
+      "The reworded section clearly states that amounts are stored in the currency they were entered in",
+      "No other sections of README.md are modified",
+      "The reworded section is coherent and reads naturally in context"
+    ],
+    "scope_exclusions": [
+      "No changes to source code or test files",
+      "No changes to any other documentation beyond the targeted section"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

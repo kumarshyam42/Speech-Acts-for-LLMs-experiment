@@ -1,0 +1,49 @@
+exit_code: 2
+
+
+==================================== ERRORS ====================================
+______________________ ERROR collecting tests/test_cli.py ______________________
+ImportError while importing test module '/Users/sk/.cache/speech-acts-worktrees/rep2/t19-A/tests/test_cli.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_cli.py:6: in <module>
+    from tally import cli
+tally/cli.py:15: in <module>
+    from tally import report as report_mod
+tally/report.py:12: in <module>
+    from tally.utils import month_key, round_money
+tally/utils.py:7: in <module>
+    from dateutil import parser as _dateutil_parser
+E   ModuleNotFoundError: No module named 'dateutil'
+____________________ ERROR collecting tests/test_report.py _____________________
+ImportError while importing test module '/Users/sk/.cache/speech-acts-worktrees/rep2/t19-A/tests/test_report.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_report.py:6: in <module>
+    from tally import report as report_mod
+tally/report.py:12: in <module>
+    from tally.utils import month_key, round_money
+tally/utils.py:7: in <module>
+    from dateutil import parser as _dateutil_parser
+E   ModuleNotFoundError: No module named 'dateutil'
+_____________________ ERROR collecting tests/test_utils.py _____________________
+ImportError while importing test module '/Users/sk/.cache/speech-acts-worktrees/rep2/t19-A/tests/test_utils.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_utils.py:7: in <module>
+    from tally import utils
+tally/utils.py:7: in <module>
+    from dateutil import parser as _dateutil_parser
+E   ModuleNotFoundError: No module named 'dateutil'
+=========================== short test summary info ============================
+ERROR tests/test_cli.py
+ERROR tests/test_report.py
+ERROR tests/test_utils.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
+3 errors in 0.06s

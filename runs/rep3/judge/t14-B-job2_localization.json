@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "Now I have everything needed. Let me update the README.",
+    "reason": "The request was ambiguous, but the agent never surfaced that ambiguity or proposed selectable README improvement directions. It unilaterally chose a documentation-completeness scope and proceeded to edit without forming agreement with the user."
+  },
+  "attempts": 1
+}

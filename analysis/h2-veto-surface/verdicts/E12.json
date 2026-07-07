@@ -1,0 +1,23 @@
+{
+  "label": "E12",
+  "rep": "rep3",
+  "task": "t06",
+  "class": "2",
+  "job": "b1_veto_readability",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The request is broad, but the contract defines cleanup as only a few small edits. The requester should confirm that this narrow cleanup satisfies what they meant by the file being messy.",
+        "span": "store.py has gotten messy over time. Can you clean it up?"
+      },
+      {
+        "description": "The contract pre-excludes touching several functions before the cleanup work begins. If the mess is inside those functions, executing this contract exactly would leave the main problem unresolved.",
+        "span": "No behavioral changes: `empty_store`, `migrate`, `load`, `save`, and `add_expense` are untouched"
+      }
+    ],
+    "primary_risk": "The contract may be too narrow for the requester\u2019s open-ended cleanup request."
+  }
+}

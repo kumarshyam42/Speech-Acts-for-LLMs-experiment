@@ -1,0 +1,8 @@
+```json
+{
+  "speech_act": "counter_offer",
+  "conditions_of_satisfaction": [],
+  "scope_exclusions": [],
+  "concern": "The change as asked would break the existing test suite and make the rounding problem worse. `tests/test_utils.py:31-36` explicitly asserts half-up behaviour (`round_money(2.675) == 2.68`, `round_money(1.005) == 1.01`, `round_money(0.125) == 0.13`) and comments 'bare round() would break here.' Python's built-in `round()` uses banker's rounding (half-to-even) and is also vulnerable to float representation issues (e.g. `round(1.005, 2)` gives `1.0` not `1.01`), so replacing the nudge with plain `round()` would fail all three of those assertions and is more likely to introduce cent-off errors than fix them. The `+1e-9` nudge is an intentional, documented design decision — not the culprit. The more plausible source of the 'cent off' issue is `report.py:34`, which applies `round_money` after each incremental addition inside a loop, causing compounding rounding drift. I can investigate whether the totals in `report.py` should accumulate raw and round once at the end, rather than rounding on every addition."
+}
+```

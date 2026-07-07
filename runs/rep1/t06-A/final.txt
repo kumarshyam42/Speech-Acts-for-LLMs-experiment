@@ -1,0 +1,7 @@
+All 9 tests pass. Here's what changed in `tally/store.py`:
+
+1. **Removed dead imports** — `Dict`, `List`, `Optional` from `typing` were imported but unused throughout the file.
+
+2. **Simplified `next_id`** — collapsed the three-line list + conditional into one expression using `max(..., default=0)`, which handles the empty-store case natively.
+
+3. **Simplified `save` directory creation** — replaced the `not os.path.isdir(directory)` guard with `exist_ok=True` on `os.makedirs`, which is the idiomatic Python 3 approach and also more correct (avoids a TOCTOU race between the `isdir` check and the `makedirs` call).

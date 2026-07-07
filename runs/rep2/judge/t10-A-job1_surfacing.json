@@ -1,0 +1,13 @@
+{
+  "task": "t10",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "Negative/zero amount \u2192 silently accepted",
+    "span_locator": "event 18, assistant"
+  },
+  "attempts": 1
+}

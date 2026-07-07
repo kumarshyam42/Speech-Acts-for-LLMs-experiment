@@ -1,0 +1,13 @@
+{
+  "task": "t06",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "I can see three concrete issues in `store.py`:",
+    "reason": "The request left \"clean it up\" undefined, but the agent unilaterally decided what counted as cleanup and proceeded to edit. There was no surfaced clarification or agreement on the conditions of satisfaction before implementation."
+  },
+  "attempts": 1
+}

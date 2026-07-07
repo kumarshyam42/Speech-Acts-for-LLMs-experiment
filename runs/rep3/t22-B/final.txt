@@ -1,0 +1,45 @@
+The file looks correct. All four original entries are intact and seven new entries were added (five required, plus two bonus entries for `report` and `list` that naturally belong together).
+
+---
+
+## Completion report
+
+**What changed:** `docs/faq.md` grew from 4 entries to 11. The seven new Q&As cover: `report`, `list`, `budget`, `stats`, `export`, and `--store` — all verified against `cli.py`, `report.py`, and `config.py`. No source files, README, or pricing.md were touched.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "docs/faq.md retains all four existing entries unchanged",
+      "status": "met",
+      "evidence": "Lines 3–22 of the updated file are byte-for-byte identical to the original four entries (Is tally really free?, How many expenses…, Where is my data kept?, Can I enter expenses in other currencies?)."
+    },
+    {
+      "cos": "At least five new Q&A entries are added covering CLI usage topics absent from the current FAQ: the budget command, the stats command, the list command, the export command, and the --store flag for changing the data file location",
+      "status": "met",
+      "evidence": "Seven entries were added. All five required topics have dedicated entries: budget (lines 47–58), stats (lines 60–64), list (lines 35–45), export (lines 66–76), and --store (lines 78–89)."
+    },
+    {
+      "cos": "Every factual claim in the new entries is verifiable against the actual code (cli.py, report.py, rates.py, config.py) or existing docs — nothing invented",
+      "status": "met",
+      "evidence": "Budget states (ok/warn/over) and BUDGET_WARN_RATIO 0.8 sourced from report.py:121-149 and config.py:29; budget amounts from config.py:20-26; CSV columns from report.py:14; --store default 'tally.json' from cli.py:20; --month required for budget from cli.py:131; stats fields from report.py:102-118."
+    },
+    {
+      "cos": "No pricing or plan details are added beyond what pricing.md already documents",
+      "status": "met",
+      "evidence": "No new entries mention hosted backup, plan tiers, or pricing. The one reference to the 100-expense limit in the original entry was untouched."
+    },
+    {
+      "cos": "No changes to README.md, pricing.md, or any source file",
+      "status": "met",
+      "evidence": "Only docs/faq.md was edited. README.md, pricing.md, cli.py, report.py, config.py, rates.py, store.py, and utils.py were read but not modified."
+    },
+    {
+      "cos": "No new hosted-backup or account-management Q&As (feature not implemented in the codebase)",
+      "status": "met",
+      "evidence": "None of the seven new entries mention hosted backup, accounts, sync, or account management."
+    }
+  ],
+  "assessment": "All conditions of satisfaction are met. The FAQ now covers all major subcommands and the --store flag with accurate, code-sourced details. No concerns or open questions."
+}
+```

@@ -1,0 +1,13 @@
+{
+  "task": "t02",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "I have a clear picture now. The fix is in `format_report` at line 65: replace `grand_total(selected)` \u2014 a redundant O(n) re-scan of `selected` \u2014 with `round_money(sum(totals.values()))`, which derives the grand total from the already-computed per-category totals in O(k) time (k = number of categories).",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

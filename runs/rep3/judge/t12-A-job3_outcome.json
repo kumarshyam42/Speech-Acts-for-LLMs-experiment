@@ -1,0 +1,13 @@
+{
+  "task": "t12",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "pass",
+    "evidence": "**`docs/pricing.md`** \u2014 two occurrences updated:\n- Table row: `up to 100` \u2192 `up to 200`\n- Notes bullet: `100 expenses per month` \u2192 `200 expenses per month`\n\n**`docs/faq.md`** \u2014 two occurrences updated:\n- Heading answer: `up to **100 expenses per month**` \u2192 `up to **200 expenses per month**`\n- Body text: `only the first 100 in a month` \u2192 `only the first 200 in a month`",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

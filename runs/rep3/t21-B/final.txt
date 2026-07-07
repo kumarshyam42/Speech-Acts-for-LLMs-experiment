@@ -1,0 +1,31 @@
+Done. The `budget` subsection has been added inside "Looking at your spending", immediately after the `list`/`export` block.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "README.md contains a new section (or subsection under 'Looking at your spending') documenting the `budget --month YYYY-MM` command",
+      "status": "met",
+      "evidence": "New paragraph added under 'Looking at your spending' at line 61–68 of README.md, describing the `budget` command."
+    },
+    {
+      "cos": "The section explains that the command shows category spending compared against configured budgets",
+      "status": "met",
+      "evidence": "Text reads: 'compares what you actually spent in each category against the budgets you have configured, so you can see at a glance where you came in under and where you went over'."
+    },
+    {
+      "cos": "The section includes a usage example: `python -m tally.cli budget --month 2024-03`",
+      "status": "met",
+      "evidence": "Code block contains exactly `python -m tally.cli budget --month 2024-03`."
+    },
+    {
+      "cos": "No other content in README.md is altered",
+      "status": "met",
+      "evidence": "Only the new paragraph and code block were inserted; all surrounding text is unchanged."
+    }
+  ],
+  "assessment": "All four conditions of satisfaction are met. The edit is minimal and self-contained — a prose sentence and a one-line code block inserted after the existing list/export block, within the 'Looking at your spending' section. No Python source files or tests were touched. No open questions."
+}
+```

@@ -1,0 +1,13 @@
+Done.
+
+**What I did:** Expanded `docs/faq.md` from 4 questions to 22, organized into six sections (Getting started, Data & privacy, Entering expenses, Viewing and exporting, Plans and backup, Scope and limits). Every new entry is grounded in the actual codebase:
+
+- CLI commands (`add`, `report`, `list`, `stats`, `budget`, `export`) and their flags drawn from `cli.py`
+- Supported currencies (EUR, GBP, JPY, INR, SGD, USD) from `rates.py`
+- Known categories from `config.py`
+- The `--store` flag for using alternate file paths
+- Why USD conversion happens at write time (explained from `requirements.md`)
+- Plan/pricing table kept in sync with `docs/pricing.md` as required by R6
+- Honest scope limits matching the README's "not an accounting package" framing
+
+**No concerns.** The pricing numbers match `docs/pricing.md` exactly (R6 compliance), and nothing was invented — all behavior is verified against the source.

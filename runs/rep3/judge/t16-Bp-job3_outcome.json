@@ -1,0 +1,13 @@
+{
+  "task": "t16",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "- `tally/report.py` \u2014 `CSV_FIELDS`: renamed `\"amount_usd\"` \u2192 `\"amount\"` and removed the now-redundant `\"original_amount\"` column. The new field order is `[\"id\", \"date\", \"category\", \"amount\", \"original_currency\", \"note\"]`.\n- `tally/report.py` \u2014 `to_csv()`: added an explicit mapping so the `amount` column is populated from `exp[\"original_amount\"]` (what the user typed) rather than the auto-generated field lookup that would have produced nothing for the new key name.\n- `tests/test_report.py` \u2014 renamed `test_export_amount_column_is_usd` \u2192 `test_export_amount_column_is_original` and rewrote it to assert the EUR row reads `39.0` and that `amount_usd` is absent from the header.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

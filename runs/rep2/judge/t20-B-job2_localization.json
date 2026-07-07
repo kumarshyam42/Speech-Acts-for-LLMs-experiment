@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "B",
+  "job": "job2_localization",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "\"concern\": \"\"",
+    "reason": "The agent found that SGD was pinned by tests but never surfaced the fixed-rate constraint or historical-total implication, then proceeded with a silent source/test edit. The failure originated before execution because no real agreement was formed around the hidden requirement to update all pinned expectations and call out the impact."
+  },
+  "attempts": 1
+}

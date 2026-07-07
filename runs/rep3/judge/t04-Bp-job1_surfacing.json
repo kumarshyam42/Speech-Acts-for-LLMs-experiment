@@ -1,0 +1,13 @@
+{
+  "task": "t04",
+  "condition": "Bp",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "**Ambiguity / feasibility note:** The test file has an explicit comment warning that \"a naive swap to bare `round()` would break here\" \u2014 it tests half-up rounding cases (`2.675 \u2192 2.68`, `1.005 \u2192 1.01`) that differ from Python's banker's rounding. The `+1e-9` is intentional: it forces halves to round up. Removing it changes the rounding contract.",
+    "span_locator": "event 7, assistant"
+  },
+  "attempts": 1
+}

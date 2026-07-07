@@ -1,0 +1,16 @@
+Done. Here's what changed and why:
+
+**What I did:**
+Rewrote `docs/faq.md` from 4 thin questions to a fully organized reference with 18 questions across 5 sections: Getting started, Recording expenses, Viewing your data, Budgets, and Plans & pricing.
+
+**What I added, grounded in the actual code:**
+- Installation instructions (Python 3.9+, no install, shell alias)
+- Date format (`YYYY-MM-DD`, defaults to today)
+- The full list of known categories from `config.py` and how to add one
+- Supported currencies from `rates.py` (EUR, GBP, INR, JPY, SGD, USD) and how conversion works
+- All six commands: `add`, `report`, `list`, `export`, `stats`, `budget` — with examples
+- Budgets: how to set them (`config.py`) and how to read the `budget` command output (80% warning threshold)
+- `--store` flag for changing the data file location
+- The backup history table (from `pricing.md`) to make the pricing section complete
+
+**Consistency:** The 100-expense free-tier limit matches `pricing.md` exactly, per R6 in `requirements.md`. All claims are derived from the code or existing docs — nothing invented.

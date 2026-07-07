@@ -1,0 +1,13 @@
+{
+  "task": "t20",
+  "condition": "A",
+  "job": "job1_surfacing",
+  "run": "rep3",
+  "status": "ok",
+  "verdict": {
+    "surfaced_before_execution": true,
+    "span": "The SGD row is `100 SGD` as rent in March, so changing the rate from 0.74 to 0.75 adds $1.00 to:\n- `EXPECTED_USD[1]`: 74.0 \u2192 75.0\n- `EXPECTED_GRAND_TOTAL`: 204.22 \u2192 205.22\n- `EXPECTED_MARCH_TOTAL`: 172.82 \u2192 173.82\n- `EXPECTED_MARCH_FOOD`: unchanged (that row is rent, not food)",
+    "span_locator": "event 14, assistant"
+  },
+  "attempts": 1
+}

@@ -1,0 +1,17 @@
+All 46 tests pass including the new `test_report_year`.
+
+---
+
+**Final report:**
+
+Three files changed, one new test added — all 46 tests green.
+
+**What changed:**
+
+- `tally/report.py` — `filter_expenses` and `format_report` each gained a `year=None` keyword argument. The filter checks `exp["date"][:4] == str(year)`, and the header reads `"Report for 2024"` when `year` is set without `month`.
+
+- `tally/cli.py` — `p_report` now has `--year YYYY`, and `cmd_report` passes `year=args.year` through to `format_report`.
+
+- `tests/test_cli.py` — `test_report_year` adds two 2024 expenses (food + transport, $150 total) and one 2025 expense (rent), then asserts the year report includes the 2024 categories, shows the correct `150.00` total, and excludes the 2025 rent entry.
+
+**Open questions (none blocking):** If someone passes both `--year 2024` and `--month 2024-03`, both filters apply independently (month filter already implies the year), so the output is just the March report with a `"Report for 2024-03"` header — a bit odd but not harmful. Mutual exclusion could be added later if desired.

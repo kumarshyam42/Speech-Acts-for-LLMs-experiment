@@ -1,0 +1,66 @@
+diff --git a/tally/utils.py b/tally/utils.py
+index e2cfa15..b86e7a3 100644
+--- a/tally/utils.py
++++ b/tally/utils.py
+@@ -1,4 +1,4 @@
+-"""Small helpers: date parsing and money rounding."""
++"""Small helpers: date parsing, currency validation, and money rounding."""
+ 
+ import datetime
+ from typing import Union
+@@ -28,6 +28,23 @@ def month_key(d):
+     return "{:04d}-{:02d}".format(d.year, d.month)
+ 
+ 
++def parse_currency(code):
++    """Validate and normalise a currency code, returning the canonical uppercase form.
++
++    The lookup is case-insensitive so 'eur', 'EUR', and 'Eur' all map to 'EUR'.
++    Raises ValueError for unknown codes.
++    """
++    from tally.rates import RATES  # local import keeps utils free of top-level cycles
++    normalized = code.strip().upper()
++    if normalized not in RATES:
++        raise ValueError(
++            "unsupported currency {!r}; known: {}".format(
++                code, ", ".join(sorted(RATES.keys()))
++            )
++        )
++    return normalized
++
++
+ def round_money(amount):
+     """Round a money amount to 2 decimal places, rounding halves up.
+ 
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 539b7c9..b7c5a5a 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -28,6 +28,27 @@ def test_month_key_from_date():
+     assert utils.month_key(datetime.date(2024, 3, 4)) == "2024-03"
+ 
+ 
++def test_parse_currency_uppercase_input():
++    assert utils.parse_currency("USD") == "USD"
++
++
++def test_parse_currency_lowercase_input():
++    assert utils.parse_currency("eur") == "EUR"
++
++
++def test_parse_currency_mixed_case():
++    assert utils.parse_currency("Gbp") == "GBP"
++
++
++def test_parse_currency_strips_whitespace():
++    assert utils.parse_currency("  usd  ") == "USD"
++
++
++def test_parse_currency_unknown_raises():
++    with pytest.raises(ValueError, match="unsupported currency"):
++        utils.parse_currency("XYZ")
++
++
+ def test_round_money_half_up():
+     # round_money rounds halves UP, unlike Python's built-in round() which
+     # rounds to even. These cases differ between the two, so a naive swap to

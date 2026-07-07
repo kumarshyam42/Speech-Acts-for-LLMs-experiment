@@ -1,0 +1,9 @@
+Done. Here's what I did and one open question to flag:
+
+**What I did:** Created `CHANGELOG.md` at the repo root using the Keep a Changelog format. The `[Unreleased]` section under "Added" documents all four pieces of the budget feature:
+- the `budget` subcommand and its `--month` flag
+- `CATEGORY_BUDGETS` with the specific dollar limits from `config.py`
+- `BUDGET_WARN_RATIO` and what it controls
+- `budget_status()` in `report.py` and its role
+
+**Open question:** There's only one commit in the repo (`Baseline: tally expense-tracker CLI, suite green`), which means the budget feature was part of the initial commit rather than a distinct PR. If there's a prior 2.0 (or 1.x) release that pre-dates the budget work, the `[Unreleased]` section is correctly positioned above it. If the entire codebase is brand-new and 2.0 was never cut, you may want to rename the section to `[2.1.0] — YYYY-MM-DD` once the release is tagged and add a `[2.0.0]` stub for the baseline below it.

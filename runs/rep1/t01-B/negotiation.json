@@ -1,0 +1,20 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"`tally report --year 2024` filters all expenses whose date falls in that calendar year and prints the same per-category breakdown format (sorted category rows + TOTAL row) that the monthly report produces\",\n    \"The `report` subparser in `build_parser()` accepts a `--year YYYY` argument (optional, default None)\",\n    \"`format_report` and/or `filter_expenses` in `tally/report.py` support a `year` parameter that restricts expenses to the given calendar year\",\n    \"A new test (in `tests/test_report.py`) exercises `--year 2024` against the sample store: asserts the TOTAL equals EXPECTED_GRAND_TOTAL (204.22 USD \u2014 all 6 sample rows are in 2024) and that per-category keys match the full category set\",\n    \"All pre-existing tests (`pytest`) continue to pass with no regressions\"\n  ],\n  \"scope_exclusions\": [\n    \"No defined behavior when both `--year` and `--month` are passed simultaneously (the request does not specify this case)\",\n    \"No changes to any other subcommand (export, budget, stats, list, add)\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "`tally report --year 2024` filters all expenses whose date falls in that calendar year and prints the same per-category breakdown format (sorted category rows + TOTAL row) that the monthly report produces",
+      "The `report` subparser in `build_parser()` accepts a `--year YYYY` argument (optional, default None)",
+      "`format_report` and/or `filter_expenses` in `tally/report.py` support a `year` parameter that restricts expenses to the given calendar year",
+      "A new test (in `tests/test_report.py`) exercises `--year 2024` against the sample store: asserts the TOTAL equals EXPECTED_GRAND_TOTAL (204.22 USD \u2014 all 6 sample rows are in 2024) and that per-category keys match the full category set",
+      "All pre-existing tests (`pytest`) continue to pass with no regressions"
+    ],
+    "scope_exclusions": [
+      "No defined behavior when both `--year` and `--month` are passed simultaneously (the request does not specify this case)",
+      "No changes to any other subcommand (export, budget, stats, list, add)"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

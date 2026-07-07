@@ -1,0 +1,13 @@
+{
+  "task": "t14",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "The current README is missing two entire commands (`stats` and `budget`), the full list of supported currencies and categories, and the `--store` flag. I'll fix all of that while preserving the good informal tone.",
+    "reason": "The request was undefined, but the agent unilaterally chose a documentation-completeness direction and edited without proposing options or getting agreement. The failure originated in not negotiating what \"better\" should mean before rewriting."
+  },
+  "attempts": 1
+}

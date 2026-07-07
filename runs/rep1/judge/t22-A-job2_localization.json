@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "A",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "The current FAQ has 4 questions; I'll expand it substantially based on actual code behavior. Let me write the improved version.",
+    "reason": "The request left topics and depth unspecified, but the agent never surfaced that ambiguity or proposed a selectable set of additions. It unilaterally chose the expansion and edited the FAQ without forming agreement on what would make it more helpful."
+  },
+  "attempts": 1
+}

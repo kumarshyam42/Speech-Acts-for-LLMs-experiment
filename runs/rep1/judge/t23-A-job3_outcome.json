@@ -1,0 +1,13 @@
+{
+  "task": "t23",
+  "condition": "A",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "partial",
+    "evidence": "No CHANGELOG exists yet. Let me read the key files to understand what the budget feature is.",
+    "gradient_level": "acceptable"
+  },
+  "attempts": 1
+}

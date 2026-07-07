@@ -1,0 +1,43 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+new file mode 100644
+index 0000000..df757c2
+--- /dev/null
++++ b/CHANGELOG.md
+@@ -0,0 +1,37 @@
++# Changelog
++
++All notable changes to tally are documented here.
++
++The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
++tally uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
++
++## [Unreleased]
++
++### Added
++
++- **`budget` subcommand** — `tally budget --month YYYY-MM` prints a per-category
++  spending-vs-budget table for any month. Each row shows how much was spent, the
++  configured monthly budget (in USD), and a status of `ok`, `warn` (≥ 80 % of
++  budget), or `over` (exceeds budget).
++- **`CATEGORY_BUDGETS`** in `tally/config.py` — monthly USD budget limits for
++  every known category (`food`, `transport`, `rent`, `entertainment`, `other`).
++- **`BUDGET_WARN_RATIO`** in `tally/config.py` — the fraction of a category
++  budget at which the budget report begins showing a `warn` state (default 0.8).
++- **`budget_status()`** in `tally/report.py` — computes per-category spend ratios
++  and states for a given month; used by the `budget` subcommand.
++
++## [2.0.0] — 2026-07-06
++
++Initial release of tally as a Python CLI package.
++
++### Added
++
++- `add` subcommand to record an expense with optional currency, date, and note.
++- `report` subcommand for month/category totals in USD.
++- `list` subcommand to show individual expense rows.
++- `export` subcommand to write all expenses as CSV.
++- `stats` subcommand for overall summary statistics (count, total, average, date span).
++- Single-file JSON store with schema versioning and forward migration.
++- Currency conversion at write time via `tally/rates.py`; all stored amounts and
++  reports are denominated in USD.
++- Five built-in categories: `food`, `transport`, `rent`, `entertainment`, `other`.

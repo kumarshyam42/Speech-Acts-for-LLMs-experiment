@@ -1,0 +1,40 @@
+The README looks good. All six subcommands are now documented with examples, the `--store` flag has its own section, `budget --month` is shown as required, and the `stats` output format is illustrated. No existing content was changed or removed.
+
+---
+
+**Completion report**
+
+The README gained four new sections — "Summary statistics", "Checking budgets", "Using a different store file" — plus a one-line note about `export --out` stdout behaviour. Tone and document structure are unchanged.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "All six subcommands (add, report, list, export, stats, budget) are documented with examples in the README",
+      "status": "met",
+      "evidence": "add (line 28), report (lines 47-49), list (line 56), export (line 57), stats (lines 66-67), budget (line 87) all have code-block examples"
+    },
+    {
+      "cos": "The global --store flag is documented",
+      "status": "met",
+      "evidence": "New section 'Using a different store file' at lines 102-111 shows `--store ~/finances/2024.json` usage"
+    },
+    {
+      "cos": "The budget command's required --month flag is shown in the example",
+      "status": "met",
+      "evidence": "Line 87 shows `python -m tally.cli budget --month 2024-03`; prose at line 84 says '`--month` is required'"
+    },
+    {
+      "cos": "The stats command output format is described or illustrated",
+      "status": "met",
+      "evidence": "Lines 72-77 show a sample output block with all four fields (expenses, total, average, span) matching the format strings in cli.py:83-86"
+    },
+    {
+      "cos": "No existing accurate content is removed or degraded",
+      "status": "met",
+      "evidence": "All original text is intact; the only change was insertion of new sections between the existing 'Looking at your spending' section and 'How amounts are stored'"
+    }
+  ],
+  "assessment": "All five conditions of satisfaction are met. The three scope exclusions were respected: conversational prose voice is unchanged, no flag reference tables were added, and the document structure (narrative sections, no man-page style) is the same as before. No open questions."
+}
+```

@@ -1,0 +1,23 @@
+{
+  "label": "E44",
+  "rep": "rep3",
+  "task": "t21",
+  "class": "1",
+  "job": "b1n_veto_readability_with_rules",
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "accept": "yes_with_conditions",
+    "risk_flags": [
+      {
+        "description": "The contract documents budget comparison but does not commit to saying the comparison is in US dollars. That matters because the requirements make USD denomination part of the expected behavior for every budget comparison, so the README section could be incomplete or ambiguous.",
+        "span": "every total, summary, budget comparison, and export is denominated in US dollars"
+      },
+      {
+        "description": "The requested placement is specifically under usage, but the contract allows placement under a different named subsection. If 'Looking at your spending' is not actually within Usage, the documentation could land in the wrong place.",
+        "span": "Add a short section under usage"
+      }
+    ],
+    "primary_risk": "The main risk is that the new budget documentation may omit the required US-dollar denomination for budget comparisons."
+  }
+}

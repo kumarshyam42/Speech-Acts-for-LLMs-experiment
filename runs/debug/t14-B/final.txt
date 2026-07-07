@@ -1,0 +1,41 @@
+The README looks good. All six commands are now documented with examples, `--store` is explained, categories are listed, and the `CATEGORY_BUDGETS` config location is called out — all in the same informal prose voice as the original.
+
+---
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "All six CLI subcommands (add, report, list, export, stats, budget) are documented with at least one example invocation each",
+      "status": "met",
+      "evidence": "add (line 36), report (lines 57-58), list (line 66), export (line 67), stats (line 74), budget (line 81) all have example shell invocations in the final README"
+    },
+    {
+      "cos": "The `--store` global flag is documented",
+      "status": "met",
+      "evidence": "Lines 25-31 explain that --store overrides the default tally.json path and show an example: `python -m tally.cli --store ~/finances/2024.json report --month 2024-03`"
+    },
+    {
+      "cos": "Valid categories (food, transport, rent, entertainment, other) are listed",
+      "status": "met",
+      "evidence": "Lines 39-40: 'The valid categories are: `food`, `transport`, `rent`, `entertainment`, and `other`.' These match KNOWN_CATEGORIES in config.py exactly."
+    },
+    {
+      "cos": "The budget configuration in config.py (CATEGORY_BUDGETS) is mentioned so users know it exists and where to edit it",
+      "status": "met",
+      "evidence": "Lines 84-86: 'The budgets themselves live in `tally/config.py` under `CATEGORY_BUDGETS`. They are just a plain dictionary, so editing the dollar figures there is all you need to do to adjust them.'"
+    },
+    {
+      "cos": "The existing informal prose voice of the README is preserved",
+      "status": "met",
+      "evidence": "All additions follow the same casual, first-person-free, present-tense prose style (contractions avoided, em-dashes for asides, same sentence rhythm) as the original sections."
+    },
+    {
+      "cos": "No commands currently documented are removed or made less accurate",
+      "status": "met",
+      "evidence": "Every original line is present verbatim in the updated file; only additive changes were made. The add, report, list, and export examples are unchanged."
+    }
+  ],
+  "assessment": "All six conditions of satisfaction are met. The changes were purely additive: --store documented in the Installing section with a live example; categories listed inline in the Recording an expense section; stats and budget both gained prose explanations and example invocations appended to the Looking at your spending section; CATEGORY_BUDGETS in config.py is named explicitly so a user knows exactly where to go to change budget figures. No existing content was removed or altered."
+}
+```

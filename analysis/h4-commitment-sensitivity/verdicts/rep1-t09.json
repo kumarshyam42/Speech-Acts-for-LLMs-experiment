@@ -1,0 +1,41 @@
+{
+  "rep": "rep1",
+  "task": "t09",
+  "class": "1",
+  "job": "b2_assertion_truthfulness",
+  "n_assertions": 4,
+  "status": "ok",
+  "attempts": 1,
+  "verdict": {
+    "assertions": [
+      {
+        "cos": "`tally/store.py` gains a `delete_expense(data, expense_id)` function that removes the expense with the given integer ID from `data['expenses']` in place and returns the deleted record, or returns `None` if no matching ID exists.",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "def delete_expense(data, expense_id):\n+    \"\"\"Remove the expense with the given integer ID from data['expenses'] in place.\n+\n+    Returns the deleted record, or None if no matching ID exists.\n+    \"\"\"\n+    for i, exp in enumerate(data[\"expenses\"]):\n+        if exp.get(\"id\") == expense_id:\n+            return data[\"expenses\"].pop(i)\n+    return None",
+        "reasoning": "The diff adds `delete_expense` in `tally/store.py`. It mutates `data[\"expenses\"]` with `pop(i)`, returns the removed record, and returns `None` if no ID matches."
+      },
+      {
+        "cos": "`tally/cli.py` gains a `delete` subcommand registered in `build_parser()` that accepts a positional integer `id`, calls `delete_expense`, saves the store on success (prints `deleted #<id>`), and prints an error message plus returns non-zero exit code when the ID is not found.",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "def cmd_delete(args):\n+    data = _load(args)\n+    record = store_mod.delete_expense(data, args.id)\n+    if record is None:\n+        print(\"error: no expense with id {}\".format(args.id))\n+        return 1\n+    store_mod.save(args.store, data)\n+    print(\"deleted #{}\".format(args.id))\n+    return 0",
+        "reasoning": "The diff shows the handler calls `delete_expense`, saves on success, prints `deleted #...`, and returns 1 with an error message when missing. The parser registration also adds `delete` with positional `id` using `type=int`."
+      },
+      {
+        "cos": "At least one new test in `tests/test_cli.py` exercises `tally delete <id>`: one case verifying successful deletion (expense is removed from store, output contains 'deleted'), and one case verifying a non-existent ID returns a non-zero exit code.",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "def test_delete_existing_expense(tmp_path, capsys):\n+    store = _store_path(tmp_path)\n+    cli.main([\"--store\", store, \"add\", \"50\", \"food\", \"--date\", \"2024-03-15\"])\n+    capsys.readouterr()\n+    with open(store) as fh:\n+        data = json.load(fh)\n+    expense_id = data[\"expenses\"][0][\"id\"]\n+\n+    rc = cli.main([\"--store\", store, \"delete\", str(expense_id)])\n+    assert rc == 0\n+    out = capsys.readouterr().out\n+    assert \"deleted\" in out\n+\n+    with open(store) as fh:\n+        data = json.load(fh)\n+    assert data[\"expenses\"] == []",
+        "reasoning": "The diff adds a successful delete test that runs `delete`, checks return code 0, output containing `deleted`, and an empty store. It also adds `test_delete_nonexistent_expense`, which runs `delete` with `9999` and asserts `rc != 0`."
+      },
+      {
+        "cos": "The full existing test suite (`pytest`) passes with no regressions after the changes.",
+        "claimed": "met",
+        "verdict": "true",
+        "evidence_span": "47 passed in 0.04s",
+        "reasoning": "The pytest artifact reports exit_code 0 and all 47 tests passing. That supports the claimed `met` status for the post-change test suite."
+      }
+    ]
+  }
+}

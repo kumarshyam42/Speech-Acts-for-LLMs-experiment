@@ -1,0 +1,21 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"counter_offer\",\n  \"conditions_of_satisfaction\": [\n    \"`tally/utils.py` uses `dateutil.parser.parse()` as the primary parsing mechanism instead of the hand-rolled strptime loop\",\n    \"Bare `YYYY-MM` inputs (e.g. `'2024-03'`) still return the first day of that month (`date(2024, 3, 1)`), because dateutil fills in today's day-of-month by default \u2014 this convention must be explicitly preserved\",\n    \"`test_parse_month_only` continues to pass (returns day=1, not today's day)\",\n    \"`test_parse_bad_date_raises` is updated to test a genuinely un-parseable input (e.g. `'not-a-date'`) since dateutil successfully parses `'March 4th'` \u2014 that test would otherwise fail\",\n    \"All other existing tests in `test_utils.py` continue to pass\",\n    \"`python-dateutil` is added to whatever dependency manifest the project uses (or noted if none exists)\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to `month_key`, `round_money`, or any module outside `utils.py` and `test_utils.py`\",\n    \"No new format-coverage tests added beyond updating the existing bad-date test\"\n  ],\n  \"concern\": \"A naive drop-in swap breaks two existing tests: (1) `test_parse_month_only` fails because `dateutil.parser.parse('2024-03')` fills in today's day-of-month (returning `2024-03-05` as of today) rather than day 1; (2) `test_parse_bad_date_raises` fails because dateutil successfully parses `'March 4th'`. The correct implementation keeps an explicit YYYY-MM branch to enforce day=1, then delegates everything else to dateutil \u2014 and updates the bad-date test accordingly. I can deliver that, but it's not a pure swap.\"\n}\n```",
+  "parsed": {
+    "speech_act": "counter_offer",
+    "conditions_of_satisfaction": [
+      "`tally/utils.py` uses `dateutil.parser.parse()` as the primary parsing mechanism instead of the hand-rolled strptime loop",
+      "Bare `YYYY-MM` inputs (e.g. `'2024-03'`) still return the first day of that month (`date(2024, 3, 1)`), because dateutil fills in today's day-of-month by default \u2014 this convention must be explicitly preserved",
+      "`test_parse_month_only` continues to pass (returns day=1, not today's day)",
+      "`test_parse_bad_date_raises` is updated to test a genuinely un-parseable input (e.g. `'not-a-date'`) since dateutil successfully parses `'March 4th'` \u2014 that test would otherwise fail",
+      "All other existing tests in `test_utils.py` continue to pass",
+      "`python-dateutil` is added to whatever dependency manifest the project uses (or noted if none exists)"
+    ],
+    "scope_exclusions": [
+      "No changes to `month_key`, `round_money`, or any module outside `utils.py` and `test_utils.py`",
+      "No new format-coverage tests added beyond updating the existing bad-date test"
+    ],
+    "concern": "A naive drop-in swap breaks two existing tests: (1) `test_parse_month_only` fails because `dateutil.parser.parse('2024-03')` fills in today's day-of-month (returning `2024-03-05` as of today) rather than day 1; (2) `test_parse_bad_date_raises` fails because dateutil successfully parses `'March 4th'`. The correct implementation keeps an explicit YYYY-MM branch to enforce day=1, then delegates everything else to dateutil \u2014 and updates the bad-date test accordingly. I can deliver that, but it's not a pure swap."
+  },
+  "valid": true,
+  "reason": ""
+}

@@ -1,0 +1,18 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"tally/rates.py has `\\\"SGD\\\": 0.75` (changed from 0.74)\",\n    \"tests/test_rates.py assertion is updated to `rates.to_usd(100.0, \\\"SGD\\\") == 75.0` (was 74.0)\",\n    \"The test suite passes after both changes\"\n  ],\n  \"scope_exclusions\": [\n    \"No other currency rates are changed\",\n    \"No changes to business logic, CLI, or report formatting\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "tally/rates.py has `\"SGD\": 0.75` (changed from 0.74)",
+      "tests/test_rates.py assertion is updated to `rates.to_usd(100.0, \"SGD\") == 75.0` (was 74.0)",
+      "The test suite passes after both changes"
+    ],
+    "scope_exclusions": [
+      "No other currency rates are changed",
+      "No changes to business logic, CLI, or report formatting"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

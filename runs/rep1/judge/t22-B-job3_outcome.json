@@ -1,0 +1,13 @@
+{
+  "task": "t22",
+  "condition": "B",
+  "job": "job3_outcome",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "`docs/faq.md` grew from 4 Q&A entries to 14. The 10 new entries cover: Python version requirement, command reference table, `list` vs `report` distinction, CSV export, supported currencies, how conversion works mechanically, available categories, the `budget` command, the `stats` command, the JSON data-file format, custom `--store` paths, and scope/limitations.",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

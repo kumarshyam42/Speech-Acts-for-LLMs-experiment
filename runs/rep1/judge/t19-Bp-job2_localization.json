@@ -1,0 +1,13 @@
+{
+  "task": "t19",
+  "condition": "Bp",
+  "job": "job2_localization",
+  "run": "rep1",
+  "status": "ok",
+  "verdict": {
+    "localization": "a_never_surfaced",
+    "span": "`requirements.txt` (new) \u2014 Added `python-dateutil>=2.8` since no dependency file existed.",
+    "reason": "The project constraint forbidding third-party runtime dependencies was never surfaced, even though CONTRIBUTING.md was visible in the repo. The agent proceeded with the literal request and added python-dateutil instead of forming agreement around a standard-library alternative."
+  },
+  "attempts": 2
+}

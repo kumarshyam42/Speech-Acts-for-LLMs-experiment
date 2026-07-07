@@ -1,0 +1,20 @@
+{
+  "raw": "```json\n{\n  \"speech_act\": \"promise\",\n  \"conditions_of_satisfaction\": [\n    \"docs/faq.md retains all four existing Q&A entries, unchanged in meaning\",\n    \"docs/faq.md gains at least 6 new Q&A entries covering topics visible in the README and CLI but absent from the FAQ (e.g. installation, the list/export/report commands, data file format, how currency conversion works, scope/limitations, what Python version is required)\",\n    \"All added content is grounded in the repository (README.md, tally/cli.py, tally/rates.py, docs/) \u2014 no invented features or plans\",\n    \"The file remains plain Markdown with no new dependencies or tooling\"\n  ],\n  \"scope_exclusions\": [\n    \"No changes to any file other than docs/faq.md\",\n    \"No rewriting of the pricing model \u2014 that content lives in docs/pricing.md and is not duplicated\",\n    \"No UI, tests, or source-code changes\"\n  ],\n  \"concern\": \"\"\n}\n```",
+  "parsed": {
+    "speech_act": "promise",
+    "conditions_of_satisfaction": [
+      "docs/faq.md retains all four existing Q&A entries, unchanged in meaning",
+      "docs/faq.md gains at least 6 new Q&A entries covering topics visible in the README and CLI but absent from the FAQ (e.g. installation, the list/export/report commands, data file format, how currency conversion works, scope/limitations, what Python version is required)",
+      "All added content is grounded in the repository (README.md, tally/cli.py, tally/rates.py, docs/) \u2014 no invented features or plans",
+      "The file remains plain Markdown with no new dependencies or tooling"
+    ],
+    "scope_exclusions": [
+      "No changes to any file other than docs/faq.md",
+      "No rewriting of the pricing model \u2014 that content lives in docs/pricing.md and is not duplicated",
+      "No UI, tests, or source-code changes"
+    ],
+    "concern": ""
+  },
+  "valid": true,
+  "reason": ""
+}

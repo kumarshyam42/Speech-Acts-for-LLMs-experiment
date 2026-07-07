@@ -1,0 +1,46 @@
+All 46 tests pass, including the new `test_year_report`.
+
+---
+
+## Completion Report
+
+**Changes made:**
+
+1. **`tally/report.py`** — `filter_expenses()` gained a `year=None` parameter that compares `exp["date"][:4]` against `str(year)`. `format_report()` gained a matching `year=None` parameter, threads it into `filter_expenses`, and includes the year in the report header.
+
+2. **`tally/cli.py`** — Added `--year` (`type=int`, default `None`) to the `report` subparser, and passed `year=args.year` to `format_report()` in `cmd_report`.
+
+3. **`tests/test_report.py`** — Added `test_year_report`: filters the sample store by `year=2024`, asserts `grand_total` equals `EXPECTED_GRAND_TOTAL` (204.22), asserts the category key set matches the full five-category set, and asserts that `format_report(expenses, year=2024)` contains `"TOTAL"` and `"204.22"`.
+
+```json
+{
+  "assertions": [
+    {
+      "cos": "`tally report --year 2024` filters all expenses whose date falls in that calendar year and prints the same per-category breakdown format (sorted category rows + TOTAL row) that the monthly report produces",
+      "status": "met",
+      "evidence": "filter_expenses() filters on date[:4]==str(year); format_report() passes year through and renders the same sorted-category + TOTAL layout. test_year_report verifies the output string contains 'TOTAL' and '204.22'."
+    },
+    {
+      "cos": "The `report` subparser in `build_parser()` accepts a `--year YYYY` argument (optional, default None)",
+      "status": "met",
+      "evidence": "cli.py line added: `p_report.add_argument('--year', default=None, type=int, help='YYYY')`. All CLI tests pass."
+    },
+    {
+      "cos": "`format_report` and/or `filter_expenses` in `tally/report.py` support a `year` parameter that restricts expenses to the given calendar year",
+      "status": "met",
+      "evidence": "Both functions updated with `year=None` parameter; filter_expenses skips records where `exp['date'][:4] != str(year)`."
+    },
+    {
+      "cos": "A new test (in `tests/test_report.py`) exercises `--year 2024` against the sample store: asserts the TOTAL equals EXPECTED_GRAND_TOTAL (204.22 USD — all 6 sample rows are in 2024) and that per-category keys match the full category set",
+      "status": "met",
+      "evidence": "test_year_report added; asserts grand_total == EXPECTED_GRAND_TOTAL and set(totals.keys()) == {'food','rent','transport','entertainment','other'}; passes in pytest run."
+    },
+    {
+      "cos": "All pre-existing tests (`pytest`) continue to pass with no regressions",
+      "status": "met",
+      "evidence": "pytest run: 46 passed in 0.05s, including all 45 pre-existing tests."
+    }
+  ],
+  "assessment": "All five conditions of satisfaction are met. No behavior is defined for simultaneous --year and --month (both can be passed and act as AND-filters on the same expense list, which is the natural emergent behavior of the implementation, though this case is excluded from the spec). No other subcommands were modified."
+}
+```

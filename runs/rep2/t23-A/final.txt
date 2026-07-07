@@ -1,0 +1,12 @@
+CHANGELOG.md is created. Here's a summary of what was done and one open question:
+
+---
+
+**What was done:**
+
+Created `CHANGELOG.md` at the repo root using Keep a Changelog conventions. It has two sections:
+
+- **`[Unreleased]`** — documents the budget feature under `Added`: the `budget --month YYYY-MM` subcommand, its three output states (`ok` / `warn` / `over`), the 80% warn threshold, and where the budgets are configured (`CATEGORY_BUDGETS` / `BUDGET_WARN_RATIO` in `tally/config.py`).
+- **`[2.0.0]`** — baseline release entry listing the five original subcommands (`add`, `report`, `list`, `export`, `stats`), multi-currency support, and the single-file JSON store, so the file isn't headless going into 2.1.
+
+**Open question:** The `[2.0.0]` baseline date is set to today (2026-07-06) since no release date appears in the git history. If the actual release predates this, that line should be corrected before tagging 2.1.

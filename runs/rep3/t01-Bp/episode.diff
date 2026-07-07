@@ -1,0 +1,88 @@
+diff --git a/tally/cli.py b/tally/cli.py
+index a792898..57e81d6 100644
+--- a/tally/cli.py
++++ b/tally/cli.py
+@@ -46,7 +46,7 @@ def cmd_add(args):
+ def cmd_report(args):
+     data = _load(args)
+     text = report_mod.format_report(
+-        store_mod.all_expenses(data), month=args.month, category=args.category
++        store_mod.all_expenses(data), month=args.month, year=args.year, category=args.category
+     )
+     print(text)
+     return 0
+@@ -110,8 +110,9 @@ def build_parser():
+     p_add.add_argument("--note", default="")
+     p_add.set_defaults(func=cmd_add)
+ 
+-    p_report = sub.add_parser("report", help="category totals for a month")
++    p_report = sub.add_parser("report", help="category totals for a month or year")
+     p_report.add_argument("--month", default=None, help="YYYY-MM")
++    p_report.add_argument("--year", default=None, help="YYYY")
+     p_report.add_argument("--category", default=None)
+     p_report.set_defaults(func=cmd_report)
+ 
+diff --git a/tally/report.py b/tally/report.py
+index 78a317f..99d84d5 100644
+--- a/tally/report.py
++++ b/tally/report.py
+@@ -14,12 +14,14 @@ from tally.utils import month_key, round_money
+ CSV_FIELDS = ["id", "date", "category", "amount_usd", "original_amount", "original_currency", "note"]
+ 
+ 
+-def filter_expenses(expenses, month=None, category=None):
+-    """Return the expenses matching an optional month (YYYY-MM) and category."""
++def filter_expenses(expenses, month=None, year=None, category=None):
++    """Return the expenses matching an optional month (YYYY-MM), year (YYYY), and category."""
+     result = []
+     for exp in expenses:
+         if month is not None and month_key(exp["date"]) != month:
+             continue
++        if year is not None and exp["date"][:4] != str(year):
++            continue
+         if category is not None and exp["category"] != category:
+             continue
+         result.append(exp)
+@@ -45,13 +47,15 @@ def monthly_summary(expenses, month):
+     return category_totals(filter_expenses(expenses, month=month))
+ 
+ 
+-def format_report(expenses, month=None, category=None):
++def format_report(expenses, month=None, year=None, category=None):
+     """Render a plain-text report of category totals to a string."""
+-    selected = filter_expenses(expenses, month=month, category=category)
++    selected = filter_expenses(expenses, month=month, year=year, category=category)
+     totals = category_totals(selected)
+     lines = []
+     header = "Report"
+-    if month:
++    if year and not month:
++        header += " for {}".format(year)
++    elif month:
+         header += " for {}".format(month)
+     if category:
+         header += " (category: {})".format(category)
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 7611c18..7cd4fa4 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -88,3 +88,19 @@ def test_add_defaults_currency_to_usd(tmp_path, capsys):
+         data = json.load(fh)
+     assert data["expenses"][0]["original_currency"] == "USD"
+     assert data["expenses"][0]["amount_usd"] == 12.5
++
++
++def test_report_year(tmp_path, capsys):
++    store = _store_path(tmp_path)
++    cli.main(["--store", store, "add", "100", "food", "--date", "2024-06-01"])
++    cli.main(["--store", store, "add", "50", "transport", "--date", "2024-09-15"])
++    cli.main(["--store", store, "add", "200", "rent", "--date", "2025-01-01"])
++    capsys.readouterr()
++    rc = cli.main(["--store", store, "report", "--year", "2024"])
++    assert rc == 0
++    out = capsys.readouterr().out
++    assert "Report for 2024" in out
++    assert "food" in out
++    assert "transport" in out
++    assert "rent" not in out
++    assert "150.00" in out

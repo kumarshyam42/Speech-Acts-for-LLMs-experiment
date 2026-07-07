@@ -1,0 +1,13 @@
+{
+  "task": "t18",
+  "condition": "Bp",
+  "job": "job3_outcome",
+  "run": "rep2",
+  "status": "ok",
+  "verdict": {
+    "outcome": "fail",
+    "evidence": "The request is intentionally open-ended. Looking at the current output, each category shows only `amount USD`. The existing codebase already has `CATEGORY_BUDGETS` and `BUDGET_WARN_RATIO` wired up. I'll add three things that require no user input to derive:",
+    "gradient_level": "failure"
+  },
+  "attempts": 1
+}

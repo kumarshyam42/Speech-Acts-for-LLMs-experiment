@@ -1,0 +1,166 @@
+diff --git a/docs/faq.md b/docs/faq.md
+index 85ea0e5..31913ba 100644
+--- a/docs/faq.md
++++ b/docs/faq.md
+@@ -20,3 +20,161 @@ add-on, your data never leaves your computer.
+ 
+ Yes. Pass `--currency` when you add an expense and tally converts it to US dollars
+ for you.
++
++---
++
++## What Python version do I need?
++
++Python 3.9 or newer. There is nothing else to install; just clone the repository
++and run it as a module:
++
++```
++python -m tally.cli --help
++```
++
++If you want a shorter command, add a shell alias — for example
++`alias tally='python -m tally.cli'` in your `.zshrc` or `.bashrc`.
++
++## What commands are available?
++
++| Command  | What it does |
++|----------|--------------|
++| `add`    | Record a new expense |
++| `list`   | Show individual expense entries |
++| `report` | Show category totals for a month |
++| `export` | Write all expenses to CSV |
++| `stats`  | Print overall totals and averages across all time |
++| `budget` | Compare a month's spending against the configured budgets |
++
++Pass `--help` after any subcommand to see its options.
++
++## What is the difference between `list` and `report`?
++
++`list` shows each individual expense as a line item — useful when you want to
++scan what you spent:
++
++```
++python -m tally.cli list --month 2024-03
++python -m tally.cli list --month 2024-03 --category food
++```
++
++`report` groups expenses by category and prints totals only — useful when you
++want the big-picture breakdown for a month:
++
++```
++python -m tally.cli report --month 2024-03
++```
++
++Both commands accept `--month` (YYYY-MM) and `--category` to narrow the output.
++Omitting `--month` shows all recorded months.
++
++## How do I export my data to a spreadsheet?
++
++Use the `export` command, which writes every expense as a CSV row. You can send
++the output straight to a file:
++
++```
++python -m tally.cli export --out march.csv
++```
++
++Omitting `--out` writes to stdout, which is handy for piping into other tools.
++The exported CSV contains all fields including the original amount and currency.
++
++## Which currencies does tally support?
++
++The currencies with built-in conversion rates are:
++
++| Code | Currency |
++|------|----------|
++| USD  | US dollar (default) |
++| EUR  | Euro |
++| GBP  | British pound |
++| SGD  | Singapore dollar |
++| JPY  | Japanese yen |
++| INR  | Indian rupee |
++
++Entering an unrecognised currency code raises an error rather than silently
++producing a wrong number. To see the list at any time, look at `tally/rates.py`.
++
++## How exactly does currency conversion work?
++
++The rates in `tally/rates.py` are fixed constants. When you run `add`, tally
++multiplies your amount by the corresponding rate and stores the result in USD.
++The original amount and currency you typed are kept alongside it for reference,
++but every total in `report`, `stats`, and `budget` is computed in USD. This keeps
++month-to-month comparisons consistent even when you mix several currencies in the
++same month.
++
++## What expense categories can I use?
++
++The built-in categories are: `food`, `transport`, `rent`, `entertainment`, and
++`other`. These match the budget targets defined in `tally/config.py`.
++
++## What does the `budget` command do?
++
++`budget` compares how much you have spent in each category against the monthly
++targets configured in `tally/config.py`. You must pass `--month`:
++
++```
++python -m tally.cli budget --month 2024-03
++```
++
++Each line shows the category, amount spent so far, the budget ceiling, and a
++status indicator. The status turns to a warning once spending reaches 80 % of
++the budget.
++
++## What does the `stats` command do?
++
++`stats` gives you a one-glance summary across your entire history — total number
++of expenses, total and average spend in USD, and the date range they cover:
++
++```
++python -m tally.cli stats
++```
++
++Unlike `report`, `stats` is not scoped to a single month.
++
++## What does the data file look like?
++
++It is a pretty-printed JSON file with a `schema_version` field and an `expenses`
++array. Each entry looks like this:
++
++```json
++{
++  "id": 1,
++  "date": "2024-03-04",
++  "amount_usd": 42.12,
++  "original_amount": 39.0,
++  "original_currency": "EUR",
++  "category": "food",
++  "note": "groceries"
++}
++```
++
++Because it is plain JSON you can open it in any text editor, diff it with git,
++or load it in a script with `json.load`.
++
++## Can I keep my data in a different file or location?
++
++Yes. Pass `--store` before the subcommand to point tally at any path you like:
++
++```
++python -m tally.cli --store ~/finances/2024.json add 12.50 food
++```
++
++This also means you can maintain completely separate stores — one per year, per
++project, or per person.
++
++## What are tally's limitations?
++
++tally is intentionally narrow in scope. It does not handle:
++
++- Tax categories or tax-related reporting
++- Receipt images or attachments
++- Shared or multi-user budgets
++- Recurring or scheduled expenses
++- Multi-currency reporting (all totals are in USD)
++- Live exchange rates (the conversion table is a fixed snapshot)
++
++If you need those features, tally is not the right tool. If you just want to know
++where the money went last month, it should serve you well.
