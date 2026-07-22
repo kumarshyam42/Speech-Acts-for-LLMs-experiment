@@ -16,6 +16,9 @@ propose modified terms, or state in machine-readable form what it understands "d
 mean before it starts working. The first structured signal that a job was doomed is
 `KIND_JOB_ERROR`, after the tokens are spent.
 
+I've written up the broader argument for why this matters in plain language here:
+[When Machines Make Promises](https://trustunlocked.substack.com/p/when-machines-make-promises).
+
 This issue proposes extending the 43xxx range with typed negative/negotiated responses and a
 structured acceptance payload, and reports controlled-experiment evidence (216 episodes,
 pre-registered, cross-family judged) that this specific change alters agent behavior in a way
