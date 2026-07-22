@@ -1,6 +1,9 @@
 # Goal: A protocol contribution to block/buzz grounded in the speech-acts experiment
 
-**Owner:** Shyam Kumar · **Started:** 2026-07-22 (Buzz's public launch day) · **Status:** draft-for-review
+**Owner:** Shyam Kumar · **Started:** 2026-07-22 (Buzz's public launch day) · **Status:** SUBMITTED — awaiting maintainer response
+
+**The issue is live: https://github.com/block/buzz/issues/2426** (posted 2026-07-22, same day
+as Buzz's public launch; verified rendering correctly — table, code blocks, links all good).
 
 ## The one-sentence goal
 
@@ -54,10 +57,17 @@ a well-argued design issue (and, if maintainers engage, the implementation), usi
 
 1. ✅ Evaluate fit (done — see conversation of 2026-07-22).
 2. ✅ Read Buzz docs end to end → `Buzz/buzz-docs-notes.md`.
-3. ✅ Draft the design issue → `Buzz/issue-draft.md`. **Show Shyam before submitting.**
-4. ⬜ Shyam reviews/edits; then post to github.com/block/buzz/issues.
+3. ✅ Draft the design issue → `Buzz/issue-draft.md`. Reviewed by Shyam (4 revision rounds:
+   cost claim softened, Promise Theory removed, phrasing de-AI'd, essay linked).
+4. ✅ Posted 2026-07-22 by Shyam (session couldn't authenticate to third-party repos):
+   **https://github.com/block/buzz/issues/2426**
 5. ⬜ Engage with maintainer responses (treat as negotiation; expect them to want the
-   minimal slice first — likely `DECLINED` + structured `ACCEPTED` content).
+   minimal slice first — likely `DECLINED` + structured `ACCEPTED` content). Their
+   CONTRIBUTING.md promises review within a few business days. Anticipated pushback and
+   our answer: "why not just prompt for this in buzz-acp?" → the B′ ablation row —
+   prompted deliberation didn't change conduct (67% executed anyway); the typed act did (6%).
+   NOTE: this session cannot watch block/buzz issues automatically — Shyam brings
+   maintainer replies into the session, we draft responses here.
 6. ⬜ If receptive: fork, implement kinds per their 9-step CONTRIBUTING checklist, `just ci`,
    focused PR. Rust (buzz-core) + possibly buzz-acp changes.
 7. ⬜ Separately: consider a short companion note linking the paper once it has a public home.
