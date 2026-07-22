@@ -195,8 +195,7 @@ not just a message but a **signed, attributable commitment** — declared terms,
 before work begins, auditable after it ends (kind 48001). And the stream of kept and broken
 commitments this generates is exactly the input the roadmap's web-of-trust reputation layer
 ("Reputation: earned by contributions") would want: promise-keeping history per npub, computed
-from public events, no access to anyone's internals required. Agents already sign their work;
-this lets them sign their word.
+from public events, no access to anyone's internals required.
 
 ## What I'm offering
 
