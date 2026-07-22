@@ -12,15 +12,14 @@ triage. Post as a plain issue (they have no feature template).*
 
 The agent job kinds (43001–43006) currently give a receiving agent exactly one typed response
 to a `KIND_JOB_REQUEST`: `KIND_JOB_ACCEPTED`. There is no way for an agent to decline a job,
-propose modified terms, or state — in machine-readable form — what it understands "done" to
+propose modified terms, or state in machine-readable form what it understands "done" to
 mean before it starts working. The first structured signal that a job was doomed is
 `KIND_JOB_ERROR`, after the tokens are spent.
 
 This issue proposes extending the 43xxx range with typed negative/negotiated responses and a
 structured acceptance payload, and reports controlled-experiment evidence (216 episodes,
 pre-registered, cross-family judged) that this specific change alters agent behavior in a way
-that generic "think before you act" prompting does not — including the measured costs, which
-are real and worth weighing.
+that generic "think before you act" prompting does not. It also reports the costs we measured.
 
 I'm happy to implement this per the CONTRIBUTING.md event-kind checklist if there's maintainer
 appetite; opening the design discussion first, as CONTRIBUTING.md asks.
@@ -50,14 +49,13 @@ Three observations:
 1. **Acceptance is the only response.** The lifecycle is request → accepted → progress →
    result/error. "No" and "yes, if we change the terms" don't exist as protocol events. An
    agent handed an infeasible or underspecified job can only accept it or ignore it; a refusal,
-   if the agent produces one at all, lives as prose in a chat message — invisible to workflows,
+   if the agent produces one at all, lives as prose in a chat message, invisible to workflows,
    feeds, delegation trees, and any future reputation computation.
 2. **Acceptance carries no terms.** Nothing in 43002 records what the agent committed *to*:
    no conditions of satisfaction, no scope. When a result arrives, "did this honor the
    request?" is answerable only by reading prose. `VISION_PROJECTS.md` describes jobs as the
-   substrate for **delegation trees** — and delegation trees compound this: if step 3 of a
-   chain was doomed, nothing recorded at steps 1–2 lets anyone see where the commitment went
-   wrong.
+   substrate for **delegation trees**, which compound the problem: if step 3 of a chain was
+   doomed, nothing recorded at steps 1–2 lets anyone see where the commitment went wrong.
 3. **This surface is still soft.** The job kinds aren't yet in NOSTR.md, and there's no payload
    schema for them — so now is the cheap moment to decide these semantics, before external
    clients depend on the current shape. (NIP-90, which the kind.rs comment notes Buzz
@@ -81,7 +79,7 @@ only a `promise` proceeds to execution. 24 tasks in four hidden classes (well-fo
 underspecified, infeasible-as-stated, hidden-constraint) × 3 conditions × 3 repetitions.
 Judged by a cross-family model (gpt-5.5) with mandatory verbatim-span citation.
 
-**The headline result.** On infeasible-as-stated tasks, all three conditions *noticed* the
+**Main result.** On infeasible-as-stated tasks, all three conditions *noticed* the
 problem at 94–100% rates. What differed is what followed:
 
 | | noticed the problem | executed anyway |
@@ -106,25 +104,29 @@ solved problem at current model capability.
 
 **The economics.** On doomed tasks, the typed-act condition spent a mean of ~178k tokens per
 episode against ~402k (accept-only) and ~366k (deliberation control), with 13% of spend landing
-on work judged failed versus 67–83%. **The costs, equally plainly:** on clean, well-formed
-tasks the typed act added ~27% token overhead for the same output, and on tasks with hidden
-mid-execution traps it provided no protection (the commitment is made at the point of least
-information). Break-even on our task mix: the gate pays for itself when roughly a quarter of
-requests are infeasible as stated, and taxes workloads cleaner than that. For Buzz this
-suggests the typed response should be **protocol capacity, not a mandatory gate** — cheap to
-emit where useful, not forced on every trivial job.
+on work judged failed versus 67–83%. **The costs:** on clean, well-formed tasks the typed act
+added token overhead (~27% in our runs) for the same output, and on tasks with traps that only
+surface mid-execution it provided no protection, since the commitment is made before the work
+that would reveal the trap. Two caveats on the overhead number: it comes from a small pilot
+with an unoptimized two-phase prompt, so it says a tax exists, not how big it has to be; and
+our measured benefit covers only the refusal act — the other responses (counter-offer as
+renegotiation, deferral) went unmeasured because a non-promise ended our episodes, and they are
+plausibly where most of the value sits in a real workspace. Either way, the design implication
+for Buzz seems clear: the typed response should be **protocol capacity, not a mandatory gate**.
+Agents should be able to decline or negotiate a job; nothing should force ceremony onto every
+trivial request.
 
-**One more finding that matters for delegation trees.** Agent self-reports were mostly honest
-(5% false "met" claims when audited against diffs and test output) — but the dishonesty
-concentrated almost entirely on jobs that should never have been accepted. That is an argument
-for making refusal cheap at acceptance time, and for a counterparty being able to review the
-declared terms *before* execution — which pairs naturally with the approval-gate pattern Buzz
-already has in the workflow range (46010–46012).
+**Self-reports, and why this matters for delegation trees.** Agent self-reports were mostly
+honest (5% false "met" claims when audited against diffs and test output), but the false
+claims concentrated almost entirely on jobs that should never have been accepted. So the fix
+belongs at acceptance time: make refusal cheap, and let a counterparty review the declared
+terms before execution. Buzz already has the pattern for that second part in the workflow
+range's approval gates (46010–46012).
 
-Honest scope of the evidence: this is a pilot (18 episodes per class-condition cell,
-descriptive statistics only, one worker model family, task mix deliberately enriched with
-pathological cases). It won't settle the design; it's offered as the only controlled data I'm
-aware of on exactly this contract choice.
+Scope of the evidence: this is a pilot. 18 episodes per class-condition cell, descriptive
+statistics only, one worker model family, and a task mix deliberately loaded with pathological
+cases. It won't settle the design. It's offered as the only controlled data I'm aware of on
+exactly this contract choice.
 
 ## Proposed design
 
@@ -153,7 +155,7 @@ terms:
 ```json
 {
   "conditions_of_satisfaction": [
-    { "id": "cos-1", "text": "`tally add` rejects negative amounts", "check": "pytest tests/test_add.py exits 0" }
+    { "id": "cos-1", "text": "importer rejects malformed rows with a nonzero exit", "check": "cargo test -p importer passes" }
   ],
   "scope_exclusions": ["will not modify migration files"],
   "job_request": "<event id>"
@@ -171,17 +173,17 @@ they see today, consistent with the "no breaking changes to existing clients" pr
 
 - `KIND_JOB_COUNTER_OFFER: u32 = 43008` — proposed alternative terms (same payload shape as
   structured acceptance plus a statement of the concern); requester answers with a modified
-  43001 or a 43005 cancel. In our data this was the act that converted doomed requests into
-  renegotiations instead of failures.
+  43001 or a 43005 cancel. In our data agents used this act to exit doomed requests cleanly;
+  the renegotiation loop it enables is the part nobody has measured yet.
 - `KIND_JOB_DEFERRED: u32 = 43009` — "I'll commit or decline by [time], after investigating"
   — a promise to *respond*, for jobs that can't be assessed without a look around.
 - **Acceptance review**: optionally route a structured acceptance through the existing
   approval-gate pattern (as 46010–46012 do for workflow steps), so a human or supervising agent
-  can veto declared terms before execution begins. In our experiment this was the single
-  highest-leverage missing component: shown only the declared terms plus the project's written
-  requirements (no repository access), a cross-family reviewer flagged 10 of 12 bad
-  commitments; the same reviewer without the requirements docs flagged 3 of 12. The contract
-  is a working veto surface — if the reviewer holds the house rules.
+  can veto declared terms before execution begins. This was the biggest missing piece in our
+  experiment: shown only the declared terms plus the project's written requirements (no
+  repository access), a cross-family reviewer flagged 10 of 12 bad commitments; the same
+  reviewer without the requirements docs flagged 3 of 12. Declared terms can be vetoed, but
+  only by a reviewer who holds the house rules.
 - `buzz-acp` support: the harness elicits the typed act from the wrapped agent before
   dispatching execution, so any ACP agent (goose, Codex, Claude Code) participates without
   bespoke prompting.
@@ -207,6 +209,7 @@ this lets them sign their word.
   single-transcript settings, and no protection against constraints that only surface
   mid-execution).
 
-*References: the experiment repo above; Flores & Winograd's Conversation-for-Action model and
-Promise Theory (Burgess & Bergstra) are the theoretical background for the response vocabulary
-(promise / counter-offer / decline / defer), for anyone who wants the lineage.*
+*Reference: the experiment repo above. The response vocabulary (promise / counter-offer /
+decline / defer) comes from speech act theory — Flores & Winograd's Conversation-for-Action
+model (*Understanding Computers and Cognition*, 1986), where it was developed for exactly this
+problem: coordination between parties who must state and track commitments.*
