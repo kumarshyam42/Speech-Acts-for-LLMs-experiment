@@ -17,7 +17,7 @@ mean before it starts working. The first structured signal that a job was doomed
 `KIND_JOB_ERROR`, after the tokens are spent.
 
 I've written up the broader argument for why this matters in plain language here:
-[When Machines Make Promises](https://trustunlocked.substack.com/p/when-machines-make-promises).
+[When Machines Make Promises](https://www.shyamkumar.com/writings/when-machines-make-promises).
 
 This issue proposes extending the 43xxx range with typed negative/negotiated responses and a
 structured acceptance payload, and reports controlled-experiment evidence (216 episodes,
